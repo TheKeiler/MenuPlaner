@@ -1,4 +1,3 @@
-/bin/bash
-
-nuget install FAKE - OutputDirectory packages -ExcludeVersion
-mono packages/FAKE/tools/Fake.exe build.fsx $1
+echo version %1
+"tools\NuGet\NuGet.exe" "Install" "FAKE" "-OutputDirectory" "tools" "-ExcludeVersion"
+"tools\Fake\tools\Fake.exe" "build.fsx" version=%1
