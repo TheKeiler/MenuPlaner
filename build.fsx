@@ -12,7 +12,7 @@ Target "common-build" (fun () ->
 )
 
 Target "common-tests" (fun () ->
-	RunNUnitTests "Todo/bin/Debug/MenueplanerPCL.Tests.dll"
+	RunNUnitTests "MenuePlaner/bin/Debug/MenueplanerPCL.Tests.dll"
 	"MenuePlaner/bin/Debug/testresults.xml" |> ignore
 )
 
