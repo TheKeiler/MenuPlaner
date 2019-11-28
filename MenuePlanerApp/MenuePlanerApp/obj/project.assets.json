@@ -729,6 +729,16 @@
         "runtime": {
           "lib/monoandroid90/Xamarin.Essentials.dll": {}
         }
+      },
+      "MenuPlanerApp.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/MenuPlanerApp.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MenuPlanerApp.Core.dll": {}
+        }
       }
     }
   },
@@ -1521,10 +1531,16 @@
         "xamarin.essentials.1.2.0.nupkg.sha512",
         "xamarin.essentials.nuspec"
       ]
+    },
+    "MenuPlanerApp.Core/1.0.0": {
+      "type": "project",
+      "path": "../MenuePlanerApp.Core/MenuPlanerApp.Core.csproj",
+      "msbuildProject": "../MenuePlanerApp.Core/MenuPlanerApp.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v9.0": [
+      "MenuPlanerApp.Core >= 1.0.0",
       "Xamarin.Android.Support.Core.Utils >= 28.0.0.1",
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.1",
       "Xamarin.Android.Support.Design >= 28.0.0.1",
@@ -1538,9 +1554,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp\\MenuePlanerApp.csproj",
-      "projectName": "MenuePlanerApp",
-      "projectPath": "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp\\MenuePlanerApp.csproj",
+      "projectUniqueName": "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp\\MenuPlanerApp.csproj",
+      "projectName": "MenuPlanerApp",
+      "projectPath": "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp\\MenuPlanerApp.csproj",
       "packagesPath": "C:\\Users\\pkeis\\.nuget\\packages\\",
       "outputPath": "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp\\obj\\",
       "projectStyle": "PackageReference",
@@ -1562,7 +1578,11 @@
       },
       "frameworks": {
         "monoandroid90": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp.Core\\MenuPlanerApp.Core.csproj": {
+              "projectPath": "D:\\MenuePlaner\\MenuePlanerApp\\MenuePlanerApp.Core\\MenuPlanerApp.Core.csproj"
+            }
+          }
         }
       }
     },
