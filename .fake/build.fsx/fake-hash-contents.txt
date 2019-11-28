@@ -57,7 +57,7 @@ Target.runOrDefault "Default"
 #if !FAKE
 
 #endif
-D:\MenuePlaner\MenuePlanerApp\build.fsx
-D:\MenuePlaner\MenuePlanerApp\.fake\build.fsx\intellisense.fsx
+D:\MenuePlaner\build.fsx
+D:\MenuePlaner\.fake\build.fsx\intellisense.fsx
 --define:DOTNETCORE
 --define:FAKE
