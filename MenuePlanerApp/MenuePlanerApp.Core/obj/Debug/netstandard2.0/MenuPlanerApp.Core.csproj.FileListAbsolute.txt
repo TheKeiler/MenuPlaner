@@ -1,0 +1,8 @@
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\bin\Debug\netstandard2.0\MenuPlanerApp.Core.deps.json
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\bin\Debug\netstandard2.0\MenuPlanerApp.Core.dll
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\bin\Debug\netstandard2.0\MenuPlanerApp.Core.pdb
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.csprojAssemblyReference.cache
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.AssemblyInfoInputs.cache
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.AssemblyInfo.cs
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.dll
+D:\MenuePlaner\MenuePlanerApp\MenuePlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.pdb
