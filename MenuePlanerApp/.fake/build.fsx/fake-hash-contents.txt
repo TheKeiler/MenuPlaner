@@ -1,3 +1,4 @@
+
 #r "paket:
 nuget Fake.IO.FileSystem
 nuget Fake.DotNet.MSBuild
@@ -11,11 +12,9 @@ open Fake.DotNet
 open Fake.DotNet.Testing
 open Fake.Core
 
-// Properties
 let buildDir = "./build/"
 let testDir  = "./test/"
 
-// Targets
 Target.create "Clean" (fun _ ->
     Shell.CleanDirs [buildDir; testDir]
 )
@@ -44,13 +43,21 @@ Target.create "Default" (fun _ ->
 )
 
  
-// Dependencies
+
 open Fake.Core.TargetOperators
 "Clean"
   ==> "common-build"
   ==> "common-tests"
   ==> "Default"
 
-// start build
-RunTargetOrDefault "Default"
+RunTargetOrDefault "common-tests"
  
+
+
+#if !FAKE
+
+#endif
+D:\MenuePlaner\MenuePlanerApp\build.fsx
+D:\MenuePlaner\MenuePlanerApp\.fake\build.fsx\intellisense.fsx
+--define:DOTNETCORE
+--define:FAKE

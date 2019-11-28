@@ -1,0 +1,8 @@
+framework: netstandard2.0
+source https://api.nuget.org/v3/index.json
+storage: none
+
+nuget Fake.IO.FileSystem
+nuget Fake.DotNet.MSBuild
+nuget Fake.DotNet.Testing.NUnit
+nuget Fake.Core.Target //

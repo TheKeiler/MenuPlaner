@@ -1,0 +1,2 @@
+D:\MenuePlaner\MenuePlanerApp\build.fsx (20,4)-(20,19): Warning FS0044: This construct is deprecated. Please use cleanDirs instead
+D:\MenuePlaner\MenuePlanerApp\build.fsx (55,0)-(55,18): Error FS0039: The value or constructor 'RunTargetOrDefault' is not defined.
