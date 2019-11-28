@@ -28,7 +28,7 @@ Target.create "common-build" (fun _ ->
 
 Target.create "common-tests" (fun _ ->
     !! "src/test/**/*.csproj"
-      |> MSBuild.runDebug id testDir "Build"
+      |> MSBuild.runDebug id testDir "common-tests"
       |> Trace.logItems "TestBuild-Output: "
 )
 
