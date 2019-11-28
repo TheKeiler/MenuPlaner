@@ -16,7 +16,7 @@ let buildDir = "./build/"
 let testDir  = "./test/"
 
 Target.create "Clean" (fun _ ->
-    Shell.CleanDirs [buildDir; testDir]
+    Shell.cleanDirs [buildDir; testDir]
 )
 
 Target.create "common-build" (fun _ ->
@@ -50,7 +50,7 @@ open Fake.Core.TargetOperators
   ==> "common-tests"
   ==> "Default"
 
-RunTargetOrDefault "common-tests"
+Target.runOrDefault "Default"
  
 
 

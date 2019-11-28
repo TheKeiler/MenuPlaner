@@ -52,5 +52,5 @@ open Fake.Core.TargetOperators
   ==> "Default"
 
 // start build
-RunTargetOrDefault "Default"
+Target.runOrDefault "Default"
  
