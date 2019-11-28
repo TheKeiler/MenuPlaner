@@ -17,7 +17,7 @@ let testDir  = "./test/"
 
 // Targets
 Target.create "Clean" (fun _ ->
-    Shell.CleanDirs [buildDir; testDir]
+    Shell.cleanDirs [buildDir; testDir]
 )
 
 Target.create "common-build" (fun _ ->
