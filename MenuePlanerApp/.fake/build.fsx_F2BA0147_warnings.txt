@@ -1,0 +1,10 @@
+D:\MenuePlaner\MenuePlanerApp\build.fsx(1,1): warning FS0213: 'paket:
+nuget Fake.IO.FileSystem
+nuget Fake.DotNet.MSBuild
+nuget Fake.DotNet.Testing.NUnit
+nuget Fake.Core.Target //' is not a valid assembly name
+build.fsx(1,1): error FS2301: 'paket:
+nuget Fake.IO.FileSystem
+nuget Fake.DotNet.MSBuild
+nuget Fake.DotNet.Testing.NUnit
+nuget Fake.Core.Target //' is not a valid assembly name
