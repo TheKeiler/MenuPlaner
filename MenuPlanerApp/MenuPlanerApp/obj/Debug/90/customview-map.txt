@@ -12,7 +12,6 @@ external-path;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\35\jl\r
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 ImageView;obj\Debug\90\res\layout\ingredient_detail.xml
-ImageView;obj\Debug\90\res\layout\ingredient_viewholder.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;obj\Debug\90\res\layout\activity_main.xml
 LinearLayout;obj\Debug\90\res\layout\ingredient_detail.xml

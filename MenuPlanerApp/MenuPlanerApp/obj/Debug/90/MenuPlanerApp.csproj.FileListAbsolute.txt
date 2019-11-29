@@ -291,7 +291,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5739e9fc85
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\mono\android\app\ApplicationRegistration.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5dcb6eccdc824e0677ffae8ccdde42930\CustomTabsServiceConnectionImpl.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5dcb6eccdc824e0677ffae8ccdde42930\KeepAliveService.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\IngredientsDetail.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\IngredientsMenuActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\MainActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\android\support\customtabs\CustomTabsClient_CustomTabsCallbackImpl.java
@@ -334,3 +333,5 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GenerateJavaStubs
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\IngredientsDetailActivity.java
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Newtonsoft.Json.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Newtonsoft.Json.dll

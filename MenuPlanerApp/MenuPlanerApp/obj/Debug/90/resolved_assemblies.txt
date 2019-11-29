@@ -3,6 +3,7 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Java.Inte
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\MenuPlanerApp.Core.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Mono.Android.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\mscorlib.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Newtonsoft.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Core.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Numerics.dll

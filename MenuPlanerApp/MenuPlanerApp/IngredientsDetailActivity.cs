@@ -10,8 +10,8 @@ namespace MenuPlanerApp
     public class IngredientsDetailActivity : Activity
     {
         private ImageView _ingredientsImageView;
-        private TextView _ingredientsTextView;
         private IngredientsRepository _ingredientsRepository;
+        private TextView _ingredientsTextView;
         private Ingredient _selectedIngredient;
 
         protected override void OnCreate(Bundle savedInstanceState)
