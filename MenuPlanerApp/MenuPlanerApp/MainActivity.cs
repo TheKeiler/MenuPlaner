@@ -1,31 +1,46 @@
 ﻿using System;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
 using Xamarin.Essentials;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        private Button _ingredientButton;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
-            var myButton = FindViewById<Button>(Resource.Id.button1);
-            myButton.Click += MyButton_Click;
+
+            FindViews();
+            LinkEventHandlers();
         }
 
-        private void MyButton_Click(object sender, EventArgs e)
+        private void FindViews()
         {
-            var toast = Toast.MakeText(this, "A Button was clicked", ToastLength.Short);
-            toast.Show();
+            _ingredientButton = FindViewById<Button>(Resource.Id.ingredientsbutton);
+        }
+
+        private void LinkEventHandlers()
+        {
+            _ingredientButton.Click += _ingredientsButton_Click;
+        }
+
+        private void _ingredientsButton_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(IngredientsMenuActivity));
+            StartActivity(intent);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
