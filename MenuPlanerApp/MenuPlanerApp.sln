@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuPlanerApp", "MenuPlaner
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MenuPlanerApp.Core", "MenuPlanerApp.Core\MenuPlanerApp.Core.csproj", "{69C1252B-55CB-4B00-87C8-DDFC3632156F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuPlaner.API", "MenuPlaner.API\MenuPlaner.API.csproj", "{6D47A31B-C6C5-41AA-93D1-3858EF204AA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MenuPlanerApp.API", "MenuPlanerApp.API\MenuPlanerApp.API.csproj", "{6D47A31B-C6C5-41AA-93D1-3858EF204AA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

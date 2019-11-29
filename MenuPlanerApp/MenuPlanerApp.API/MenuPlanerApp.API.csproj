@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>07bf69ae-57df-468b-9b80-1431ebf9b25c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MenuPlanerApp.Core\MenuPlanerApp.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -15,7 +15,7 @@ namespace MenuPlanerApp.Core.Repository
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var responseMessage = await httpClient.GetAsync("http://192.168.1.35:5000/api/ingredients");
+            var responseMessage = await httpClient.GetAsync("http://192.168.1.9:5000/ingredients");
 
             if (!responseMessage.IsSuccessStatusCode) return null;
 
@@ -29,7 +29,7 @@ namespace MenuPlanerApp.Core.Repository
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var responseMessage = await httpClient.GetAsync("http://192.168.1.35:5000/api/ingredients/" + id);
+            var responseMessage = await httpClient.GetAsync("http://192.168.1.9:5000/ingredients/" + id);
 
             if (!responseMessage.IsSuccessStatusCode) return null;
 

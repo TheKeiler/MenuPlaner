@@ -14,3 +14,7 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPla
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.AssemblyInfo.cs
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.pdb
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\Mono.Android.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\Mono.Android.pdb
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\Mono.Android.xml
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.csproj.CopyComplete
