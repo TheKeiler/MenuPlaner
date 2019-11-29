@@ -5,13 +5,13 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="Menüplaner" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@android:style/Theme.Material" android:name="android.app.Application" android:debuggable="true">
-    <activity android:label="IngredientsDetail" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsDetail">
+    <activity android:label="IngredientsDetail" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsDetail" />
+    <activity android:label="IngredientsMenuActivity" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsMenuActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:label="IngredientsMenuActivity" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsMenuActivity" />
     <activity android:label="@string/app_name" android:theme="@style/AppTheme" android:name="md5b62a796723a823b35e1837be7dff9bb0.MainActivity" />
     <service android:name="md5dcb6eccdc824e0677ffae8ccdde42930.KeepAliveService" />
     <receiver android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" android:name="md5d630c3d3bfb5f5558520331566132d97.BatteryBroadcastReceiver" />

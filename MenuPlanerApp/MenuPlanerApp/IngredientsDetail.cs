@@ -1,5 +1,4 @@
-﻿using Android;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Widget;
 using MenuPlanerApp.Core.Model;
@@ -7,7 +6,7 @@ using MenuPlanerApp.Core.Repository;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "IngredientsDetail", MainLauncher = true)]
+    [Activity(Label = "IngredientsDetail")]
     public class IngredientsDetail : Activity
     {
         private ImageView _ingredientsImageView;

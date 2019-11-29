@@ -26,3 +26,4 @@ resources;obj\Debug\90\res\values\styles.xml
 string;obj\Debug\90\res\values\strings.xml
 style;obj\Debug\90\res\values\styles.xml
 TextView;obj\Debug\90\res\layout\ingredient_viewholder.xml
+TextView;obj\Debug\90\res\layout\ingredients_menu.xml

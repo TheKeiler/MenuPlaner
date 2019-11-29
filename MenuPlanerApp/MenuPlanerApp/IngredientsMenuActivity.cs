@@ -1,12 +1,11 @@
-﻿using Android;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
 using MenuPlanerApp.Adapters;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "IngredientsMenuActivity", MainLauncher = false)]
+    [Activity(Label = "IngredientsMenuActivity", MainLauncher = true)]
     public class IngredientsMenuActivity : Activity
     {
         private RecyclerView _ingredientRecyclerView;
