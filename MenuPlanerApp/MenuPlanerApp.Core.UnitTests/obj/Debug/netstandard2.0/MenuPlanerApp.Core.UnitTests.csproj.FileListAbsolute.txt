@@ -1,0 +1,14 @@
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.deps.json
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\obj\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.csprojAssemblyReference.cache
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\obj\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.AssemblyInfoInputs.cache
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\obj\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.AssemblyInfo.cs
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.pdb
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\MenuPlanerApp.Core.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\Mono.Android.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\MenuPlanerApp.Core.pdb
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\Mono.Android.pdb
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\bin\Debug\netstandard2.0\Mono.Android.xml
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\obj\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.csproj.CopyComplete
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\obj\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.Core.UnitTests\obj\Debug\netstandard2.0\MenuPlanerApp.Core.UnitTests.pdb
