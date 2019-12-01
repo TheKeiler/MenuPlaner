@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MenuPlanerApp.Core.Model
+﻿namespace MenuPlanerApp.Core.Model
 {
     public enum MealDayTimeEnum
     {
@@ -10,4 +6,3 @@ namespace MenuPlanerApp.Core.Model
         Dinner
     }
 }
-

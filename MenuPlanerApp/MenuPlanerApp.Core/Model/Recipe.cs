@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Android.Graphics;
 
 namespace MenuPlanerApp.Core.Model
@@ -11,7 +9,7 @@ namespace MenuPlanerApp.Core.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public List<IngredientWithAmount> Ingredients { get; set; }
-        public List<Bitmap> Directions { get; set; }
+        public List<Bitmap> DirectionPictures { get; set; }
         public bool IsFavorite { get; set; }
     }
 }

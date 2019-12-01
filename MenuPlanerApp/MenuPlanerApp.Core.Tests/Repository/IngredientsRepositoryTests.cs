@@ -1,5 +1,4 @@
-﻿using System.Runtime;
-using MenuPlanerApp.Core.Repository;
+﻿using MenuPlanerApp.Core.Repository;
 using NUnit.Framework;
 
 namespace MenuPlanerApp.Core.Tests.Repository

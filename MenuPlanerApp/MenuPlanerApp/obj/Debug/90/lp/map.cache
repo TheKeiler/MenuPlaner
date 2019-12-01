@@ -1,3 +1,4 @@
+MenuPlanerApp.Core
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
 Xamarin.Android.Arch.Lifecycle.Common
@@ -33,5 +34,5 @@ Xamarin.Android.Support.v7.RecyclerView
 Xamarin.Android.Support.Vector.Drawable
 Xamarin.Android.Support.VersionedParcelable
 Xamarin.Android.Support.ViewPager
+Xamarin.Auth
 Xamarin.Essentials
-MenuPlanerApp.Core

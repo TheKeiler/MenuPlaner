@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Android.Icu.Util;
-
-namespace MenuPlanerApp.Core.Model
+﻿namespace MenuPlanerApp.Core.Model
 {
     public class IngredientWithAmount
     {

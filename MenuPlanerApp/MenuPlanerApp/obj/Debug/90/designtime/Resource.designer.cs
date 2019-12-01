@@ -26,6 +26,156 @@ namespace MenuPlanerApp
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Auth.Resource.Animation.slide_in_right = global::MenuPlanerApp.Resource.Animation.slide_in_right;
+			global::Xamarin.Auth.Resource.Animation.slide_out_left = global::MenuPlanerApp.Resource.Animation.slide_out_left;
+			global::Xamarin.Auth.Resource.Attribute.alpha = global::MenuPlanerApp.Resource.Attribute.alpha;
+			global::Xamarin.Auth.Resource.Attribute.font = global::MenuPlanerApp.Resource.Attribute.font;
+			global::Xamarin.Auth.Resource.Attribute.fontProviderAuthority = global::MenuPlanerApp.Resource.Attribute.fontProviderAuthority;
+			global::Xamarin.Auth.Resource.Attribute.fontProviderCerts = global::MenuPlanerApp.Resource.Attribute.fontProviderCerts;
+			global::Xamarin.Auth.Resource.Attribute.fontProviderFetchStrategy = global::MenuPlanerApp.Resource.Attribute.fontProviderFetchStrategy;
+			global::Xamarin.Auth.Resource.Attribute.fontProviderFetchTimeout = global::MenuPlanerApp.Resource.Attribute.fontProviderFetchTimeout;
+			global::Xamarin.Auth.Resource.Attribute.fontProviderPackage = global::MenuPlanerApp.Resource.Attribute.fontProviderPackage;
+			global::Xamarin.Auth.Resource.Attribute.fontProviderQuery = global::MenuPlanerApp.Resource.Attribute.fontProviderQuery;
+			global::Xamarin.Auth.Resource.Attribute.fontStyle = global::MenuPlanerApp.Resource.Attribute.fontStyle;
+			global::Xamarin.Auth.Resource.Attribute.fontVariationSettings = global::MenuPlanerApp.Resource.Attribute.fontVariationSettings;
+			global::Xamarin.Auth.Resource.Attribute.fontWeight = global::MenuPlanerApp.Resource.Attribute.fontWeight;
+			global::Xamarin.Auth.Resource.Attribute.ttcIndex = global::MenuPlanerApp.Resource.Attribute.ttcIndex;
+			global::Xamarin.Auth.Resource.Color.browser_actions_bg_grey = global::MenuPlanerApp.Resource.Color.browser_actions_bg_grey;
+			global::Xamarin.Auth.Resource.Color.browser_actions_divider_color = global::MenuPlanerApp.Resource.Color.browser_actions_divider_color;
+			global::Xamarin.Auth.Resource.Color.browser_actions_text_color = global::MenuPlanerApp.Resource.Color.browser_actions_text_color;
+			global::Xamarin.Auth.Resource.Color.browser_actions_title_color = global::MenuPlanerApp.Resource.Color.browser_actions_title_color;
+			global::Xamarin.Auth.Resource.Color.notification_action_color_filter = global::MenuPlanerApp.Resource.Color.notification_action_color_filter;
+			global::Xamarin.Auth.Resource.Color.notification_icon_bg_color = global::MenuPlanerApp.Resource.Color.notification_icon_bg_color;
+			global::Xamarin.Auth.Resource.Color.ripple_material_light = global::MenuPlanerApp.Resource.Color.ripple_material_light;
+			global::Xamarin.Auth.Resource.Color.secondary_text_default_material_light = global::MenuPlanerApp.Resource.Color.secondary_text_default_material_light;
+			global::Xamarin.Auth.Resource.Dimension.browser_actions_context_menu_max_width = global::MenuPlanerApp.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::Xamarin.Auth.Resource.Dimension.browser_actions_context_menu_min_padding = global::MenuPlanerApp.Resource.Dimension.browser_actions_context_menu_min_padding;
+			global::Xamarin.Auth.Resource.Dimension.compat_button_inset_horizontal_material = global::MenuPlanerApp.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Xamarin.Auth.Resource.Dimension.compat_button_inset_vertical_material = global::MenuPlanerApp.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Xamarin.Auth.Resource.Dimension.compat_button_padding_horizontal_material = global::MenuPlanerApp.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Xamarin.Auth.Resource.Dimension.compat_button_padding_vertical_material = global::MenuPlanerApp.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Xamarin.Auth.Resource.Dimension.compat_control_corner_material = global::MenuPlanerApp.Resource.Dimension.compat_control_corner_material;
+			global::Xamarin.Auth.Resource.Dimension.compat_notification_large_icon_max_height = global::MenuPlanerApp.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Xamarin.Auth.Resource.Dimension.compat_notification_large_icon_max_width = global::MenuPlanerApp.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Xamarin.Auth.Resource.Dimension.notification_action_icon_size = global::MenuPlanerApp.Resource.Dimension.notification_action_icon_size;
+			global::Xamarin.Auth.Resource.Dimension.notification_action_text_size = global::MenuPlanerApp.Resource.Dimension.notification_action_text_size;
+			global::Xamarin.Auth.Resource.Dimension.notification_big_circle_margin = global::MenuPlanerApp.Resource.Dimension.notification_big_circle_margin;
+			global::Xamarin.Auth.Resource.Dimension.notification_content_margin_start = global::MenuPlanerApp.Resource.Dimension.notification_content_margin_start;
+			global::Xamarin.Auth.Resource.Dimension.notification_large_icon_height = global::MenuPlanerApp.Resource.Dimension.notification_large_icon_height;
+			global::Xamarin.Auth.Resource.Dimension.notification_large_icon_width = global::MenuPlanerApp.Resource.Dimension.notification_large_icon_width;
+			global::Xamarin.Auth.Resource.Dimension.notification_main_column_padding_top = global::MenuPlanerApp.Resource.Dimension.notification_main_column_padding_top;
+			global::Xamarin.Auth.Resource.Dimension.notification_media_narrow_margin = global::MenuPlanerApp.Resource.Dimension.notification_media_narrow_margin;
+			global::Xamarin.Auth.Resource.Dimension.notification_right_icon_size = global::MenuPlanerApp.Resource.Dimension.notification_right_icon_size;
+			global::Xamarin.Auth.Resource.Dimension.notification_right_side_padding_top = global::MenuPlanerApp.Resource.Dimension.notification_right_side_padding_top;
+			global::Xamarin.Auth.Resource.Dimension.notification_small_icon_background_padding = global::MenuPlanerApp.Resource.Dimension.notification_small_icon_background_padding;
+			global::Xamarin.Auth.Resource.Dimension.notification_small_icon_size_as_large = global::MenuPlanerApp.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Xamarin.Auth.Resource.Dimension.notification_subtext_size = global::MenuPlanerApp.Resource.Dimension.notification_subtext_size;
+			global::Xamarin.Auth.Resource.Dimension.notification_top_pad = global::MenuPlanerApp.Resource.Dimension.notification_top_pad;
+			global::Xamarin.Auth.Resource.Dimension.notification_top_pad_large_text = global::MenuPlanerApp.Resource.Dimension.notification_top_pad_large_text;
+			global::Xamarin.Auth.Resource.Drawable.ic_arrow_back = global::MenuPlanerApp.Resource.Drawable.ic_arrow_back;
+			global::Xamarin.Auth.Resource.Drawable.notification_action_background = global::MenuPlanerApp.Resource.Drawable.notification_action_background;
+			global::Xamarin.Auth.Resource.Drawable.notification_bg = global::MenuPlanerApp.Resource.Drawable.notification_bg;
+			global::Xamarin.Auth.Resource.Drawable.notification_bg_low = global::MenuPlanerApp.Resource.Drawable.notification_bg_low;
+			global::Xamarin.Auth.Resource.Drawable.notification_bg_low_normal = global::MenuPlanerApp.Resource.Drawable.notification_bg_low_normal;
+			global::Xamarin.Auth.Resource.Drawable.notification_bg_low_pressed = global::MenuPlanerApp.Resource.Drawable.notification_bg_low_pressed;
+			global::Xamarin.Auth.Resource.Drawable.notification_bg_normal = global::MenuPlanerApp.Resource.Drawable.notification_bg_normal;
+			global::Xamarin.Auth.Resource.Drawable.notification_bg_normal_pressed = global::MenuPlanerApp.Resource.Drawable.notification_bg_normal_pressed;
+			global::Xamarin.Auth.Resource.Drawable.notification_icon_background = global::MenuPlanerApp.Resource.Drawable.notification_icon_background;
+			global::Xamarin.Auth.Resource.Drawable.notification_template_icon_bg = global::MenuPlanerApp.Resource.Drawable.notification_template_icon_bg;
+			global::Xamarin.Auth.Resource.Drawable.notification_template_icon_low_bg = global::MenuPlanerApp.Resource.Drawable.notification_template_icon_low_bg;
+			global::Xamarin.Auth.Resource.Drawable.notification_tile_bg = global::MenuPlanerApp.Resource.Drawable.notification_tile_bg;
+			global::Xamarin.Auth.Resource.Drawable.notify_panel_notification_icon_bg = global::MenuPlanerApp.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Xamarin.Auth.Resource.Id.action_container = global::MenuPlanerApp.Resource.Id.action_container;
+			global::Xamarin.Auth.Resource.Id.action_divider = global::MenuPlanerApp.Resource.Id.action_divider;
+			global::Xamarin.Auth.Resource.Id.action_image = global::MenuPlanerApp.Resource.Id.action_image;
+			global::Xamarin.Auth.Resource.Id.action_text = global::MenuPlanerApp.Resource.Id.action_text;
+			global::Xamarin.Auth.Resource.Id.actions = global::MenuPlanerApp.Resource.Id.actions;
+			global::Xamarin.Auth.Resource.Id.async = global::MenuPlanerApp.Resource.Id.async;
+			global::Xamarin.Auth.Resource.Id.blocking = global::MenuPlanerApp.Resource.Id.blocking;
+			global::Xamarin.Auth.Resource.Id.browser_actions_header_text = global::MenuPlanerApp.Resource.Id.browser_actions_header_text;
+			global::Xamarin.Auth.Resource.Id.browser_actions_menu_item_icon = global::MenuPlanerApp.Resource.Id.browser_actions_menu_item_icon;
+			global::Xamarin.Auth.Resource.Id.browser_actions_menu_item_text = global::MenuPlanerApp.Resource.Id.browser_actions_menu_item_text;
+			global::Xamarin.Auth.Resource.Id.browser_actions_menu_items = global::MenuPlanerApp.Resource.Id.browser_actions_menu_items;
+			global::Xamarin.Auth.Resource.Id.browser_actions_menu_view = global::MenuPlanerApp.Resource.Id.browser_actions_menu_view;
+			global::Xamarin.Auth.Resource.Id.chronometer = global::MenuPlanerApp.Resource.Id.chronometer;
+			global::Xamarin.Auth.Resource.Id.forever = global::MenuPlanerApp.Resource.Id.forever;
+			global::Xamarin.Auth.Resource.Id.icon = global::MenuPlanerApp.Resource.Id.icon;
+			global::Xamarin.Auth.Resource.Id.icon_group = global::MenuPlanerApp.Resource.Id.icon_group;
+			global::Xamarin.Auth.Resource.Id.info = global::MenuPlanerApp.Resource.Id.info;
+			global::Xamarin.Auth.Resource.Id.italic = global::MenuPlanerApp.Resource.Id.italic;
+			global::Xamarin.Auth.Resource.Id.line1 = global::MenuPlanerApp.Resource.Id.line1;
+			global::Xamarin.Auth.Resource.Id.line3 = global::MenuPlanerApp.Resource.Id.line3;
+			global::Xamarin.Auth.Resource.Id.normal = global::MenuPlanerApp.Resource.Id.normal;
+			global::Xamarin.Auth.Resource.Id.notification_background = global::MenuPlanerApp.Resource.Id.notification_background;
+			global::Xamarin.Auth.Resource.Id.notification_main_column = global::MenuPlanerApp.Resource.Id.notification_main_column;
+			global::Xamarin.Auth.Resource.Id.notification_main_column_container = global::MenuPlanerApp.Resource.Id.notification_main_column_container;
+			global::Xamarin.Auth.Resource.Id.right_icon = global::MenuPlanerApp.Resource.Id.right_icon;
+			global::Xamarin.Auth.Resource.Id.right_side = global::MenuPlanerApp.Resource.Id.right_side;
+			global::Xamarin.Auth.Resource.Id.tag_transition_group = global::MenuPlanerApp.Resource.Id.tag_transition_group;
+			global::Xamarin.Auth.Resource.Id.tag_unhandled_key_event_manager = global::MenuPlanerApp.Resource.Id.tag_unhandled_key_event_manager;
+			global::Xamarin.Auth.Resource.Id.tag_unhandled_key_listeners = global::MenuPlanerApp.Resource.Id.tag_unhandled_key_listeners;
+			global::Xamarin.Auth.Resource.Id.text = global::MenuPlanerApp.Resource.Id.text;
+			global::Xamarin.Auth.Resource.Id.text2 = global::MenuPlanerApp.Resource.Id.text2;
+			global::Xamarin.Auth.Resource.Id.time = global::MenuPlanerApp.Resource.Id.time;
+			global::Xamarin.Auth.Resource.Id.title = global::MenuPlanerApp.Resource.Id.title;
+			global::Xamarin.Auth.Resource.Id.webview = global::MenuPlanerApp.Resource.Id.webview;
+			global::Xamarin.Auth.Resource.Integer.status_bar_notification_info_maxnum = global::MenuPlanerApp.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Xamarin.Auth.Resource.Layout.activity_webview = global::MenuPlanerApp.Resource.Layout.activity_webview;
+			global::Xamarin.Auth.Resource.Layout.browser_actions_context_menu_page = global::MenuPlanerApp.Resource.Layout.browser_actions_context_menu_page;
+			global::Xamarin.Auth.Resource.Layout.browser_actions_context_menu_row = global::MenuPlanerApp.Resource.Layout.browser_actions_context_menu_row;
+			global::Xamarin.Auth.Resource.Layout.notification_action = global::MenuPlanerApp.Resource.Layout.notification_action;
+			global::Xamarin.Auth.Resource.Layout.notification_action_tombstone = global::MenuPlanerApp.Resource.Layout.notification_action_tombstone;
+			global::Xamarin.Auth.Resource.Layout.notification_template_custom_big = global::MenuPlanerApp.Resource.Layout.notification_template_custom_big;
+			global::Xamarin.Auth.Resource.Layout.notification_template_icon_group = global::MenuPlanerApp.Resource.Layout.notification_template_icon_group;
+			global::Xamarin.Auth.Resource.Layout.notification_template_part_chronometer = global::MenuPlanerApp.Resource.Layout.notification_template_part_chronometer;
+			global::Xamarin.Auth.Resource.Layout.notification_template_part_time = global::MenuPlanerApp.Resource.Layout.notification_template_part_time;
+			global::Xamarin.Auth.Resource.String.status_bar_notification_info_overflow = global::MenuPlanerApp.Resource.String.status_bar_notification_info_overflow;
+			global::Xamarin.Auth.Resource.String.title_activity_webview = global::MenuPlanerApp.Resource.String.title_activity_webview;
+			global::Xamarin.Auth.Resource.Style.TextAppearance_Compat_Notification = global::MenuPlanerApp.Resource.Style.TextAppearance_Compat_Notification;
+			global::Xamarin.Auth.Resource.Style.TextAppearance_Compat_Notification_Info = global::MenuPlanerApp.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Xamarin.Auth.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::MenuPlanerApp.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Xamarin.Auth.Resource.Style.TextAppearance_Compat_Notification_Time = global::MenuPlanerApp.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Xamarin.Auth.Resource.Style.TextAppearance_Compat_Notification_Title = global::MenuPlanerApp.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Xamarin.Auth.Resource.Style.Widget_Compat_NotificationActionContainer = global::MenuPlanerApp.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Xamarin.Auth.Resource.Style.Widget_Compat_NotificationActionText = global::MenuPlanerApp.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Xamarin.Auth.Resource.Styleable.ColorStateListItem = global::MenuPlanerApp.Resource.Styleable.ColorStateListItem;
+			global::Xamarin.Auth.Resource.Styleable.ColorStateListItem_alpha = global::MenuPlanerApp.Resource.Styleable.ColorStateListItem_alpha;
+			global::Xamarin.Auth.Resource.Styleable.ColorStateListItem_android_alpha = global::MenuPlanerApp.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Xamarin.Auth.Resource.Styleable.ColorStateListItem_android_color = global::MenuPlanerApp.Resource.Styleable.ColorStateListItem_android_color;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily = global::MenuPlanerApp.Resource.Styleable.FontFamily;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily_fontProviderAuthority = global::MenuPlanerApp.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily_fontProviderCerts = global::MenuPlanerApp.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::MenuPlanerApp.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::MenuPlanerApp.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily_fontProviderPackage = global::MenuPlanerApp.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Xamarin.Auth.Resource.Styleable.FontFamily_fontProviderQuery = global::MenuPlanerApp.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_android_font = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_android_font;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_android_fontStyle = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_android_fontWeight = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_font = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_font;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_fontStyle = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_fontWeight = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Xamarin.Auth.Resource.Styleable.FontFamilyFont_ttcIndex = global::MenuPlanerApp.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor = global::MenuPlanerApp.Resource.Styleable.GradientColor;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_centerColor = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_centerColor;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_centerX = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_centerX;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_centerY = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_centerY;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_endColor = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_endColor;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_endX = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_endX;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_endY = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_endY;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_gradientRadius = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_startColor = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_startColor;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_startX = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_startX;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_startY = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_startY;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_tileMode = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_tileMode;
+			global::Xamarin.Auth.Resource.Styleable.GradientColor_android_type = global::MenuPlanerApp.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Auth.Resource.Styleable.GradientColorItem = global::MenuPlanerApp.Resource.Styleable.GradientColorItem;
+			global::Xamarin.Auth.Resource.Styleable.GradientColorItem_android_color = global::MenuPlanerApp.Resource.Styleable.GradientColorItem_android_color;
+			global::Xamarin.Auth.Resource.Styleable.GradientColorItem_android_offset = global::MenuPlanerApp.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::MenuPlanerApp.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::MenuPlanerApp.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::MenuPlanerApp.Resource.Attribute.font;
@@ -260,6 +410,12 @@ namespace MenuPlanerApp
 			
 			// aapt resource value: 0x7F01000F
 			public const int design_snackbar_out = 2130771983;
+			
+			// aapt resource value: 0x7F010010
+			public const int slide_in_right = 2130771984;
+			
+			// aapt resource value: 0x7F010011
+			public const int slide_out_left = 2130771985;
 			
 			static Animation()
 			{
@@ -3145,64 +3301,67 @@ namespace MenuPlanerApp
 			public const int design_snackbar_background = 2131165275;
 			
 			// aapt resource value: 0x7F07005C
-			public const int ic_mtrl_chip_checked_black = 2131165276;
+			public const int ic_arrow_back = 2131165276;
 			
 			// aapt resource value: 0x7F07005D
-			public const int ic_mtrl_chip_checked_circle = 2131165277;
+			public const int ic_mtrl_chip_checked_black = 2131165277;
 			
 			// aapt resource value: 0x7F07005E
-			public const int ic_mtrl_chip_close_circle = 2131165278;
+			public const int ic_mtrl_chip_checked_circle = 2131165278;
 			
 			// aapt resource value: 0x7F07005F
-			public const int mtrl_snackbar_background = 2131165279;
+			public const int ic_mtrl_chip_close_circle = 2131165279;
 			
 			// aapt resource value: 0x7F070060
-			public const int mtrl_tabs_default_indicator = 2131165280;
+			public const int mtrl_snackbar_background = 2131165280;
 			
 			// aapt resource value: 0x7F070061
-			public const int navigation_empty_icon = 2131165281;
+			public const int mtrl_tabs_default_indicator = 2131165281;
 			
 			// aapt resource value: 0x7F070062
-			public const int notification_action_background = 2131165282;
+			public const int navigation_empty_icon = 2131165282;
 			
 			// aapt resource value: 0x7F070063
-			public const int notification_bg = 2131165283;
+			public const int notification_action_background = 2131165283;
 			
 			// aapt resource value: 0x7F070064
-			public const int notification_bg_low = 2131165284;
+			public const int notification_bg = 2131165284;
 			
 			// aapt resource value: 0x7F070065
-			public const int notification_bg_low_normal = 2131165285;
+			public const int notification_bg_low = 2131165285;
 			
 			// aapt resource value: 0x7F070066
-			public const int notification_bg_low_pressed = 2131165286;
+			public const int notification_bg_low_normal = 2131165286;
 			
 			// aapt resource value: 0x7F070067
-			public const int notification_bg_normal = 2131165287;
+			public const int notification_bg_low_pressed = 2131165287;
 			
 			// aapt resource value: 0x7F070068
-			public const int notification_bg_normal_pressed = 2131165288;
+			public const int notification_bg_normal = 2131165288;
 			
 			// aapt resource value: 0x7F070069
-			public const int notification_icon_background = 2131165289;
+			public const int notification_bg_normal_pressed = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
-			public const int notification_template_icon_bg = 2131165290;
+			public const int notification_icon_background = 2131165290;
 			
 			// aapt resource value: 0x7F07006B
-			public const int notification_template_icon_low_bg = 2131165291;
+			public const int notification_template_icon_bg = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int notification_tile_bg = 2131165292;
+			public const int notification_template_icon_low_bg = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
-			public const int notify_panel_notification_icon_bg = 2131165293;
+			public const int notification_tile_bg = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
-			public const int tooltip_frame_dark = 2131165294;
+			public const int notify_panel_notification_icon_bg = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int tooltip_frame_light = 2131165295;
+			public const int tooltip_frame_dark = 2131165295;
+			
+			// aapt resource value: 0x7F070070
+			public const int tooltip_frame_light = 2131165296;
 			
 			static Drawable()
 			{
@@ -3287,10 +3446,10 @@ namespace MenuPlanerApp
 			public const int always = 2131230742;
 			
 			// aapt resource value: 0x7F080017
-			public const int application_name = 2131230743;
+			public const int APPLICATION_NAME = 2131230743;
 			
 			// aapt resource value: 0x7F080018
-			public const int APPLICATION_NAME = 2131230744;
+			public const int application_name = 2131230744;
 			
 			// aapt resource value: 0x7F080019
 			public const int async = 2131230745;
@@ -3659,151 +3818,160 @@ namespace MenuPlanerApp
 			public const int showTitle = 2131230866;
 			
 			// aapt resource value: 0x7F080093
-			public const int smallLabel = 2131230867;
+			public const int sliding_tabs = 2131230867;
 			
 			// aapt resource value: 0x7F080094
-			public const int snackbar_action = 2131230868;
+			public const int smallLabel = 2131230868;
 			
 			// aapt resource value: 0x7F080095
-			public const int snackbar_text = 2131230869;
+			public const int snackbar_action = 2131230869;
 			
 			// aapt resource value: 0x7F080096
-			public const int snap = 2131230870;
+			public const int snackbar_text = 2131230870;
 			
 			// aapt resource value: 0x7F080097
-			public const int snapMargins = 2131230871;
+			public const int snap = 2131230871;
 			
 			// aapt resource value: 0x7F080098
-			public const int spacer = 2131230872;
+			public const int snapMargins = 2131230872;
 			
 			// aapt resource value: 0x7F080099
-			public const int split_action_bar = 2131230873;
+			public const int spacer = 2131230873;
 			
 			// aapt resource value: 0x7F08009A
-			public const int src_atop = 2131230874;
+			public const int split_action_bar = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int src_in = 2131230875;
+			public const int src_atop = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int src_over = 2131230876;
+			public const int src_in = 2131230876;
 			
 			// aapt resource value: 0x7F08009D
-			public const int start = 2131230877;
+			public const int src_over = 2131230877;
 			
 			// aapt resource value: 0x7F08009E
-			public const int stretch = 2131230878;
+			public const int start = 2131230878;
 			
 			// aapt resource value: 0x7F08009F
-			public const int submenuarrow = 2131230879;
+			public const int stretch = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int submit_area = 2131230880;
+			public const int submenuarrow = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int SYM = 2131230881;
+			public const int submit_area = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int tabMode = 2131230882;
+			public const int SYM = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int tag_transition_group = 2131230883;
+			public const int tabMode = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int tag_unhandled_key_event_manager = 2131230884;
+			public const int tag_transition_group = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int tag_unhandled_key_listeners = 2131230885;
+			public const int tag_unhandled_key_event_manager = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int text = 2131230886;
+			public const int tag_unhandled_key_listeners = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int text2 = 2131230887;
+			public const int text = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int textinput_counter = 2131230888;
+			public const int text2 = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int textinput_error = 2131230889;
+			public const int textinput_counter = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int textinput_helper_text = 2131230890;
+			public const int textinput_error = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int textSpacerNoButtons = 2131230891;
+			public const int textinput_helper_text = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int textSpacerNoTitle = 2131230892;
+			public const int textSpacerNoButtons = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int textStart = 2131230893;
+			public const int textSpacerNoTitle = 2131230893;
 			
 			// aapt resource value: 0x7F0800AE
-			public const int text_input_password_toggle = 2131230894;
+			public const int textStart = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int time = 2131230895;
+			public const int text_input_password_toggle = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int title = 2131230896;
+			public const int time = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int titleDividerNoCustom = 2131230897;
+			public const int title = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int TitleTextView = 2131230898;
+			public const int titleDividerNoCustom = 2131230898;
 			
 			// aapt resource value: 0x7F0800B3
-			public const int title_template = 2131230899;
+			public const int TitleTextView = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int top = 2131230900;
+			public const int title_template = 2131230900;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int topPanel = 2131230901;
+			public const int toolbar = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int touch_outside = 2131230902;
+			public const int top = 2131230902;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int transition_current_scene = 2131230903;
+			public const int topPanel = 2131230903;
 			
 			// aapt resource value: 0x7F0800B8
-			public const int transition_layout_save = 2131230904;
+			public const int touch_outside = 2131230904;
 			
 			// aapt resource value: 0x7F0800B9
-			public const int transition_position = 2131230905;
+			public const int transition_current_scene = 2131230905;
 			
 			// aapt resource value: 0x7F0800BA
-			public const int transition_scene_layoutid_cache = 2131230906;
+			public const int transition_layout_save = 2131230906;
 			
 			// aapt resource value: 0x7F0800BB
-			public const int transition_transform = 2131230907;
+			public const int transition_position = 2131230907;
 			
 			// aapt resource value: 0x7F0800BC
-			public const int uniform = 2131230908;
+			public const int transition_scene_layoutid_cache = 2131230908;
 			
 			// aapt resource value: 0x7F0800BD
-			public const int unlabeled = 2131230909;
+			public const int transition_transform = 2131230909;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int up = 2131230910;
+			public const int uniform = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int useLogo = 2131230911;
+			public const int unlabeled = 2131230911;
 			
 			// aapt resource value: 0x7F0800C0
-			public const int view_offset_helper = 2131230912;
+			public const int up = 2131230912;
 			
 			// aapt resource value: 0x7F0800C1
-			public const int visible = 2131230913;
+			public const int useLogo = 2131230913;
 			
 			// aapt resource value: 0x7F0800C2
-			public const int withText = 2131230914;
+			public const int view_offset_helper = 2131230914;
 			
 			// aapt resource value: 0x7F0800C3
-			public const int wrap_content = 2131230915;
+			public const int visible = 2131230915;
+			
+			// aapt resource value: 0x7F0800C4
+			public const int webview = 2131230916;
+			
+			// aapt resource value: 0x7F0800C5
+			public const int withText = 2131230917;
+			
+			// aapt resource value: 0x7F0800C6
+			public const int wrap_content = 2131230918;
 			
 			static Id()
 			{
@@ -3989,97 +4157,106 @@ namespace MenuPlanerApp
 			public const int activity_main = 2131427356;
 			
 			// aapt resource value: 0x7F0B001D
-			public const int browser_actions_context_menu_page = 2131427357;
+			public const int activity_webview = 2131427357;
 			
 			// aapt resource value: 0x7F0B001E
-			public const int browser_actions_context_menu_row = 2131427358;
+			public const int browser_actions_context_menu_page = 2131427358;
 			
 			// aapt resource value: 0x7F0B001F
-			public const int design_bottom_navigation_item = 2131427359;
+			public const int browser_actions_context_menu_row = 2131427359;
 			
 			// aapt resource value: 0x7F0B0020
-			public const int design_bottom_sheet_dialog = 2131427360;
+			public const int design_bottom_navigation_item = 2131427360;
 			
 			// aapt resource value: 0x7F0B0021
-			public const int design_layout_snackbar = 2131427361;
+			public const int design_bottom_sheet_dialog = 2131427361;
 			
 			// aapt resource value: 0x7F0B0022
-			public const int design_layout_snackbar_include = 2131427362;
+			public const int design_layout_snackbar = 2131427362;
 			
 			// aapt resource value: 0x7F0B0023
-			public const int design_layout_tab_icon = 2131427363;
+			public const int design_layout_snackbar_include = 2131427363;
 			
 			// aapt resource value: 0x7F0B0024
-			public const int design_layout_tab_text = 2131427364;
+			public const int design_layout_tab_icon = 2131427364;
 			
 			// aapt resource value: 0x7F0B0025
-			public const int design_menu_item_action_area = 2131427365;
+			public const int design_layout_tab_text = 2131427365;
 			
 			// aapt resource value: 0x7F0B0026
-			public const int design_navigation_item = 2131427366;
+			public const int design_menu_item_action_area = 2131427366;
 			
 			// aapt resource value: 0x7F0B0027
-			public const int design_navigation_item_header = 2131427367;
+			public const int design_navigation_item = 2131427367;
 			
 			// aapt resource value: 0x7F0B0028
-			public const int design_navigation_item_separator = 2131427368;
+			public const int design_navigation_item_header = 2131427368;
 			
 			// aapt resource value: 0x7F0B0029
-			public const int design_navigation_item_subheader = 2131427369;
+			public const int design_navigation_item_separator = 2131427369;
 			
 			// aapt resource value: 0x7F0B002A
-			public const int design_navigation_menu = 2131427370;
+			public const int design_navigation_item_subheader = 2131427370;
 			
 			// aapt resource value: 0x7F0B002B
-			public const int design_navigation_menu_item = 2131427371;
+			public const int design_navigation_menu = 2131427371;
 			
 			// aapt resource value: 0x7F0B002C
-			public const int design_text_input_password_icon = 2131427372;
+			public const int design_navigation_menu_item = 2131427372;
 			
 			// aapt resource value: 0x7F0B002D
-			public const int ingredients_Menu = 2131427373;
+			public const int design_text_input_password_icon = 2131427373;
 			
 			// aapt resource value: 0x7F0B002E
-			public const int ingredient_detail = 2131427374;
+			public const int ingredients_Menu = 2131427374;
 			
 			// aapt resource value: 0x7F0B002F
-			public const int ingredient_viewholder = 2131427375;
+			public const int ingredient_detail = 2131427375;
 			
 			// aapt resource value: 0x7F0B0030
-			public const int mtrl_layout_snackbar = 2131427376;
+			public const int ingredient_viewholder = 2131427376;
 			
 			// aapt resource value: 0x7F0B0031
-			public const int mtrl_layout_snackbar_include = 2131427377;
+			public const int mtrl_layout_snackbar = 2131427377;
 			
 			// aapt resource value: 0x7F0B0032
-			public const int notification_action = 2131427378;
+			public const int mtrl_layout_snackbar_include = 2131427378;
 			
 			// aapt resource value: 0x7F0B0033
-			public const int notification_action_tombstone = 2131427379;
+			public const int notification_action = 2131427379;
 			
 			// aapt resource value: 0x7F0B0034
-			public const int notification_template_custom_big = 2131427380;
+			public const int notification_action_tombstone = 2131427380;
 			
 			// aapt resource value: 0x7F0B0035
-			public const int notification_template_icon_group = 2131427381;
+			public const int notification_template_custom_big = 2131427381;
 			
 			// aapt resource value: 0x7F0B0036
-			public const int notification_template_part_chronometer = 2131427382;
+			public const int notification_template_icon_group = 2131427382;
 			
 			// aapt resource value: 0x7F0B0037
-			public const int notification_template_part_time = 2131427383;
+			public const int notification_template_part_chronometer = 2131427383;
 			
 			// aapt resource value: 0x7F0B0038
-			public const int select_dialog_item_material = 2131427384;
+			public const int notification_template_part_time = 2131427384;
 			
 			// aapt resource value: 0x7F0B0039
-			public const int select_dialog_multichoice_material = 2131427385;
+			public const int select_dialog_item_material = 2131427385;
 			
 			// aapt resource value: 0x7F0B003A
-			public const int select_dialog_singlechoice_material = 2131427386;
+			public const int select_dialog_multichoice_material = 2131427386;
 			
 			// aapt resource value: 0x7F0B003B
-			public const int support_simple_spinner_dropdown_item = 2131427387;
+			public const int select_dialog_singlechoice_material = 2131427387;
+			
+			// aapt resource value: 0x7F0B003C
+			public const int support_simple_spinner_dropdown_item = 2131427388;
+			
+			// aapt resource value: 0x7F0B003D
+			public const int Tabbar = 2131427389;
+			
+			// aapt resource value: 0x7F0B003E
+			public const int Toolbar = 2131427390;
 			
 			static Layout()
 			{
@@ -4283,6 +4460,9 @@ namespace MenuPlanerApp
 			
 			// aapt resource value: 0x7F0D0037
 			public const int status_bar_notification_info_overflow = 2131558455;
+			
+			// aapt resource value: 0x7F0D0038
+			public const int title_activity_webview = 2131558456;
 			
 			static String()
 			{

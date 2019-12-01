@@ -39,10 +39,15 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Mono.Andr
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.csprojAssemblyReference.cache
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\staticwebassets\MenuPlanerApp.API.StaticWebAssets.Manifest.cache
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\staticwebassets\MenuPlanerApp.API.StaticWebAssets.xml
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.MvcApplicationPartsAssemblyInfo.cache
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.AssemblyInfoInputs.cache
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.AssemblyInfo.cs
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.RazorTargetAssemblyInfo.cache
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.csproj.CopyComplete
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.pdb
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.Integration.AspNetCore.Multitenant.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.Extensions.DependencyInjection.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.Multitenant.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Xamarin.Auth.dll
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.MvcApplicationPartsAssemblyInfo.cache

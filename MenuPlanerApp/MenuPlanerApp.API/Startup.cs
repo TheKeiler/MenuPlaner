@@ -1,3 +1,4 @@
+using Autofac.Extensions.DependencyInjection;
 using MenuPlanerApp.API.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,7 @@ namespace MenuPlanerApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutofac();
             services.AddScoped<IngredientsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
