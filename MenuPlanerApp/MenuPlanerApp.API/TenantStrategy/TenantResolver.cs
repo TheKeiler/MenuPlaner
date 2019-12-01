@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Autofac.Multitenant;
-using MenuPlanerApp.API.Model;
-using Microsoft.Extensions.Caching.Memory;
-
-namespace MenuPlanerApp.API.TenantStrategy
+﻿namespace MenuPlanerApp.API.TenantStrategy
 {
-    public class TenantResolver// : ITenantResolver
+    public class TenantResolver // : ITenantResolver
     {
         /*private readonly ITenantIdentificationStrategy _tenantIdentificationStrategy;
         private readonly IMemoryCache _memoryCache;

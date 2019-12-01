@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MenuPlanerApp.API.Model
+﻿namespace MenuPlanerApp.API.Model
 {
     public class Tenant
     {

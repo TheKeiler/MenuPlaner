@@ -1,9 +1,7 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace MenuPlanerApp.OAuthNativeFlow
 {
-
     [JsonObject]
     public class User
     {

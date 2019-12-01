@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace MenuPlanerApp.OAuthNativeFlow
+﻿namespace MenuPlanerApp.OAuthNativeFlow
 {
     public static class Constants
     {
@@ -18,7 +6,8 @@ namespace MenuPlanerApp.OAuthNativeFlow
 
         // OAuth
         // For Google login, configure at https://console.developers.google.com/
-        public static string AndroidClientId = "<886919820193-ruiljpft37i4qihfv7l2i93pq8ksaps2.apps.googleusercontent.com>";
+        public static string AndroidClientId =
+            "<886919820193-ruiljpft37i4qihfv7l2i93pq8ksaps2.apps.googleusercontent.com>";
 
         // These values do not need changing
         public static string Scope = "https://www.googleapis.com/auth/userinfo.email";

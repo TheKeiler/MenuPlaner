@@ -9,7 +9,7 @@ namespace MenuPlanerApp.API.TenantStrategy
 
         public TenantResolverStrategy(IHttpContextAccessor httpContextAccessor)
         {
-            this._httpContextAccessor = httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public bool TryIdentifyTenant(out object tenantId)
@@ -21,7 +21,7 @@ namespace MenuPlanerApp.API.TenantStrategy
             var hostName = context?.Request?.Host.Value;
             tenantId = hostName;
 
-            return tenantId != null || tenantId == (object)"";
+            return tenantId != null || tenantId == "";
         }
     }
 }

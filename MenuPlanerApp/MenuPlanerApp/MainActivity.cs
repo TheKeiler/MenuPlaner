@@ -10,7 +10,8 @@ using Xamarin.Essentials;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : AppCompatActivity
     {
         private Button _ingredientButton;
