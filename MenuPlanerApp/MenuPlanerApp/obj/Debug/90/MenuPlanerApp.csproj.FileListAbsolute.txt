@@ -53,7 +53,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\MenuPlanerApp.csproj.Cop
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\MenuPlanerApp.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\MenuPlanerApp.pdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\bin\com.companyname.menuplanerapp.apk
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\activity_main.xml
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\values\colors.xml
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\values\ic_launcher_background.xml
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\values\strings.xml
@@ -342,7 +341,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\toolbar.xml
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Auth.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Auth.dll.mdb
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Mono.Android.pdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Auth.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Auth.dll.mdb
@@ -361,3 +359,4 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebAuthenticatorNativeBrowserActivity_State.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebViewActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_CopyMdbFiles.stamp
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\ingredients.xml
