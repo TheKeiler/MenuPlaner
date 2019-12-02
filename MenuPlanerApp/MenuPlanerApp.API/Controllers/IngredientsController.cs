@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MenuPlanerApp.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class IngredientsController : ControllerBase
     {
         private readonly IngredientsRepository _ingredientsRepository;
@@ -15,13 +15,13 @@ namespace MenuPlanerApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllPies()
+        public IActionResult GetAllIngredients()
         {
             return Ok(_ingredientsRepository.GetAllIngredients());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetPieById(int id)
+        public IActionResult GetIngredientById(int id)
         {
             return Ok(_ingredientsRepository.GetIngredientById(id));
         }

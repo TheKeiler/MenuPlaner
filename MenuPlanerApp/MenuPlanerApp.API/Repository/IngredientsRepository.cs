@@ -102,5 +102,11 @@ namespace MenuPlanerApp.API.Repository
         {
             return AllIngredients.FirstOrDefault(p => p.IngrediantId == id);
         }
+
+        public int GetCountAllIngredients()
+        {
+            return AllIngredients.Count;
+        }
+
     }
 }

@@ -18,7 +18,7 @@
     <activity android:label="IngredientsDetail" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsDetailActivity" />
     <activity android:label="IngredientsMenuActivity" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsMenuActivity" />
     <activity android:configChanges="orientation|screenSize" android:label="LoginActivity" android:name="md5b62a796723a823b35e1837be7dff9bb0.LoginActivity" />
-    <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:theme="@style/AppTheme" android:name="md5b62a796723a823b35e1837be7dff9bb0.MainActivity">
+    <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:theme="@style/AppTheme" android:name="md5b62a796723a823b35e1837be7dff9bb0.IngredientsActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

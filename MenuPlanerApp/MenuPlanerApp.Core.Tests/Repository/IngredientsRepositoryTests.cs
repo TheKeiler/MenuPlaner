@@ -10,11 +10,11 @@ namespace MenuPlanerApp.Core.Tests.Repository
         public void RepositoryHasSomeData()
         {
             //Arrange
-            var repo = new IngredientsRepository();
+            var repo = new IngredientsRepositoryWeb();
             //Act
             var data = repo.GetAllIngredients();
             //Assert
-            Assert.That(data.Count, Is.GreaterThan(0));
+            Assert.That(data.Result.Count, Is.GreaterThan(0));
         }
     }
 }

@@ -32,7 +32,7 @@ namespace MenuPlanerApp
         private void IngredientAdapter_ItemClick(object sender, int e)
         {
             var intent = new Intent();
-            intent.SetClass(this, typeof(IngredientsDetailActivity));
+            intent.SetClass(this, typeof(IngredientsActivity));
             intent.PutExtra("selectedIngredientId", e);
             StartActivity(intent);
         }

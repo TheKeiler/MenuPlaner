@@ -50,18 +50,21 @@
   <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5">
+                android:layout_weight="5"
+                android:gravity="center|bottom">
 
-    <TextView
+    <Button
+      android:text="Bestehende Zutat öffnen"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Zutatensuche"
-      android:layout_margin="5dp" />
+      android:layout_height="match_parent"
+      android:id="@+id/searchButton"
+ />
 
-    <AutoCompleteTextView android:id="@+id/ingredientSearchAutocomplete"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_margin="5dp" />
+    <Button
+      android:text="Neue Zutat erfassen"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/newButton" />
 
   </LinearLayout>
 
@@ -90,6 +93,16 @@
       android:layout_height="wrap_content"
       android:minHeight="30dp"
       android:hint="Optionale Beschreibung"
+      android:layout_margin="5dp" />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/unitEditText"
+      android:layout_width="match_parent"
+      android:imeOptions="actionGo"
+      android:inputType="textMultiLine"
+      android:layout_height="wrap_content"
+      android:minHeight="30dp"
+      android:hint="Bezugseinheit"
       android:layout_margin="5dp" />
 
     <TextView

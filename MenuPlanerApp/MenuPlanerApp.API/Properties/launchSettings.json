@@ -12,15 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "ingredients",
+      "launchUrl": "api/ingredients",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "BethanysPieShopMobile.API": {
+    "MenuPlanerApp.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/ingredients",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
