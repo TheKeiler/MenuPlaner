@@ -1,8 +1,9 @@
-using Autofac.Extensions.DependencyInjection;
-using MenuPlanerApp.API.Repository;
+﻿using Autofac.Extensions.DependencyInjection;
+using MenuPlanerApp.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,10 +24,13 @@ namespace MenuPlanerApp.API
         {
             services.AddControllers();
             services.AddAutofac();
-            services.AddScoped<IngredientsRepository>();
+            //services.AddScoped<IngredientsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(option => option.EnableEndpointRouting = false);
+
+            services.AddDbContext<MenuPlanerAppAPIContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MenuPlanerAppAPIContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +45,7 @@ namespace MenuPlanerApp.API
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseMvc();
         }
     }
 }

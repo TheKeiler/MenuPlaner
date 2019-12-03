@@ -13,10 +13,10 @@ namespace MenuPlanerApp
     public class IngredientsDetailActivity : Activity
     {
         private ImageView _ingredientsImageView;
+        private List<Ingredient> _ingredientsList;
         private IngredientsRepositoryWeb _ingredientsRepository;
         private TextView _ingredientsTextView;
         private Ingredient _selectedIngredient;
-        private List<Ingredient> _ingredientsList;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -53,7 +53,7 @@ namespace MenuPlanerApp
 
         private async void SetFirstElementInRepoAsSelectedIngredient()
         {
-            if (this.Intent.Extras == null)
+            if (Intent.Extras == null)
             {
                 _selectedIngredient = _ingredientsList.First();
             }

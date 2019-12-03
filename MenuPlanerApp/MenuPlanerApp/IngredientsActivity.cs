@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
@@ -21,31 +20,32 @@ namespace MenuPlanerApp
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class IngredientsActivity : AppCompatActivity
     {
-        //Navigation
-        private Button _optionsButton;
-        private Button _menusButton;
-        private Button _ingredientButton;
-        private Button _recipeButton;
-
-        //Ingredientsdetails
-        private Button _searchButton;
-        private TextInputEditText _ingredientNameEditText;
-        private TextInputEditText _ingredientDescriptionEditText;
-        private TextInputEditText _ingredientsUnitnEditText;
+        private Button _abortButton;
+        private CheckBox _celiacCheckBox;
+        private Button _deleteButton;
         private CheckBox _fructoseCheckBox;
         private CheckBox _histaminCheckBox;
-        private CheckBox _lactoseCheckBox;
-        private CheckBox _celiacCheckBox;
-
-        //Operations
-        private Button _newButton;
-        private Button _saveButton;
-        private Button _abortButton;
-        private Button _deleteButton;
+        private Button _ingredientButton;
+        private TextInputEditText _ingredientDescriptionEditText;
+        private TextInputEditText _ingredientNameEditText;
+        private List<Ingredient> _ingredientsList;
 
         //Data
         private IngredientsRepositoryWeb _ingredientsRepository;
-        private List<Ingredient> _ingredientsList;
+        private TextInputEditText _ingredientsUnitnEditText;
+        private CheckBox _lactoseCheckBox;
+        private Button _menusButton;
+
+        //Operations
+        private Button _newButton;
+
+        //Navigation
+        private Button _optionsButton;
+        private Button _recipeButton;
+        private Button _saveButton;
+
+        //Ingredientsdetails
+        private Button _searchButton;
         private Ingredient _selectedIngredient;
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -57,22 +57,22 @@ namespace MenuPlanerApp
             _ingredientsRepository = new IngredientsRepositoryWeb();
             _selectedIngredient = new Ingredient();
             await LoadData();
-            await SetFirstElementInRepoAsSelectedIngredient();
+            SetFirstElementInRepoAsSelectedIngredient();
             FindViews();
             BindData();
             LinkEventHandlers();
         }
 
-        private async Task SetFirstElementInRepoAsSelectedIngredient()
+        private void SetFirstElementInRepoAsSelectedIngredient()
         {
-            if (this.Intent.Extras == null)
+            if (Intent.Extras == null)
             {
                 _selectedIngredient = _ingredientsList.First();
             }
             else
             {
                 var selectedId = Intent.Extras.GetInt("selectedIngredientId");
-                _selectedIngredient = await _ingredientsRepository.GetIngredientById(selectedId);
+                _selectedIngredient = _ingredientsList.Find(e => e.Id == selectedId);
             }
         }
 
@@ -149,7 +149,7 @@ namespace MenuPlanerApp
         private void _ingredientsButton_Click(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(IngredientsMenuActivity));
-            this.Recreate();
+            Recreate();
         }
 
         private void _recipeButton_Click(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace MenuPlanerApp
 
         private void _searchButton_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(IngredientsMenuActivity));
+            var intent = new Intent(this, typeof(IngredientsMenuActivity));
             StartActivity(intent);
         }
 
@@ -179,7 +179,6 @@ namespace MenuPlanerApp
 
         private void _abortButton_Click(object sender, EventArgs e)
         {
-
             SetContentView(Resource.Layout.ingredients);
             FindViews();
             BindData();
@@ -190,7 +189,6 @@ namespace MenuPlanerApp
         {
             throw new NotImplementedException();
         }
-
 
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions,

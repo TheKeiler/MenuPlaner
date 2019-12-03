@@ -39,7 +39,7 @@ namespace MenuPlanerApp.Adapters
 
         private void OnClick(int position)
         {
-            var ingredientId = _ingredients[position].IngrediantId;
+            var ingredientId = _ingredients[position].Id;
             ItemClick?.Invoke(this, ingredientId);
         }
     }
