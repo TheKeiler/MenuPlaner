@@ -20,6 +20,7 @@ namespace MenuPlanerApp.Core.Repository
             if (!responseMessage.IsSuccessStatusCode) return null;
 
             var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+            httpClient.Dispose();
             var ingredients = JsonConvert.DeserializeObject<IEnumerable<Ingredient>>(jsonResult);
             return ingredients.ToList();
         }
@@ -33,6 +34,7 @@ namespace MenuPlanerApp.Core.Repository
             if (!responseMessage.IsSuccessStatusCode) return null;
 
             var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+            httpClient.Dispose();
             var ingredients = JsonConvert.DeserializeObject<Ingredient>(jsonResult);
             return ingredients;
         }
@@ -46,6 +48,7 @@ namespace MenuPlanerApp.Core.Repository
             if (!responseMessage.IsSuccessStatusCode) return -1;
 
             var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+            httpClient.Dispose();
             var ingredients = JsonConvert.DeserializeObject<IEnumerable<Ingredient>>(jsonResult);
             return ingredients.Count();
         }

@@ -55,14 +55,15 @@ namespace MenuPlanerApp
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.ingredients);
             _ingredientsRepository = new IngredientsRepositoryWeb();
+            _selectedIngredient = new Ingredient();
             await LoadData();
-            SetFirstElementInRepoAsSelectedIngredient();
+            await SetFirstElementInRepoAsSelectedIngredient();
             FindViews();
             BindData();
             LinkEventHandlers();
         }
 
-        private async void SetFirstElementInRepoAsSelectedIngredient()
+        private async Task SetFirstElementInRepoAsSelectedIngredient()
         {
             if (this.Intent.Extras == null)
             {
