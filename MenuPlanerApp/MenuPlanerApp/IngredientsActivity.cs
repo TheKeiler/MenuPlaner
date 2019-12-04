@@ -127,7 +127,6 @@ namespace MenuPlanerApp
 
         private void BindDataFromDataToView()
         {
-            //Search TBD
             _ingredientNameEditText.Text = _selectedIngredient.Name;
             _ingredientDescriptionEditText.Text = _selectedIngredient.Description;
             _ingredientsUnitnEditText.Text = _selectedIngredient.ReferenceUnit;
@@ -139,7 +138,6 @@ namespace MenuPlanerApp
 
         private void BindDataFromViewToData()
         {
-            //Search TBD
             _selectedIngredient.Name = _ingredientNameEditText.Text;
             _selectedIngredient.Description = _ingredientDescriptionEditText.Text;
             _selectedIngredient.ReferenceUnit = _ingredientsUnitnEditText.Text;
@@ -165,11 +163,13 @@ namespace MenuPlanerApp
         private void OptionsButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+            //StartActivity(OptionsActivity);
         }
 
         private void MenusButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+            //StartActivity(MenusActivity);
         }
 
         private void IngredientsButton_Click(object sender, EventArgs e)
@@ -180,6 +180,7 @@ namespace MenuPlanerApp
         private void RecipeButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+            //StartActivity(RecipesActivity);
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -203,7 +204,6 @@ namespace MenuPlanerApp
             if (_verifyUserEntries.IsIngredientComplete(_selectedIngredient))
             {
                 await SaveOrUpdateIngredient();
-                Recreate();
                 ShowToastMessage("Änderungen gespeichert");
             }
             else

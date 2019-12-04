@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -30,12 +30,13 @@
       android:id="@+id/ingredientsButton"
       android:width="100dp" />
 
-    <Button
-      android:text="Rezepte"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:id="@+id/recipesButton"
-      android:width="100dp" />
+        <Button
+            android:text="Rezepte"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/recipesButton"
+            android:width="100dp"
+            android:backgroundTint="#ff424242" />
 
     <Button
       android:text="Menüs"
@@ -54,15 +55,17 @@
                 android:gravity="center|bottom">
 
     <Button
-      android:text="Bestehende Zutat öffnen"
+      android:text="Zutat öffnen"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
+      android:width = "200dp"
       android:id="@+id/searchButton" />
 
     <Button
       android:text="Neue Zutat erfassen"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
+      android:width = "200dp"
       android:id="@+id/newButton" />
 
   </LinearLayout>
@@ -151,12 +154,13 @@
     android:gravity="center|bottom"
     android:layout_weight="10">
 
-    <Button
-      android:text="Speichern"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:id="@+id/saveButton"
-      android:width="150dp" />
+        <Button
+            android:text="Speichern"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/saveButton"
+            android:width="150dp"
+            android:backgroundTint="#ff1b5e20" />
 
     <Button
       android:text="Abbrechen"
@@ -165,12 +169,13 @@
       android:id="@+id/abortButton"
       android:width="150dp" />
 
-    <Button
-      android:text="Löschen"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:id="@+id/deleteButton"
-      android:width="100dp" />
+        <Button
+            android:text="Löschen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/deleteButton"
+            android:width="100dp"
+            android:backgroundTint="#ffb71c1c" />
 
   </LinearLayout>
 

@@ -281,7 +281,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\mono\android
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5dcb6eccdc824e0677ffae8ccdde42930\CustomTabsServiceConnectionImpl.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5dcb6eccdc824e0677ffae8ccdde42930\KeepAliveService.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\IngredientsMenuActivity.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\MainActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\android\support\customtabs\CustomTabsClient_CustomTabsCallbackImpl.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5d630c3d3bfb5f5558520331566132d97\AccelerometerListener.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5d630c3d3bfb5f5558520331566132d97\ActivityLifecycleContextListener.java
@@ -361,3 +360,4 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_CopyMdbFiles.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\ingredients.xml
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\IngredientsActivity.java
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Mono.Android.pdb

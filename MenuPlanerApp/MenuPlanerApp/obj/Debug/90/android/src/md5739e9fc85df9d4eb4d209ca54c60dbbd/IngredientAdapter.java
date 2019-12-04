@@ -10,9 +10,9 @@ public class IngredientAdapter
 	public static final String __md_methods;
 	static {
 		__md_methods = 
-			"n_getItemCount:()I:GetGetItemCountHandler\n" +
 			"n_onBindViewHolder:(Landroid/support/v7/widget/RecyclerView$ViewHolder;I)V:GetOnBindViewHolder_Landroid_support_v7_widget_RecyclerView_ViewHolder_IHandler\n" +
 			"n_onCreateViewHolder:(Landroid/view/ViewGroup;I)Landroid/support/v7/widget/RecyclerView$ViewHolder;:GetOnCreateViewHolder_Landroid_view_ViewGroup_IHandler\n" +
+			"n_getItemCount:()I:GetGetItemCountHandler\n" +
 			"";
 		mono.android.Runtime.register ("MenuPlanerApp.Adapters.IngredientAdapter, MenuPlanerApp", IngredientAdapter.class, __md_methods);
 	}
@@ -24,14 +24,6 @@ public class IngredientAdapter
 		if (getClass () == IngredientAdapter.class)
 			mono.android.TypeManager.Activate ("MenuPlanerApp.Adapters.IngredientAdapter, MenuPlanerApp", "", this, new java.lang.Object[] {  });
 	}
-
-
-	public int getItemCount ()
-	{
-		return n_getItemCount ();
-	}
-
-	private native int n_getItemCount ();
 
 
 	public void onBindViewHolder (android.support.v7.widget.RecyclerView.ViewHolder p0, int p1)
@@ -48,6 +40,14 @@ public class IngredientAdapter
 	}
 
 	private native android.support.v7.widget.RecyclerView.ViewHolder n_onCreateViewHolder (android.view.ViewGroup p0, int p1);
+
+
+	public int getItemCount ()
+	{
+		return n_getItemCount ();
+	}
+
+	private native int n_getItemCount ();
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

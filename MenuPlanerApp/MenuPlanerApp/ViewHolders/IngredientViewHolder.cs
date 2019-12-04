@@ -14,6 +14,6 @@ namespace MenuPlanerApp.ViewHolders
             itemView.Click += (sender, e) => listener(LayoutPosition);
         }
 
-        public TextView IngredientNameTextView { get; set; }
+        public TextView IngredientNameTextView { get; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.ViewHolders;
@@ -12,14 +13,15 @@ namespace MenuPlanerApp.Adapters
     public class IngredientAdapter : RecyclerView.Adapter
     {
         private List<Ingredient> _ingredients;
+        private List<Ingredient> _ingredientsFull;
 
-        public override int ItemCount => _ingredients.Count;
         public event EventHandler<int> ItemClick;
 
         public async Task LoadData()
         {
             var ingredientRepository = new IngredientsRepositoryWeb();
             _ingredients = await ingredientRepository.GetAllIngredients();
+            _ingredientsFull = new List<Ingredient>(_ingredients);
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
@@ -42,5 +44,7 @@ namespace MenuPlanerApp.Adapters
             var ingredientId = _ingredients[position].Id;
             ItemClick?.Invoke(this, ingredientId);
         }
+
+        public override int ItemCount => _ingredients.Count;
     }
 }
