@@ -24,7 +24,6 @@ namespace MenuPlanerApp.API
         {
             services.AddControllers();
             services.AddAutofac();
-            //services.AddScoped<IngredientsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(option => option.EnableEndpointRouting = false);

@@ -24,7 +24,7 @@ namespace MenuPlanerApp
             SetContentView(Resource.Layout.ingredient_detail);
             // Create your application here
             _ingredientsRepository = new IngredientsRepositoryWeb();
-            LoadData();
+            await LoadData();
             SetFirstElementInRepoAsSelectedIngredient();
             FindViews();
             BindData();

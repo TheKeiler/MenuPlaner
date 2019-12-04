@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MenuPlanerApp.API.Data;
 using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -34,10 +32,7 @@ namespace MenuPlanerApp.API.Controllers
         {
             var ingredientWithAmount = await _context.IngredientWithAmount.FindAsync(id);
 
-            if (ingredientWithAmount == null)
-            {
-                return NotFound();
-            }
+            if (ingredientWithAmount == null) return NotFound();
 
             return ingredientWithAmount;
         }
@@ -48,10 +43,7 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutIngredientWithAmount(int id, IngredientWithAmount ingredientWithAmount)
         {
-            if (id != ingredientWithAmount.Id)
-            {
-                return BadRequest();
-            }
+            if (id != ingredientWithAmount.Id) return BadRequest();
 
             _context.Entry(ingredientWithAmount).State = EntityState.Modified;
 
@@ -62,13 +54,8 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!IngredientWithAmountExists(id))
-                {
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
@@ -78,12 +65,13 @@ namespace MenuPlanerApp.API.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<IngredientWithAmount>> PostIngredientWithAmount(IngredientWithAmount ingredientWithAmount)
+        public async Task<ActionResult<IngredientWithAmount>> PostIngredientWithAmount(
+            IngredientWithAmount ingredientWithAmount)
         {
             _context.IngredientWithAmount.Add(ingredientWithAmount);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetIngredientWithAmount", new { id = ingredientWithAmount.Id }, ingredientWithAmount);
+            return CreatedAtAction("GetIngredientWithAmount", new {id = ingredientWithAmount.Id}, ingredientWithAmount);
         }
 
         // DELETE: api/IngredientWithAmounts/5
@@ -91,10 +79,7 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<IngredientWithAmount>> DeleteIngredientWithAmount(int id)
         {
             var ingredientWithAmount = await _context.IngredientWithAmount.FindAsync(id);
-            if (ingredientWithAmount == null)
-            {
-                return NotFound();
-            }
+            if (ingredientWithAmount == null) return NotFound();
 
             _context.IngredientWithAmount.Remove(ingredientWithAmount);
             await _context.SaveChangesAsync();

@@ -11,7 +11,7 @@ namespace MenuPlanerApp.Core.Repository
 {
     public class IngredientsRepositoryWeb
     {
-        private readonly string _httpServerUri = "http://192.168.1.9:5000/api/ingredients";
+        private readonly string _httpServerUri = "http://192.168.1.9:5000/api/ingredients/";
 
         public async Task<List<Ingredient>> GetAllIngredients()
         {
@@ -81,7 +81,7 @@ namespace MenuPlanerApp.Core.Repository
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PutAsync(_httpServerUri, httpContent);
+                var responseMessage = await httpClient.PutAsync(_httpServerUri + updatedIngredient.Id, httpContent);
 
                 if (responseMessage.Content != null)
                 {

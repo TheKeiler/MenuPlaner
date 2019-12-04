@@ -12,6 +12,7 @@ using Android.Support.V7.App;
 using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
+using MenuPlanerApp.Core.VerifyData;
 using Xamarin.Essentials;
 
 namespace MenuPlanerApp
@@ -47,6 +48,7 @@ namespace MenuPlanerApp
         //Ingredientsdetails
         private Button _searchButton;
         private Ingredient _selectedIngredient;
+        private VerifyUserEntries _verifyUserEntries;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -54,16 +56,22 @@ namespace MenuPlanerApp
             Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.ingredients);
-            _ingredientsRepository = new IngredientsRepositoryWeb();
-            _selectedIngredient = new Ingredient();
+            InitialReferencingObjects();
             await LoadData();
-            SetFirstElementInRepoAsSelectedIngredient();
+            SetSelectedIngredient();
             FindViews();
-            BindData();
+            BindDataFromDataToView();
             LinkEventHandlers();
         }
 
-        private void SetFirstElementInRepoAsSelectedIngredient()
+        private void InitialReferencingObjects()
+        {
+            _ingredientsRepository = new IngredientsRepositoryWeb();
+            _selectedIngredient = new Ingredient();
+            _verifyUserEntries = new VerifyUserEntries();
+        }
+
+        private void SetSelectedIngredient()
         {
             if (Intent.Extras == null)
             {
@@ -72,8 +80,14 @@ namespace MenuPlanerApp
             else
             {
                 var selectedId = Intent.Extras.GetInt("selectedIngredientId");
-                _selectedIngredient = _ingredientsList.Find(e => e.Id == selectedId);
+                SetSelectedIngredientResultOrFirstInList(selectedId);
             }
+        }
+
+        private void SetSelectedIngredientResultOrFirstInList(int selectedId)
+        {
+            var result = _ingredientsList.Find(e => e.Id == selectedId);
+            _selectedIngredient = result == null ? _ingredientsList.First() : result;
         }
 
         private void FindViews()
@@ -111,7 +125,7 @@ namespace MenuPlanerApp
             _deleteButton = FindViewById<Button>(Resource.Id.deleteButton);
         }
 
-        private void BindData()
+        private void BindDataFromDataToView()
         {
             //Search TBD
             _ingredientNameEditText.Text = _selectedIngredient.Name;
@@ -123,71 +137,111 @@ namespace MenuPlanerApp
             _celiacCheckBox.Checked = _selectedIngredient.CompatibleForCeliac;
         }
 
+        private void BindDataFromViewToData()
+        {
+            //Search TBD
+            _selectedIngredient.Name = _ingredientNameEditText.Text;
+            _selectedIngredient.Description = _ingredientDescriptionEditText.Text;
+            _selectedIngredient.ReferenceUnit = _ingredientsUnitnEditText.Text;
+            _selectedIngredient.CompatibleForFructose = _fructoseCheckBox.Checked;
+            _selectedIngredient.CompatibleForHistamin = _histaminCheckBox.Checked;
+            _selectedIngredient.CompatibleForLactose = _lactoseCheckBox.Checked;
+            _selectedIngredient.CompatibleForCeliac = _celiacCheckBox.Checked;
+        }
+
         private void LinkEventHandlers()
         {
-            _optionsButton.Click += _optionsButton_Click;
-            _menusButton.Click += _menusButton_Click;
-            _ingredientButton.Click += _ingredientsButton_Click;
-            _recipeButton.Click += _recipeButton_Click;
-            _searchButton.Click += _searchButton_Click;
-            _newButton.Click += _newButton_Click;
-            _saveButton.Click += _saveButton_Click;
-            _abortButton.Click += _abortButton_Click;
-            _deleteButton.Click += _deleteButton_Click;
+            _optionsButton.Click += OptionsButton_Click;
+            _menusButton.Click += MenusButton_Click;
+            _ingredientButton.Click += IngredientsButton_Click;
+            _recipeButton.Click += RecipeButton_Click;
+            _searchButton.Click += SearchButton_Click;
+            _newButton.Click += NewButton_Click;
+            _saveButton.Click += SaveButton_Click;
+            _abortButton.Click += AbortButton_Click;
+            _deleteButton.Click += DeleteButton_Click;
         }
 
-        private void _optionsButton_Click(object sender, EventArgs e)
+        private void OptionsButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void _menusButton_Click(object sender, EventArgs e)
+        private void MenusButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void _ingredientsButton_Click(object sender, EventArgs e)
+        private void IngredientsButton_Click(object sender, EventArgs e)
         {
-            var intent = new Intent(this, typeof(IngredientsMenuActivity));
-            Recreate();
+            ShowToastMessage("Zutaten bereits geöffnet");
         }
 
-        private void _recipeButton_Click(object sender, EventArgs e)
+        private void RecipeButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void _searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(IngredientsMenuActivity));
             StartActivity(intent);
         }
 
-        private void _newButton_Click(object sender, EventArgs e)
+        private void NewButton_Click(object sender, EventArgs e)
         {
             SetContentView(Resource.Layout.ingredients);
             _selectedIngredient = new Ingredient();
             FindViews();
-            BindData();
+            BindDataFromDataToView();
             LinkEventHandlers();
         }
 
-        private void _saveButton_Click(object sender, EventArgs e)
+        private async void SaveButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BindDataFromViewToData();
+            if (_verifyUserEntries.IsIngredientComplete(_selectedIngredient))
+            {
+                await SaveOrUpdateIngredient();
+                Recreate();
+                ShowToastMessage("Änderungen gespeichert");
+            }
+            else
+            {
+                ShowToastMessage("Bitte füllen Sie alle Pflichtfelder aus");
+            }
         }
 
-        private void _abortButton_Click(object sender, EventArgs e)
+        private void ShowToastMessage(string text)
+        {
+            var toastMessage = text;
+            const ToastLength duration = ToastLength.Long;
+            Toast.MakeText(this, toastMessage, duration).Show();
+        }
+
+        private async Task SaveOrUpdateIngredient()
+        {
+            if (_selectedIngredient.Id != 0)
+                await _ingredientsRepository.UpdateIngredient(_selectedIngredient);
+            else
+                await _ingredientsRepository.PostIngredient(_selectedIngredient);
+        }
+
+        private void AbortButton_Click(object sender, EventArgs e)
         {
             SetContentView(Resource.Layout.ingredients);
             FindViews();
-            BindData();
+            BindDataFromDataToView();
             LinkEventHandlers();
+            ShowToastMessage("Vorgang abgebrochen");
         }
 
-        private void _deleteButton_Click(object sender, EventArgs e)
+        private async void DeleteButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var toDeletingName = _selectedIngredient.Name;
+            await _ingredientsRepository.DeleteIngredientById(_selectedIngredient.Id);
+            Recreate();
+            ShowToastMessage($"Die Zutat {toDeletingName} wurde gelöscht");
         }
 
 
@@ -199,7 +253,7 @@ namespace MenuPlanerApp
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public async Task LoadData()
+        private async Task LoadData()
         {
             _ingredientsList = await _ingredientsRepository.GetAllIngredients();
         }
