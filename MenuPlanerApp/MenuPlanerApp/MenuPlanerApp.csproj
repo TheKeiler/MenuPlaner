@@ -66,10 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\IngredientAdapter.cs" />
-    <Compile Include="CustomUrlSchemeInterceptorActivity.cs" />
-    <Compile Include="IngredientsDetailActivity.cs" />
-    <Compile Include="IngredientsMenuActivity.cs" />
-    <Compile Include="LoginActivity.cs" />
+    <Compile Include="IngredientsSearchActivity.cs" />
     <Compile Include="IngredientsActivity.cs" />
     <Compile Include="OAuthNativeFlow\AuthenticationState.cs" />
     <Compile Include="OAuthNativeFlow\Constants.cs" />
@@ -125,32 +122,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\ingredient_detail.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\ingredients_Menu.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\ingredient_viewholder.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Tabbar.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Toolbar.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\ingredients.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ingredient_search.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

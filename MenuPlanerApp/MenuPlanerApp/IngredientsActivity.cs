@@ -185,7 +185,7 @@ namespace MenuPlanerApp
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            var intent = new Intent(this, typeof(IngredientsMenuActivity));
+            var intent = new Intent(this, typeof(IngredientsSearchActivity));
             StartActivity(intent);
         }
 

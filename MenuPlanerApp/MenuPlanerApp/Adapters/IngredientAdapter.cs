@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.ViewHolders;
@@ -14,6 +13,8 @@ namespace MenuPlanerApp.Adapters
     {
         private List<Ingredient> _ingredients;
         private List<Ingredient> _ingredientsFull;
+
+        public override int ItemCount => _ingredients.Count;
 
         public event EventHandler<int> ItemClick;
 
@@ -45,6 +46,22 @@ namespace MenuPlanerApp.Adapters
             ItemClick?.Invoke(this, ingredientId);
         }
 
-        public override int ItemCount => _ingredients.Count;
+        public void Filter(string text)
+        {
+            _ingredients.Clear();
+            if (string.IsNullOrEmpty(text))
+            {
+                _ingredients.AddRange(_ingredientsFull);
+            }
+            else
+            {
+                text = text.ToLower();
+                foreach (var item in _ingredientsFull)
+                    if (item.Name.ToLower().Contains(text))
+                        _ingredients.Add(item);
+            }
+
+            NotifyDataSetChanged();
+        }
     }
 }
