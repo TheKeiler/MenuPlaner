@@ -95,7 +95,7 @@ namespace MenuPlanerApp
             _fructoseCheckBox.Checked = _currentUserOptionses.WantsUserToFilterFructose;
             _histaminCheckBox.Checked = _currentUserOptionses.WantsUserToFilterHistamin;
             _lactoseCheckBox.Checked = _currentUserOptionses.WantsUserToFilterLactose;
-            _celiacCheckBox.Checked = _currentUserOptionses.WantsUsertoFilterCeliac;
+            _celiacCheckBox.Checked = _currentUserOptionses.WantsUserToFilterCeliac;
         }
 
         private void BindDataFromViewToData()
@@ -103,7 +103,7 @@ namespace MenuPlanerApp
             _currentUserOptionses.WantsUserToFilterFructose = _fructoseCheckBox.Checked;
             _currentUserOptionses.WantsUserToFilterHistamin = _histaminCheckBox.Checked;
             _currentUserOptionses.WantsUserToFilterLactose = _lactoseCheckBox.Checked;
-            _currentUserOptionses.WantsUsertoFilterCeliac = _celiacCheckBox.Checked;
+            _currentUserOptionses.WantsUserToFilterCeliac = _celiacCheckBox.Checked;
         }
 
         private void LinkEventHandlers()

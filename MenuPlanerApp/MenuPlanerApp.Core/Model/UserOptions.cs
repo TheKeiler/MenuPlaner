@@ -10,6 +10,6 @@
 
         public bool WantsUserToFilterLactose { get; set; }
 
-        public bool WantsUsertoFilterCeliac { get; set; }
+        public bool WantsUserToFilterCeliac { get; set; }
     }
 }

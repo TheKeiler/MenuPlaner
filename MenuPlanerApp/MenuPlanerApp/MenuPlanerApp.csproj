@@ -68,9 +68,6 @@
     <Compile Include="Adapters\IngredientAdapter.cs" />
     <Compile Include="IngredientsSearchActivity.cs" />
     <Compile Include="IngredientsActivity.cs" />
-    <Compile Include="OAuthNativeFlow\AuthenticationState.cs" />
-    <Compile Include="OAuthNativeFlow\Constants.cs" />
-    <Compile Include="OAuthNativeFlow\User.cs" />
     <Compile Include="OptionsActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
