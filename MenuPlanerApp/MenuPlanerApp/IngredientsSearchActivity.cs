@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.OS;
 using Android.Support.V7.Widget;
-using Android.Widget;
 using MenuPlanerApp.Adapters;
 using SearchView = Android.Widget.SearchView;
 
@@ -23,7 +22,7 @@ namespace MenuPlanerApp
             // Create your application here
             SetContentView(Resource.Layout
                 .ingredient_search);
-            _searchView = FindViewById<Android.Widget.SearchView>(Resource.Id.searchView);
+            _searchView = FindViewById<SearchView>(Resource.Id.searchView);
             _ingredientRecyclerView = FindViewById<RecyclerView>(Resource.Id.IngredientsSearchRecyclerView);
 
             _ingredientsLayoutManager = new LinearLayoutManager(this);

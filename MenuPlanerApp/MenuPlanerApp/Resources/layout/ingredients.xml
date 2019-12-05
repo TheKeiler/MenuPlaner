@@ -21,20 +21,20 @@
       android:id="@+id/optionsButton"
       android:width="100dp" />
 
-        <Button
-            android:text="Zutaten"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/ingredientsButton"
-            android:width="100dp"
-            android:backgroundTint="#ff424242" />
+    <Button
+      android:text="Zutaten"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/ingredientsButton"
+      android:width="100dp"
+      android:backgroundTint="#ff424242" />
 
     <Button
       android:text="Rezepte"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:id="@+id/recipesButton"
-      android:width="100dp"/>
+      android:width="100dp" />
 
     <Button
       android:text="Menüs"
