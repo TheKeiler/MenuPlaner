@@ -13,6 +13,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:label="OptionsActivity" android:name="md5b62a796723a823b35e1837be7dff9bb0.OptionsActivity" />
     <service android:name="md5dcb6eccdc824e0677ffae8ccdde42930.KeepAliveService" />
     <activity android:label="Web Authenticator" android:name="md5538102cb7512c6dba0c04fe6c395414e.FormAuthenticatorActivity" />
     <activity android:label="Web Authenticator" android:name="md5538102cb7512c6dba0c04fe6c395414e.WebAuthenticatorActivity" />

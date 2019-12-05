@@ -47,18 +47,6 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
-            "Autofac": {
-              "target": "Package",
-              "version": "[4.9.4, )"
-            },
-            "Autofac.AspNetCore.Multitenant": {
-              "target": "Package",
-              "version": "[2.0.1, )"
-            },
-            "Autofac.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[5.0.1, )"
-            },
             "Microsoft.CodeAnalysis.FxCopAnalyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

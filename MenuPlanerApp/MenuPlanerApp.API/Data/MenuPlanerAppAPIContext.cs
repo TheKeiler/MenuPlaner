@@ -19,5 +19,7 @@ namespace MenuPlanerApp.API.Data
         public DbSet<IngredientWithAmount> IngredientWithAmount { get; set; }
 
         public DbSet<RecipeWithAmount> RecipeWithAmount { get; set; }
+
+        public DbSet<UserOptions> UserOptions { get; set; }
     }
 }

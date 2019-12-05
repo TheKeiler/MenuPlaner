@@ -331,3 +331,5 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GeneratePackageMa
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\ingredient_search.xml
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\IngredientsSearchActivity.java
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\options.xml
+D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\OptionsActivity.java

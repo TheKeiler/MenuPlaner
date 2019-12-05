@@ -10,8 +10,10 @@ android.support.v7.widget.Toolbar;obj\Debug\90\res\layout\toolbar.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 Button;obj\Debug\90\res\layout\ingredients.xml
+Button;obj\Debug\90\res\layout\options.xml
 cache-path;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\37\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 CheckBox;obj\Debug\90\res\layout\ingredients.xml
+CheckBox;obj\Debug\90\res\layout\options.xml
 color;obj\Debug\90\res\values\colors.xml
 color;obj\Debug\90\res\values\ic_launcher_background.xml
 external-cache-path;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\37\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -25,6 +27,8 @@ LinearLayout;obj\Debug\90\res\layout\ingredient_search.xml
 LinearLayout;obj\Debug\90\res\layout\ingredient_viewholder.xml
 LinearLayout;obj\Debug\90\res\layout\ingredients.xml
 LinearLayout;obj\Debug\90\res\layout\ingredients_menu.xml
+LinearLayout;obj\Debug\90\res\layout\options.xml
+LinearLayout;obj\Debug\90\res\layout\options_layout.xml
 paths;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\37\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\36\jl\res\values\strings.xml
 resources;obj\Debug\90\res\values\colors.xml
@@ -43,6 +47,7 @@ TextView;obj\Debug\90\res\layout\ingredient_search.xml
 TextView;obj\Debug\90\res\layout\ingredient_viewholder.xml
 TextView;obj\Debug\90\res\layout\ingredients.xml
 TextView;obj\Debug\90\res\layout\ingredients_menu.xml
+TextView;obj\Debug\90\res\layout\options.xml
 translate;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\36\jl\res\anim\slide_in_right.xml
 translate;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\36\jl\res\anim\slide_out_left.xml
 WebView;D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\36\jl\res\layout\activity_webview.xml

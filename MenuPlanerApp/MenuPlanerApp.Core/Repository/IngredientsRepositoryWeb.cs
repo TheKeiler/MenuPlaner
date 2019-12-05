@@ -43,21 +43,6 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task<int> GetCountAllIngredient()
-        {
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var responseMessage = await httpClient.GetAsync(_httpServerUri);
-                if (!responseMessage.IsSuccessStatusCode) return -1;
-
-                var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var ingredients = JsonConvert.DeserializeObject<IEnumerable<Ingredient>>(jsonResult);
-                return ingredients.Count();
-            }
-        }
-
         public async Task PostIngredient(Ingredient newIngredient)
         {
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(newIngredient));

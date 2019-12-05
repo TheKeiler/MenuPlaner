@@ -2,57 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
-      "Autofac/4.9.4": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Autofac.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Autofac.dll": {}
-        }
-      },
-      "Autofac.AspNetCore.Multitenant/2.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Autofac.Extensions.DependencyInjection": "5.0.1",
-          "Autofac.Multitenant": "4.2.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.0/Autofac.Integration.AspNetCore.Multitenant.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Autofac.Integration.AspNetCore.Multitenant.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Autofac.Extensions.DependencyInjection/5.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Autofac": "4.9.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.dll": {}
-        }
-      },
-      "Autofac.Multitenant/4.2.0": {
-        "type": "package",
-        "dependencies": {
-          "Autofac": "4.0.0",
-          "NETStandard.Library": "1.6.0"
-        },
-        "compile": {
-          "lib/netstandard1.1/Autofac.Multitenant.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/Autofac.Multitenant.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2610,72 +2559,6 @@
     }
   },
   "libraries": {
-    "Autofac/4.9.4": {
-      "sha512": "dYiDG4yoV7GDCoOc66d1sqMmg2gwDyomHKgATuMfhFzYxVpWEltToHVHXI3I9vOEvIXE55S4OZPY0ldiZmZtpA==",
-      "type": "package",
-      "path": "autofac/4.9.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "autofac.4.9.4.nupkg.sha512",
-        "autofac.nuspec",
-        "lib/net45/Autofac.dll",
-        "lib/net45/Autofac.pdb",
-        "lib/net45/Autofac.xml",
-        "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.pdb",
-        "lib/netstandard1.1/Autofac.xml",
-        "lib/netstandard2.0/Autofac.dll",
-        "lib/netstandard2.0/Autofac.pdb",
-        "lib/netstandard2.0/Autofac.xml"
-      ]
-    },
-    "Autofac.AspNetCore.Multitenant/2.0.1": {
-      "sha512": "mCTJt7u5dlYgMhWmnmcHeDF+FUMVWwoQqRdY0lwAyoYX+7ewtZHheVQhhDPu/+ZNGkJbRKyoDeW96ISwV2oDdA==",
-      "type": "package",
-      "path": "autofac.aspnetcore.multitenant/2.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "autofac.aspnetcore.multitenant.2.0.1.nupkg.sha512",
-        "autofac.aspnetcore.multitenant.nuspec",
-        "lib/netcoreapp3.0/Autofac.Integration.AspNetCore.Multitenant.dll",
-        "lib/netcoreapp3.0/Autofac.Integration.AspNetCore.Multitenant.pdb",
-        "lib/netcoreapp3.0/Autofac.Integration.AspNetCore.Multitenant.xml",
-        "lib/netstandard2.0/Autofac.Integration.AspNetCore.Multitenant.dll",
-        "lib/netstandard2.0/Autofac.Integration.AspNetCore.Multitenant.pdb",
-        "lib/netstandard2.0/Autofac.Integration.AspNetCore.Multitenant.xml"
-      ]
-    },
-    "Autofac.Extensions.DependencyInjection/5.0.1": {
-      "sha512": "92/AmuykrdvaLlE8Y4sc4SlX2RrCeClUqddjNi7cAYsOsVD/jq5JXDP1ZhHSBan4P/o7AKjpxjD/MrPTO0DHRw==",
-      "type": "package",
-      "path": "autofac.extensions.dependencyinjection/5.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "autofac.extensions.dependencyinjection.5.0.1.nupkg.sha512",
-        "autofac.extensions.dependencyinjection.nuspec",
-        "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.dll",
-        "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.pdb",
-        "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.xml"
-      ]
-    },
-    "Autofac.Multitenant/4.2.0": {
-      "sha512": "WnTgNixJEX+6dGsXcib9Jy4WLnQSj/VXCqpPVXpSR38lWMzpzwI45C6dzIcfwbYbIaBF58TcBLSC0eaKzL5Ljw==",
-      "type": "package",
-      "path": "autofac.multitenant/4.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "autofac.multitenant.4.2.0.nupkg.sha512",
-        "autofac.multitenant.nuspec",
-        "lib/net451/Autofac.Multitenant.dll",
-        "lib/net451/Autofac.Multitenant.xml",
-        "lib/netstandard1.1/Autofac.Multitenant.dll",
-        "lib/netstandard1.1/Autofac.Multitenant.xml"
-      ]
-    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -8674,9 +8557,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
-      "Autofac >= 4.9.4",
-      "Autofac.AspNetCore.Multitenant >= 2.0.1",
-      "Autofac.Extensions.DependencyInjection >= 5.0.1",
       "MenuPlanerApp.Core >= 1.0.0",
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 2.9.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.0.0",
@@ -8733,18 +8613,6 @@
     "frameworks": {
       "netcoreapp3.0": {
         "dependencies": {
-          "Autofac": {
-            "target": "Package",
-            "version": "[4.9.4, )"
-          },
-          "Autofac.AspNetCore.Multitenant": {
-            "target": "Package",
-            "version": "[2.0.1, )"
-          },
-          "Autofac.Extensions.DependencyInjection": {
-            "target": "Package",
-            "version": "[5.0.1, )"
-          },
           "Microsoft.CodeAnalysis.FxCopAnalyzers": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",

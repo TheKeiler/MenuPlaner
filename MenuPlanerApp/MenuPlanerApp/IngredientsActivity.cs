@@ -26,26 +26,26 @@ namespace MenuPlanerApp
         private Button _deleteButton;
         private CheckBox _fructoseCheckBox;
         private CheckBox _histaminCheckBox;
+
+        //Navigation
         private Button _ingredientButton;
         private TextInputEditText _ingredientDescriptionEditText;
         private TextInputEditText _ingredientNameEditText;
         private List<Ingredient> _ingredientsList;
 
-        //Data
+        //IngredientsDetails
         private IngredientsRepositoryWeb _ingredientsRepository;
-        private TextInputEditText _ingredientsUnitnEditText;
+
+        //Data
+        private TextInputEditText _ingredientsUnitEditText;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;
 
         //Operations
         private Button _newButton;
-
-        //Navigation
         private Button _optionsButton;
         private Button _recipeButton;
         private Button _saveButton;
-
-        //Ingredientsdetails
         private Button _searchButton;
         private Ingredient _selectedIngredient;
         private VerifyUserEntries _verifyUserEntries;
@@ -75,7 +75,10 @@ namespace MenuPlanerApp
         {
             if (Intent.Extras == null)
             {
-                _selectedIngredient = _ingredientsList.First();
+                if (_ingredientsList.Count > 0)
+                    _selectedIngredient = _ingredientsList.First();
+                else
+                    _selectedIngredient = new Ingredient();
             }
             else
             {
@@ -109,7 +112,7 @@ namespace MenuPlanerApp
         {
             _ingredientNameEditText = FindViewById<TextInputEditText>(Resource.Id.nameEditText);
             _ingredientDescriptionEditText = FindViewById<TextInputEditText>(Resource.Id.descriptionEditText);
-            _ingredientsUnitnEditText = FindViewById<TextInputEditText>(Resource.Id.unitEditText);
+            _ingredientsUnitEditText = FindViewById<TextInputEditText>(Resource.Id.unitEditText);
             _fructoseCheckBox = FindViewById<CheckBox>(Resource.Id.fructoseCheckBox);
             _histaminCheckBox = FindViewById<CheckBox>(Resource.Id.histaminCheckBox);
             _lactoseCheckBox = FindViewById<CheckBox>(Resource.Id.lactoseCheckBox);
@@ -129,7 +132,7 @@ namespace MenuPlanerApp
         {
             _ingredientNameEditText.Text = _selectedIngredient.Name;
             _ingredientDescriptionEditText.Text = _selectedIngredient.Description;
-            _ingredientsUnitnEditText.Text = _selectedIngredient.ReferenceUnit;
+            _ingredientsUnitEditText.Text = _selectedIngredient.ReferenceUnit;
             _fructoseCheckBox.Checked = _selectedIngredient.CompatibleForFructose;
             _histaminCheckBox.Checked = _selectedIngredient.CompatibleForHistamin;
             _lactoseCheckBox.Checked = _selectedIngredient.CompatibleForLactose;
@@ -140,7 +143,7 @@ namespace MenuPlanerApp
         {
             _selectedIngredient.Name = _ingredientNameEditText.Text;
             _selectedIngredient.Description = _ingredientDescriptionEditText.Text;
-            _selectedIngredient.ReferenceUnit = _ingredientsUnitnEditText.Text;
+            _selectedIngredient.ReferenceUnit = _ingredientsUnitEditText.Text;
             _selectedIngredient.CompatibleForFructose = _fructoseCheckBox.Checked;
             _selectedIngredient.CompatibleForHistamin = _histaminCheckBox.Checked;
             _selectedIngredient.CompatibleForLactose = _lactoseCheckBox.Checked;
@@ -162,8 +165,8 @@ namespace MenuPlanerApp
 
         private void OptionsButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            //StartActivity(OptionsActivity);
+            var intent = new Intent(this, typeof(OptionsActivity));
+            StartActivity(intent);
         }
 
         private void MenusButton_Click(object sender, EventArgs e)

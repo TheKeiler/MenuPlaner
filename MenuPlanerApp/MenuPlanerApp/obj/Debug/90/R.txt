@@ -1258,10 +1258,11 @@ int layout notification_template_custom_big 0x7f0b0034
 int layout notification_template_icon_group 0x7f0b0035
 int layout notification_template_part_chronometer 0x7f0b0036
 int layout notification_template_part_time 0x7f0b0037
-int layout select_dialog_item_material 0x7f0b0038
-int layout select_dialog_multichoice_material 0x7f0b0039
-int layout select_dialog_singlechoice_material 0x7f0b003a
-int layout support_simple_spinner_dropdown_item 0x7f0b003b
+int layout options 0x7f0b0038
+int layout select_dialog_item_material 0x7f0b0039
+int layout select_dialog_multichoice_material 0x7f0b003a
+int layout select_dialog_singlechoice_material 0x7f0b003b
+int layout support_simple_spinner_dropdown_item 0x7f0b003c
 int mipmap ic_launcher 0x7f0c0000
 int mipmap ic_launcher_foreground 0x7f0c0001
 int mipmap ic_launcher_round 0x7f0c0002

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="100">
+
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="50dp"
+    android:gravity="center"
+    android:layout_weight="5">
+
+    <Button
+      android:text="Optionen"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/optionsButton"
+      android:width="100dp"
+      android:backgroundTint="#ff9e9e9e" />
+
+    <Button
+      android:text="Zutaten"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/ingredientsButton"
+      android:width="100dp" />
+
+    <Button
+      android:text="Rezepte"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/recipesButton"
+      android:width="100dp" />
+
+    <Button
+      android:text="Menüs"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/menusButton"
+      android:width="100dp" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    android:layout_weight="90">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Rezepte filtern die unverträglich sind für Personen mit:"
+      android:layout_margin="5dp" />
+
+    <CheckBox
+      android:text="Fruktoseintoleranz (Fruktosemalabsorption)"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:id="@+id/fructoseCheckBox" />
+
+    <CheckBox
+      android:text="Histaminintoleranz"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:id="@+id/histaminCheckBox" />
+
+    <CheckBox
+      android:text="Laktoseintoleranz"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:id="@+id/lactoseCheckBox" />
+
+    <CheckBox
+      android:text="Glutenintoleranz (Zöliakie)"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:id="@+id/celiacCheckBox" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|bottom"
+    android:layout_weight="5">
+
+    <Button
+      android:text="Speichern"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/saveButton"
+      android:width="150dp"
+      android:backgroundTint="#ff1b5e20" />
+
+
+  </LinearLayout>
+
+</LinearLayout>

@@ -1,5 +1,4 @@
-﻿using Autofac.Extensions.DependencyInjection;
-using MenuPlanerApp.API.Data;
+﻿using MenuPlanerApp.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +22,6 @@ namespace MenuPlanerApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAutofac();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(option => option.EnableEndpointRouting = false);

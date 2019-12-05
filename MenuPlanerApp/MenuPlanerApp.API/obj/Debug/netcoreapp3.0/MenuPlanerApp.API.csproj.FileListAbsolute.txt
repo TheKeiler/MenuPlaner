@@ -45,10 +45,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlane
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.csproj.CopyComplete
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\obj\Debug\netcoreapp3.0\MenuPlanerApp.API.pdb
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.Integration.AspNetCore.Multitenant.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.Extensions.DependencyInjection.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Autofac.Multitenant.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Xamarin.Auth.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Abstractions.dll
