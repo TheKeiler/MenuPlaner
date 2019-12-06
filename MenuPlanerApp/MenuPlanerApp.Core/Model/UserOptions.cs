@@ -1,4 +1,5 @@
-﻿namespace MenuPlanerApp.Core.Model
+﻿
+namespace MenuPlanerApp.Core.Model
 {
     public class UserOptions
     {
@@ -11,5 +12,15 @@
         public bool WantsUserToSeeRecipesWithLactose { get; set; }
 
         public bool WantsUserToSeeRecipesWithCeliac { get; set; }
+
+        public UserOptions()
+        {
+            this.WantsUserToSeeRecipesWithFructose = true;
+            this.WantsUserToSeeRecipesWithHistamin = true;
+            this.WantsUserToSeeRecipesWithLactose = true;
+            this.WantsUserToSeeRecipesWithCeliac = true;
+        }
     }
+
+
 }

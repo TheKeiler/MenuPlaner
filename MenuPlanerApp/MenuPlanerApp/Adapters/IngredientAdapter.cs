@@ -28,7 +28,17 @@ namespace MenuPlanerApp.Adapters
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             if (holder is IngredientViewHolder ingredientViewHolder)
-                ingredientViewHolder.IngredientNameTextView.Text = _ingredients[position].Name;
+                ingredientViewHolder.IngredientNameTextView.Text =
+                    SetIngredientsText(position);
+        }
+
+        private string SetIngredientsText(int position)
+        {
+            if (String.IsNullOrEmpty(_ingredients[position].Description))
+            {
+                return _ingredients[position].Name;
+            }
+            return $"{_ingredients[position].Name}, {_ingredients[position].Description}";
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
