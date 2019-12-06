@@ -17,26 +17,26 @@ using Xamarin.Essentials;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "@string/app_name")]
     public class IngredientsActivity : AppCompatActivity
     {
         private Button _abortButton;
         private CheckBox _celiacCheckBox;
         private Button _deleteButton;
         private CheckBox _fructoseCheckBox;
+
         private CheckBox _histaminCheckBox;
 
         //Navigation
         private Button _ingredientButton;
+
+        //IngredientsDetails
         private TextInputEditText _ingredientDescriptionEditText;
         private TextInputEditText _ingredientNameEditText;
         private List<Ingredient> _ingredientsList;
 
-        //IngredientsDetails
-        private IngredientsRepositoryWeb _ingredientsRepository;
-
         //Data
+        private IngredientsRepositoryWeb _ingredientsRepository;
         private TextInputEditText _ingredientsUnitEditText;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;

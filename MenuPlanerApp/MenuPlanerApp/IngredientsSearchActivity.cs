@@ -1,14 +1,15 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using MenuPlanerApp.Adapters;
 using SearchView = Android.Widget.SearchView;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "IngredientsSearchActivity")]
-    public class IngredientsSearchActivity : Activity
+    [Activity(Label = "@string/app_name")]
+    public class IngredientsSearchActivity : AppCompatActivity
     {
         private IngredientAdapter _ingredientAdapter;
         private RecyclerView _ingredientRecyclerView;

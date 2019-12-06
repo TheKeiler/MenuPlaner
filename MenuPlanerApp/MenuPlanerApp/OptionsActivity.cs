@@ -3,14 +3,15 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "OptionsActivity")]
-    public class OptionsActivity : Activity
+    [Activity(Label = "@string/app_name")]
+    public class OptionsActivity : AppCompatActivity
     {
         //Data
         private CheckBox _celiacCheckBox;
