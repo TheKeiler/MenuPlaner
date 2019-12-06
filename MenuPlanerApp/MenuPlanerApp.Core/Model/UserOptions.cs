@@ -4,12 +4,12 @@
     {
         public int Id { get; set; }
 
-        public bool WantsUserToFilterFructose { get; set; }
+        public bool WantsUserToSeeRecipesWithFructose { get; set; }
 
-        public bool WantsUserToFilterHistamin { get; set; }
+        public bool WantsUserToSeeRecipesWithHistamin { get; set; }
 
-        public bool WantsUserToFilterLactose { get; set; }
+        public bool WantsUserToSeeRecipesWithLactose { get; set; }
 
-        public bool WantsUserToFilterCeliac { get; set; }
+        public bool WantsUserToSeeRecipesWithCeliac { get; set; }
     }
 }

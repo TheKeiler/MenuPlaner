@@ -7,15 +7,15 @@ namespace MenuPlanerApp.API.Model
         public int Id { get; set; }
 
         [Required]
-        public bool WantsUserToFilterFructose { get; set; }
+        public bool WantsUserToSeeRecipesWithFructose { get; set; }
 
         [Required]
-        public bool WantsUserToFilterHistamin { get; set; }
+        public bool WantsUserToSeeRecipesWithHistamin { get; set; }
 
         [Required]
-        public bool WantsUserToFilterLactose { get; set; }
+        public bool WantsUserToSeeRecipesWithLactose { get; set; }
 
         [Required]
-        public bool WantsUserToFilterCeliac { get; set; }
+        public bool WantsUserToSeeRecipesWithCeliac { get; set; }
     }
 }

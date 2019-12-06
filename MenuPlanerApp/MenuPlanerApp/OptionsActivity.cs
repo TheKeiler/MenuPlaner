@@ -92,18 +92,18 @@ namespace MenuPlanerApp
 
         private void BindDataFromDataToView()
         {
-            _fructoseCheckBox.Checked = _currentUserOptionses.WantsUserToFilterFructose;
-            _histaminCheckBox.Checked = _currentUserOptionses.WantsUserToFilterHistamin;
-            _lactoseCheckBox.Checked = _currentUserOptionses.WantsUserToFilterLactose;
-            _celiacCheckBox.Checked = _currentUserOptionses.WantsUserToFilterCeliac;
+            _fructoseCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithFructose;
+            _histaminCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithHistamin;
+            _lactoseCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithLactose;
+            _celiacCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithCeliac;
         }
 
         private void BindDataFromViewToData()
         {
-            _currentUserOptionses.WantsUserToFilterFructose = _fructoseCheckBox.Checked;
-            _currentUserOptionses.WantsUserToFilterHistamin = _histaminCheckBox.Checked;
-            _currentUserOptionses.WantsUserToFilterLactose = _lactoseCheckBox.Checked;
-            _currentUserOptionses.WantsUserToFilterCeliac = _celiacCheckBox.Checked;
+            _currentUserOptionses.WantsUserToSeeRecipesWithFructose = _fructoseCheckBox.Checked;
+            _currentUserOptionses.WantsUserToSeeRecipesWithHistamin = _histaminCheckBox.Checked;
+            _currentUserOptionses.WantsUserToSeeRecipesWithLactose = _lactoseCheckBox.Checked;
+            _currentUserOptionses.WantsUserToSeeRecipesWithCeliac = _celiacCheckBox.Checked;
         }
 
         private void LinkEventHandlers()
