@@ -34,10 +34,7 @@ namespace MenuPlanerApp.Adapters
 
         private string SetIngredientsText(int position)
         {
-            if (String.IsNullOrEmpty(_ingredients[position].Description))
-            {
-                return _ingredients[position].Name;
-            }
+            if (string.IsNullOrEmpty(_ingredients[position].Description)) return _ingredients[position].Name;
             return $"{_ingredients[position].Name}, {_ingredients[position].Description}";
         }
 
