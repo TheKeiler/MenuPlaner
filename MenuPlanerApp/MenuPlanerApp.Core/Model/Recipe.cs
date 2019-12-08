@@ -4,6 +4,12 @@ namespace MenuPlanerApp.Core.Model
 {
     public class Recipe
     {
+        public Recipe()
+        {
+            Ingredients = new List<IngredientWithAmount>();
+            DirectionPictures = new byte[10];
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -15,5 +21,22 @@ namespace MenuPlanerApp.Core.Model
         public byte[] DirectionPictures { get; set; }
 
         public bool IsFavorite { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+
+            var r = (Recipe) obj;
+            return Name.Equals(r.Name) && Description.Equals(r.Description) && Ingredients.Count == r.Ingredients.Count;
+        }
+
+        public override int GetHashCode()
+        {
+            var hash = 17;
+            hash = hash * 5 + Name.GetHashCode();
+            hash = hash * 5 + Description.GetHashCode();
+            hash = hash * 5 + Ingredients.Count.GetHashCode();
+            return hash;
+        }
     }
 }

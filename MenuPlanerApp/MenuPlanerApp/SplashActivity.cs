@@ -18,6 +18,5 @@ namespace MenuPlanerApp
             //Start Activity1 Activity  
             StartActivity(typeof(IngredientsActivity));
         }
-
     }
 }
