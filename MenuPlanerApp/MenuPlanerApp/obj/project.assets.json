@@ -739,6 +739,9 @@
           "lib/monoandroid90/Xamarin.Essentials.dll": {}
         }
       },
+      "XamarinComponent/1.1.0.65": {
+        "type": "package"
+      },
       "MenuPlanerApp.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -1595,6 +1598,19 @@
         "xamarin.essentials.nuspec"
       ]
     },
+    "XamarinComponent/1.1.0.65": {
+      "sha512": "IQ68Ad36QPOFhaiBK0u/gyTAGeD0+MFQ0r2B6Qbwlsr+rgUmCYPuIo9gWbnyAQ2hCU8hwKf2bAKblKGvTcH7JA==",
+      "type": "package",
+      "path": "xamarincomponent/1.1.0.65",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "tools/xamarin-component.exe",
+        "xamarincomponent.1.1.0.65.nupkg.sha512",
+        "xamarincomponent.nuspec"
+      ]
+    },
     "MenuPlanerApp.Core/1.0.0": {
       "type": "project",
       "path": "../MenuPlanerApp.Core/MenuPlanerApp.Core.csproj",
@@ -1608,7 +1624,8 @@
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Android.Support.v7.AppCompat >= 28.0.0.3",
-      "Xamarin.Essentials >= 1.3.1"
+      "Xamarin.Essentials >= 1.3.1",
+      "XamarinComponent >= 1.1.0.65"
     ]
   },
   "packageFolders": {
@@ -1672,6 +1689,10 @@
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.3.1, )"
+          },
+          "XamarinComponent": {
+            "target": "Package",
+            "version": "[1.1.0.65, )"
           }
         }
       }
