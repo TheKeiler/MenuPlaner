@@ -14,5 +14,5 @@ dotnet_csproj:
 before_build:
 - cmd: dotnet tool install -g dotnet-sonarscanner
 build_script:
-- cmd: dotnet build \MenuPlanerApp\MenuPlanerApp.sln
+- cmd: dotnet build MenuPlanerApp.sln
 - cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" 
