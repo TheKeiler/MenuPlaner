@@ -227,11 +227,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MenuePlaner\\MenuPlanerApp\\MenuPlanerApp.Core\\MenuPlanerApp.Core.csproj",
+      "projectUniqueName": "D:\\MenuPlaner\\MenuPlanerApp\\MenuPlanerApp.Core\\MenuPlanerApp.Core.csproj",
       "projectName": "MenuPlanerApp.Core",
-      "projectPath": "D:\\MenuePlaner\\MenuPlanerApp\\MenuPlanerApp.Core\\MenuPlanerApp.Core.csproj",
+      "projectPath": "D:\\MenuPlaner\\MenuPlanerApp\\MenuPlanerApp.Core\\MenuPlanerApp.Core.csproj",
       "packagesPath": "C:\\Users\\pkeis\\.nuget\\packages\\",
-      "outputPath": "D:\\MenuePlaner\\MenuPlanerApp\\MenuPlanerApp.Core\\obj\\",
+      "outputPath": "D:\\MenuPlaner\\MenuPlanerApp\\MenuPlanerApp.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
