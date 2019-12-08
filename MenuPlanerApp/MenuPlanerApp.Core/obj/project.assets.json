@@ -54,7 +54,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "Ch4IvqbjahgIxnvVAX4CUmGsDIpykAaBpvPNxj/jcYkyDYNNfS/EiEZT3YqZGkHF1OVP8y8CW1Skuc4iJW4duw==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -178,8 +178,7 @@
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
         "netstandard.library.2.0.3.nupkg.sha512",
-        "netstandard.library.nuspec",
-        "paket-installmodel.cache"
+        "netstandard.library.nuspec"
       ]
     },
     "Newtonsoft.Json/12.0.3": {

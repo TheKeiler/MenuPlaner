@@ -2475,7 +2475,7 @@
       ]
     },
     "System.Collections/4.3.0": {
-      "sha512": "LmTbINKMyaiRWgipfOrLI7PpcHk90hXbCTd5Di+vViHfXuLVAreOSxTcSvFTG0nvi9RsNKukdnTsoxs4Brkzpw==",
+      "sha512": "3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
       "type": "package",
       "path": "system.collections/4.3.0",
       "files": [
@@ -2493,7 +2493,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -2543,7 +2542,7 @@
       ]
     },
     "System.Collections.Concurrent/4.3.0": {
-      "sha512": "bImvGORUjPspi7rP2jJbSS/NbcHUBGbCzfBAdhGHGvDO+8i7/R8sTu3jEgQL2UuY9WkxpppAHbOGq00KayFQ6g==",
+      "sha512": "ztl69Xp0Y/UXCL+3v3tEU+lIy+bvjKNUmopn1wep/a291pVPK7dxBd6T7WnlQqRog+d1a/hSsgRsmFnIBKTPLQ==",
       "type": "package",
       "path": "system.collections.concurrent/4.3.0",
       "files": [
@@ -2562,7 +2561,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -2968,7 +2966,7 @@
       ]
     },
     "System.Diagnostics.Debug/4.3.0": {
-      "sha512": "ESY6KO6bVWpVC5E+AJGSdwyrXm/lvkmIn+ejSpDT7hBa7M7gIyH0FwjccmTXbjhuiz3c4KhxzwdoFcSoXYiEig==",
+      "sha512": "ZUhUOdqmaG5Jk3Xdb8xi5kIyQYAA4PnTNlHx1mu9ZY3qv4ELIdKbnL/akbGaKi2RnNUWaZsAs31rvzFdewTj2g==",
       "type": "package",
       "path": "system.diagnostics.debug/4.3.0",
       "files": [
@@ -2986,7 +2984,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3061,7 +3058,7 @@
       ]
     },
     "System.Diagnostics.Tools/4.3.0": {
-      "sha512": "d0QhiULngzEu7abn38JhGp7pHEXRWhKSYIjmIJEs9mPWtzXQXa4Ngjl8kkKxRtIjhZ6XPT/3reY9t10rpKjSHQ==",
+      "sha512": "UUvkJfSYJMM6x527dJg2VyWPSRqIVB0Z7dbjHst1zmwTXz5CcXSYJFWRpuigfbO1Lf7yfZiIaEUesfnl/g5EyA==",
       "type": "package",
       "path": "system.diagnostics.tools/4.3.0",
       "files": [
@@ -3079,7 +3076,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3118,7 +3114,7 @@
       ]
     },
     "System.Diagnostics.Tracing/4.3.0": {
-      "sha512": "b0LNLO1bzoXA//Wuhtp1PHzrvLo87RZ1OQyKlbSq5c5fLzE1QFE6yMFIocLSbucZIUCK/j9GmNMWQcGHd4KiJw==",
+      "sha512": "rswfv0f/Cqkh78rA5S8eN8Neocz234+emGCtTF3lxPY96F+mmmUen6tbn0glN6PMvlKQb9bPAY5e9u7fgPTkKw==",
       "type": "package",
       "path": "system.diagnostics.tracing/4.3.0",
       "files": [
@@ -3136,7 +3132,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3208,7 +3203,7 @@
       ]
     },
     "System.Globalization/4.3.0": {
-      "sha512": "KejBYaJY4NiAsoOBUOU58hUMbCQbhGWnpt5m68OCBD7j32Bz8xkUl4OZQJr+dzuBOzDosyYUP2/uWR+v6z1I3A==",
+      "sha512": "kYdVd2f2PAdFGblzFswE4hkNANJBKRmsfa2X5LG2AcWE1c7/4t0pYae1L8vfZ5xvE2nK/R9JprtToA61OSHWIg==",
       "type": "package",
       "path": "system.globalization/4.3.0",
       "files": [
@@ -3226,7 +3221,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3276,7 +3270,7 @@
       ]
     },
     "System.Globalization.Extensions/4.3.0": {
-      "sha512": "pto/S9YvtNVbys+ev8uMWVtVu4dXDBW4Bt0qxzbxxvz70C1IdrPD+mzjpjby7uwiOMNrme94626Z7DhniF7wQA==",
+      "sha512": "FhKmdR6MPG+pxow6wGtNAWdZh7noIOpdD5TwQ3CprzgIE1bBBoim0vbR1+AWsWjQmU7zXHgQo4TWSP6lCeiWcQ==",
       "type": "package",
       "path": "system.globalization.extensions/4.3.0",
       "files": [
@@ -3290,7 +3284,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.Globalization.Extensions.dll",
@@ -3317,7 +3310,7 @@
       ]
     },
     "System.IO/4.3.0": {
-      "sha512": "ZiA89EHqV+tRF5wOlmMCHiNzFxITYnqSKPCFNo2tCaSg8kz8zbz8D+3EeEB+IKj62IMTLZdHE+rNUlJm5kgbHw==",
+      "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
       "type": "package",
       "path": "system.io/4.3.0",
       "files": [
@@ -3336,7 +3329,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3398,7 +3390,7 @@
       ]
     },
     "System.IO.FileSystem/4.3.0": {
-      "sha512": "/Bdkp2t75iz1u6xxLfpDHDvcDwLlBLrFuFYbIq63HJAhCzL1VM8DOpmT/s62u2NIfY1CBWH44THUyCXgGDbD9A==",
+      "sha512": "3wEMARTnuio+ulnvi+hkRNROYwa1kylvYahhcLk4HSoVdl+xxTFVeVlYOfLwrDPImGls0mDqbMhrza8qnWPTdA==",
       "type": "package",
       "path": "system.io.filesystem/4.3.0",
       "files": [
@@ -3412,7 +3404,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.IO.FileSystem.dll",
@@ -3436,7 +3427,7 @@
       ]
     },
     "System.IO.FileSystem.Primitives/4.3.0": {
-      "sha512": "fQP+8YzL3nZ9paVFfjpJBMSdSA5IS6msLIjeD3A8MD26G8KJvNvCLP8uPkwdRzFcxRSImM60jCeRJCvQ1yJj7g==",
+      "sha512": "6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "type": "package",
       "path": "system.io.filesystem.primitives/4.3.0",
       "files": [
@@ -3451,7 +3442,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.IO.FileSystem.Primitives.dll",
@@ -3475,7 +3465,7 @@
       ]
     },
     "System.Linq/4.3.0": {
-      "sha512": "vtcq6FW/lRbcUHxJY/y/LzmnpIOZ4KcSdL+RFvwt1mB8oKhtT4X0krLJZ0IhdbRUqZVuz2Ph/EWHF1iSqT5QJg==",
+      "sha512": "5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
       "type": "package",
       "path": "system.linq/4.3.0",
       "files": [
@@ -3496,7 +3486,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3702,7 +3691,7 @@
       ]
     },
     "System.Reflection/4.3.0": {
-      "sha512": "a+qEDN9sibRLIdaFi/G4/EiMZaS+6aVSusI1kAdFAHMry8+oVEBwTZyaSsYidHhyFCWuQX6lFHSRlKhx2pn4wQ==",
+      "sha512": "KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
       "type": "package",
       "path": "system.reflection/4.3.0",
       "files": [
@@ -3721,7 +3710,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -3965,7 +3953,7 @@
       ]
     },
     "System.Reflection.Primitives/4.3.0": {
-      "sha512": "4bsqnbWhZ+HvCsOM1LrVYIvGo+cHB1MM7eU9/xyuNQdCObHYanwsJAQ7QmWBKTgLf4rN5K0ut3cfNkWx34MpEQ==",
+      "sha512": "5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
       "type": "package",
       "path": "system.reflection.primitives/4.3.0",
       "files": [
@@ -3983,7 +3971,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -4075,7 +4062,7 @@
       ]
     },
     "System.Resources.ResourceManager/4.3.0": {
-      "sha512": "yiRIlR6jiJgDQ3BuDlb6tCxF0DAIo9gffnk/MIhQWwIMUKvxbmSV0aS9TcgTdzjQ5+++OPJN7ugz3p22AYg+Ig==",
+      "sha512": "/zrcPkkWdZmI4F92gL/TPumP98AVDu/Wxr3CSJGQQ+XN6wbRZcyfSKVoPo17ilb3iOr0cCRqJInGwNMolqhS8A==",
       "type": "package",
       "path": "system.resources.resourcemanager/4.3.0",
       "files": [
@@ -4093,7 +4080,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -4362,7 +4348,7 @@
       ]
     },
     "System.Runtime.Handles/4.3.0": {
-      "sha512": "2tzz+HJWR4HZxx7RS1CHGUwwwKwaqE/vRhxSp8pqGBUibG9QSH8mIU9OqL6lHSa7twOiHM4Whry5CsMROAGZjA==",
+      "sha512": "OKiSUN7DmTWeYb3l51A7EYaeNMnvxwE249YtZz7yooT4gOZhmTjIn48KgSsw2k2lYdLgTKNJw/ZIfSElwDRVgg==",
       "type": "package",
       "path": "system.runtime.handles/4.3.0",
       "files": [
@@ -4376,7 +4362,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/_._",
@@ -4400,7 +4385,7 @@
       ]
     },
     "System.Runtime.InteropServices/4.3.0": {
-      "sha512": "20eCmOqz42Mxuyz8wIXBfKjj4QuxTxzXDAWictcq9gQVzT0N5SuQF4k4W310XZYRTHzBICZg0PAnZFcFah45dA==",
+      "sha512": "uv1ynXqiMK8mp1GM3jDqPCFN66eJ5w5XNomaK2XD+TuCroNTLFGeZ+WCmBMcBDyTFKou3P6cR6J/QsaqDp7fGQ==",
       "type": "package",
       "path": "system.runtime.interopservices/4.3.0",
       "files": [
@@ -4419,7 +4404,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -4580,7 +4564,7 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "rQqZxiRzQ/Sn23n7x2l87mFhU1EuPcugpcorWgpnVts7HMtf3v0n8egaEtHrXsNi6J6RdCcIWnOe5yil1sVFaA==",
+      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
@@ -4601,7 +4585,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -4695,7 +4678,7 @@
       ]
     },
     "System.Security.Cryptography.Primitives/4.3.0": {
-      "sha512": "4NgZZ/CuOK1Hc8L1qxUW+MUnV9MkfcrLzbuRCXyDMBtGXJ+75duYHt6GXKRQPLc5I7UP4lmVd+OT6P9MxIlukg==",
+      "sha512": "7bDIyVFNL/xKeFHjhobUAQqSpJq9YTOpbEs6mR233Et01STBMXNAc/V+BM6dwYGc95gVh/Zf+iVXWzj3mE8DWg==",
       "type": "package",
       "path": "system.security.cryptography.primitives/4.3.0",
       "files": [
@@ -4710,7 +4693,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.Security.Cryptography.Primitives.dll",
@@ -4870,7 +4852,7 @@
       ]
     },
     "System.Text.Encoding/4.3.0": {
-      "sha512": "dfqHuTRFzpl+JN8y33WOXNJPvuTueE89nDmZSsyzM1sh25mEU4VhxVZwRcuu3b6FX5yUe6vf7hazviKpbIZLKA==",
+      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
       "type": "package",
       "path": "system.text.encoding/4.3.0",
       "files": [
@@ -4888,7 +4870,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -4986,7 +4967,7 @@
       ]
     },
     "System.Text.Encoding.Extensions/4.3.0": {
-      "sha512": "wMN5Dk8brjG33l4lZFl8B54kqF5hVdlsj9pTjYYol2Vckyl4zv0XNYUVpyo7n0rNIJ4A8/IOK3/08K5hfwZlfQ==",
+      "sha512": "YVMK0Bt/A43RmwizJoZ22ei2nmrhobgeiYwFzC4YAN+nue8RF6djXDMog0UCn+brerQoYVyaS+ghy9P/MUVcmw==",
       "type": "package",
       "path": "system.text.encoding.extensions/4.3.0",
       "files": [
@@ -5004,7 +4985,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -5137,7 +5117,7 @@
       ]
     },
     "System.Threading/4.3.0": {
-      "sha512": "wuuBzEkYOXh64S8hnDaqU96ULRQy6DDLQ129Sk99Mn1FDhlA9J5rRUWlPu09saoDeu9Li7BFSlXrG5H/+OmJiA==",
+      "sha512": "VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
       "type": "package",
       "path": "system.threading/4.3.0",
       "files": [
@@ -5157,7 +5137,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -5208,7 +5187,7 @@
       ]
     },
     "System.Threading.Tasks/4.3.0": {
-      "sha512": "AG0Enq3jka8c4Vja8hUK3uz9Lh6UiC5/3eWgVMMY9KU8Isze9AvSpp9g2Xs4fITdSLhHqoAPiZYIfWM6h/Uu6A==",
+      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "type": "package",
       "path": "system.threading.tasks/4.3.0",
       "files": [
@@ -5226,7 +5205,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -5363,7 +5341,7 @@
       ]
     },
     "System.Xml.XDocument/4.3.0": {
-      "sha512": "F3fOS7DA5s/mEO1ZYKAFFuKVKXoTrLvDiT2V7SIejm6ua6CHXtdXACwkH6yI9Dmu9S3jtoOBwwPgv+Na8Vxg+g==",
+      "sha512": "5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "type": "package",
       "path": "system.xml.xdocument/4.3.0",
       "files": [
@@ -5383,7 +5361,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
