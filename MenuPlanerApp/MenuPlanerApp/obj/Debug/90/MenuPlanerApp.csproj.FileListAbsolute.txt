@@ -21,7 +21,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\3a0890162e7d53898c
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\c1380884e6caecbaa454c62aaec81d62db6bf343.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\fa1e53e0030548d97e9eb06d060ce8cab774711f.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\d650a5605780bbd6904e44e9954c8f7a7a3c86b6.stamp
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\7c23ab93dd1708c1855115018a0d07fb00530b05.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\6c56d31762f4d984908ade33c945178818f5b822.flata
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\f5f0e2a9c7ebf551cf621742498a13e9607d4bfa.flata
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\1db0b05b9b7d44f2f8137c1ae2250167a21ade6a.flata
@@ -31,7 +30,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\3a0890162e7d53898c
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\c1380884e6caecbaa454c62aaec81d62db6bf343.flata
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\fa1e53e0030548d97e9eb06d060ce8cab774711f.flata
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\d650a5605780bbd6904e44e9954c8f7a7a3c86b6.flata
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\7c23ab93dd1708c1855115018a0d07fb00530b05.flata
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\compiled.flata
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\R.txt
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\R.cs.flag
@@ -75,7 +73,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\mscorlib.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Newtonsoft.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Core.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Numerics.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Numerics.Vectors.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Runtime.dll
@@ -115,7 +112,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Android.
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Android.Support.Vector.Drawable.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Android.Support.VersionedParcelable.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Android.Support.ViewPager.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Auth.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Essentials.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\netstandard.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\System.Data.dll
@@ -134,7 +130,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\MenuPlanerApp.pd
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\MenuPlanerApp.Core.pdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Mono.Android.pdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Essentials.pdb
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\linksrc\Xamarin.Auth.dll.mdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\link.flag
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Java.Interop.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\MenuPlanerApp.Core.dll
@@ -154,7 +149,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.dl
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Drawing.Common.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.IO.Compression.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.IO.Compression.FileSystem.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Net.Http.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Numerics.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\System.Numerics.Vectors.dll
@@ -200,8 +194,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.A
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Android.Support.Vector.Drawable.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Android.Support.VersionedParcelable.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Android.Support.ViewPager.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Auth.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Auth.dll.mdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Essentials.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\assets\Xamarin.Essentials.pdb
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\typemap.jm.arm64-v8a.s
@@ -286,24 +278,12 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a79672
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\OptionsActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\RecipeActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5b62a796723a823b35e1837be7dff9bb0\SplashActivity.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md51ecadffdc85c92889fb18c347bb5af96\CustomTabActivityHelper.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md51ecadffdc85c92889fb18c347bb5af96\ServiceConnection.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\android\support\coordinatorlayout\R.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5739e9fc85df9d4eb4d209ca54c60dbbd\IngredientAdapter.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5dcb6eccdc824e0677ffae8ccdde42930\CustomTabsServiceConnectionImpl.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5dcb6eccdc824e0677ffae8ccdde42930\KeepAliveService.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\android\support\compat\R.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5aded17fa3cfc125023028accc388aaec\IngredientViewHolder.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\AndroidAccountStore_SecretAccount.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\CustomTabsActionsBroadcastReceiver.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\FormAuthenticatorActivity.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\FormAuthenticatorActivity_State.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebAuthenticatorActivity.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebAuthenticatorActivity_Client.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebAuthenticatorActivity_State.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebAuthenticatorNativeBrowserActivity.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebAuthenticatorNativeBrowserActivity_State.java
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5538102cb7512c6dba0c04fe6c395414e\WebViewActivity.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5d630c3d3bfb5f5558520331566132d97\AccelerometerListener.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5d630c3d3bfb5f5558520331566132d97\ActivityLifecycleContextListener.java
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\md5d630c3d3bfb5f5558520331566132d97\BarometerListener.java
@@ -327,7 +307,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ConvertCustomView
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ConvertLibraryResourcesCases.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ConvertResourcesCases.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_CopyIntermediateAssemblies.stamp
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_CopyMdbFiles.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_CopyPdbFiles.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp

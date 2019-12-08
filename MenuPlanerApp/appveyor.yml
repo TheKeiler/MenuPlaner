@@ -14,6 +14,6 @@ dotnet_csproj:
 before_build:
 - cmd: nuget restore
 build_script:
-- cmd: dotnet build MenuPlanerApp.Core\MenuPlanerApp.Core.csproj
+- cmd: dotnet build MenuPlanerApp.sln
 - cmd: dotnet build MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj
 - cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" 

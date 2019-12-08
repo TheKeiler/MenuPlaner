@@ -40,7 +40,6 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"Xamarin.Android.Support.VersionedParcelable.dll",
 		"Xamarin.Android.Support.ViewPager.dll",
-		"Xamarin.Auth.dll",
 		"Xamarin.Essentials.dll",
 	};
 	public static String[] Dependencies = new String[]{

@@ -52,10 +52,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
-            },
-            "Xamarin.Auth": {
-              "target": "Package",
-              "version": "[1.7.0, )"
             }
           },
           "imports": [
@@ -121,10 +117,6 @@
             "Xamarin.Android.Support.Design": {
               "target": "Package",
               "version": "[28.0.0.3, )"
-            },
-            "Xamarin.Auth": {
-              "target": "Package",
-              "version": "[1.7.0, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
