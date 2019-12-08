@@ -51,7 +51,6 @@ D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Microsoft
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Options.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Primitives.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
-D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\dotnet-aspnet-codegenerator-design.exe
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\System.Collections.Immutable.dll
 D:\MenuePlaner\MenuPlanerApp\MenuPlanerApp.API\bin\Debug\netcoreapp3.0\System.ComponentModel.Annotations.dll
