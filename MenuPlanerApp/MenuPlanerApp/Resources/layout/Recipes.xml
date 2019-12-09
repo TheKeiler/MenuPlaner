@@ -87,6 +87,16 @@
       android:hint="Rezeptbezeichnung"
       android:layout_margin="5dp" />
 
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/descriptionEditText"
+      android:layout_width="match_parent"
+      android:imeOptions="actionGo"
+      android:inputType="textMultiLine"
+      android:layout_height="wrap_content"
+      android:minHeight="30dp"
+      android:hint="Optionale Beschreibung"
+      android:layout_margin="5dp" />
+
     </LinearLayout>
 
   <LinearLayout

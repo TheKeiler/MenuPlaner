@@ -586,3 +586,4 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GeneratePackageMan
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\recipes.xml
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc641d757fe78fe0d5e2\RecipeSearchActivity.java
