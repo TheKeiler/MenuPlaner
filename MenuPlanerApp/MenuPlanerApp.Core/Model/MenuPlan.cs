@@ -5,17 +5,17 @@ namespace MenuPlanerApp.Core.Model
 {
     public class MenuPlan
     {
-        public MenuPlan()
-        {
-            StartDate = new DateTime();
-            Recipes = new List<RecipeWithAmount>();
-        }
-
         public int Id { get; set; }
 
         public DateTime StartDate { get; set; }
 
         public List<RecipeWithAmount> Recipes { get; set; }
+
+        public MenuPlan()
+        {
+            StartDate = new DateTime();
+            Recipes = new List<RecipeWithAmount>();
+        }
 
         public override bool Equals(object obj)
         {

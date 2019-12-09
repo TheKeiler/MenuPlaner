@@ -10,6 +10,6 @@ namespace MenuPlanerApp.API.Model
         public Ingredient Ingredient { get; set; }
 
         [Required]
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
     }
 }

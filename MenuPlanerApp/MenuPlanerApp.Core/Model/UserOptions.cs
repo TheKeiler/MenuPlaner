@@ -25,8 +25,10 @@
             if (obj == null || GetType() != obj.GetType()) return false;
 
             var u = (UserOptions) obj;
-            return WantsUserToSeeRecipesWithFructose && WantsUserToSeeRecipesWithHistamin &&
-                   WantsUserToSeeRecipesWithLactose && WantsUserToSeeRecipesWithCeliac;
+            return WantsUserToSeeRecipesWithFructose == u.WantsUserToSeeRecipesWithFructose &&
+                   WantsUserToSeeRecipesWithHistamin == u.WantsUserToSeeRecipesWithHistamin &&
+                   WantsUserToSeeRecipesWithLactose == u.WantsUserToSeeRecipesWithLactose &&
+                   WantsUserToSeeRecipesWithCeliac == u.WantsUserToSeeRecipesWithCeliac;
         }
 
         public override int GetHashCode()

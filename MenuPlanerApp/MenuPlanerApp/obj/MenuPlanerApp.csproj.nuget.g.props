@@ -12,7 +12,4 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgXamarinComponent Condition=" '$(PkgXamarinComponent)' == '' ">C:\Users\pkeis\.nuget\packages\xamarincomponent\1.1.0.65</PkgXamarinComponent>
-  </PropertyGroup>
 </Project>
