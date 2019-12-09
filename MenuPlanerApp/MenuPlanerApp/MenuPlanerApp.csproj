@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\IngredientAdapter.cs" />
+    <Compile Include="Adapters\RecipeAdapter.cs" />
     <Compile Include="IngredientsActivity.cs" />
     <Compile Include="IngredientsSearchActivity.cs" />
     <Compile Include="OptionsActivity.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="SplashActivity.cs" />
     <Compile Include="ViewHolders\IngredientViewHolder.cs" />
     <Compile Include="RecipeSearchActivity.cs" />
+    <Compile Include="ViewHolders\RecipeViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -151,6 +153,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\recipes_search.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\recipe_viewholder.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

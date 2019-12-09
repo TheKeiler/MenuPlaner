@@ -23,7 +23,7 @@ namespace MenuPlanerApp
             // Create your application here
             SetContentView(Resource.Layout
                 .ingredient_search);
-            _searchView = FindViewById<SearchView>(Resource.Id.searchView);
+            _searchView = FindViewById<SearchView>(Resource.Id.searchViewIngredient);
             _ingredientRecyclerView = FindViewById<RecyclerView>(Resource.Id.IngredientsSearchRecyclerView);
 
             _ingredientsLayoutManager = new LinearLayoutManager(this);
