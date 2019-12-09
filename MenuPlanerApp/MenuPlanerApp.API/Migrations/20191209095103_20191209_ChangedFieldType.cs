@@ -7,8 +7,8 @@ namespace MenuPlanerApp.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<decimal>(
-                name: "Amount",
-                table: "IngredientWithAmount",
+                "Amount",
+                "IngredientWithAmount",
                 nullable: false,
                 oldClrType: typeof(int),
                 oldType: "int");
@@ -17,9 +17,9 @@ namespace MenuPlanerApp.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "Amount",
-                table: "IngredientWithAmount",
-                type: "int",
+                "Amount",
+                "IngredientWithAmount",
+                "int",
                 nullable: false,
                 oldClrType: typeof(decimal));
         }

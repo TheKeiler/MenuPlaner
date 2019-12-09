@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MenuPlanerApp.Core.Model;
+﻿using MenuPlanerApp.Core.Model;
 using NUnit.Framework;
 
 namespace MenuPlanerApp.Core.Tests.Model
@@ -110,6 +107,5 @@ namespace MenuPlanerApp.Core.Tests.Model
             //Assert
             Assert.That(hash1.Equals(hash2), Is.True);
         }
-
     }
 }

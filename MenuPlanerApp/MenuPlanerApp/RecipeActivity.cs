@@ -21,18 +21,18 @@ namespace MenuPlanerApp
         private Button _abortButton;
         private Button _deleteButton;
         private Button _ingredientButton;
-        private TextInputEditText _recipeNameEditText;
-        private TextInputEditText _recipeDescriptionEditText;
-        private List<Recipe> _recipesList;
-        private Recipe _selectedRecipe;
         private IngredientsRepositoryWeb _ingredientsRepository;
-        private RecipeRepositoryWeb _recipeRepository;
         private Button _menusButton;
         private Button _newButton;
         private Button _optionsButton;
         private Button _recipeButton;
+        private TextInputEditText _recipeDescriptionEditText;
+        private TextInputEditText _recipeNameEditText;
+        private RecipeRepositoryWeb _recipeRepository;
+        private List<Recipe> _recipesList;
         private Button _saveButton;
         private Button _searchButton;
+        private Recipe _selectedRecipe;
         private VerifyUserEntries _verifyUserEntries;
 
         protected override async void OnCreate(Bundle savedInstanceState)

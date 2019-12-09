@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using MenuPlanerApp.Core.Model;
 using NUnit.Framework;
 
@@ -16,7 +15,7 @@ namespace MenuPlanerApp.Core.Tests.Model
             var menu1 = new MenuPlan();
             var menu2 = new MenuPlan();
 
-            var recipes = new List<RecipeWithAmount>()
+            var recipes = new List<RecipeWithAmount>
             {
                 new RecipeWithAmount(),
                 new RecipeWithAmount(),
@@ -43,7 +42,7 @@ namespace MenuPlanerApp.Core.Tests.Model
             var menu1 = new MenuPlan();
             var menu2 = new MenuPlan();
 
-            var recipes = new List<RecipeWithAmount>()
+            var recipes = new List<RecipeWithAmount>
             {
                 new RecipeWithAmount(),
                 new RecipeWithAmount(),
@@ -64,41 +63,13 @@ namespace MenuPlanerApp.Core.Tests.Model
         }
 
         [Test]
-        public void GetHashWithTwoDifferentObjectsShouldBeTrue()
-        {
-            //Arrange
-            var menu1 = new MenuPlan();
-            var menu2 = new MenuPlan();
-
-            var recipes = new List<RecipeWithAmount>()
-            {
-                new RecipeWithAmount(),
-                new RecipeWithAmount(),
-                new RecipeWithAmount()
-            };
-
-            menu1.Recipes = recipes;
-            menu1.StartDate = new DateTime(1991, 03, 11);
-
-            menu2.Recipes = recipes;
-            menu2.StartDate = new DateTime(1991, 03, 11);
-
-            //Act
-            var hash1 = menu1.GetHashCode();
-            var hash2 = menu2.GetHashCode();
-
-            //Assert
-            Assert.That(hash1.Equals(hash2), Is.True);
-        }
-
-        [Test]
         public void GetHashWithTwoDifferentObjectsShouldBeFalse()
         {
             //Arrange
             var menu1 = new MenuPlan();
             var menu2 = new MenuPlan();
 
-            var recipes = new List<RecipeWithAmount>()
+            var recipes = new List<RecipeWithAmount>
             {
                 new RecipeWithAmount(),
                 new RecipeWithAmount(),
@@ -117,6 +88,34 @@ namespace MenuPlanerApp.Core.Tests.Model
 
             //Assert
             Assert.That(hash1.Equals(hash2), Is.False);
+        }
+
+        [Test]
+        public void GetHashWithTwoDifferentObjectsShouldBeTrue()
+        {
+            //Arrange
+            var menu1 = new MenuPlan();
+            var menu2 = new MenuPlan();
+
+            var recipes = new List<RecipeWithAmount>
+            {
+                new RecipeWithAmount(),
+                new RecipeWithAmount(),
+                new RecipeWithAmount()
+            };
+
+            menu1.Recipes = recipes;
+            menu1.StartDate = new DateTime(1991, 03, 11);
+
+            menu2.Recipes = recipes;
+            menu2.StartDate = new DateTime(1991, 03, 11);
+
+            //Act
+            var hash1 = menu1.GetHashCode();
+            var hash2 = menu2.GetHashCode();
+
+            //Assert
+            Assert.That(hash1.Equals(hash2), Is.True);
         }
     }
 }
