@@ -584,3 +584,5 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ConvertResourcesCa
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\recipes.xml
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp

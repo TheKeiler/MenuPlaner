@@ -12,5 +12,25 @@ namespace MenuPlanerApp.Core.VerifyData
                 return false;
             return true;
         }
+
+        public bool IsRecipeComplete(Recipe recipe)
+        {
+            if (string.IsNullOrEmpty(recipe.Name))
+                return false;
+            if (recipe.Ingredients.Count == 0)
+                return false;
+            if (recipe.DirectionPictures.Length == 0)
+                return false;
+            return true;
+        }
+
+        public bool IsIngredientWithAmountComplete(IngredientWithAmount ingredientWithAmount)
+        {
+            if (string.IsNullOrEmpty(ingredientWithAmount.Ingredient.Name))
+                return false;
+            if (ingredientWithAmount.Amount == 0)
+                return false;
+            return true;
+        }
     }
 }

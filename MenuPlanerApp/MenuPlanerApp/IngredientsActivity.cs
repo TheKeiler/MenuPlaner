@@ -24,24 +24,15 @@ namespace MenuPlanerApp
         private CheckBox _celiacCheckBox;
         private Button _deleteButton;
         private CheckBox _fructoseCheckBox;
-
         private CheckBox _histaminCheckBox;
-
-        //Navigation
         private Button _ingredientButton;
-
-        //IngredientsDetails
         private TextInputEditText _ingredientDescriptionEditText;
         private TextInputEditText _ingredientNameEditText;
         private List<Ingredient> _ingredientsList;
-
-        //Data
         private IngredientsRepositoryWeb _ingredientsRepository;
         private TextInputEditText _ingredientsUnitEditText;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;
-
-        //Operations
         private Button _newButton;
         private Button _optionsButton;
         private Button _recipeButton;
@@ -182,8 +173,8 @@ namespace MenuPlanerApp
 
         private void RecipeButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            //StartActivity(RecipesActivity);
+            var intent = new Intent(this, typeof(RecipeActivity));
+            StartActivity(intent);
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

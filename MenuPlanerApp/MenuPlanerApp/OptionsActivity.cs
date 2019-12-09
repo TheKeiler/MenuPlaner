@@ -135,7 +135,8 @@ namespace MenuPlanerApp
 
         private void RecipeButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var intent = new Intent(this, typeof(RecipeActivity));
+            StartActivity(intent);
         }
 
         private async void SaveButton_Click(object sender, EventArgs e)

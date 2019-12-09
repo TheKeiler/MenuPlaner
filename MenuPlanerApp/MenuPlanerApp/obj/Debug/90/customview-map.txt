@@ -1,11 +1,13 @@
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 android.support.design.widget.TextInputEditText;obj\Debug\90\res\layout\ingredients.xml
+android.support.design.widget.TextInputEditText;obj\Debug\90\res\layout\recipes.xml
 android.support.v7.widget.RecyclerView;obj\Debug\90\res\layout\ingredient_search.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 Button;obj\Debug\90\res\layout\ingredients.xml
 Button;obj\Debug\90\res\layout\options.xml
+Button;obj\Debug\90\res\layout\recipes.xml
 cache-path;D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 CheckBox;obj\Debug\90\res\layout\ingredients.xml
 CheckBox;obj\Debug\90\res\layout\options.xml
@@ -21,6 +23,7 @@ LinearLayout;obj\Debug\90\res\layout\ingredient_search.xml
 LinearLayout;obj\Debug\90\res\layout\ingredient_viewholder.xml
 LinearLayout;obj\Debug\90\res\layout\ingredients.xml
 LinearLayout;obj\Debug\90\res\layout\options.xml
+LinearLayout;obj\Debug\90\res\layout\recipes.xml
 paths;D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;obj\Debug\90\res\values\colors.xml
 resources;obj\Debug\90\res\values\ic_launcher_background.xml
