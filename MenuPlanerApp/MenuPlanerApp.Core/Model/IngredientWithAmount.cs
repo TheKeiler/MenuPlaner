@@ -2,16 +2,16 @@
 {
     public class IngredientWithAmount
     {
+        public IngredientWithAmount()
+        {
+            Ingredient = new Ingredient();
+        }
+
         public int Id { get; set; }
 
         public Ingredient Ingredient { get; set; }
 
         public decimal Amount { get; set; }
-
-        public IngredientWithAmount()
-        {
-            Ingredient = new Ingredient();
-        }
 
         public override bool Equals(object obj)
         {
