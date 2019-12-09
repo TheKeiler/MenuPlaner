@@ -103,7 +103,7 @@ namespace MenuPlanerApp
 
         private void FindViewsRecipe()
         {
-            _recipeDescriptionEditText = FindViewById<TextInputEditText>(Resource.Id.nameEditText);
+            _recipeNameEditText = FindViewById<TextInputEditText>(Resource.Id.nameEditText);
             _recipeDescriptionEditText = FindViewById<TextInputEditText>(Resource.Id.descriptionEditText);
         }
 
