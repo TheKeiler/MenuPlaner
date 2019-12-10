@@ -28,6 +28,7 @@ namespace MenuPlanerApp
         private Button _ingredientButton;
         private TextInputEditText _ingredientDescriptionEditText;
         private TextInputEditText _ingredientNameEditText;
+        private Button _ingredientSearchButton;
         private List<Ingredient> _ingredientsList;
         private IngredientsRepositoryWeb _ingredientsRepository;
         private TextInputEditText _ingredientsUnitEditText;
@@ -37,7 +38,6 @@ namespace MenuPlanerApp
         private Button _optionsButton;
         private Button _recipeButton;
         private Button _saveButton;
-        private Button _ingredientSearchButton;
         private Ingredient _selectedIngredient;
         private VerifyUserEntries _verifyUserEntries;
 

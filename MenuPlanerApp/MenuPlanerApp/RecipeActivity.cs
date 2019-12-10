@@ -20,34 +20,34 @@ namespace MenuPlanerApp
     public class RecipeActivity : AppCompatActivity
     {
         private Button _abortButton;
-        private Button _deleteButton;
-        private Button _ingredientButton;
-        
-        private Button _menusButton;
-        private Button _optionsButton;
-        private Button _recipeButton;
-        private Button _recipeSearchButton;
-        private Button _newRecipeButton;
-        private Button _insertIngredientButton;
-        private TextInputEditText _ingredientAmounEditText;
-        private ListView _ingredientsListView;
-        private Button _removeIngredientButton;
         private Button _cameraButton;
-        private ImageView _recipeImageView;
-        private TextInputEditText _recipeDescriptionEditText;
-        private TextInputEditText _recipeNameEditText;
-        private Button _saveButton;
-        private Button _selectIngredientButton;
-        
+        private Button _deleteButton;
+        private TextInputEditText _ingredientAmounEditText;
+        private Button _ingredientButton;
+        private List<IngredientWithAmount> _IngredientsList;
+        private ListView _ingredientsListView;
+
         //Data
         private IngredientsRepositoryWeb _ingredientsRepository;
+        private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
+        private Button _insertIngredientButton;
+
+        private Button _menusButton;
+        private Button _newRecipeButton;
+        private Button _optionsButton;
+        private Button _recipeButton;
+        private TextInputEditText _recipeDescriptionEditText;
+        private ImageView _recipeImageView;
+        private TextInputEditText _recipeNameEditText;
         private RecipeRepositoryWeb _recipeRepository;
+        private Button _recipeSearchButton;
         private List<Recipe> _recipesList;
-        private List<IngredientWithAmount> _IngredientsList;
+        private Button _removeIngredientButton;
+        private Button _saveButton;
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
+        private Button _selectIngredientButton;
         private VerifyUserEntries _verifyUserEntries;
-        private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
 
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -156,7 +156,8 @@ namespace MenuPlanerApp
 
         private void BindHintOnAmountEditText()
         {
-            _ingredientAmounEditText.Hint = _selectedIngredient.Id == 0 ? "Mengenangabe" : _selectedIngredient.ReferenceUnit;
+            _ingredientAmounEditText.Hint =
+                _selectedIngredient.Id == 0 ? "Mengenangabe" : _selectedIngredient.ReferenceUnit;
         }
 
         private void SetUpListView()

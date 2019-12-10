@@ -2,8 +2,8 @@
 using Android.App;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 using MenuPlanerApp.Core.Model;
-using Object = Java.Lang.Object;
 
 namespace MenuPlanerApp.Adapters
 {
@@ -14,8 +14,8 @@ namespace MenuPlanerApp.Adapters
 
         public IngredientsWithAmountListViewAdapter(Activity activity, List<IngredientWithAmount> ingredients)
         {
-            this._activity = activity;
-            this._ingredients = ingredients;
+            _activity = activity;
+            _ingredients = ingredients;
         }
 
         public override int Count => _ingredients.Count;
@@ -32,7 +32,9 @@ namespace MenuPlanerApp.Adapters
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var view = convertView ?? _activity.LayoutInflater.Inflate(Resource.Layout.ingredientsWithAmount_viewholder, parent, false);
+            var view = convertView ??
+                       _activity.LayoutInflater.Inflate(Resource.Layout.ingredientsWithAmount_viewholder, parent,
+                           false);
 
             var ingredientNameTextView = view.FindViewById<TextView>(Resource.Id.ingredientWithAmountTextView);
             SetTextInTextViewViewHolder(position, ingredientNameTextView);
@@ -41,7 +43,9 @@ namespace MenuPlanerApp.Adapters
 
         private void SetTextInTextViewViewHolder(int position, TextView ingredientNameTextView)
         {
-            ingredientNameTextView.Text = string.IsNullOrEmpty(_ingredients[position].Ingredient.Description) ? $"{_ingredients[position].Ingredient.Name}, {_ingredients[position].Amount}{_ingredients[position].Ingredient.ReferenceUnit}" : $"{_ingredients[position].Ingredient.Name}, {_ingredients[position].Ingredient.Description}, {_ingredients[position].Amount}{_ingredients[position].Ingredient.ReferenceUnit}";
+            ingredientNameTextView.Text = string.IsNullOrEmpty(_ingredients[position].Ingredient.Description)
+                ? $"{_ingredients[position].Ingredient.Name}, {_ingredients[position].Amount}{_ingredients[position].Ingredient.ReferenceUnit}"
+                : $"{_ingredients[position].Ingredient.Name}, {_ingredients[position].Ingredient.Description}, {_ingredients[position].Amount}{_ingredients[position].Ingredient.ReferenceUnit}";
         }
     }
 }
