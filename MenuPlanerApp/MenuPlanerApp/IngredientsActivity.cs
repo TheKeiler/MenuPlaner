@@ -33,11 +33,11 @@ namespace MenuPlanerApp
         private TextInputEditText _ingredientsUnitEditText;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;
-        private Button _newButton;
+        private Button _newIngredientButton;
         private Button _optionsButton;
         private Button _recipeButton;
         private Button _saveButton;
-        private Button _searchButton;
+        private Button _ingredientSearchButton;
         private Ingredient _selectedIngredient;
         private VerifyUserEntries _verifyUserEntries;
 
@@ -112,11 +112,11 @@ namespace MenuPlanerApp
 
         private void FindViewsOperation()
         {
-            _searchButton = FindViewById<Button>(Resource.Id.searchButton);
-            _newButton = FindViewById<Button>(Resource.Id.newButton);
-            _saveButton = FindViewById<Button>(Resource.Id.saveButton);
-            _abortButton = FindViewById<Button>(Resource.Id.abortButton);
-            _deleteButton = FindViewById<Button>(Resource.Id.deleteButton);
+            _ingredientSearchButton = FindViewById<Button>(Resource.Id.ingredientSearchButton);
+            _newIngredientButton = FindViewById<Button>(Resource.Id.newIngredientButton);
+            _saveButton = FindViewById<Button>(Resource.Id.saveIngredientButton);
+            _abortButton = FindViewById<Button>(Resource.Id.abortIngredientButton);
+            _deleteButton = FindViewById<Button>(Resource.Id.deleteIngredientButton);
         }
 
         private void BindDataFromDataToView()
@@ -147,8 +147,8 @@ namespace MenuPlanerApp
             _menusButton.Click += MenusButton_Click;
             _ingredientButton.Click += IngredientsButton_Click;
             _recipeButton.Click += RecipeButton_Click;
-            _searchButton.Click += SearchButton_Click;
-            _newButton.Click += NewButton_Click;
+            _ingredientSearchButton.Click += IngredientSearchButtonClick;
+            _newIngredientButton.Click += NewIngredientButtonClick;
             _saveButton.Click += SaveButton_Click;
             _abortButton.Click += AbortButton_Click;
             _deleteButton.Click += DeleteButton_Click;
@@ -177,13 +177,13 @@ namespace MenuPlanerApp
             StartActivity(intent);
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void IngredientSearchButtonClick(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(IngredientsSearchActivity));
             StartActivity(intent);
         }
 
-        private void NewButton_Click(object sender, EventArgs e)
+        private void NewIngredientButtonClick(object sender, EventArgs e)
         {
             SetContentView(Resource.Layout.ingredients);
             _selectedIngredient = new Ingredient();

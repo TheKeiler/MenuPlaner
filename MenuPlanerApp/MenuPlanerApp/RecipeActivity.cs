@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Widget;
+using MenuPlanerApp.Adapters;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.Core.VerifyData;
@@ -21,19 +22,33 @@ namespace MenuPlanerApp
         private Button _abortButton;
         private Button _deleteButton;
         private Button _ingredientButton;
-        private IngredientsRepositoryWeb _ingredientsRepository;
+        
         private Button _menusButton;
-        private Button _newButton;
         private Button _optionsButton;
         private Button _recipeButton;
+        private Button _recipeSearchButton;
+        private Button _newRecipeButton;
+        private Button _insertIngredientButton;
+        private TextInputEditText _ingredientAmounEditText;
+        private ListView _ingredientsListView;
+        private Button _removeIngredientButton;
+        private Button _cameraButton;
+        private ImageView _recipeImageView;
         private TextInputEditText _recipeDescriptionEditText;
         private TextInputEditText _recipeNameEditText;
+        private Button _saveButton;
+        private Button _selectIngredientButton;
+        
+        //Data
+        private IngredientsRepositoryWeb _ingredientsRepository;
         private RecipeRepositoryWeb _recipeRepository;
         private List<Recipe> _recipesList;
-        private Button _saveButton;
-        private Button _searchButton;
+        private List<IngredientWithAmount> _IngredientsList;
+        private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private VerifyUserEntries _verifyUserEntries;
+        private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
+
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -57,6 +72,8 @@ namespace MenuPlanerApp
             _recipeRepository = new RecipeRepositoryWeb();
             _selectedRecipe = new Recipe();
             _verifyUserEntries = new VerifyUserEntries();
+            _selectedIngredient = new Ingredient();
+            _IngredientsList = new List<IngredientWithAmount>();
         }
 
         private async Task LoadData()
@@ -103,23 +120,49 @@ namespace MenuPlanerApp
 
         private void FindViewsRecipe()
         {
-            _recipeNameEditText = FindViewById<TextInputEditText>(Resource.Id.nameEditText);
-            _recipeDescriptionEditText = FindViewById<TextInputEditText>(Resource.Id.descriptionEditText);
+            _recipeNameEditText = FindViewById<TextInputEditText>(Resource.Id.recipeNameEditText);
+            _recipeDescriptionEditText = FindViewById<TextInputEditText>(Resource.Id.recipeDescriptionEditText);
+            _selectIngredientButton = FindViewById<Button>(Resource.Id.recipeSelectIngredientButton);
+            _ingredientAmounEditText = FindViewById<TextInputEditText>(Resource.Id.recipeAmountEditText);
+            _insertIngredientButton = FindViewById<Button>(Resource.Id.recipeInsertIngredientButton);
+            _ingredientsListView = FindViewById<ListView>(Resource.Id.recipeIngredientsListView);
+            _removeIngredientButton = FindViewById<Button>(Resource.Id.recipeRemoveIngredientButton);
+            _cameraButton = FindViewById<Button>(Resource.Id.recipeCameraButton);
+            _recipeImageView = FindViewById<ImageView>(Resource.Id.recipeImageView);
         }
 
         private void FindViewsOperation()
         {
-            _searchButton = FindViewById<Button>(Resource.Id.searchButton);
-            _newButton = FindViewById<Button>(Resource.Id.newButton);
-            _saveButton = FindViewById<Button>(Resource.Id.saveButton);
-            _abortButton = FindViewById<Button>(Resource.Id.abortButton);
-            _deleteButton = FindViewById<Button>(Resource.Id.deleteButton);
+            _recipeSearchButton = FindViewById<Button>(Resource.Id.recipeSearchButton);
+            _newRecipeButton = FindViewById<Button>(Resource.Id.newRecipeButton);
+            _saveButton = FindViewById<Button>(Resource.Id.recipeSaveButton);
+            _abortButton = FindViewById<Button>(Resource.Id.recipeAbortButton);
+            _deleteButton = FindViewById<Button>(Resource.Id.recipeDeleteButton);
         }
 
         private void BindDataFromDataToView()
         {
             _recipeNameEditText.Text = _selectedRecipe.Name;
             _recipeDescriptionEditText.Text = _selectedRecipe.Description;
+            BindTextOnIngredientsButton();
+            BindHintOnAmountEditText();
+            SetUpListView();
+        }
+
+        private void BindTextOnIngredientsButton()
+        {
+            _selectIngredientButton.Text = _selectedIngredient.Id == 0 ? "Zutat" : _selectedIngredient.Name;
+        }
+
+        private void BindHintOnAmountEditText()
+        {
+            _ingredientAmounEditText.Hint = _selectedIngredient.Id == 0 ? "Mengenangabe" : _selectedIngredient.ReferenceUnit;
+        }
+
+        private void SetUpListView()
+        {
+            _ingredientsWithAmountListViewAdapter = new IngredientsWithAmountListViewAdapter(this, _IngredientsList);
+            _ingredientsListView.Adapter = _ingredientsWithAmountListViewAdapter;
         }
 
         private void BindDataFromViewToData()
@@ -134,8 +177,8 @@ namespace MenuPlanerApp
             _menusButton.Click += MenusButton_Click;
             _ingredientButton.Click += IngredientsButton_Click;
             _recipeButton.Click += RecipeButton_Click;
-            _searchButton.Click += SearchButton_Click;
-            _newButton.Click += NewButton_Click;
+            _selectIngredientButton.Click += SelectIngredientButtonClick;
+            _newRecipeButton.Click += NewButton_Click;
             _saveButton.Click += SaveButton_Click;
             _abortButton.Click += AbortButton_Click;
             _deleteButton.Click += DeleteButton_Click;
@@ -163,7 +206,7 @@ namespace MenuPlanerApp
             ShowToastMessage("Rezepte bereits geöffnet");
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void SelectIngredientButtonClick(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(RecipeSearchActivity));
             StartActivity(intent);

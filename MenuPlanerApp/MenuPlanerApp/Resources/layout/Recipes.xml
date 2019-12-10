@@ -47,25 +47,40 @@
 
   </LinearLayout>
 
-  <LinearLayout android:orientation="horizontal"
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="90"
+        android:scrollbars="vertical"
+        android:id="@+id/recipeScrollView" >
+
+      <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
                 android:gravity="center|bottom">
-
-    <Button
-      android:text="Rezept öffnen"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:width="200dp"
-      android:id="@+id/searchButton" />
+          <Button
+            android:text="Rezept öffnen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:width="200dp"
+             android:id="@+id/recipeSearchButton" />
 
     <Button
       android:text="Neues Rezept erfassen"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:width="200dp"
-      android:id="@+id/newButton" />
+      android:id="@+id/newRecipeButton" />
 
   </LinearLayout>
 
@@ -74,10 +89,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="100dp"
-    android:layout_weight="75">
+    >
 
     <android.support.design.widget.TextInputEditText
-      android:id="@+id/nameEditText"
+      android:id="@+id/recipeNameEditText"
       android:layout_width="match_parent"
       android:imeOptions="actionGo"
       android:inputType="text"
@@ -87,12 +102,12 @@
       android:layout_margin="5dp" />
 
     <android.support.design.widget.TextInputEditText
-      android:id="@+id/descriptionEditText"
+      android:id="@+id/recipeDescriptionEditText"
       android:layout_width="match_parent"
       android:imeOptions="actionGo"
       android:inputType="textMultiLine"
       android:layout_height="wrap_content"
-      android:minHeight="30dp"
+      android:minHeight="20dp"
       android:hint="Optionale Beschreibung"
       android:layout_margin="5dp"
       android:scrollbars="vertical" />
@@ -103,6 +118,95 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    >
+
+    <Button
+      android:text="Zutat"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:minWidth="10dp"
+      android:width="150dp"
+      android:layout_margin="5dp"
+      android:id="@+id/recipeSelectIngredientButton" />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/recipeAmountEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberDecimal"
+      android:layout_height="match_parent"
+      android:hint="Mengenangabe"
+      android:width="140dp"
+      android:layout_margin="5dp"
+    />
+
+    <Button
+      android:text="Einfügen"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:minWidth="10dp"
+      android:width="100dp"
+      android:layout_margin="5dp"
+      android:id="@+id/recipeInsertIngredientButton" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    >
+
+
+    <ListView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipeIngredientsListView"
+            android:tooltipText="Zutaten"/>
+
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <Button
+      android:text="Selektierte Zutat entfernen"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:id="@+id/recipeRemoveIngredientButton" />
+
+    <Button
+      android:text="Foto erstellen mit Zubereitungsschritten"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:id="@+id/recipeCameraButton" />
+
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipeImageView" />
+
+
+       </LinearLayout>
+
+      </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center|bottom"
     android:layout_weight="10">
 
@@ -110,7 +214,7 @@
       android:text="Speichern"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:id="@+id/saveButton"
+      android:id="@+id/recipeSaveButton"
       android:width="150dp"
       android:backgroundTint="#ffa5d6a7" />
 
@@ -118,14 +222,14 @@
       android:text="Abbrechen"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:id="@+id/abortButton"
+      android:id="@+id/recipeAbortButton"
       android:width="150dp" />
 
     <Button
       android:text="Löschen"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:id="@+id/deleteButton"
+      android:id="@+id/recipeDeleteButton"
       android:width="100dp"
       android:backgroundTint="#ffef9a9a" />
 
