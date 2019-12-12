@@ -24,14 +24,11 @@ namespace MenuPlanerApp
         private Button _deleteButton;
         private TextInputEditText _ingredientAmounEditText;
         private Button _ingredientButton;
-        private List<IngredientWithAmount> _IngredientsList;
+        private List<IngredientWithAmount> _ingredientsList;
         private ListView _ingredientsListView;
-
-        //Data
         private IngredientsRepositoryWeb _ingredientsRepository;
         private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
         private Button _insertIngredientButton;
-
         private Button _menusButton;
         private Button _newRecipeButton;
         private Button _optionsButton;
@@ -73,7 +70,7 @@ namespace MenuPlanerApp
             _selectedRecipe = new Recipe();
             _verifyUserEntries = new VerifyUserEntries();
             _selectedIngredient = new Ingredient();
-            _IngredientsList = new List<IngredientWithAmount>();
+            _ingredientsList = new List<IngredientWithAmount>();
         }
 
         private async Task LoadData()
@@ -162,7 +159,7 @@ namespace MenuPlanerApp
 
         private void SetUpListView()
         {
-            _ingredientsWithAmountListViewAdapter = new IngredientsWithAmountListViewAdapter(this, _IngredientsList);
+            _ingredientsWithAmountListViewAdapter = new IngredientsWithAmountListViewAdapter(this, _ingredientsList);
             _ingredientsListView.Adapter = _ingredientsWithAmountListViewAdapter;
         }
 
