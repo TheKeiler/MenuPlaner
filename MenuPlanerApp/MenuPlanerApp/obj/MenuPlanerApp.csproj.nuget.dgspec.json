@@ -106,14 +106,6 @@
       "frameworks": {
         "monoandroid90": {
           "dependencies": {
-            "Xamarin.Android.Support.Core.Utils": {
-              "target": "Package",
-              "version": "[28.0.0.3, )"
-            },
-            "Xamarin.Android.Support.CustomTabs": {
-              "target": "Package",
-              "version": "[28.0.0.3, )"
-            },
             "Xamarin.Android.Support.Design": {
               "target": "Package",
               "version": "[28.0.0.3, )"

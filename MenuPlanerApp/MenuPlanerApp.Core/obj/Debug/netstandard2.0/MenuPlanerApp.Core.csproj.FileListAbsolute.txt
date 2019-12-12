@@ -26,7 +26,6 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\MenuPlan
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\Mono.Android.dll
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\Mono.Android.pdb
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\bin\Debug\netstandard2.0\Mono.Android.xml
-D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.csprojAssemblyReference.cache
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.Properties.Resources.resources
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.csproj.GenerateResource.cache
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.AssemblyInfoInputs.cache

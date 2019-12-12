@@ -354,7 +354,7 @@
           "lib/monoandroid90/Xamarin.Android.Support.CustomTabs.dll": {}
         },
         "build": {
-          "build/monoandroid90/Xamarin.Android.Support.CustomTabs.targets": {}
+          "build/monoandroid90/_._": {}
         }
       },
       "Xamarin.Android.Support.CustomView/28.0.0.3": {
@@ -811,7 +811,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/System.Numerics.Vectors.dll",
@@ -1604,8 +1603,6 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v9.0": [
       "MenuPlanerApp.Core >= 1.0.0",
-      "Xamarin.Android.Support.Core.Utils >= 28.0.0.3",
-      "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Android.Support.v7.AppCompat >= 28.0.0.3",
       "Xamarin.Essentials >= 1.3.1"
@@ -1653,14 +1650,6 @@
     "frameworks": {
       "monoandroid90": {
         "dependencies": {
-          "Xamarin.Android.Support.Core.Utils": {
-            "target": "Package",
-            "version": "[28.0.0.3, )"
-          },
-          "Xamarin.Android.Support.CustomTabs": {
-            "target": "Package",
-            "version": "[28.0.0.3, )"
-          },
           "Xamarin.Android.Support.Design": {
             "target": "Package",
             "version": "[28.0.0.3, )"
