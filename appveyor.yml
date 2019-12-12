@@ -21,6 +21,3 @@ build_script:
 - cmd: dotnet build MenuPlanerApp\MenuPlanerApp.API\MenuPlanerApp.API.csproj
 - cmd: dotnet build MenuPlanerApp\MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj
 - cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" 
-
-after_build:
-- cmd: dotnet sonarscanner end /d:sonar.login="183525949e759d3a3afd2be01711ca9acb7a8ec0"

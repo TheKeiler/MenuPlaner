@@ -593,3 +593,4 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\913910CDF49F7503.fl
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\42119E6975B98A78.flata
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\8D850FCE2BDAE8E5.flata
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\flata\9D94B2EB7CDA9C05.flata
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp

@@ -20,6 +20,7 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class IngredientsActivity : AppCompatActivity
     {
+        private const int SearchRequestCode = 1000;
         private Button _abortButton;
         private CheckBox _celiacCheckBox;
         private Button _deleteButton;
@@ -55,6 +56,24 @@ namespace MenuPlanerApp
             LinkEventHandlers();
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
+            [GeneratedEnum] Permission[] grantResults)
+        {
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if (requestCode == SearchRequestCode)
+            {
+                var selectedId = data.Extras.GetInt("selectedIngredientId");
+                SetSelectedIngredientResultOrFirstInList(selectedId);
+                BindDataFromDataToView();
+            }
+        }
+
         private void InitialReferencingObjects()
         {
             _ingredientsRepository = new IngredientsRepositoryWeb();
@@ -66,10 +85,7 @@ namespace MenuPlanerApp
         {
             if (Intent.Extras == null)
             {
-                if (_ingredientsList.Count > 0)
-                    _selectedIngredient = _ingredientsList.First();
-                else
-                    _selectedIngredient = new Ingredient();
+                _selectedIngredient = _ingredientsList.Count > 0 ? _ingredientsList.First() : new Ingredient();
             }
             else
             {
@@ -180,7 +196,7 @@ namespace MenuPlanerApp
         private void IngredientSearchButtonClick(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(IngredientsSearchActivity));
-            StartActivity(intent);
+            StartActivityForResult(intent, SearchRequestCode);
         }
 
         private void NewIngredientButtonClick(object sender, EventArgs e)
@@ -238,14 +254,6 @@ namespace MenuPlanerApp
             ShowToastMessage($"Die Zutat {toDeletingName} wurde gelöscht");
         }
 
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
-            [GeneratedEnum] Permission[] grantResults)
-        {
-            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
 
         private async Task LoadData()
         {
