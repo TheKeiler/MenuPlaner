@@ -144,6 +144,7 @@ namespace MenuPlanerApp
             BindTextOnIngredientsButton();
             BindHintOnAmountEditText();
             SetUpListView();
+
         }
 
         private void BindTextOnIngredientsButton()
