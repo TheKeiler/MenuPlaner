@@ -5,17 +5,12 @@ using System.Threading.Tasks;
 using Android;
 using Android.App;
 using Android.Content;
-using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Provider;
-using Android.Service.Voice;
 using Android.Support.Design.Widget;
 using Android.Support.V4.App;
-using Android.Support.V4.Content;
 using Android.Support.V7.App;
-using Android.Util;
-using Android.Views;
 using Android.Widget;
 using MenuPlanerApp.Adapters;
 using MenuPlanerApp.Core.Model;
@@ -30,6 +25,7 @@ namespace MenuPlanerApp
     {
         private const int IngredientsSearchRequestCode = 2000;
         private const int CameraRequestCode = 2001;
+        private readonly int REQUEST_CAMERA = 1000;
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
@@ -56,7 +52,7 @@ namespace MenuPlanerApp
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
         private VerifyUserEntries _verifyUserEntries;
-        private readonly int REQUEST_CAMERA = 1000;
+        private int PositionSelectedListViewItem;
 
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -77,15 +73,10 @@ namespace MenuPlanerApp
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            if (requestCode == CameraRequestCode)
-            {
-                SetBitmapFromCameraToImageView(requestCode, resultCode, data);
-            }
+            if (requestCode == CameraRequestCode) SetBitmapFromCameraToImageView(requestCode, resultCode, data);
 
             if (requestCode == IngredientsSearchRequestCode)
-            {
                 BindDataFromIngredientSearchResultToView(requestCode, resultCode, data);
-            }
         }
 
         private void InitialReferencingObjects()
@@ -175,12 +166,11 @@ namespace MenuPlanerApp
 
         private void SetUpImageView()
         {
-            
         }
 
         private void BindTextOnIngredientsButton()
         {
-            _selectIngredientButton.Text = _selectedIngredient.Id == 0 ? "Zutat" : _selectedIngredient.Name;
+            _selectIngredientButton.Text = _selectedIngredient.Id == 0 ? "Zutat wählen" : _selectedIngredient.Name;
         }
 
         private void BindHintOnAmountEditText()
@@ -214,17 +204,35 @@ namespace MenuPlanerApp
             _deleteButton.Click += DeleteButton_Click;
             _cameraButton.Click += CameraButton_Click;
             _insertIngredientButton.Click += InsertIngredientButton_Click;
+            _ingredientsListView.ItemClick += ChangeSelectedItemField_ItemClick;
+            _removeIngredientButton.Click += RemoveSelectedIngredientFromList_Click;
+        }
+
+
+        private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)
+        {
+            if (PositionSelectedListViewItem == -1) ShowToastMessage("Keine Zutat gewählt");
+            _ingredientsList.RemoveAt(PositionSelectedListViewItem);
+            PositionSelectedListViewItem = -1;
+            SetUpListView();
+        }
+
+        private void ChangeSelectedItemField_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            PositionSelectedListViewItem = e.Position;
         }
 
         private void SetBitmapFromCameraToImageView(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            Bitmap bitmap = (Bitmap)data.Extras.Get("data");
+            var bitmap = (Bitmap) data.Extras.Get("data");
             _recipeImageView.SetImageBitmap(bitmap);
         }
 
         private async void BindDataFromIngredientSearchResultToView(int requestCode, Result resultCode, Intent data)
         {
+            if (data.Extras.Equals(null)) return;
+
             base.OnActivityResult(requestCode, resultCode, data);
             var ingredientId = data.Extras.GetInt("selectedIngredientId");
             var ingredient = await _ingredientsRepository.GetIngredientById(ingredientId);
@@ -236,7 +244,7 @@ namespace MenuPlanerApp
 
         private void CameraButton_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(MediaStore.ActionImageCapture);
+            var intent = new Intent(MediaStore.ActionImageCapture);
             StartActivityForResult(intent, CameraRequestCode);
         }
 
@@ -245,11 +253,20 @@ namespace MenuPlanerApp
             var newIngredientWithAmount = new IngredientWithAmount {Ingredient = _selectedIngredient};
             var decAsText = _ingredientAmounEditText.Text;
             newIngredientWithAmount.Amount = decimal.Parse(decAsText);
-            _ingredientsList.Add(newIngredientWithAmount);
-            SetUpListView();
-            _selectedIngredient = new Ingredient();
-            _selectIngredientButton.Text = "Zutat wählen";
-            _ingredientAmounEditText.Text = "";
+
+            if (_verifyUserEntries.IsIngredientWithAmountComplete(newIngredientWithAmount))
+            {
+                _ingredientsList.Add(newIngredientWithAmount);
+                SetUpListView();
+                _selectedIngredient = new Ingredient();
+                _selectIngredientButton.Text = "Zutat wählen";
+                _ingredientAmounEditText.Text = "";
+                _ingredientAmounEditText.Hint = "Mengenangabe";
+            }
+            else
+            {
+                ShowToastMessage("Zutatenangaben nicht vollständig");
+            }
         }
 
 
@@ -338,8 +355,7 @@ namespace MenuPlanerApp
 
         private void CheckPermissions()
         {
-            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Camera }, REQUEST_CAMERA);
+            ActivityCompat.RequestPermissions(this, new[] {Manifest.Permission.Camera}, REQUEST_CAMERA);
         }
-
     }
 }

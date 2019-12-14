@@ -12,6 +12,8 @@
     android:layout_height="wrap_content"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:id="@+id/ingredientWithAmountTextView" />
+    android:id="@+id/ingredientWithAmountTextView"
+    android:layout_margin="5dp"
+    android:textSize="18sp" />
 
 </LinearLayout>

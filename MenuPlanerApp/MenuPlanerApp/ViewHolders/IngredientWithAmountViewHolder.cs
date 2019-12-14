@@ -5,6 +5,6 @@ namespace MenuPlanerApp.ViewHolders
 {
     public class IngredientWithAmountViewHolder : Object
     {
-        public TextView ingredientWithAmountTextView { get; set; }
+        public TextView IngredientWithAmountTextView { get; set; }
     }
 }
