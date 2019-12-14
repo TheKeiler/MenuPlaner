@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MenuPlanerApp.API.Data;
-using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MenuPlanerApp.API.Data;
+using MenuPlanerApp.API.Model;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -32,7 +34,10 @@ namespace MenuPlanerApp.API.Controllers
         {
             var recipeWithAmount = await _context.RecipeWithAmount.FindAsync(id);
 
-            if (recipeWithAmount == null) return NotFound();
+            if (recipeWithAmount == null)
+            {
+                return NotFound();
+            }
 
             return recipeWithAmount;
         }
@@ -43,7 +48,10 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipeWithAmount(int id, RecipeWithAmount recipeWithAmount)
         {
-            if (id != recipeWithAmount.Id) return BadRequest();
+            if (id != recipeWithAmount.Id)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(recipeWithAmount).State = EntityState.Modified;
 
@@ -54,8 +62,13 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!RecipeWithAmountExists(id))
+                {
                     return NotFound();
-                throw;
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return NoContent();
@@ -70,7 +83,7 @@ namespace MenuPlanerApp.API.Controllers
             _context.RecipeWithAmount.Add(recipeWithAmount);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipeWithAmount", new {id = recipeWithAmount.Id}, recipeWithAmount);
+            return CreatedAtAction("GetRecipeWithAmount", new { id = recipeWithAmount.Id }, recipeWithAmount);
         }
 
         // DELETE: api/RecipeWithAmounts/5
@@ -78,7 +91,10 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<RecipeWithAmount>> DeleteRecipeWithAmount(int id)
         {
             var recipeWithAmount = await _context.RecipeWithAmount.FindAsync(id);
-            if (recipeWithAmount == null) return NotFound();
+            if (recipeWithAmount == null)
+            {
+                return NotFound();
+            }
 
             _context.RecipeWithAmount.Remove(recipeWithAmount);
             await _context.SaveChangesAsync();

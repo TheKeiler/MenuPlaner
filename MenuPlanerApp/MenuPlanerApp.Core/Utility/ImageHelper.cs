@@ -1,47 +1,26 @@
-﻿using System.Net;
+﻿using System;
+using System.IO;
 using Android.Graphics;
 
 namespace MenuPlanerApp.Core.Utility
 {
     public class ImageHelper
     {
-        public static Bitmap GetImageBitmapFromUrl(string url)
+        public string ConvertBitmapToBase64String(Bitmap image)
         {
-            Bitmap imageBitmap = null;
-
-            using (var webClient = new WebClient())
+            using (var stream = new MemoryStream())
             {
-                var imageBytes = webClient.DownloadData(url);
-                if (imageBytes != null && imageBytes.Length > 0)
-                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                image.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                var bytes = stream.ToArray();
+                var base64Str = Convert.ToBase64String(bytes);
+                return base64Str;
             }
-
-            return imageBitmap;
         }
 
-        public static Bitmap GetImageBitmapFromFilePath(string fileName, int width, int height)
+        public Bitmap ConvertBase64StringToBitmap(string imageString)
         {
-            // First we get the the dimensions of the file on disk
-            var options = new BitmapFactory.Options {InJustDecodeBounds = true};
-            BitmapFactory.DecodeFile(fileName, options);
-
-            // Next we calculate the ratio that we need to resize the image by
-            // in order to fit the requested dimensions.
-            var outHeight = options.OutHeight;
-            var outWidth = options.OutWidth;
-            var inSampleSize = 1;
-
-            if (outHeight > height || outWidth > width)
-                inSampleSize = outWidth > outHeight
-                    ? outHeight / height
-                    : outWidth / width;
-
-            // Now we will load the image and have BitmapFactory resize it for us.
-            options.InSampleSize = inSampleSize;
-            options.InJustDecodeBounds = false;
-            var resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
-
-            return resizedBitmap;
+            var imageBytes = Convert.FromBase64String(imageString);
+            return BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
         }
     }
 }

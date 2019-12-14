@@ -4,6 +4,7 @@ namespace MenuPlanerApp.API.Model
 {
     public class Ingredient
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -28,5 +29,7 @@ namespace MenuPlanerApp.API.Model
 
         [Required]
         public bool CompatibleForCeliac { get; set; }
+
+
     }
 }

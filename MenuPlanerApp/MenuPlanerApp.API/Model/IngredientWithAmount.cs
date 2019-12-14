@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MenuPlanerApp.API.Model
 {
     public class IngredientWithAmount
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -11,5 +13,6 @@ namespace MenuPlanerApp.API.Model
 
         [Required]
         public decimal Amount { get; set; }
+
     }
 }

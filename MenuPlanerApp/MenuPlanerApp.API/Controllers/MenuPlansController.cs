@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MenuPlanerApp.API.Data;
-using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MenuPlanerApp.API.Data;
+using MenuPlanerApp.API.Model;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -32,7 +34,10 @@ namespace MenuPlanerApp.API.Controllers
         {
             var menuPlan = await _context.MenuPlan.FindAsync(id);
 
-            if (menuPlan == null) return NotFound();
+            if (menuPlan == null)
+            {
+                return NotFound();
+            }
 
             return menuPlan;
         }
@@ -43,7 +48,10 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMenuPlan(int id, MenuPlan menuPlan)
         {
-            if (id != menuPlan.Id) return BadRequest();
+            if (id != menuPlan.Id)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(menuPlan).State = EntityState.Modified;
 
@@ -54,8 +62,13 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!MenuPlanExists(id))
+                {
                     return NotFound();
-                throw;
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return NoContent();
@@ -70,7 +83,7 @@ namespace MenuPlanerApp.API.Controllers
             _context.MenuPlan.Add(menuPlan);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMenuPlan", new {id = menuPlan.Id}, menuPlan);
+            return CreatedAtAction("GetMenuPlan", new { id = menuPlan.Id }, menuPlan);
         }
 
         // DELETE: api/MenuPlans/5
@@ -78,7 +91,10 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<MenuPlan>> DeleteMenuPlan(int id)
         {
             var menuPlan = await _context.MenuPlan.FindAsync(id);
-            if (menuPlan == null) return NotFound();
+            if (menuPlan == null)
+            {
+                return NotFound();
+            }
 
             _context.MenuPlan.Remove(menuPlan);
             await _context.SaveChangesAsync();

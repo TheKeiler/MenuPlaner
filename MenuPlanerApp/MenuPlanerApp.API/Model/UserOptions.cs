@@ -4,6 +4,7 @@ namespace MenuPlanerApp.API.Model
 {
     public class UserOptions
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

@@ -15,6 +15,7 @@ using Android.Widget;
 using MenuPlanerApp.Adapters;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
+using MenuPlanerApp.Core.Utility;
 using MenuPlanerApp.Core.VerifyData;
 using Xamarin.Essentials;
 
@@ -29,6 +30,7 @@ namespace MenuPlanerApp
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
+        private Bitmap _instructionsBitmap;
         private TextInputEditText _ingredientAmounEditText;
         private Button _ingredientButton;
         private List<IngredientWithAmount> _ingredientsList;
@@ -47,6 +49,7 @@ namespace MenuPlanerApp
         private Button _recipeSearchButton;
         private List<Recipe> _recipesList;
         private Button _removeIngredientButton;
+        private ImageHelper _imageHelper;
         private Button _saveButton;
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
@@ -88,6 +91,7 @@ namespace MenuPlanerApp
             _verifyUserEntries = new VerifyUserEntries();
             _selectedIngredient = new Ingredient();
             _ingredientsList = new List<IngredientWithAmount>();
+            _imageHelper = new ImageHelper();
         }
 
         private async Task LoadData()
@@ -99,10 +103,7 @@ namespace MenuPlanerApp
         {
             if (Intent.Extras == null || Intent.Extras.GetInt("selectedRecipeId") == 0)
             {
-                if (_recipesList.Count > 0)
-                    _selectedRecipe = _recipesList.First();
-                else
-                    _selectedRecipe = new Recipe();
+                _selectedRecipe = _recipesList.Count > 0 ? _recipesList.First() : new Recipe();
             }
             else
             {
@@ -166,6 +167,9 @@ namespace MenuPlanerApp
 
         private void SetUpImageView()
         {
+            if (string.IsNullOrEmpty(_selectedRecipe.DirectionPictures)) return;
+            _instructionsBitmap = _imageHelper.ConvertBase64StringToBitmap(_selectedRecipe.DirectionPictures);
+            _recipeImageView.SetImageBitmap(_instructionsBitmap);
         }
 
         private void BindTextOnIngredientsButton()
@@ -189,6 +193,8 @@ namespace MenuPlanerApp
         {
             _selectedRecipe.Name = _recipeNameEditText.Text;
             _selectedRecipe.Description = _recipeDescriptionEditText.Text;
+            _selectedRecipe.Ingredients = _ingredientsList;
+            _selectedRecipe.DirectionPictures = _imageHelper.ConvertBitmapToBase64String(_instructionsBitmap);
         }
 
         private void LinkEventHandlers()
@@ -225,13 +231,13 @@ namespace MenuPlanerApp
         private void SetBitmapFromCameraToImageView(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            var bitmap = (Bitmap) data.Extras.Get("data");
-            _recipeImageView.SetImageBitmap(bitmap);
+            _instructionsBitmap = (Bitmap) data.Extras.Get("data");
+            _recipeImageView.SetImageBitmap(_instructionsBitmap);
         }
 
         private async void BindDataFromIngredientSearchResultToView(int requestCode, Result resultCode, Intent data)
         {
-            if (data.Extras.Equals(null)) return;
+            if (!data.HasExtra("selectedIngredientId")) return;
 
             base.OnActivityResult(requestCode, resultCode, data);
             var ingredientId = data.Extras.GetInt("selectedIngredientId");
@@ -254,7 +260,7 @@ namespace MenuPlanerApp
             var decAsText = _ingredientAmounEditText.Text;
             newIngredientWithAmount.Amount = decimal.Parse(decAsText);
 
-            if (_verifyUserEntries.IsIngredientWithAmountComplete(newIngredientWithAmount))
+            if (VerifyUserEntries.IsIngredientWithAmountComplete(newIngredientWithAmount))
             {
                 _ingredientsList.Add(newIngredientWithAmount);
                 SetUpListView();
@@ -310,7 +316,7 @@ namespace MenuPlanerApp
         private async void SaveButton_Click(object sender, EventArgs e)
         {
             BindDataFromViewToData();
-            if (_verifyUserEntries.IsRecipeComplete(_selectedRecipe))
+            if (VerifyUserEntries.IsRecipeComplete(_selectedRecipe))
             {
                 await SaveOrUpdateRecipe();
                 ShowToastMessage("Änderungen gespeichert");
@@ -333,7 +339,7 @@ namespace MenuPlanerApp
         private async void DeleteButton_Click(object sender, EventArgs e)
         {
             var toDeletingName = _selectedRecipe.Name;
-            await _ingredientsRepository.DeleteIngredientById(_selectedRecipe.Id);
+            await _recipeRepository.DeleteRecipeById(_selectedRecipe.Id);
             Recreate();
             ShowToastMessage($"Das Rezept {toDeletingName} wurde gelöscht");
         }

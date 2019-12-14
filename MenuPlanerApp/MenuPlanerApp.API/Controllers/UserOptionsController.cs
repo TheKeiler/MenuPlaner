@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MenuPlanerApp.API.Data;
-using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MenuPlanerApp.API.Data;
+using MenuPlanerApp.API.Model;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -32,7 +34,10 @@ namespace MenuPlanerApp.API.Controllers
         {
             var userOptions = await _context.UserOptions.FindAsync(id);
 
-            if (userOptions == null) return NotFound();
+            if (userOptions == null)
+            {
+                return NotFound();
+            }
 
             return userOptions;
         }
@@ -43,7 +48,10 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserOptions(int id, UserOptions userOptions)
         {
-            if (id != userOptions.Id) return BadRequest();
+            if (id != userOptions.Id)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(userOptions).State = EntityState.Modified;
 
@@ -54,8 +62,13 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!UserOptionsExists(id))
+                {
                     return NotFound();
-                throw;
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return NoContent();
@@ -70,7 +83,7 @@ namespace MenuPlanerApp.API.Controllers
             _context.UserOptions.Add(userOptions);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUserOptions", new {id = userOptions.Id}, userOptions);
+            return CreatedAtAction("GetUserOptions", new { id = userOptions.Id }, userOptions);
         }
 
         // DELETE: api/UserOptions/5
@@ -78,7 +91,10 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<UserOptions>> DeleteUserOptions(int id)
         {
             var userOptions = await _context.UserOptions.FindAsync(id);
-            if (userOptions == null) return NotFound();
+            if (userOptions == null)
+            {
+                return NotFound();
+            }
 
             _context.UserOptions.Remove(userOptions);
             await _context.SaveChangesAsync();

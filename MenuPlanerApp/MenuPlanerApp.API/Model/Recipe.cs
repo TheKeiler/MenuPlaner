@@ -5,6 +5,7 @@ namespace MenuPlanerApp.API.Model
 {
     public class Recipe
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -18,7 +19,7 @@ namespace MenuPlanerApp.API.Model
         public List<IngredientWithAmount> Ingredients { get; set; }
 
         [Required]
-        public byte[] DirectionPictures { get; set; }
+        public string DirectionPictures { get; set; }
 
         public bool IsFavorite { get; set; }
     }

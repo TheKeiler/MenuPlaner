@@ -7,7 +7,6 @@ namespace MenuPlanerApp.Core.Model
         public Recipe()
         {
             Ingredients = new List<IngredientWithAmount>();
-            DirectionPictures = new byte[10];
         }
 
         public int Id { get; set; }
@@ -18,7 +17,7 @@ namespace MenuPlanerApp.Core.Model
 
         public List<IngredientWithAmount> Ingredients { get; set; }
 
-        public byte[] DirectionPictures { get; set; }
+        public string DirectionPictures { get; set; }
 
         public bool IsFavorite { get; set; }
 

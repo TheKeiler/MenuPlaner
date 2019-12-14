@@ -211,7 +211,7 @@ namespace MenuPlanerApp
         private async void SaveButton_Click(object sender, EventArgs e)
         {
             BindDataFromViewToData();
-            if (_verifyUserEntries.IsIngredientComplete(_selectedIngredient))
+            if (VerifyUserEntries.IsIngredientComplete(_selectedIngredient))
             {
                 await SaveOrUpdateIngredient();
                 ShowToastMessage("Änderungen gespeichert");

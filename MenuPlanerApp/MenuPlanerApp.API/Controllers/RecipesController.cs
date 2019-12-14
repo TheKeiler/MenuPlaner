@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MenuPlanerApp.API.Data;
-using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MenuPlanerApp.API.Data;
+using MenuPlanerApp.API.Model;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -32,7 +34,10 @@ namespace MenuPlanerApp.API.Controllers
         {
             var recipe = await _context.Recipe.FindAsync(id);
 
-            if (recipe == null) return NotFound();
+            if (recipe == null)
+            {
+                return NotFound();
+            }
 
             return recipe;
         }
@@ -43,7 +48,10 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
         {
-            if (id != recipe.Id) return BadRequest();
+            if (id != recipe.Id)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(recipe).State = EntityState.Modified;
 
@@ -54,8 +62,13 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!RecipeExists(id))
+                {
                     return NotFound();
-                throw;
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return NoContent();
@@ -70,7 +83,7 @@ namespace MenuPlanerApp.API.Controllers
             _context.Recipe.Add(recipe);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipe", new {id = recipe.Id}, recipe);
+            return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
         }
 
         // DELETE: api/Recipes/5
@@ -78,7 +91,10 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<Recipe>> DeleteRecipe(int id)
         {
             var recipe = await _context.Recipe.FindAsync(id);
-            if (recipe == null) return NotFound();
+            if (recipe == null)
+            {
+                return NotFound();
+            }
 
             _context.Recipe.Remove(recipe);
             await _context.SaveChangesAsync();

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MenuPlanerApp.API.Model
 {
     public class RecipeWithAmount
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

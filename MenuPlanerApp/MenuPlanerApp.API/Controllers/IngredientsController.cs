@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MenuPlanerApp.API.Data;
-using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MenuPlanerApp.API.Data;
+using MenuPlanerApp.API.Model;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -32,7 +34,10 @@ namespace MenuPlanerApp.API.Controllers
         {
             var ingredient = await _context.Ingredient.FindAsync(id);
 
-            if (ingredient == null) return NotFound();
+            if (ingredient == null)
+            {
+                return NotFound();
+            }
 
             return ingredient;
         }
@@ -43,7 +48,10 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutIngredient(int id, Ingredient ingredient)
         {
-            if (id != ingredient.Id) return BadRequest();
+            if (id != ingredient.Id)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(ingredient).State = EntityState.Modified;
 
@@ -54,8 +62,13 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!IngredientExists(id))
+                {
                     return NotFound();
-                throw;
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return NoContent();
@@ -70,7 +83,7 @@ namespace MenuPlanerApp.API.Controllers
             _context.Ingredient.Add(ingredient);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetIngredient", new {id = ingredient.Id}, ingredient);
+            return CreatedAtAction("GetIngredient", new { id = ingredient.Id }, ingredient);
         }
 
         // DELETE: api/Ingredients/5
@@ -78,7 +91,10 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<Ingredient>> DeleteIngredient(int id)
         {
             var ingredient = await _context.Ingredient.FindAsync(id);
-            if (ingredient == null) return NotFound();
+            if (ingredient == null)
+            {
+                return NotFound();
+            }
 
             _context.Ingredient.Remove(ingredient);
             await _context.SaveChangesAsync();
