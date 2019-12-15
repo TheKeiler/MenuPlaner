@@ -6,6 +6,7 @@ namespace MenuPlanerApp.API.Model
     public class Ingredient
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -30,8 +31,5 @@ namespace MenuPlanerApp.API.Model
 
         [Required]
         public bool CompatibleForCeliac { get; set; }
-
-        [ForeignKey("IngredientWithAmountId")]
-        public IngredientWithAmount IngredientWithAmount { get; set; }
     }
 }

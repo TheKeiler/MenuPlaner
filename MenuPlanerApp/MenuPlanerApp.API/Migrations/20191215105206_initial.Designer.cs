@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MenuPlanerApp.API.Migrations
 {
     [DbContext(typeof(MenuPlanerAppAPIContext))]
-    [Migration("20191215094722_definedForeignKeys")]
-    partial class definedForeignKeys
+    [Migration("20191215105206_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,9 +44,6 @@ namespace MenuPlanerApp.API.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<int?>("IngredientWithAmountId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(60)")
@@ -58,10 +55,6 @@ namespace MenuPlanerApp.API.Migrations
                         .HasMaxLength(60);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IngredientWithAmountId")
-                        .IsUnique()
-                        .HasFilter("[IngredientWithAmountId] IS NOT NULL");
 
                     b.ToTable("Ingredient");
                 });
@@ -76,12 +69,18 @@ namespace MenuPlanerApp.API.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("RecipeId")
+                    b.Property<int?>("IngredientId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IngredientWithAmountId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("IngredientId");
+
+                    b.HasIndex("IngredientWithAmountId");
 
                     b.ToTable("IngredientWithAmount");
                 });
@@ -94,6 +93,7 @@ namespace MenuPlanerApp.API.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("StartDate")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -124,14 +124,7 @@ namespace MenuPlanerApp.API.Migrations
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
 
-                    b.Property<int?>("RecipeWithAmountId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RecipeWithAmountId")
-                        .IsUnique()
-                        .HasFilter("[RecipeWithAmountId] IS NOT NULL");
 
                     b.ToTable("Recipe");
                 });
@@ -144,20 +137,27 @@ namespace MenuPlanerApp.API.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DayOfWeek")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("MealDayTime")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MenuPlanId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("NumbersOfMeals")
                         .HasColumnType("int");
 
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RecipeWithAmountId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("MenuPlanId");
+                    b.HasIndex("RecipeId");
+
+                    b.HasIndex("RecipeWithAmountId");
 
                     b.ToTable("RecipeWithAmount");
                 });
@@ -186,32 +186,30 @@ namespace MenuPlanerApp.API.Migrations
                     b.ToTable("UserOptions");
                 });
 
-            modelBuilder.Entity("MenuPlanerApp.API.Model.Ingredient", b =>
-                {
-                    b.HasOne("MenuPlanerApp.API.Model.IngredientWithAmount", "IngredientWithAmount")
-                        .WithOne("Ingredient")
-                        .HasForeignKey("MenuPlanerApp.API.Model.Ingredient", "IngredientWithAmountId");
-                });
-
             modelBuilder.Entity("MenuPlanerApp.API.Model.IngredientWithAmount", b =>
                 {
-                    b.HasOne("MenuPlanerApp.API.Model.Recipe", "Recipe")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId");
-                });
+                    b.HasOne("MenuPlanerApp.API.Model.Ingredient", "Ingredient")
+                        .WithMany()
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("MenuPlanerApp.API.Model.Recipe", b =>
-                {
-                    b.HasOne("MenuPlanerApp.API.Model.RecipeWithAmount", "RecipeWithAmount")
-                        .WithOne("Recipe")
-                        .HasForeignKey("MenuPlanerApp.API.Model.Recipe", "RecipeWithAmountId");
+                    b.HasOne("MenuPlanerApp.API.Model.Recipe", null)
+                        .WithMany("Ingredients")
+                        .HasForeignKey("IngredientWithAmountId");
                 });
 
             modelBuilder.Entity("MenuPlanerApp.API.Model.RecipeWithAmount", b =>
                 {
-                    b.HasOne("MenuPlanerApp.API.Model.MenuPlan", "MenuPlan")
+                    b.HasOne("MenuPlanerApp.API.Model.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MenuPlanerApp.API.Model.MenuPlan", null)
                         .WithMany("Recipes")
-                        .HasForeignKey("MenuPlanId");
+                        .HasForeignKey("RecipeWithAmountId");
                 });
 #pragma warning restore 612, 618
         }

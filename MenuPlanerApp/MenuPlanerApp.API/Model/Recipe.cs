@@ -7,6 +7,7 @@ namespace MenuPlanerApp.API.Model
     public class Recipe
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -16,15 +17,13 @@ namespace MenuPlanerApp.API.Model
         [StringLength(100)]
         public string Description { get; set; }
 
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ForeignKey("IngredientWithAmountId")]
         public virtual ICollection<IngredientWithAmount> Ingredients { get; set; }
 
         [Required]
         public string DirectionPictures { get; set; }
 
         public bool IsFavorite { get; set; }
-
-        [ForeignKey("RecipeWithAmountId")]
-        public RecipeWithAmount RecipeWithAmount { get; set; }
     }
 }
