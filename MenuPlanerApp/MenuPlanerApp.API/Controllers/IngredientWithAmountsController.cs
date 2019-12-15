@@ -21,11 +21,21 @@ namespace MenuPlanerApp.API.Controllers
             _context = context;
         }
 
-        // GET: api/IngredientWithAmounts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<IngredientWithAmount>>> GetIngredientWithAmount()
+        public async Task<ActionResult<IEnumerable<IngredientWithAmount>>> GetIngredientWithAmountForRecipeId([FromQuery] int recipeId)
         {
-            return await _context.IngredientWithAmount.ToListAsync();
+            var query = from a in _context.IngredientWithAmount
+                join i in _context.Ingredient on a.Ingredient.Id equals i.Id
+                where a.RecipeId.Equals(recipeId)
+                select new IngredientWithAmount
+                {
+                    Id = a.Id,
+                    Ingredient = i,
+                    Amount = a.Amount,
+                    RecipeId = a.RecipeId
+                };
+            var list = await query.ToListAsync();
+            return list;
         }
 
         // GET: api/IngredientWithAmounts/5

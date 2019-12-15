@@ -18,5 +18,8 @@ namespace MenuPlanerApp.API.Model
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
 
+        [Required]
+        [ForeignKey("RecipeId")]
+        public int RecipeId { get; set; }
     }
 }

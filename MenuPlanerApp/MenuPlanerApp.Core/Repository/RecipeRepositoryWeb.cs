@@ -43,7 +43,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task PostRecipe(Recipe newRecipe)
+        public async Task<Recipe> PostRecipe(Recipe newRecipe)
         {
             var serializedRecipe = await Task.Run(() => JsonConvert.SerializeObject(newRecipe, Formatting.Indented));
             var httpContent = new StringContent(serializedRecipe, Encoding.UTF8, "application/json");
@@ -52,10 +52,10 @@ namespace MenuPlanerApp.Core.Repository
             {
                 var responseMessage = await httpClient.PostAsync(_httpServerUri, httpContent);
 
-                if (responseMessage.Content != null)
-                {
-                    var responseContent = await responseMessage.Content.ReadAsStringAsync();
-                }
+                if (responseMessage.Content == null) return null;
+                var responseContent = await responseMessage.Content.ReadAsStringAsync();
+                var recipe = JsonConvert.DeserializeObject<Recipe>(responseContent);
+                return recipe;
             }
         }
 

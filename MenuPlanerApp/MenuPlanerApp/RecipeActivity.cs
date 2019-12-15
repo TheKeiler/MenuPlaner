@@ -36,6 +36,7 @@ namespace MenuPlanerApp
         private List<IngredientWithAmount> _ingredientsList;
         private ListView _ingredientsListView;
         private IngredientsRepositoryWeb _ingredientsRepository;
+        private IngredientWithAmountRepositoryWeb _ingredientWithAmountRepositoryWeb;
         private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
         private Button _insertIngredientButton;
         private Button _menusButton;
@@ -67,8 +68,9 @@ namespace MenuPlanerApp
             SetContentView(Resource.Layout.recipes);
             CheckPermissions();
             InitialReferencingObjects();
-            await LoadData();
+            await LoadRecipeData();
             SetSelectedRecipe();
+            await LoadIngredientsWithAmountData();
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
@@ -86,6 +88,7 @@ namespace MenuPlanerApp
         {
             _recipesList = new List<Recipe>();
             _ingredientsRepository = new IngredientsRepositoryWeb();
+            _ingredientWithAmountRepositoryWeb = new IngredientWithAmountRepositoryWeb();
             _recipeRepository = new RecipeRepositoryWeb();
             _selectedRecipe = new Recipe();
             _verifyUserEntries = new VerifyUserEntries();
@@ -94,10 +97,19 @@ namespace MenuPlanerApp
             _imageHelper = new ImageHelper();
         }
 
-        private async Task LoadData()
+        private async Task LoadRecipeData()
         {
             _recipesList = await _recipeRepository.GetAllRecipes();
         }
+
+        private async Task LoadIngredientsWithAmountData()
+        {
+            if(_selectedRecipe.Id > 0)
+            {
+                _ingredientsList = await _ingredientWithAmountRepositoryWeb.GetIngredientWithAmountForRecipeId(_selectedRecipe.Id);
+            }
+        }
+        
 
         private void SetSelectedRecipe()
         {
@@ -231,13 +243,16 @@ namespace MenuPlanerApp
         private void SetBitmapFromCameraToImageView(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
+            if(data == null) return;
+
             _instructionsBitmap = (Bitmap) data.Extras.Get("data");
             _recipeImageView.SetImageBitmap(_instructionsBitmap);
         }
 
         private async void BindDataFromIngredientSearchResultToView(int requestCode, Result resultCode, Intent data)
         {
-            if (!data.HasExtra("selectedIngredientId")) return;
+            
+            if (data == null || !data.HasExtra("selectedIngredientId")) return;
 
             base.OnActivityResult(requestCode, resultCode, data);
             var ingredientId = data.Extras.GetInt("selectedIngredientId");
@@ -308,7 +323,7 @@ namespace MenuPlanerApp
         {
             SetContentView(Resource.Layout.recipes);
             _selectedRecipe = new Recipe();
-            FindViews();
+            _ingredientsList = new List<IngredientWithAmount>();
             BindDataFromDataToView();
             LinkEventHandlers();
         }
@@ -347,9 +362,23 @@ namespace MenuPlanerApp
         private async Task SaveOrUpdateRecipe()
         {
             if (_selectedRecipe.Id != 0)
+            {
                 await _recipeRepository.UpdateRecipe(_selectedRecipe);
+                foreach (var ingr in _ingredientsList)
+                {
+                    await _ingredientWithAmountRepositoryWeb.UpdateIngredient(ingr);
+                }
+            }
+
             else
-                await _recipeRepository.PostRecipe(_selectedRecipe);
+            {
+                var newRecipe = await _recipeRepository.PostRecipe(_selectedRecipe);
+                foreach (var ingr in _ingredientsList)
+                {
+                    ingr.RecipeId = newRecipe.Id;
+                    await _ingredientWithAmountRepositoryWeb.UpdateIngredient(ingr);
+                }
+            }
         }
 
         private void ShowToastMessage(string text)

@@ -68,6 +68,7 @@ namespace MenuPlanerApp
         {
             if (requestCode == SearchRequestCode)
             {
+                if (data == null) return;
                 var selectedId = data.Extras.GetInt("selectedIngredientId");
                 SetSelectedIngredientResultOrFirstInList(selectedId);
                 BindDataFromDataToView();

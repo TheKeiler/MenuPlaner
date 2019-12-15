@@ -71,14 +71,14 @@ namespace MenuPlanerApp.API.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int?>("IngredientWithAmountId")
+                    b.Property<int>("RecipeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IngredientId");
 
-                    b.HasIndex("IngredientWithAmountId");
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("IngredientWithAmount");
                 });
@@ -194,7 +194,9 @@ namespace MenuPlanerApp.API.Migrations
 
                     b.HasOne("MenuPlanerApp.API.Model.Recipe", null)
                         .WithMany("Ingredients")
-                        .HasForeignKey("IngredientWithAmountId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MenuPlanerApp.API.Model.RecipeWithAmount", b =>

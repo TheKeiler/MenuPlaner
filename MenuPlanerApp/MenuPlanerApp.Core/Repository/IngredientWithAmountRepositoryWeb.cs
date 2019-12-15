@@ -29,18 +29,18 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task<IngredientWithAmount> GetIngredientWithAmountById(int id)
+        public async Task<List<IngredientWithAmount>> GetIngredientWithAmountForRecipeId(int id)
         {
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var responseMessage = await httpClient.GetAsync(_httpServerUri + id);
+                var responseMessage = await httpClient.GetAsync(_httpServerUri + $"?recipeId={id}");
                 if (!responseMessage.IsSuccessStatusCode) return null;
 
                 var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var ingredientsWithAmount = JsonConvert.DeserializeObject<IngredientWithAmount>(jsonResult);
-                return ingredientsWithAmount;
+                var ingredientsWithAmount = JsonConvert.DeserializeObject<IEnumerable<IngredientWithAmount>>(jsonResult);
+                return ingredientsWithAmount.ToList();
             }
         }
 
