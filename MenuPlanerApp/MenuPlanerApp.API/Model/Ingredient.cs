@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MenuPlanerApp.API.Model
 {
@@ -30,6 +31,7 @@ namespace MenuPlanerApp.API.Model
         [Required]
         public bool CompatibleForCeliac { get; set; }
 
-
+        [ForeignKey("IngredientWithAmountId")]
+        public IngredientWithAmount IngredientWithAmount { get; set; }
     }
 }

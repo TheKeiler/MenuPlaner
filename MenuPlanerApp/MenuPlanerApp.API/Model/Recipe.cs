@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MenuPlanerApp.API.Model
 {
@@ -16,11 +17,14 @@ namespace MenuPlanerApp.API.Model
         public string Description { get; set; }
 
         [Required]
-        public List<IngredientWithAmount> Ingredients { get; set; }
+        public virtual ICollection<IngredientWithAmount> Ingredients { get; set; }
 
         [Required]
         public string DirectionPictures { get; set; }
 
         public bool IsFavorite { get; set; }
+
+        [ForeignKey("RecipeWithAmountId")]
+        public RecipeWithAmount RecipeWithAmount { get; set; }
     }
 }

@@ -9,10 +9,12 @@ namespace MenuPlanerApp.API.Model
         public int Id { get; set; }
 
         [Required]
-        public Ingredient Ingredient { get; set; }
+        public virtual Ingredient Ingredient { get; set; }
 
         [Required]
         public decimal Amount { get; set; }
 
+        [ForeignKey("RecipeId")]
+        public Recipe Recipe { get; set; }
     }
 }

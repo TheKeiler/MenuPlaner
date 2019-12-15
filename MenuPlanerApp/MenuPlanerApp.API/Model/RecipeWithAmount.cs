@@ -10,15 +10,18 @@ namespace MenuPlanerApp.API.Model
         public int Id { get; set; }
 
         [Required]
-        public Recipe Recipe { get; set; }
+        public virtual Recipe Recipe { get; set; }
 
         [Required]
         public int NumbersOfMeals { get; set; }
 
         [Required]
-        public DayOfWeek DayOfWeek { get; set; }
+        public virtual DayOfWeek DayOfWeek { get; set; }
 
         [Required]
-        public MealDayTimeEnum MealDayTime { get; set; }
+        public virtual MealDayTimeEnum MealDayTime { get; set; }
+
+        [ForeignKey("MenuPlanId")]
+        public MenuPlan MenuPlan { get; set; }
     }
 }

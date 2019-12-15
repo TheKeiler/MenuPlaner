@@ -4,14 +4,16 @@ using MenuPlanerApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MenuPlanerApp.API.Migrations
 {
     [DbContext(typeof(MenuPlanerAppAPIContext))]
-    partial class MenuPlanerAppAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20191215094722_definedForeignKeys")]
+    partial class definedForeignKeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
