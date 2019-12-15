@@ -45,6 +45,7 @@ namespace MenuPlanerApp.Core.Repository
 
         public async Task<Recipe> PostRecipe(Recipe newRecipe)
         {
+            newRecipe.Ingredients = null;
             var serializedRecipe = await Task.Run(() => JsonConvert.SerializeObject(newRecipe, Formatting.Indented));
             var httpContent = new StringContent(serializedRecipe, Encoding.UTF8, "application/json");
 

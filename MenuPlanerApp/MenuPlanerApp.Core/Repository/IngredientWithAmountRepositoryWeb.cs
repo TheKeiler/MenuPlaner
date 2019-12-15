@@ -60,7 +60,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task UpdateIngredient(IngredientWithAmount updatedIngredient)
+        public async Task UpdateIngredientWithAmount(IngredientWithAmount updatedIngredient)
         {
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(updatedIngredient));
             var httpContent = new StringContent(serializedIngredient, Encoding.UTF8, "application/json");

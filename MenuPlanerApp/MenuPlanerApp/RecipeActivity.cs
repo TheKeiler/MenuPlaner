@@ -324,6 +324,7 @@ namespace MenuPlanerApp
             SetContentView(Resource.Layout.recipes);
             _selectedRecipe = new Recipe();
             _ingredientsList = new List<IngredientWithAmount>();
+            FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
         }
@@ -366,7 +367,7 @@ namespace MenuPlanerApp
                 await _recipeRepository.UpdateRecipe(_selectedRecipe);
                 foreach (var ingr in _ingredientsList)
                 {
-                    await _ingredientWithAmountRepositoryWeb.UpdateIngredient(ingr);
+                    await _ingredientWithAmountRepositoryWeb.UpdateIngredientWithAmount(ingr);
                 }
             }
 
@@ -376,7 +377,7 @@ namespace MenuPlanerApp
                 foreach (var ingr in _ingredientsList)
                 {
                     ingr.RecipeId = newRecipe.Id;
-                    await _ingredientWithAmountRepositoryWeb.UpdateIngredient(ingr);
+                    await _ingredientWithAmountRepositoryWeb.PostIngredientWithAmount(ingr);
                 }
             }
         }
