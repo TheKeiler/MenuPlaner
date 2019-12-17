@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>pixel_2_pie_9_0_api_28</SelectedDevice>
     <DefaultDevice>pixel_2_pie_9_0_api_28</DefaultDevice>
-    <AndroidDesignerPreferredTheme>Theme.AppCompat.Light</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
     <AndroidDesignerPreferredDevice>pixel_2</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>

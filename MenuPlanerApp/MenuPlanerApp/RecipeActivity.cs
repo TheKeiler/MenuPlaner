@@ -11,6 +11,8 @@ using Android.Provider;
 using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using Android.Support.V7.App;
+using Android.Support.V7.RecyclerView.Extensions;
+using Android.Views;
 using Android.Widget;
 using MenuPlanerApp.Adapters;
 using MenuPlanerApp.Core.Model;
@@ -33,7 +35,6 @@ namespace MenuPlanerApp
         private Bitmap _instructionsBitmap;
         private TextInputEditText _ingredientAmounEditText;
         private Button _ingredientButton;
-        private List<IngredientWithAmount> _ingredientsList;
         private ListView _ingredientsListView;
         private IngredientsRepositoryWeb _ingredientsRepository;
         private IngredientWithAmountRepositoryWeb _ingredientWithAmountRepositoryWeb;
@@ -70,7 +71,6 @@ namespace MenuPlanerApp
             InitialReferencingObjects();
             await LoadRecipeData();
             SetSelectedRecipe();
-            await LoadIngredientsWithAmountData();
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
@@ -93,7 +93,6 @@ namespace MenuPlanerApp
             _selectedRecipe = new Recipe();
             _verifyUserEntries = new VerifyUserEntries();
             _selectedIngredient = new Ingredient();
-            _ingredientsList = new List<IngredientWithAmount>();
             _imageHelper = new ImageHelper();
         }
 
@@ -102,14 +101,6 @@ namespace MenuPlanerApp
             _recipesList = await _recipeRepository.GetAllRecipes();
         }
 
-        private async Task LoadIngredientsWithAmountData()
-        {
-            if(_selectedRecipe.Id > 0)
-            {
-                _ingredientsList = await _ingredientWithAmountRepositoryWeb.GetIngredientWithAmountForRecipeId(_selectedRecipe.Id);
-            }
-        }
-        
 
         private void SetSelectedRecipe()
         {
@@ -174,6 +165,7 @@ namespace MenuPlanerApp
             BindTextOnIngredientsButton();
             BindHintOnAmountEditText();
             SetUpListView();
+            SetListViewHeightBasedOnChildren(_ingredientsListView);
             SetUpImageView();
         }
 
@@ -197,7 +189,7 @@ namespace MenuPlanerApp
 
         private void SetUpListView()
         {
-            _ingredientsWithAmountListViewAdapter = new IngredientsWithAmountListViewAdapter(this, _ingredientsList);
+            _ingredientsWithAmountListViewAdapter = new IngredientsWithAmountListViewAdapter(this, _selectedRecipe.Ingredients);
             _ingredientsListView.Adapter = _ingredientsWithAmountListViewAdapter;
         }
 
@@ -205,7 +197,6 @@ namespace MenuPlanerApp
         {
             _selectedRecipe.Name = _recipeNameEditText.Text;
             _selectedRecipe.Description = _recipeDescriptionEditText.Text;
-            _selectedRecipe.Ingredients = _ingredientsList;
             _selectedRecipe.DirectionPictures = _imageHelper.ConvertBitmapToBase64String(_instructionsBitmap);
         }
 
@@ -230,7 +221,7 @@ namespace MenuPlanerApp
         private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)
         {
             if (PositionSelectedListViewItem == -1) ShowToastMessage("Keine Zutat gewählt");
-            _ingredientsList.RemoveAt(PositionSelectedListViewItem);
+            _selectedRecipe.Ingredients.RemoveAt(PositionSelectedListViewItem);
             PositionSelectedListViewItem = -1;
             SetUpListView();
         }
@@ -277,8 +268,9 @@ namespace MenuPlanerApp
 
             if (VerifyUserEntries.IsIngredientWithAmountComplete(newIngredientWithAmount))
             {
-                _ingredientsList.Add(newIngredientWithAmount);
+                _selectedRecipe.Ingredients.Add(newIngredientWithAmount);
                 SetUpListView();
+                SetListViewHeightBasedOnChildren(_ingredientsListView);
                 _selectedIngredient = new Ingredient();
                 _selectIngredientButton.Text = "Zutat wählen";
                 _ingredientAmounEditText.Text = "";
@@ -323,7 +315,6 @@ namespace MenuPlanerApp
         {
             SetContentView(Resource.Layout.recipes);
             _selectedRecipe = new Recipe();
-            _ingredientsList = new List<IngredientWithAmount>();
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
@@ -365,7 +356,7 @@ namespace MenuPlanerApp
             if (_selectedRecipe.Id != 0)
             {
                 await _recipeRepository.UpdateRecipe(_selectedRecipe);
-                foreach (var ingr in _ingredientsList)
+                foreach (var ingr in _selectedRecipe.Ingredients)
                 {
                     await _ingredientWithAmountRepositoryWeb.UpdateIngredientWithAmount(ingr);
                 }
@@ -374,7 +365,7 @@ namespace MenuPlanerApp
             else
             {
                 var newRecipe = await _recipeRepository.PostRecipe(_selectedRecipe);
-                foreach (var ingr in _ingredientsList)
+                foreach (var ingr in _selectedRecipe.Ingredients)
                 {
                     ingr.RecipeId = newRecipe.Id;
                     await _ingredientWithAmountRepositoryWeb.PostIngredientWithAmount(ingr);
@@ -393,5 +384,31 @@ namespace MenuPlanerApp
         {
             ActivityCompat.RequestPermissions(this, new[] {Manifest.Permission.Camera}, REQUEST_CAMERA);
         }
+
+        public static void SetListViewHeightBasedOnChildren(ListView listView)
+        {
+            var listAdapter = listView.Adapter;
+            if (listAdapter == null)
+            {
+                // pre-condition
+                return;
+            }
+
+            var totalHeight = 0;
+            var desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.AtMost);
+            for (var i = 0; i < listAdapter.Count; i++)
+            {
+                var listItem = listAdapter.GetView(i, null, listView);
+                listItem.Measure(desiredWidth, 0);
+                totalHeight += listItem.MeasuredHeight;
+            }
+
+            var parameters = listView.LayoutParameters;
+            parameters.Height = totalHeight + (listView.DividerHeight * (listAdapter.Count - 1));
+            listView.LayoutParameters = parameters;
+            listView.RequestLayout();
+
+        }
+
     }
 }

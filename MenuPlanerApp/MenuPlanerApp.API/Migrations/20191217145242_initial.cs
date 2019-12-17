@@ -79,7 +79,7 @@ namespace MenuPlanerApp.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IngredientId = table.Column<int>(nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    RecipeId = table.Column<int>(nullable: false)
+                    RecipeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,7 +95,7 @@ namespace MenuPlanerApp.API.Migrations
                         column: x => x.RecipeId,
                         principalTable: "Recipe",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,23 +108,23 @@ namespace MenuPlanerApp.API.Migrations
                     NumbersOfMeals = table.Column<int>(nullable: false),
                     DayOfWeek = table.Column<int>(nullable: false),
                     MealDayTime = table.Column<int>(nullable: false),
-                    RecipeWithAmountId = table.Column<int>(nullable: true)
+                    MenuPlanId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RecipeWithAmount", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RecipeWithAmount_MenuPlan_MenuPlanId",
+                        column: x => x.MenuPlanId,
+                        principalTable: "MenuPlan",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RecipeWithAmount_Recipe_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipe",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RecipeWithAmount_MenuPlan_RecipeWithAmountId",
-                        column: x => x.RecipeWithAmountId,
-                        principalTable: "MenuPlan",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -138,14 +138,14 @@ namespace MenuPlanerApp.API.Migrations
                 column: "RecipeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RecipeWithAmount_MenuPlanId",
+                table: "RecipeWithAmount",
+                column: "MenuPlanId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RecipeWithAmount_RecipeId",
                 table: "RecipeWithAmount",
                 column: "RecipeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RecipeWithAmount_RecipeWithAmountId",
-                table: "RecipeWithAmount",
-                column: "RecipeWithAmountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -163,10 +163,10 @@ namespace MenuPlanerApp.API.Migrations
                 name: "Ingredient");
 
             migrationBuilder.DropTable(
-                name: "Recipe");
+                name: "MenuPlan");
 
             migrationBuilder.DropTable(
-                name: "MenuPlan");
+                name: "Recipe");
         }
     }
 }

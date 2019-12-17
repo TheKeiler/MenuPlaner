@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MenuPlanerApp.API.Migrations
 {
     [DbContext(typeof(MenuPlanerAppAPIContext))]
-    [Migration("20191215134518_initial")]
+    [Migration("20191217145242_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,7 +73,7 @@ namespace MenuPlanerApp.API.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int>("RecipeId")
+                    b.Property<int?>("RecipeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -144,20 +144,21 @@ namespace MenuPlanerApp.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("MenuPlanId")
+                        .HasColumnType("int");
+
                     b.Property<int>("NumbersOfMeals")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecipeWithAmountId")
+                    b.Property<int?>("RecipeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("MenuPlanId");
 
-                    b.HasIndex("RecipeWithAmountId");
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("RecipeWithAmount");
                 });
@@ -196,22 +197,20 @@ namespace MenuPlanerApp.API.Migrations
 
                     b.HasOne("MenuPlanerApp.API.Model.Recipe", null)
                         .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RecipeId");
                 });
 
             modelBuilder.Entity("MenuPlanerApp.API.Model.RecipeWithAmount", b =>
                 {
+                    b.HasOne("MenuPlanerApp.API.Model.MenuPlan", null)
+                        .WithMany("RecipesWithAmounts")
+                        .HasForeignKey("MenuPlanId");
+
                     b.HasOne("MenuPlanerApp.API.Model.Recipe", "Recipe")
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MenuPlanerApp.API.Model.MenuPlan", null)
-                        .WithMany("Recipes")
-                        .HasForeignKey("RecipeWithAmountId");
                 });
 #pragma warning restore 612, 618
         }

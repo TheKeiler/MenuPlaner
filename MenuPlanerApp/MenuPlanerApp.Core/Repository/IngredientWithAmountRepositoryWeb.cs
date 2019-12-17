@@ -36,7 +36,7 @@ namespace MenuPlanerApp.Core.Repository
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var responseMessage = await httpClient.GetAsync(_httpServerUri + $"?recipeId={id}");
-                if (!responseMessage.IsSuccessStatusCode) return null;
+                if (!responseMessage.IsSuccessStatusCode) return new List<IngredientWithAmount>();
 
                 var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var ingredientsWithAmount = JsonConvert.DeserializeObject<IEnumerable<IngredientWithAmount>>(jsonResult);
@@ -46,6 +46,7 @@ namespace MenuPlanerApp.Core.Repository
 
         public async Task PostIngredientWithAmount(IngredientWithAmount newIngredient)
         {
+            var ingredient = newIngredient.Ingredient;
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(newIngredient));
             var httpContent = new StringContent(serializedIngredient, Encoding.UTF8, "application/json");
 

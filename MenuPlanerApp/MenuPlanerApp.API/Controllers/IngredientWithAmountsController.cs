@@ -24,18 +24,7 @@ namespace MenuPlanerApp.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<IngredientWithAmount>>> GetIngredientWithAmountForRecipeId([FromQuery] int recipeId)
         {
-            var query = from a in _context.IngredientWithAmount
-                join i in _context.Ingredient on a.Ingredient.Id equals i.Id
-                where a.RecipeId.Equals(recipeId)
-                select new IngredientWithAmount
-                {
-                    Id = a.Id,
-                    Ingredient = i,
-                    Amount = a.Amount,
-                    RecipeId = a.RecipeId
-                };
-            var list = await query.ToListAsync();
-            return list;
+            return await _context.IngredientWithAmount.Include(i => _context.Ingredient).ToListAsync();
         }
 
         // GET: api/IngredientWithAmounts/5

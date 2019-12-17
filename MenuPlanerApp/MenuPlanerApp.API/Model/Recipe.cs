@@ -18,7 +18,6 @@ namespace MenuPlanerApp.API.Model
         public string Description { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("RecipeId")]
         public virtual ICollection<IngredientWithAmount> Ingredients { get; set; }
 
         [Required]

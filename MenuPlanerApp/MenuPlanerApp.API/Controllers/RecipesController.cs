@@ -25,7 +25,9 @@ namespace MenuPlanerApp.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipe()
         {
-            return await _context.Recipe.ToListAsync();
+            return await _context.Recipe
+                .Include(a => a.Ingredients)
+                .ThenInclude(i => i.Ingredient).ToListAsync();
         }
 
         // GET: api/Recipes/5

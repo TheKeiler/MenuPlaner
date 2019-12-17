@@ -17,8 +17,6 @@ namespace MenuPlanerApp.API.Model
         public DateTime StartDate { get; set; }
 
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("RecipeWithAmountId")]
-        public virtual ICollection<RecipeWithAmount> Recipes { get; set; }
+        public virtual ICollection<RecipeWithAmount> RecipesWithAmounts { get; set; }
     }
 }

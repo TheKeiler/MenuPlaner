@@ -12,18 +12,19 @@ namespace MenuPlanerApp.API.Model
 
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual Recipe Recipe { get; set; }
+        [ForeignKey("RecipeId")]
+        public Recipe Recipe { get; set; }
 
         [Required]
         public int NumbersOfMeals { get; set; }
 
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual DayOfWeek DayOfWeek { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
 
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual MealDayTimeEnum MealDayTime { get; set; }
+        public MealDayTimeEnum MealDayTime { get; set; }
 
     }
 }
