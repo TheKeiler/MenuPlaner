@@ -55,6 +55,7 @@ namespace MenuPlanerApp.API.Controllers
                 return BadRequest();
             }
 
+            _context.Recipe.Attach(recipe);
             _context.Entry(recipe).State = EntityState.Modified;
 
             try
@@ -82,7 +83,13 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
         {
-            _context.Recipe.Add(recipe);
+            var rec = recipe;
+            foreach (var ingr in rec.Ingredients)
+            {
+                ingr.Ingredient = _context.Ingredient.SingleOrDefault(i => i.Id == ingr.Ingredient.Id);
+            }
+            _context.Recipe.Add(rec);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);

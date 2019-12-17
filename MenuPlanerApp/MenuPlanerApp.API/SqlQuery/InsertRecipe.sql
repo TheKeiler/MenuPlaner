@@ -1,4 +1,4 @@
-DELETE FROM [MenuPlanerAppAPIContext-f6bdba59-5860-415f-9c18-c3c543fbef8c].[dbo].Recipe
+--DELETE FROM [MenuPlanerAppAPIContext-f6bdba59-5860-415f-9c18-c3c543fbef8c].[dbo].Recipe
 
 INSERT INTO [MenuPlanerAppAPIContext-f6bdba59-5860-415f-9c18-c3c543fbef8c].[dbo].Recipe
 

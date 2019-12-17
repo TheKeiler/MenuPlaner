@@ -12,6 +12,7 @@ namespace MenuPlanerApp.API.Model
 
         [Required]
         [ForeignKey("IngredientId")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Ingredient Ingredient { get; set; }
 
         [Required]

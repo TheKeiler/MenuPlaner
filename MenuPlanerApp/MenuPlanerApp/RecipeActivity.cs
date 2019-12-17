@@ -37,7 +37,6 @@ namespace MenuPlanerApp
         private Button _ingredientButton;
         private ListView _ingredientsListView;
         private IngredientsRepositoryWeb _ingredientsRepository;
-        private IngredientWithAmountRepositoryWeb _ingredientWithAmountRepositoryWeb;
         private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
         private Button _insertIngredientButton;
         private Button _menusButton;
@@ -88,7 +87,6 @@ namespace MenuPlanerApp
         {
             _recipesList = new List<Recipe>();
             _ingredientsRepository = new IngredientsRepositoryWeb();
-            _ingredientWithAmountRepositoryWeb = new IngredientWithAmountRepositoryWeb();
             _recipeRepository = new RecipeRepositoryWeb();
             _selectedRecipe = new Recipe();
             _verifyUserEntries = new VerifyUserEntries();
@@ -356,20 +354,11 @@ namespace MenuPlanerApp
             if (_selectedRecipe.Id != 0)
             {
                 await _recipeRepository.UpdateRecipe(_selectedRecipe);
-                foreach (var ingr in _selectedRecipe.Ingredients)
-                {
-                    await _ingredientWithAmountRepositoryWeb.UpdateIngredientWithAmount(ingr);
-                }
             }
 
             else
-            {
-                var newRecipe = await _recipeRepository.PostRecipe(_selectedRecipe);
-                foreach (var ingr in _selectedRecipe.Ingredients)
-                {
-                    ingr.RecipeId = newRecipe.Id;
-                    await _ingredientWithAmountRepositoryWeb.PostIngredientWithAmount(ingr);
-                }
+            { 
+                await _recipeRepository.PostRecipe(_selectedRecipe);
             }
         }
 
