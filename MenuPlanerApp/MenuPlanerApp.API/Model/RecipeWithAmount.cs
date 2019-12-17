@@ -25,6 +25,5 @@ namespace MenuPlanerApp.API.Model
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public MealDayTimeEnum MealDayTime { get; set; }
-
     }
 }

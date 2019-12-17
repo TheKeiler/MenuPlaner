@@ -157,14 +157,14 @@
         android:minHeight="200dp">
 
 
-                <ListView
-                    android:minWidth="25px"
-                    android:minHeight="100px"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/recipeIngredientsListView"
-                    android:tooltipText="Zutaten"
-                    android:defaultFocusHighlightEnabled="true" />
+        <ListView
+          android:minWidth="25px"
+          android:minHeight="100px"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/recipeIngredientsListView"
+          android:tooltipText="Zutaten"
+          android:defaultFocusHighlightEnabled="true" />
 
 
       </LinearLayout>

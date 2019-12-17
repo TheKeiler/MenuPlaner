@@ -39,7 +39,8 @@ namespace MenuPlanerApp.Core.Repository
                 if (!responseMessage.IsSuccessStatusCode) return new List<IngredientWithAmount>();
 
                 var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var ingredientsWithAmount = JsonConvert.DeserializeObject<IEnumerable<IngredientWithAmount>>(jsonResult);
+                var ingredientsWithAmount =
+                    JsonConvert.DeserializeObject<IEnumerable<IngredientWithAmount>>(jsonResult);
                 return ingredientsWithAmount.ToList();
             }
         }

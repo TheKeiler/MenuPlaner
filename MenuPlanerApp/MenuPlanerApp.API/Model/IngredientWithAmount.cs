@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 
 namespace MenuPlanerApp.API.Model
 {
