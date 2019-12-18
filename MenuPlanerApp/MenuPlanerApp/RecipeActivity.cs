@@ -27,12 +27,12 @@ namespace MenuPlanerApp
     {
         private const int IngredientsSearchRequestCode = 2000;
         private const int CameraRequestCode = 2001;
-        private readonly int REQUEST_CAMERA = 1000;
+        private const int RequestCamera = 1000;
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
         private ImageHelper _imageHelper;
-        private TextInputEditText _ingredientAmounEditText;
+        private TextInputEditText _ingredientAmountEditText;
         private Button _ingredientButton;
         private ListView _ingredientsListView;
         private IngredientsRepositoryWeb _ingredientsRepository;
@@ -54,8 +54,7 @@ namespace MenuPlanerApp
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
-        private VerifyUserEntries _verifyUserEntries;
-        private int PositionSelectedListViewItem;
+        private int _positionSelectedListViewItem;
 
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -88,7 +87,6 @@ namespace MenuPlanerApp
             _ingredientsRepository = new IngredientsRepositoryWeb();
             _recipeRepository = new RecipeRepositoryWeb();
             _selectedRecipe = new Recipe();
-            _verifyUserEntries = new VerifyUserEntries();
             _selectedIngredient = new Ingredient();
             _imageHelper = new ImageHelper();
         }
@@ -138,7 +136,7 @@ namespace MenuPlanerApp
             _recipeNameEditText = FindViewById<TextInputEditText>(Resource.Id.recipeNameEditText);
             _recipeDescriptionEditText = FindViewById<TextInputEditText>(Resource.Id.recipeDescriptionEditText);
             _selectIngredientButton = FindViewById<Button>(Resource.Id.recipeSelectIngredientButton);
-            _ingredientAmounEditText = FindViewById<TextInputEditText>(Resource.Id.recipeAmountEditText);
+            _ingredientAmountEditText = FindViewById<TextInputEditText>(Resource.Id.recipeAmountEditText);
             _insertIngredientButton = FindViewById<Button>(Resource.Id.recipeInsertIngredientButton);
             _ingredientsListView = FindViewById<ListView>(Resource.Id.recipeIngredientsListView);
             _removeIngredientButton = FindViewById<Button>(Resource.Id.recipeRemoveIngredientButton);
@@ -181,7 +179,7 @@ namespace MenuPlanerApp
 
         private void BindHintOnAmountEditText()
         {
-            _ingredientAmounEditText.Hint =
+            _ingredientAmountEditText.Hint =
                 _selectedIngredient.Id == 0 ? "Mengenangabe" : _selectedIngredient.ReferenceUnit;
         }
 
@@ -225,15 +223,15 @@ namespace MenuPlanerApp
 
         private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)
         {
-            if (PositionSelectedListViewItem == -1) ShowToastMessage("Keine Zutat gewählt");
-            _selectedRecipe.Ingredients.RemoveAt(PositionSelectedListViewItem);
-            PositionSelectedListViewItem = -1;
+            if (_positionSelectedListViewItem == -1) ShowToastMessage("Keine Zutat gewählt");
+            _selectedRecipe.Ingredients.RemoveAt(_positionSelectedListViewItem);
+            _positionSelectedListViewItem = -1;
             SetUpListView();
         }
 
         private void ChangeSelectedItemField_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            PositionSelectedListViewItem = e.Position;
+            _positionSelectedListViewItem = e.Position;
         }
 
         private void SetBitmapFromCameraToImageView(int requestCode, Result resultCode, Intent data)
@@ -254,8 +252,8 @@ namespace MenuPlanerApp
             var ingredient = await _ingredientsRepository.GetIngredientById(ingredientId);
             _selectedIngredient = ingredient;
             _selectIngredientButton.Text = _selectedIngredient.Name;
-            _ingredientAmounEditText.Hint = _selectedIngredient.ReferenceUnit;
-            _ingredientAmounEditText.Text = "";
+            _ingredientAmountEditText.Hint = _selectedIngredient.ReferenceUnit;
+            _ingredientAmountEditText.Text = "";
         }
 
         private void CameraButton_Click(object sender, EventArgs e)
@@ -267,7 +265,7 @@ namespace MenuPlanerApp
         private void InsertIngredientButton_Click(object sender, EventArgs e)
         {
             var newIngredientWithAmount = new IngredientWithAmount {Ingredient = _selectedIngredient};
-            var decAsText = _ingredientAmounEditText.Text;
+            var decAsText = _ingredientAmountEditText.Text;
             newIngredientWithAmount.Amount = decimal.Parse(decAsText);
 
             if (VerifyUserEntries.IsIngredientWithAmountComplete(newIngredientWithAmount))
@@ -277,8 +275,8 @@ namespace MenuPlanerApp
                 SetListViewHeightBasedOnChildren(_ingredientsListView);
                 _selectedIngredient = new Ingredient();
                 _selectIngredientButton.Text = "Zutat wählen";
-                _ingredientAmounEditText.Text = "";
-                _ingredientAmounEditText.Hint = "Mengenangabe";
+                _ingredientAmountEditText.Text = "";
+                _ingredientAmountEditText.Hint = "Mengenangabe";
             }
             else
             {
@@ -374,14 +372,13 @@ namespace MenuPlanerApp
 
         private void CheckPermissions()
         {
-            ActivityCompat.RequestPermissions(this, new[] {Manifest.Permission.Camera}, REQUEST_CAMERA);
+            ActivityCompat.RequestPermissions(this, new[] {Manifest.Permission.Camera}, RequestCamera);
         }
 
-        public static void SetListViewHeightBasedOnChildren(ListView listView)
+        private static void SetListViewHeightBasedOnChildren(ListView listView)
         {
             var listAdapter = listView.Adapter;
             if (listAdapter == null)
-                // pre-condition
                 return;
 
             var totalHeight = 0;

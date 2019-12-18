@@ -10,7 +10,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="50dp"
+    android:minHeight="80dp"
     android:gravity="center"
     android:layout_weight="10">
 
@@ -154,7 +154,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="200dp">
+        >
 
 
         <ListView
@@ -190,8 +190,9 @@
 
         <ImageView
           android:src="@android:drawable/ic_menu_gallery"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_width="fill_parent"
+          android:layout_height="400dp"
+          android:scaleType="fitXY"
           android:id="@+id/recipeImageView" />
 
 
