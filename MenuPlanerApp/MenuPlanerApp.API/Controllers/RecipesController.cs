@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MenuPlanerApp.API.Data;
 using MenuPlanerApp.API.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -36,10 +35,7 @@ namespace MenuPlanerApp.API.Controllers
         {
             var recipe = await _context.Recipe.FindAsync(id);
 
-            if (recipe == null)
-            {
-                return NotFound();
-            }
+            if (recipe == null) return NotFound();
 
             return recipe;
         }
@@ -50,13 +46,42 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
         {
-            if (id != recipe.Id)
-            {
-                return BadRequest();
-            }
 
-            _context.Recipe.Attach(recipe);
-            _context.Entry(recipe).State = EntityState.Modified;
+            var existingRecipe = _context.Recipe
+                .Where(r => r.Id == recipe.Id)
+                .Include(r => r.Ingredients)
+                .SingleOrDefault();
+
+            if (existingRecipe != null)
+            {
+                _context.Entry(existingRecipe).CurrentValues.SetValues(recipe);
+
+                foreach (var existingChild in existingRecipe.Ingredients.ToList()
+                    .Where(existingChild => recipe.Ingredients.All(c => c.Id != existingChild.Id)))
+                {
+                    _context.IngredientWithAmount.Remove(existingChild);
+                }
+
+                foreach (var childRecipe in recipe.Ingredients)
+                {
+                    var existingChild = existingRecipe.Ingredients
+                        .SingleOrDefault(i => i.Id == childRecipe.Id);
+
+                    if (existingChild != null)
+                    {
+                        _context.Entry(existingChild).CurrentValues.SetValues(childRecipe);
+                    }
+                    else
+                    {
+                        var newChild = new IngredientWithAmount
+                        {
+                            Ingredient = childRecipe.Ingredient,
+                            Amount = childRecipe.Amount,
+                        };
+                        existingRecipe.Ingredients.Add(newChild);
+                    }
+                }
+            }
 
             try
             {
@@ -65,13 +90,8 @@ namespace MenuPlanerApp.API.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!RecipeExists(id))
-                {
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
@@ -85,14 +105,12 @@ namespace MenuPlanerApp.API.Controllers
         {
             var rec = recipe;
             foreach (var ingr in rec.Ingredients)
-            {
                 ingr.Ingredient = _context.Ingredient.SingleOrDefault(i => i.Id == ingr.Ingredient.Id);
-            }
             _context.Recipe.Add(rec);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
+            return CreatedAtAction("GetRecipe", new {id = recipe.Id}, recipe);
         }
 
         // DELETE: api/Recipes/5
@@ -100,12 +118,18 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<Recipe>> DeleteRecipe(int id)
         {
             var recipe = await _context.Recipe.FindAsync(id);
-            if (recipe == null)
-            {
-                return NotFound();
-            }
+            if (recipe == null) return NotFound();
 
-            _context.Recipe.Remove(recipe);
+            var existingRecipe = _context.Recipe
+                .Where(r => r.Id == id)
+                .Include(r => r.Ingredients)
+                .SingleOrDefault();
+
+            if (existingRecipe != null)
+            {
+                _context.IngredientWithAmount.RemoveRange(existingRecipe.Ingredients);
+                _context.Recipe.Remove(existingRecipe);
+            }
             await _context.SaveChangesAsync();
 
             return recipe;

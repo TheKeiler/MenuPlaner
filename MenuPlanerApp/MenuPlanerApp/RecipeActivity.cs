@@ -11,7 +11,6 @@ using Android.Provider;
 using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using Android.Support.V7.App;
-using Android.Support.V7.RecyclerView.Extensions;
 using Android.Views;
 using Android.Widget;
 using MenuPlanerApp.Adapters;
@@ -32,13 +31,14 @@ namespace MenuPlanerApp
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
-        private Bitmap _instructionsBitmap;
+        private ImageHelper _imageHelper;
         private TextInputEditText _ingredientAmounEditText;
         private Button _ingredientButton;
         private ListView _ingredientsListView;
         private IngredientsRepositoryWeb _ingredientsRepository;
         private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
         private Button _insertIngredientButton;
+        private Bitmap _instructionsBitmap;
         private Button _menusButton;
         private Button _newRecipeButton;
         private Button _optionsButton;
@@ -50,7 +50,6 @@ namespace MenuPlanerApp
         private Button _recipeSearchButton;
         private List<Recipe> _recipesList;
         private Button _removeIngredientButton;
-        private ImageHelper _imageHelper;
         private Button _saveButton;
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
@@ -145,9 +144,10 @@ namespace MenuPlanerApp
             _removeIngredientButton = FindViewById<Button>(Resource.Id.recipeRemoveIngredientButton);
             _cameraButton = FindViewById<Button>(Resource.Id.recipeCameraButton);
             _recipeImageView = FindViewById<ImageView>(Resource.Id.recipeImageView);
+            _recipeSearchButton = FindViewById<Button>(Resource.Id.recipeSearchButton);
         }
 
-        private void FindViewsOperation()
+    private void FindViewsOperation()
         {
             _recipeSearchButton = FindViewById<Button>(Resource.Id.recipeSearchButton);
             _newRecipeButton = FindViewById<Button>(Resource.Id.newRecipeButton);
@@ -187,7 +187,8 @@ namespace MenuPlanerApp
 
         private void SetUpListView()
         {
-            _ingredientsWithAmountListViewAdapter = new IngredientsWithAmountListViewAdapter(this, _selectedRecipe.Ingredients);
+            _ingredientsWithAmountListViewAdapter =
+                new IngredientsWithAmountListViewAdapter(this, _selectedRecipe.Ingredients);
             _ingredientsListView.Adapter = _ingredientsWithAmountListViewAdapter;
         }
 
@@ -213,8 +214,14 @@ namespace MenuPlanerApp
             _insertIngredientButton.Click += InsertIngredientButton_Click;
             _ingredientsListView.ItemClick += ChangeSelectedItemField_ItemClick;
             _removeIngredientButton.Click += RemoveSelectedIngredientFromList_Click;
+            _recipeSearchButton.Click += SearchButton_Click;
         }
 
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, IngredientsSearchRequestCode);
+        }
 
         private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)
         {
@@ -232,7 +239,7 @@ namespace MenuPlanerApp
         private void SetBitmapFromCameraToImageView(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if(data == null) return;
+            if (data == null) return;
 
             _instructionsBitmap = (Bitmap) data.Extras.Get("data");
             _recipeImageView.SetImageBitmap(_instructionsBitmap);
@@ -240,7 +247,6 @@ namespace MenuPlanerApp
 
         private async void BindDataFromIngredientSearchResultToView(int requestCode, Result resultCode, Intent data)
         {
-            
             if (data == null || !data.HasExtra("selectedIngredientId")) return;
 
             base.OnActivityResult(requestCode, resultCode, data);
@@ -318,6 +324,8 @@ namespace MenuPlanerApp
             LinkEventHandlers();
         }
 
+
+
         private async void SaveButton_Click(object sender, EventArgs e)
         {
             BindDataFromViewToData();
@@ -352,14 +360,10 @@ namespace MenuPlanerApp
         private async Task SaveOrUpdateRecipe()
         {
             if (_selectedRecipe.Id != 0)
-            {
                 await _recipeRepository.UpdateRecipe(_selectedRecipe);
-            }
 
             else
-            { 
-                await _recipeRepository.PostRecipe(_selectedRecipe);
-            }
+                _selectedRecipe = await _recipeRepository.PostRecipe(_selectedRecipe);
         }
 
         private void ShowToastMessage(string text)
@@ -378,10 +382,8 @@ namespace MenuPlanerApp
         {
             var listAdapter = listView.Adapter;
             if (listAdapter == null)
-            {
                 // pre-condition
                 return;
-            }
 
             var totalHeight = 0;
             var desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.AtMost);
@@ -393,11 +395,9 @@ namespace MenuPlanerApp
             }
 
             var parameters = listView.LayoutParameters;
-            parameters.Height = totalHeight + (listView.DividerHeight * (listAdapter.Count - 1));
+            parameters.Height = totalHeight + listView.DividerHeight * (listAdapter.Count - 1);
             listView.LayoutParameters = parameters;
             listView.RequestLayout();
-
         }
-
     }
 }
