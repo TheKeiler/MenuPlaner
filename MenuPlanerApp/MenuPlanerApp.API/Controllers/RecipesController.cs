@@ -5,7 +5,6 @@ using MenuPlanerApp.API.Data;
 using MenuPlanerApp.API.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace MenuPlanerApp.API.Controllers
 {
@@ -46,7 +45,6 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
         {
-
             var existingRecipe = _context.Recipe
                 .Where(r => r.Id == recipe.Id)
                 .Include(r => r.Ingredients)
@@ -58,9 +56,7 @@ namespace MenuPlanerApp.API.Controllers
 
                 foreach (var existingChild in existingRecipe.Ingredients.ToList()
                     .Where(existingChild => recipe.Ingredients.All(c => c.Id != existingChild.Id)))
-                {
                     _context.IngredientWithAmount.Remove(existingChild);
-                }
 
                 foreach (var childRecipe in recipe.Ingredients)
                 {
@@ -76,7 +72,7 @@ namespace MenuPlanerApp.API.Controllers
                         var newChild = new IngredientWithAmount
                         {
                             Ingredient = childRecipe.Ingredient,
-                            Amount = childRecipe.Amount,
+                            Amount = childRecipe.Amount
                         };
                         existingRecipe.Ingredients.Add(newChild);
                     }
@@ -130,6 +126,7 @@ namespace MenuPlanerApp.API.Controllers
                 _context.IngredientWithAmount.RemoveRange(existingRecipe.Ingredients);
                 _context.Recipe.Remove(existingRecipe);
             }
+
             await _context.SaveChangesAsync();
 
             return recipe;

@@ -147,7 +147,7 @@ namespace MenuPlanerApp
             _recipeSearchButton = FindViewById<Button>(Resource.Id.recipeSearchButton);
         }
 
-    private void FindViewsOperation()
+        private void FindViewsOperation()
         {
             _recipeSearchButton = FindViewById<Button>(Resource.Id.recipeSearchButton);
             _newRecipeButton = FindViewById<Button>(Resource.Id.newRecipeButton);
@@ -323,7 +323,6 @@ namespace MenuPlanerApp
             BindDataFromDataToView();
             LinkEventHandlers();
         }
-
 
 
         private async void SaveButton_Click(object sender, EventArgs e)
