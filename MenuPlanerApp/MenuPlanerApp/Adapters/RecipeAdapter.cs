@@ -23,14 +23,15 @@ namespace MenuPlanerApp.Adapters
         {
             var recipesRepositoryWeb = new RecipeRepositoryWeb();
             _recipes = await recipesRepositoryWeb.GetAllRecipes();
-            FilterRecipesFromOptions();
+            await FilterRecipesFromOptions();
             _recipesFull = new List<Recipe>(_recipes);
         }
 
-        private async void FilterRecipesFromOptions()
+        private async Task FilterRecipesFromOptions()
         {
             var recipeFilter = new RecipeFilter();
-            _recipes = await recipeFilter.FilterRecipes(_recipes);
+            var filteredList = await recipeFilter.FilterRecipes(_recipes);
+            _recipes = filteredList;
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)

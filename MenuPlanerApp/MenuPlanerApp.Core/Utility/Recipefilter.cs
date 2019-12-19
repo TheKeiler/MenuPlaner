@@ -14,7 +14,9 @@ namespace MenuPlanerApp.Core.Utility
             if (recipesList.Count == 0) return recipesList;
             var userOptionRepo = new UserOptionsRepositoryWeb();
             var userOptions = await userOptionRepo.GetOptionById(1);
-            return userOptions == null ? recipesList : FilterRecipesAccordingToOptions(recipesList, userOptions);
+            if (userOptions == null) return recipesList;
+            var filteredList = FilterRecipesAccordingToOptions(recipesList, userOptions);
+            return filteredList;
         }
 
         private List<Recipe> FilterRecipesAccordingToOptions(List<Recipe> recipeList, UserOptions userOptions)
@@ -74,7 +76,7 @@ namespace MenuPlanerApp.Core.Utility
         private List<Recipe> FilterFructoseRecipes(List<Recipe> recipes)
         {
             var rec = new List<Recipe>(recipes);
-
+            
             foreach (var recipe in recipes)
             {
                 var recipeContainsFructose = false;
