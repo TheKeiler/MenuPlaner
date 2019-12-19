@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
+using MenuPlanerApp.Core.Utility;
 using MenuPlanerApp.ViewHolders;
 
 namespace MenuPlanerApp.Adapters
@@ -22,7 +23,14 @@ namespace MenuPlanerApp.Adapters
         {
             var recipesRepositoryWeb = new RecipeRepositoryWeb();
             _recipes = await recipesRepositoryWeb.GetAllRecipes();
+            FilterRecipesFromOptions();
             _recipesFull = new List<Recipe>(_recipes);
+        }
+
+        private async void FilterRecipesFromOptions()
+        {
+            var recipeFilter = new RecipeFilter();
+            _recipes = await recipeFilter.FilterRecipes(_recipes);
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)

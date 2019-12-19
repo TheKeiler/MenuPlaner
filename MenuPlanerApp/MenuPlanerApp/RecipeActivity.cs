@@ -56,7 +56,6 @@ namespace MenuPlanerApp
         private Button _selectIngredientButton;
         private int _positionSelectedListViewItem;
 
-
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -67,10 +66,17 @@ namespace MenuPlanerApp
             CheckPermissions();
             InitialReferencingObjects();
             await LoadRecipeData();
+            await FilterRecipes();
             SetSelectedRecipe();
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
+        }
+
+        private async Task FilterRecipes()
+        {
+            var recipeFilter = new RecipeFilter();
+            _recipesList = await recipeFilter.FilterRecipes(_recipesList);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
