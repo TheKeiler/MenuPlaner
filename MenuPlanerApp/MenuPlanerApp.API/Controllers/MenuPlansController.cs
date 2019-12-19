@@ -69,7 +69,7 @@ namespace MenuPlanerApp.API.Controllers
                     }
                     else
                     {
-                        var newChild = new RecipeWithAmount()
+                        var newChild = new RecipeWithAmount
                         {
                             Recipe = childMenuPlan.Recipe,
                             DayOfWeek = childMenuPlan.DayOfWeek,
@@ -108,7 +108,7 @@ namespace MenuPlanerApp.API.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMenuPlan", new { id = menuPlan.Id }, menuPlan);
+            return CreatedAtAction("GetMenuPlan", new {id = menuPlan.Id}, menuPlan);
         }
 
         // DELETE: api/MenuPlans/5

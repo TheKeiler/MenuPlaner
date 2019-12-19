@@ -8,7 +8,6 @@ namespace MenuPlanerApp.Core.Utility
 {
     public class RecipeFilter
     {
-
         public async Task<List<Recipe>> FilterRecipes(List<Recipe> recipesList)
         {
             if (recipesList.Count == 0) return recipesList;
@@ -21,32 +20,19 @@ namespace MenuPlanerApp.Core.Utility
 
         private List<Recipe> FilterRecipesAccordingToOptions(List<Recipe> recipeList, UserOptions userOptions)
         {
-            if (userOptions.WantsUserToSeeRecipesWithCeliac && userOptions.WantsUserToSeeRecipesWithFructose && userOptions.WantsUserToSeeRecipesWithHistamin && userOptions.WantsUserToSeeRecipesWithLactose)
-            {
-                return recipeList;
-            }
+            if (userOptions.WantsUserToSeeRecipesWithCeliac && userOptions.WantsUserToSeeRecipesWithFructose &&
+                userOptions.WantsUserToSeeRecipesWithHistamin &&
+                userOptions.WantsUserToSeeRecipesWithLactose) return recipeList;
 
             var recipes = new List<Recipe>(recipeList);
 
-            if (!userOptions.WantsUserToSeeRecipesWithCeliac)
-            {
-                recipes = FilterCeliacRecipes(recipes);
-            }
+            if (!userOptions.WantsUserToSeeRecipesWithCeliac) recipes = FilterCeliacRecipes(recipes);
 
-            if (!userOptions.WantsUserToSeeRecipesWithFructose)
-            {
-                recipes = FilterFructoseRecipes(recipes);
-            }
+            if (!userOptions.WantsUserToSeeRecipesWithFructose) recipes = FilterFructoseRecipes(recipes);
 
-            if (!userOptions.WantsUserToSeeRecipesWithHistamin)
-            {
-                recipes = FilterHistaminRecipes(recipes);
-            }
+            if (!userOptions.WantsUserToSeeRecipesWithHistamin) recipes = FilterHistaminRecipes(recipes);
 
-            if (!userOptions.WantsUserToSeeRecipesWithLactose)
-            {
-                recipes = FilterLactoseRecipes(recipes);
-            }
+            if (!userOptions.WantsUserToSeeRecipesWithLactose) recipes = FilterLactoseRecipes(recipes);
 
             return recipes;
         }
@@ -61,36 +47,28 @@ namespace MenuPlanerApp.Core.Utility
                 var recipeContainsCeliac = false;
 
                 foreach (var ingr in recipe.Ingredients.Where(ingr => !ingr.Ingredient.CompatibleForCeliac))
-                {
                     recipeContainsCeliac = true;
-                }
 
-                if (recipeContainsCeliac)
-                {
-                    rec.Remove(recipe);
-                }
+                if (recipeContainsCeliac) rec.Remove(recipe);
             }
+
             return rec;
         }
 
         private List<Recipe> FilterFructoseRecipes(List<Recipe> recipes)
         {
             var rec = new List<Recipe>(recipes);
-            
+
             foreach (var recipe in recipes)
             {
                 var recipeContainsFructose = false;
 
                 foreach (var ingr in recipe.Ingredients.Where(ingr => !ingr.Ingredient.CompatibleForFructose))
-                {
                     recipeContainsFructose = true;
-                }
 
-                if (recipeContainsFructose)
-                {
-                    rec.Remove(recipe);
-                }
+                if (recipeContainsFructose) rec.Remove(recipe);
             }
+
             return rec;
         }
 
@@ -103,15 +81,11 @@ namespace MenuPlanerApp.Core.Utility
                 var recipeContainsHistamin = false;
 
                 foreach (var ingr in recipe.Ingredients.Where(ingr => !ingr.Ingredient.CompatibleForHistamin))
-                {
                     recipeContainsHistamin = true;
-                }
 
-                if (recipeContainsHistamin)
-                {
-                    rec.Remove(recipe);
-                }
+                if (recipeContainsHistamin) rec.Remove(recipe);
             }
+
             return rec;
         }
 
@@ -124,17 +98,12 @@ namespace MenuPlanerApp.Core.Utility
                 var recipeContainsLactose = false;
 
                 foreach (var ingr in recipe.Ingredients.Where(ingr => !ingr.Ingredient.CompatibleForLactose))
-                {
                     recipeContainsLactose = true;
-                }
 
-                if (recipeContainsLactose)
-                {
-                    rec.Remove(recipe);
-                }
+                if (recipeContainsLactose) rec.Remove(recipe);
             }
+
             return rec;
         }
-
     }
 }

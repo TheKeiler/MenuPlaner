@@ -42,6 +42,7 @@ namespace MenuPlanerApp
         private Button _menusButton;
         private Button _newRecipeButton;
         private Button _optionsButton;
+        private int _positionSelectedListViewItem;
         private Button _recipeButton;
         private TextInputEditText _recipeDescriptionEditText;
         private ImageView _recipeImageView;
@@ -54,7 +55,6 @@ namespace MenuPlanerApp
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
-        private int _positionSelectedListViewItem;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

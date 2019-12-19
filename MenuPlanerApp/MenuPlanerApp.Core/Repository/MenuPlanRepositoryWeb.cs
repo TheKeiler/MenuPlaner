@@ -30,7 +30,8 @@ namespace MenuPlanerApp.Core.Repository
 
         public async Task<MenuPlan> PostMenuPlan(MenuPlan newMenuPlan)
         {
-            var serializedMenuPlan = await Task.Run(() => JsonConvert.SerializeObject(newMenuPlan, Formatting.Indented));
+            var serializedMenuPlan =
+                await Task.Run(() => JsonConvert.SerializeObject(newMenuPlan, Formatting.Indented));
             var httpContent = new StringContent(serializedMenuPlan, Encoding.UTF8, "application/json");
 
             using (var httpClient = new HttpClient())
