@@ -82,7 +82,7 @@
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
           android:width="200dp"
-          android:id="@+id/newMenuPlanButton" />
+          android:id="@+id/newRecipeButton" />
 
       </LinearLayout>
 

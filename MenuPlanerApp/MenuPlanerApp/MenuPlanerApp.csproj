@@ -69,6 +69,7 @@
     <Compile Include="Adapters\RecipeAdapter.cs" />
     <Compile Include="IngredientsActivity.cs" />
     <Compile Include="IngredientsSearchActivity.cs" />
+    <Compile Include="MenuPlanActivity.cs" />
     <Compile Include="OptionsActivity.cs" />
     <Compile Include="RecipeActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -80,6 +81,9 @@
     <Compile Include="ViewHolders\RecipeViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -171,6 +175,11 @@
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.3.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\menuPlan.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

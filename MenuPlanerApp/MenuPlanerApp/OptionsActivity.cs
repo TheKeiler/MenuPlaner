@@ -123,7 +123,8 @@ namespace MenuPlanerApp
 
         private void MenusButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var intent = new Intent(this, typeof(MenuPlanActivity));
+            StartActivity(intent);
         }
 
         private void IngredientsButton_Click(object sender, EventArgs e)
