@@ -23,7 +23,9 @@ namespace MenuPlanerApp.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MenuPlan>>> GetMenuPlan()
         {
-            return await _context.MenuPlan.ToListAsync();
+            return await _context.MenuPlan
+                .Include(a => a.RecipesWithAmounts)
+                .ThenInclude(r => r.Recipe).ToListAsync();
         }
 
         // GET: api/MenuPlans/5
@@ -43,9 +45,41 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMenuPlan(int id, MenuPlan menuPlan)
         {
-            if (id != menuPlan.Id) return BadRequest();
+            var existingMenu = _context.MenuPlan
+                .Where(m => m.Id == menuPlan.Id)
+                .Include(a => a.RecipesWithAmounts)
+                .SingleOrDefault();
 
-            _context.Entry(menuPlan).State = EntityState.Modified;
+            if (existingMenu != null)
+            {
+                _context.Entry(existingMenu).CurrentValues.SetValues(menuPlan);
+
+                foreach (var existingChild in existingMenu.RecipesWithAmounts.ToList()
+                    .Where(existingChild => menuPlan.RecipesWithAmounts.All(c => c.Id != existingChild.Id)))
+                    _context.RecipeWithAmount.Remove(existingChild);
+
+                foreach (var childMenuPlan in menuPlan.RecipesWithAmounts)
+                {
+                    var existingChild = existingMenu.RecipesWithAmounts
+                        .SingleOrDefault(r => r.Id == childMenuPlan.Id);
+
+                    if (existingChild != null)
+                    {
+                        _context.Entry(existingChild).CurrentValues.SetValues(childMenuPlan);
+                    }
+                    else
+                    {
+                        var newChild = new RecipeWithAmount()
+                        {
+                            Recipe = childMenuPlan.Recipe,
+                            DayOfWeek = childMenuPlan.DayOfWeek,
+                            MealDayTime = childMenuPlan.MealDayTime,
+                            NumbersOfMeals = childMenuPlan.NumbersOfMeals
+                        };
+                        existingMenu.RecipesWithAmounts.Add(newChild);
+                    }
+                }
+            }
 
             try
             {
@@ -67,10 +101,14 @@ namespace MenuPlanerApp.API.Controllers
         [HttpPost]
         public async Task<ActionResult<MenuPlan>> PostMenuPlan(MenuPlan menuPlan)
         {
-            _context.MenuPlan.Add(menuPlan);
+            var menuP = menuPlan;
+            foreach (var recepe in menuP.RecipesWithAmounts)
+                recepe.Recipe = _context.Recipe.SingleOrDefault(i => i.Id == recepe.Recipe.Id);
+            _context.MenuPlan.Add(menuP);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMenuPlan", new {id = menuPlan.Id}, menuPlan);
+            return CreatedAtAction("GetMenuPlan", new { id = menuPlan.Id }, menuPlan);
         }
 
         // DELETE: api/MenuPlans/5
@@ -80,7 +118,17 @@ namespace MenuPlanerApp.API.Controllers
             var menuPlan = await _context.MenuPlan.FindAsync(id);
             if (menuPlan == null) return NotFound();
 
-            _context.MenuPlan.Remove(menuPlan);
+            var existingMenuPlan = _context.MenuPlan
+                .Where(r => r.Id == id)
+                .Include(r => r.RecipesWithAmounts)
+                .SingleOrDefault();
+
+            if (existingMenuPlan != null)
+            {
+                _context.RecipeWithAmount.RemoveRange(existingMenuPlan.RecipesWithAmounts);
+                _context.MenuPlan.Remove(existingMenuPlan);
+            }
+
             await _context.SaveChangesAsync();
 
             return menuPlan;
@@ -88,7 +136,7 @@ namespace MenuPlanerApp.API.Controllers
 
         private bool MenuPlanExists(int id)
         {
-            return _context.MenuPlan.Any(e => e.Id == id);
+            return _context.MenuPlan.Any(m => m.Id == id);
         }
     }
 }
