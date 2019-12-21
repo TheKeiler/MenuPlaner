@@ -50,7 +50,7 @@
   <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="1"
                 android:gravity="center|bottom">
 
     <Button
@@ -69,79 +69,399 @@
 
   </LinearLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="75"
-        android:rowCount="8"
-        android:columnCount="4"
-        android:layout_margin="5"
-        >
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|bottom">
+
+    <Button
+      android:text="Startdatum Wählen"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:width="200dp"
+      android:id="@+id/menuPlanDateButton" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="Kein Datum gewählt"
+      android:width="200dp"
+      android:gravity="center_vertical"
+      android:paddingLeft="5dp"
+      android:id="@+id/menuPlanDateDisplay"/>
+
+  </LinearLayout>
+
+  <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="73"
+        android:gravity="center">
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
 
       <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Portionen:"
-        android:width="80dp"
-        android:layout_margin="5dp" />
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mittagessen:"
-        android:width="100dp"
-        android:layout_margin="5dp" />
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Portionen:"
-        android:layout_margin="5dp"
-        android:width="80dp" />
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Abendessen:"
-        android:layout_margin="5dp"
-        android:width="100dp"/>
+        android:layout_height="match_parent"
+        android:text="Tag 1"
+        android:gravity="center_vertical"
+        android:width="50dp"
+        android:id="@+id/menuPlanDayOneTextView"/>
 
       <android.support.design.widget.TextInputEditText
-        android:id="@+id/mondayLunchEditText"
+        android:id="@+id/dayOneLunchEditText"
         android:layout_width="wrap_content"
         android:imeOptions="actionGo"
         android:inputType="numberSigned"
         android:layout_height="wrap_content"
-        android:hint="Anzahl"
-        android:layout_margin="5dp"
-        android:layout_marginVertical="10dp"/>
+        android:width="50dp"
+        android:hint="Anzahl"/>
 
       <Button
-        android:text="Montag"
+        android:text="Mittag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mondayLunchButton"
+        android:width="125dp"
+        android:id="@+id/dayOneLunchButton"
       />
 
       <android.support.design.widget.TextInputEditText
-        android:id="@+id/mondayDinnerEditText"
+        android:id="@+id/dayOneDinnerEditText"
         android:layout_width="wrap_content"
         android:imeOptions="actionGo"
         android:inputType="numberSigned"
         android:layout_height="wrap_content"
-        android:hint="Anzahl"
-        android:layout_margin="5dp" />
+        android:width="50dp"
+        android:hint="Anzahl" />
 
       <Button
-        android:text="Montag"
+        android:text="Abend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mondayDinnerButton"
+        android:width="125dp"
+        android:id="@+id/dayOneDinnerButton"
       />
 
-    </GridLayout>
+  </LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Tag 2"
+        android:gravity="center_vertical"
+        android:width="50dp"
+        android:id="@+id/menuPlanDayTwoTextView"/>
+
+      <android.support.design.widget.TextInputEditText
+        android:id="@+id/dayTwoLunchEditText"
+        android:layout_width="wrap_content"
+        android:imeOptions="actionGo"
+        android:inputType="numberSigned"
+        android:layout_height="wrap_content"
+        android:width="50dp"
+        android:hint="Anzahl"/>
+
+      <Button
+        android:text="Mittag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="125dp"
+        android:id="@+id/dayTwoLunchButton"
+      />
+
+      <android.support.design.widget.TextInputEditText
+        android:id="@+id/dayTwoDinnerEditText"
+        android:layout_width="wrap_content"
+        android:imeOptions="actionGo"
+        android:inputType="numberSigned"
+        android:layout_height="wrap_content"
+        android:width="50dp"
+        android:hint="Anzahl" />
+
+      <Button
+        android:text="Abend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="125dp"
+        android:id="@+id/dayTwoDinnerButton"
+      />
+
+  </LinearLayout>
+      
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="Tag 3"
+      android:gravity="center_vertical"
+      android:width="50dp"
+      android:id="@+id/menuPlanDayThreeTextView"/>
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/dayThreeLunchEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl"/>
+
+    <Button
+      android:text="Mittag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/dayThreeLunchButton"
+    />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/dayThreeDinnerEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl" />
+
+    <Button
+      android:text="Abend"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/dayThreeDinnerButton"
+    />
+
+  </LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="Tag 4"
+      android:gravity="center_vertical"
+      android:width="50dp"
+      android:id="@+id/menuPlanDayFourTextView"/>
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/dayFourLunchEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl"/>
+
+    <Button
+      android:text="Mittag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/dayFourLunchButton"
+    />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/dayFourDinnerEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl" />
+
+    <Button
+      android:text="Abend"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/dayFourDinnerButton"
+    />
+
+  </LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="Tag 5"
+      android:gravity="center_vertical"
+      android:width="50dp"
+      android:id="@+id/menuPlanDayFiveTextView"/>
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/dayFiveLunchEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl"/>
+
+    <Button
+      android:text="Mittag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/dayFiveLunchButton"
+    />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/dayFiveDinnerEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl" />
+
+    <Button
+      android:text="Abend"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/dayFiveDinnerButton"
+    />
+
+  </LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="Tag 6"
+      android:gravity="center_vertical"
+      android:width="50dp"
+      android:id="@+id/menuPlanDaySixTextView"/>
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/daySixLunchEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl"/>
+
+    <Button
+      android:text="Mittag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/daySixLunchButton"
+    />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/daySixDinnerEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl" />
+
+    <Button
+      android:text="Abend"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/daySixDinnerButton"
+    />
+
+  </LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="Tag 7"
+      android:gravity="center_vertical"
+      android:width="50dp"
+      android:id="@+id/menuPlanDaySevenTextView"/>
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/daySevenLunchEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl"/>
+
+    <Button
+      android:text="Mittag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/daySevenLunchButton"
+    />
+
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/daySevenDinnerEditText"
+      android:layout_width="wrap_content"
+      android:imeOptions="actionGo"
+      android:inputType="numberSigned"
+      android:layout_height="wrap_content"
+      android:width="50dp"
+      android:hint="Anzahl" />
+
+    <Button
+      android:text="Abend"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="125dp"
+      android:id="@+id/daySevenDinnerButton"
+    />
+
+  </LinearLayout>
+
+  </LinearLayout>
 
   <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:layout_weight="5">
+
+    <Button
+      android:text="Einkaufsliste generieren"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+android:layout_marginHorizontal="5dp"
+      android:id="@+id/menuPlanShoppingButton"
+    />
+
+  </LinearLayout>
+
+    <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

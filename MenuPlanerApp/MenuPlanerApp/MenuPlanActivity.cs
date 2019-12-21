@@ -15,6 +15,7 @@ using MenuPlanerApp.Adapters;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.Core.Utility;
+using MenuPlanerApp.Fragments;
 using Xamarin.Essentials;
 
 namespace MenuPlanerApp
@@ -29,7 +30,9 @@ namespace MenuPlanerApp
         private Button _newMenuPlanButton;
         private Button _ingredientButton;
         private Button _optionsButton;
+        private Button _dateSelectButton;
         private Button _recipeButton;
+        private TextView _dateDisplay;
         private RecipeRepositoryWeb _recipeRepository;
         private Button _menuPlanSearchButton;
         private List<Recipe> _recipesList;
@@ -119,7 +122,8 @@ namespace MenuPlanerApp
 
         private void FindViewsRecipe()
         {
-            
+            _dateSelectButton = FindViewById<Button>(Resource.Id.menuPlanDateButton);
+            _dateDisplay = FindViewById<TextView>(Resource.Id.menuPlanDateDisplay);
         }
 
         private void FindViewsOperation()
@@ -138,7 +142,16 @@ namespace MenuPlanerApp
 
         private void LinkEventHandlers()
         {
-            
+            _dateSelectButton.Click += DateSelect_Click;
+        }
+
+        private void DateSelect_Click(object sender, EventArgs eventArgs)
+        {
+            var frag = DatePickerFragment.NewInstance(delegate (DateTime time)
+            {
+                _dateDisplay.Text = time.ToLongDateString();
+            });
+            frag.Show(SupportFragmentManager, DatePickerFragment.TAG);
         }
     }
 }
