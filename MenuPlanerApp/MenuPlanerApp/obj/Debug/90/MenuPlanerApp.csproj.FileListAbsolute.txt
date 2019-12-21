@@ -596,3 +596,4 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\_ResolveLibraryProj
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\menuplan.xml
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc641d757fe78fe0d5e2\MenuPlanActivity.java
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc6498a2dc51afd33d14\DatePickerFragment.java
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp

@@ -23,6 +23,22 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class MenuPlanActivity : AppCompatActivity
     {
+        private const int DayOneLunchRequestCode = 3000;
+        private const int DayOneDinnerRequestCode = 3001;
+        private const int DayTwoLunchRequestCode = 3002;
+        private const int DayTwoDinnerRequestCode = 3003;
+        private const int DayThreeLunchRequestCode = 3004;
+        private const int DayThreeDinnerRequestCode = 3005;
+        private const int DayFourLunchRequestCode = 3006;
+        private const int DayFourDinnerRequestCode = 3007;
+        private const int DayFiveLunchRequestCode = 3008;
+        private const int DayFiveDinnerRequestCode = 3009;
+        private const int DaySixLunchRequestCode = 3010;
+        private const int DaySixDinnerRequestCode = 3011;
+        private const int DaySevenLunchRequestCode = 3012;
+        private const int DaySevenDinnerRequestCode = 3013;
+
+
         private Button _abortButton;
         private Button _deleteButton;
         private MenuPlanRepositoryWeb _menuPlanRepository;
@@ -37,8 +53,45 @@ namespace MenuPlanerApp
         private Button _menuPlanSearchButton;
         private List<Recipe> _recipesList;
         private List<MenuPlan> _menuPlanList;
+        private Button _shoppingButton;
         private Button _saveButton;
         private MenuPlan _selectedMenuPlan;
+        private TextView _dayOneTextView;
+        private TextView _dayTwoTextView;
+        private TextView _dayThreeTextView;
+        private TextView _dayFourTextView;
+        private TextView _dayFiveTextView;
+        private TextView _daySixTextView;
+        private TextView _daySevenTextView;
+        private TextInputEditText _dayOneLunchEditText;
+        private TextInputEditText _dayTwoLunchEditText;
+        private TextInputEditText _dayThreeLunchEditText;
+        private TextInputEditText _dayFourLunchEditText;
+        private TextInputEditText _dayFiveLunchEditText;
+        private TextInputEditText _daySixLunchEditText;
+        private TextInputEditText _daySevenLunchEditText;
+        private Button _dayOneLunchButton;
+        private Button _dayTwoLunchButton;
+        private Button _dayThreeLunchButton;
+        private Button _dayFourLunchButton;
+        private Button _dayFiveLunchButton;
+        private Button _daySixLunchButton;
+        private Button _daySevenLunchButton;
+        private TextInputEditText _dayOneDinnerEditText;
+        private TextInputEditText _dayTwoDinnerEditText;
+        private TextInputEditText _dayThreeDinnerEditText;
+        private TextInputEditText _dayFourDinnerEditText;
+        private TextInputEditText _dayFiveDinnerEditText;
+        private TextInputEditText _daySixDinnerEditText;
+        private TextInputEditText _daySevenDinnerEditText;
+        private Button _dayOneDinnerButton;
+        private Button _dayTwoDinnerButton;
+        private Button _dayThreeDinnerButton;
+        private Button _dayFourDinnerButton;
+        private Button _dayFiveDinnerButton;
+        private Button _daySixDinnerButton;
+        private Button _daySevenDinnerButton;
+        
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -66,12 +119,35 @@ namespace MenuPlanerApp
             _selectedMenuPlan = new MenuPlan();
         }
 
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            switch (requestCode)
+            {
+                case DayOneLunchRequestCode:
+                    BindDataFromRecipeSearchResultToView(requestCode, resultCode, data);
+                    break;
+            }
+        }
+
+        private void BindDataFromRecipeSearchResultToView(in int requestCode, Result resultCode, Intent data)
+        {
+            /*if (data == null || !data.HasExtra("selectedRecipeId")) return;
+
+            base.OnActivityResult(requestCode, resultCode, data);
+            var recipeId = data.Extras.GetInt("selectedRecipeId");
+            var recipe = _recipesList.Find(r => r.Id == recipeId);
+            var RecipeInMenu = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Lunch);*/
+            
+
+        }
+
         private async Task LoadMenuPlanData()
         {
-            var menues = await _menuPlanRepository.GetAllMenuPlan();
-            if (menues != null)
+            var menus = await _menuPlanRepository.GetAllMenuPlan();
+            if (menus != null)
             {
-                _menuPlanList = menues;
+                _menuPlanList = menus;
             }
         }
 
@@ -102,7 +178,7 @@ namespace MenuPlanerApp
         private void SetSelectedMenuPlanResultOrFirstInList(int selectedId)
         {
             var result = _menuPlanList.Find(e => e.Id == selectedId);
-            _selectedMenuPlan = result == null ? _menuPlanList.First() : result;
+            _selectedMenuPlan = result ?? _menuPlanList.First();
         }
 
         private void FindViews()
@@ -124,6 +200,42 @@ namespace MenuPlanerApp
         {
             _dateSelectButton = FindViewById<Button>(Resource.Id.menuPlanDateButton);
             _dateDisplay = FindViewById<TextView>(Resource.Id.menuPlanDateDisplay);
+            _dayOneTextView = FindViewById<TextView>(Resource.Id.dayOneTextView);
+            _dayTwoTextView = FindViewById<TextView>(Resource.Id.dayTwoTextView);
+            _dayThreeTextView = FindViewById<TextView>(Resource.Id.dayThreeTextView);
+            _dayFourTextView = FindViewById<TextView>(Resource.Id.dayFourTextView);
+            _dayFiveTextView = FindViewById<TextView>(Resource.Id.dayFiveTextView);
+            _daySixTextView = FindViewById<TextView>(Resource.Id.daySixTextView);
+            _daySevenTextView = FindViewById<TextView>(Resource.Id.daySevenTextView);
+            _dayOneLunchEditText = FindViewById<TextInputEditText>(Resource.Id.dayOneLunchEditText);
+            _dayTwoLunchEditText = FindViewById<TextInputEditText>(Resource.Id.dayTwoLunchEditText);
+            _dayThreeLunchEditText = FindViewById<TextInputEditText>(Resource.Id.dayThreeLunchEditText);
+            _dayFourLunchEditText = FindViewById<TextInputEditText>(Resource.Id.dayFourLunchEditText);
+            _dayFiveLunchEditText = FindViewById<TextInputEditText>(Resource.Id.dayFiveLunchEditText);
+            _daySixLunchEditText = FindViewById<TextInputEditText>(Resource.Id.daySixLunchEditText);
+            _daySevenLunchEditText = FindViewById<TextInputEditText>(Resource.Id.daySevenLunchEditText);
+            _dayOneLunchButton = FindViewById<Button>(Resource.Id.dayOneLunchButton);
+            _dayTwoLunchButton = FindViewById<Button>(Resource.Id.dayTwoLunchButton);
+            _dayThreeLunchButton = FindViewById<Button>(Resource.Id.dayThreeLunchButton);
+            _dayFourLunchButton = FindViewById<Button>(Resource.Id.dayFourLunchButton);
+            _dayFiveLunchButton = FindViewById<Button>(Resource.Id.dayFiveLunchButton);
+            _daySixLunchButton = FindViewById<Button>(Resource.Id.daySixLunchButton);
+            _daySevenLunchButton = FindViewById<Button>(Resource.Id.daySevenLunchButton);
+            _dayOneDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.dayOneDinnerEditText);
+            _dayTwoDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.dayTwoDinnerEditText);
+            _dayThreeDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.dayThreeDinnerEditText);
+            _dayFourDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.dayFourDinnerEditText);
+            _dayFiveDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.dayFiveDinnerEditText);
+            _daySixDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.daySixDinnerEditText);
+            _daySevenDinnerEditText = FindViewById<TextInputEditText>(Resource.Id.daySevenDinnerEditText);
+            _dayOneDinnerButton = FindViewById<Button>(Resource.Id.dayOneDinnerButton);
+            _dayTwoDinnerButton = FindViewById<Button>(Resource.Id.dayTwoDinnerButton);
+            _dayThreeDinnerButton = FindViewById<Button>(Resource.Id.dayThreeDinnerButton);
+            _dayFourDinnerButton = FindViewById<Button>(Resource.Id.dayFourDinnerButton);
+            _dayFiveDinnerButton = FindViewById<Button>(Resource.Id.dayFiveDinnerButton);
+            _daySixDinnerButton = FindViewById<Button>(Resource.Id.daySixDinnerButton);
+            _daySevenDinnerButton = FindViewById<Button>(Resource.Id.daySevenDinnerButton);
+            _shoppingButton = FindViewById<Button>(Resource.Id.menuPlanShoppingButton);
         }
 
         private void FindViewsOperation()
@@ -137,21 +249,359 @@ namespace MenuPlanerApp
 
         private void BindDataFromDataToView()
         {
-            
+            BindDateData();
+            BindRecipeWithAmountData();
+        }
+
+        private void BindRecipeWithAmountData()
+        {
+            BindRecipeWithAmountDataFirstDayLunch();
+            BindRecipeWithAmountDataFirstDayDinner();
+            BindRecipeWithAmountDataSecondDayLunch();
+            BindRecipeWithAmountDataSecondDayDinner();
+            BindRecipeWithAmountDataThirdDayLunch();
+            BindRecipeWithAmountDataThirdDayDinner();
+            BindRecipeWithAmountDataFourthDayLunch();
+            BindRecipeWithAmountDataFourthDayDinner();
+            BindRecipeWithAmountDataFifthDayLunch();
+            BindRecipeWithAmountDataFifthDayDinner();
+            BindRecipeWithAmountDataSixthDayLunch();
+            BindRecipeWithAmountDataSixthDayDinner();
+            BindRecipeWithAmountDataSeventhDayLunch();
+            BindRecipeWithAmountDataSeventhDayDinner();
+        }
+
+        private void BindRecipeWithAmountDataFirstDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _dayOneLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayOneLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataFirstDayDinner()
+        {
+            var recipeFirstDayDinner = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeFirstDayDinner == null) return;
+            _dayOneDinnerEditText.Text = recipeFirstDayDinner.NumbersOfMeals.ToString();
+            _dayOneDinnerButton.Text = recipeFirstDayDinner.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataSecondDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Tuesday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _dayTwoLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayTwoLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataSecondDayDinner()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Tuesday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeWithAmount == null) return;
+            _dayTwoDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayTwoDinnerButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataThirdDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Wednesday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _dayThreeLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayThreeLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataThirdDayDinner()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Wednesday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeWithAmount == null) return;
+            _dayThreeDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayThreeDinnerButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataFourthDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Thursday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _dayFourLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayFourLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataFourthDayDinner()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Thursday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeWithAmount == null) return;
+            _dayFourDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayFourDinnerButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataFifthDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Friday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _dayFiveLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayFiveLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataFifthDayDinner()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Friday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeWithAmount == null) return;
+            _dayFiveDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _dayFiveDinnerButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataSixthDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Saturday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _daySixLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _daySixLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataSixthDayDinner()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Saturday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeWithAmount == null) return;
+            _daySixDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _daySixDinnerButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataSeventhDayLunch()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Sunday && r.MealDayTime == MealDayTimeEnum.Lunch);
+            if (recipeWithAmount == null) return;
+            _daySevenLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _daySevenLunchButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindRecipeWithAmountDataSeventhDayDinner()
+        {
+            var recipeWithAmount = _selectedMenuPlan.Recipes
+                .Find(r => r.DayOfWeek == DayOfWeek.Sunday && r.MealDayTime == MealDayTimeEnum.Dinner);
+            if (recipeWithAmount == null) return;
+            _daySevenDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+            _daySevenDinnerButton.Text = recipeWithAmount.Recipe.Name;
+        }
+
+        private void BindDateData()
+        {
+            var dt = _selectedMenuPlan.StartDate;
+
+            if (dt.Equals(new DateTime()))
+            {
+                _dateDisplay.Text = "Kein Datum gewählt";
+            }
+            else
+            {
+                _dateDisplay.Text = $"{dt:ddd, d/M/yyyy}";
+                _dayOneTextView.Text = $"{dt.AddDays(1):d/M}";
+                _dayTwoTextView.Text = $"{dt.AddDays(2):d/M}";
+                _dayThreeTextView.Text = $"{dt.AddDays(3):d/M}";
+                _dayFourTextView.Text = $"{dt.AddDays(4):d/M}";
+                _dayFiveTextView.Text = $"{dt.AddDays(5):d/M}";
+                _daySixTextView.Text = $"{dt.AddDays(6):d/M}";
+                _daySevenTextView.Text = $"{dt.AddDays(7):d/M}";
+            }
         }
 
         private void LinkEventHandlers()
         {
+            //Navigation
+            _optionsButton.Click += OptionsButton_Click;
+            _menusButton.Click += MenusButton_Click;
+            _ingredientButton.Click += IngredientsButton_Click;
+            _recipeButton.Click += RecipeButton_Click;
+
+            //Menuplan
+            _menuPlanSearchButton.Click += MenuPlanSearchButton_Click;
             _dateSelectButton.Click += DateSelect_Click;
+            _dayOneLunchButton.Click += DayOneLunchButton_Click;
+            _dayOneDinnerButton.Click += DayOneDinnerButton_Click;
+            _dayTwoLunchButton.Click += DayTwoLunchButton_Click;
+            _dayTwoDinnerButton.Click += DayTwoDinnerButton_Click;
+            _dayThreeLunchButton.Click += DayThreeLunchButton_Click;
+            _dayThreeDinnerButton.Click += DayThreeDinnerButton_Click;
+            _dayFourLunchButton.Click += DayFourLunchButton_Click;
+            _dayFourDinnerButton.Click += DayFourDinnerButton_Click;
+            _dayFiveLunchButton.Click += DayFiveLunchButton_Click;
+            _dayFiveDinnerButton.Click += DayFiveDinnerButton_Click;
+            _daySixLunchButton.Click += DaySixLunchButton_Click;
+            _daySixDinnerButton.Click += DaySixDinnerButton_Click;
+            _daySevenLunchButton.Click += DaySevenLunchButton_Click;
+            _daySevenDinnerButton.Click += DaySevenDinnerButton_Click;
+            _shoppingButton.Click += ShoppingButto_Click;
+
+            //Operations
+            _saveButton.Click += SaveButton_Click;
+            _abortButton.Click += AbortButton_Click;
+            _deleteButton.Click += DeleteButton_Click;
+            _newMenuPlanButton.Click += NewMenuButton_Click;
+        }
+
+
+        private void OptionsButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(OptionsActivity));
+            StartActivity(intent);
+        }
+
+        private void MenusButton_Click(object sender, EventArgs e)
+        {
+            ShowToastMessage("Menüs bereits geöffnet");
+        }
+
+        private void IngredientsButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(IngredientsActivity));
+            StartActivity(intent);
+        }
+
+        private void RecipeButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeActivity));
+            StartActivity(intent);
+        }
+
+        private void ShowToastMessage(string text)
+        {
+            var toastMessage = text;
+            const ToastLength duration = ToastLength.Long;
+            Toast.MakeText(this, toastMessage, duration).Show();
+        }
+
+        private void MenuPlanSearchButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void DateSelect_Click(object sender, EventArgs eventArgs)
         {
-            var frag = DatePickerFragment.NewInstance(delegate (DateTime time)
-            {
-                _dateDisplay.Text = time.ToLongDateString();
-            });
+            var frag = DatePickerFragment.NewInstance(delegate (DateTime time) { _selectedMenuPlan.StartDate = time; BindDateData(); });
             frag.Show(SupportFragmentManager, DatePickerFragment.TAG);
         }
+
+        private void DayOneLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayOneLunchRequestCode);
+        }
+
+        private void DayOneDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayOneDinnerRequestCode);
+        }
+
+        private void DayTwoLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayTwoLunchRequestCode);
+        }
+
+        private void DayTwoDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayTwoDinnerRequestCode);
+        }
+
+        private void DayThreeLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayThreeLunchRequestCode);
+        }
+
+        private void DayThreeDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayThreeDinnerRequestCode);
+        }
+
+        private void DayFourLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayFourLunchRequestCode);
+        }
+
+        private void DayFourDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayFourDinnerRequestCode);
+        }
+
+        private void DayFiveLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayFiveLunchRequestCode);
+        }
+
+        private void DayFiveDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DayFiveDinnerRequestCode);
+        }
+
+        private void DaySixLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DaySixLunchRequestCode);
+        }
+
+        private void DaySixDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DaySixDinnerRequestCode);
+        }
+
+        private void DaySevenLunchButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DaySevenLunchRequestCode);
+        }
+
+        private void DaySevenDinnerButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(RecipeSearchActivity));
+            StartActivityForResult(intent, DaySevenDinnerRequestCode);
+        }
+
+        private void ShoppingButto_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AbortButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void NewMenuButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

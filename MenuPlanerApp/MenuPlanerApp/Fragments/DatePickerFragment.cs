@@ -11,19 +11,18 @@ namespace MenuPlanerApp.Fragments
     {
         public static readonly string TAG = "X:" + typeof(DatePickerFragment).Name.ToUpper();
 
-        Action<DateTime> _dateSelectedHandler = delegate { };
+        private Action<DateTime> _dateSelectedHandler = delegate { };
 
         public static DatePickerFragment NewInstance(Action<DateTime> onDateSelected)
         {
-            DatePickerFragment frag = new DatePickerFragment();
-            frag._dateSelectedHandler = onDateSelected;
+            var frag = new DatePickerFragment {_dateSelectedHandler = onDateSelected};
             return frag;
         }
 
         public override Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            DateTime currently = DateTime.Now;
-            DatePickerDialog dialog = new DatePickerDialog(Activity,
+            var currently = DateTime.Now;
+            var dialog = new DatePickerDialog(Activity,
                 this,
                 currently.Year,
                 currently.Month - 1,
@@ -33,8 +32,7 @@ namespace MenuPlanerApp.Fragments
 
         public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
-            // Note: monthOfYear is a value between 0 and 11, not 1 and 12!
-            DateTime selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
+            var selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
             Log.Debug(TAG, selectedDate.ToLongDateString());
             _dateSelectedHandler(selectedDate);
         }

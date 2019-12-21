@@ -81,10 +81,16 @@ namespace MenuPlanerApp
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            if (requestCode == CameraRequestCode) SetBitmapFromCameraToImageView(requestCode, resultCode, data);
-
-            if (requestCode == IngredientsSearchRequestCode)
-                BindDataFromIngredientSearchResultToView(requestCode, resultCode, data);
+            switch (requestCode)
+            {
+                case CameraRequestCode:
+                    SetBitmapFromCameraToImageView(requestCode, resultCode, data);
+                    break;
+                case IngredientsSearchRequestCode:
+                    BindDataFromIngredientSearchResultToView(requestCode, resultCode, data);
+                    break;
+                default: return;
+            }
         }
 
         private void InitialReferencingObjects()
@@ -119,7 +125,7 @@ namespace MenuPlanerApp
         private void SetSelectedRecipeResultOrFirstInList(int selectedId)
         {
             var result = _recipesList.Find(e => e.Id == selectedId);
-            _selectedRecipe = result == null ? _recipesList.First() : result;
+            _selectedRecipe = result ?? _recipesList.First();
         }
 
         private void FindViews()
