@@ -28,6 +28,21 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
+        public async Task<MenuPlan> GetMenuPlanById(int id)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var responseMessage = await httpClient.GetAsync(_httpServerUri + id);
+                if (!responseMessage.IsSuccessStatusCode) return null;
+
+                var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var menuPlan = JsonConvert.DeserializeObject<MenuPlan>(jsonResult);
+                return menuPlan;
+            }
+        }
+
         public async Task<MenuPlan> PostMenuPlan(MenuPlan newMenuPlan)
         {
             var serializedMenuPlan =

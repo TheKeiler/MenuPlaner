@@ -643,7 +643,14 @@ namespace MenuPlanerApp
 
         private void ShoppingButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (_selectedMenuPlan.Id == 0)
+            {
+                ShowToastMessage("Der Menüplan muss zuerst gespeichert werden");
+                return;
+            }
+            var intent = new Intent(this, typeof(ShoppingListActivity));
+            intent.PutExtra("selectedMenuPlanId", _selectedMenuPlan.Id);
+            StartActivityForResult(intent, DaySevenDinnerRequestCode);
         }
 
         private async void DeleteButton_Click(object sender, EventArgs e)

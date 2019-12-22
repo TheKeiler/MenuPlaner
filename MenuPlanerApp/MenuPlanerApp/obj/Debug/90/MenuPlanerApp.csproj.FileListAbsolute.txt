@@ -602,3 +602,8 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc641d757fe7
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc649318b77b6daff0a6\MenuPlanAdapter.java
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc640c207e2218a087fa\MenuPlanViewHolder.java
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\menuplan_shoppinglist.xml
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\res\layout\menuplan_shoppinglist_viewholder.xml
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc641d757fe78fe0d5e2\ShoppingListActivity.java
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc649318b77b6daff0a6\ShoppingListAdapter.java
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp\obj\Debug\90\android\src\crc640c207e2218a087fa\ShoppingListViewHolder.java

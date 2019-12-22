@@ -36,7 +36,13 @@ namespace MenuPlanerApp.API.Controllers
 
             if (menuPlan == null) return NotFound();
 
-            return menuPlan;
+            return await _context.MenuPlan
+                .Where(m => m.Id == id)
+                .Include(a => a.RecipesWithAmounts)
+                .ThenInclude(r => r.Recipe)
+                .ThenInclude(a => a.Ingredients)
+                .ThenInclude(i => i.Ingredient)
+                .FirstOrDefaultAsync();
         }
 
         // PUT: api/MenuPlans/5

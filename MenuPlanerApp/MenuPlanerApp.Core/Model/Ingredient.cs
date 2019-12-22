@@ -23,6 +23,7 @@
             if (obj == null || GetType() != obj.GetType()) return false;
 
             var i = (Ingredient) obj;
+            if (i.Description == null) i.Description = "";
             return Name.Equals(i.Name) && Description.Equals(i.Description);
         }
 
