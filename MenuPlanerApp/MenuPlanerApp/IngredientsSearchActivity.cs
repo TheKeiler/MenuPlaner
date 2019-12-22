@@ -52,10 +52,10 @@ namespace MenuPlanerApp
             var intent = new Intent();
             intent.PutExtra("selectedIngredientId", e);
 
-            if (CallingActivity.ClassName.EndsWith("IngredientsActivity"))
-                intent.SetClass(this, typeof(IngredientsActivity));
-            else
-                intent.SetClass(this, typeof(RecipeActivity));
+            intent.SetClass(this,
+                CallingActivity.ClassName.EndsWith("IngredientsActivity")
+                    ? typeof(IngredientsActivity)
+                    : typeof(RecipeActivity));
 
             SetResult(Result.Ok, intent);
             Finish();

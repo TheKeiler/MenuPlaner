@@ -50,9 +50,15 @@ namespace MenuPlanerApp
         private void RecipeAdapter_ItemClick(object sender, int e)
         {
             var intent = new Intent();
-            intent.SetClass(this, typeof(RecipeActivity));
             intent.PutExtra("selectedRecipeId", e);
-            StartActivity(intent);
+
+            intent.SetClass(this,
+                CallingActivity.ClassName.EndsWith("RecipeActivity")
+                    ? typeof(RecipeActivity)
+                    : typeof(MenuPlanActivity));
+
+            SetResult(Result.Ok, intent);
+            Finish();
         }
     }
 }

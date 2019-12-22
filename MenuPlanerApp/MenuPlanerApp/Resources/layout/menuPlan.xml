@@ -102,7 +102,8 @@
   <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center|bottom">
+                android:gravity="center|bottom"
+                >
 
       <TextView
         android:layout_width="wrap_content"
@@ -117,14 +118,14 @@
         android:layout_width="wrap_content"
         android:imeOptions="actionGo"
         android:inputType="numberSigned"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="50dp"
-        android:hint="Anzahl"/>
+        android:hint="0 x"/>
 
       <Button
         android:text="Mittag"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="125dp"
         android:id="@+id/dayOneLunchButton"
       />
@@ -134,14 +135,14 @@
         android:layout_width="wrap_content"
         android:imeOptions="actionGo"
         android:inputType="numberSigned"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="50dp"
-        android:hint="Anzahl" />
+        android:hint="0 x" />
 
       <Button
         android:text="Abend"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="125dp"
         android:id="@+id/dayOneDinnerButton"
       />
@@ -166,14 +167,14 @@
         android:layout_width="wrap_content"
         android:imeOptions="actionGo"
         android:inputType="numberSigned"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="50dp"
-        android:hint="Anzahl"/>
+        android:hint="0 x"/>
 
       <Button
         android:text="Mittag"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="125dp"
         android:id="@+id/dayTwoLunchButton"
       />
@@ -183,14 +184,14 @@
         android:layout_width="wrap_content"
         android:imeOptions="actionGo"
         android:inputType="numberSigned"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="50dp"
-        android:hint="Anzahl" />
+        android:hint="0 x" />
 
       <Button
         android:text="Abend"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:width="125dp"
         android:id="@+id/dayTwoDinnerButton"
       />
@@ -215,14 +216,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl"/>
+      android:hint="0 x"/>
 
     <Button
       android:text="Mittag"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/dayThreeLunchButton"
     />
@@ -232,14 +233,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl" />
+      android:hint="0 x" />
 
     <Button
       android:text="Abend"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/dayThreeDinnerButton"
     />
@@ -264,14 +265,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl"/>
+      android:hint="0 x"/>
 
     <Button
       android:text="Mittag"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/dayFourLunchButton"
     />
@@ -281,14 +282,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl" />
+      android:hint="0 x" />
 
     <Button
       android:text="Abend"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/dayFourDinnerButton"
     />
@@ -313,14 +314,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl"/>
+      android:hint="0 x"/>
 
     <Button
       android:text="Mittag"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/dayFiveLunchButton"
     />
@@ -330,14 +331,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl" />
+      android:hint="0 x" />
 
     <Button
       android:text="Abend"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/dayFiveDinnerButton"
     />
@@ -362,14 +363,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl"/>
+      android:hint="0 x"/>
 
     <Button
       android:text="Mittag"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/daySixLunchButton"
     />
@@ -379,14 +380,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl" />
+      android:hint="0 x" />
 
     <Button
       android:text="Abend"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/daySixDinnerButton"
     />
@@ -411,14 +412,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl"/>
+      android:hint="0 x"/>
 
     <Button
       android:text="Mittag"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/daySevenLunchButton"
     />
@@ -428,14 +429,14 @@
       android:layout_width="wrap_content"
       android:imeOptions="actionGo"
       android:inputType="numberSigned"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="50dp"
-      android:hint="Anzahl" />
+      android:hint="0 x" />
 
     <Button
       android:text="Abend"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:width="125dp"
       android:id="@+id/daySevenDinnerButton"
     />

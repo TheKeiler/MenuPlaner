@@ -25,9 +25,10 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class RecipeActivity : AppCompatActivity
     {
+        private const int RequestCamera = 1000;
         private const int IngredientsSearchRequestCode = 2000;
         private const int CameraRequestCode = 2001;
-        private const int RequestCamera = 1000;
+        private const int RecipeSearchRequestCode = 2002;
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
@@ -89,6 +90,9 @@ namespace MenuPlanerApp
                 case IngredientsSearchRequestCode:
                     BindDataFromIngredientSearchResultToView(requestCode, resultCode, data);
                     break;
+                case RecipeSearchRequestCode:
+                    SetSelectedRecipe(requestCode, resultCode, data);
+                    break;
                 default: return;
             }
         }
@@ -109,6 +113,24 @@ namespace MenuPlanerApp
         }
 
 
+        private void SetSelectedRecipe(int requestCode, Result resultCode, Intent data)
+        {
+            if (data == null || !data.HasExtra("selectedRecipeId")) return;
+
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (data.Extras == null || data.Extras.GetInt("selectedRecipeId") == 0)
+            {
+                _selectedRecipe = _recipesList.Count > 0 ? _recipesList.First() : new Recipe();
+            }
+            else
+            {
+                var selectedId = data.Extras.GetInt("selectedRecipeId");
+                SetSelectedRecipeResultOrFirstInList(selectedId);
+            }
+            BindDataFromDataToView();
+        }
+
         private void SetSelectedRecipe()
         {
             if (Intent.Extras == null || Intent.Extras.GetInt("selectedRecipeId") == 0)
@@ -121,6 +143,8 @@ namespace MenuPlanerApp
                 SetSelectedRecipeResultOrFirstInList(selectedId);
             }
         }
+
+
 
         private void SetSelectedRecipeResultOrFirstInList(int selectedId)
         {
@@ -230,7 +254,7 @@ namespace MenuPlanerApp
         private void SearchButton_Click(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(RecipeSearchActivity));
-            StartActivityForResult(intent, IngredientsSearchRequestCode);
+            StartActivityForResult(intent, RecipeSearchRequestCode);
         }
 
         private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)

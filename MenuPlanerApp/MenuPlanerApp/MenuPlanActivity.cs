@@ -121,25 +121,69 @@ namespace MenuPlanerApp
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
+            var selectedItem = new Recipe();
+            if (requestCode >= DayOneLunchRequestCode && requestCode <= DaySevenDinnerRequestCode)
+            {
+                selectedItem = FindSelectedRecipeInList(requestCode, resultCode, data);
+            }
+
             switch (requestCode)
             {
                 case DayOneLunchRequestCode:
-                    BindDataFromRecipeSearchResultToView(requestCode, resultCode, data);
+                    InsertSelectedItemFirstDayLunch(selectedItem);
                     break;
+                case DayOneDinnerRequestCode:
+                    InsertSelectedItemFirstDayDinner(selectedItem);
+                    break;
+                case DayTwoLunchRequestCode:
+                    InsertSelectedItemSecondDayLunch(selectedItem);
+                    break;
+                case DayTwoDinnerRequestCode:
+                    InsertSelectedItemSecondDayDinner(selectedItem);
+                    break;
+                case DayThreeLunchRequestCode:
+                    InsertSelectedItemThirdDayLunch(selectedItem);
+                    break;
+                case DayThreeDinnerRequestCode:
+                    InsertSelectedItemThirdDayDinner(selectedItem);
+                    break;
+                case DayFourLunchRequestCode:
+                    InsertSelectedItemFourthDayLunch(selectedItem);
+                    break;
+                case DayFourDinnerRequestCode:
+                    InsertSelectedItemFourthDayDinner(selectedItem);
+                    break;
+                case DayFiveLunchRequestCode:
+                    InsertSelectedItemFifthDayLunch(selectedItem);
+                    break;
+                case DayFiveDinnerRequestCode:
+                    InsertSelectedItemFifthDayDinner(selectedItem);
+                    break;
+                case DaySixLunchRequestCode:
+                    InsertSelectedItemSixthDayLunch(selectedItem);
+                    break;
+                case DaySixDinnerRequestCode:
+                    InsertSelectedItemSixthDayDinner(selectedItem);
+                    break;
+                case DaySevenLunchRequestCode:
+                    InsertSelectedItemSeventhDayLunch(selectedItem);
+                    break;
+                case DaySevenDinnerRequestCode:
+                    InsertSelectedItemSeventhDayDinner(selectedItem);
+                    break;
+                default:
+                    return;
             }
         }
 
-        private void BindDataFromRecipeSearchResultToView(in int requestCode, Result resultCode, Intent data)
+        private Recipe FindSelectedRecipeInList(in int requestCode, Result resultCode, Intent data)
         {
-            /*if (data == null || !data.HasExtra("selectedRecipeId")) return;
+            if (data == null || !data.HasExtra("selectedRecipeId")) return null;
 
             base.OnActivityResult(requestCode, resultCode, data);
             var recipeId = data.Extras.GetInt("selectedRecipeId");
             var recipe = _recipesList.Find(r => r.Id == recipeId);
-            var RecipeInMenu = _selectedMenuPlan.Recipes.Find(r =>
-                r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Lunch);*/
-            
-
+            return recipe;
         }
 
         private async Task LoadMenuPlanData()
@@ -443,7 +487,7 @@ namespace MenuPlanerApp
             _daySixDinnerButton.Click += DaySixDinnerButton_Click;
             _daySevenLunchButton.Click += DaySevenLunchButton_Click;
             _daySevenDinnerButton.Click += DaySevenDinnerButton_Click;
-            _shoppingButton.Click += ShoppingButto_Click;
+            _shoppingButton.Click += ShoppingButton_Click;
 
             //Operations
             _saveButton.Click += SaveButton_Click;
@@ -578,7 +622,7 @@ namespace MenuPlanerApp
             StartActivityForResult(intent, DaySevenDinnerRequestCode);
         }
 
-        private void ShoppingButto_Click(object sender, EventArgs e)
+        private void ShoppingButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -601,6 +645,414 @@ namespace MenuPlanerApp
         private void NewMenuButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void InsertSelectedItemFirstDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Monday, MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_dayOneLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataFirstDayLunch();
+        }
+
+        private void InsertSelectedItemFirstDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Monday, MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_dayOneDinnerEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataFirstDayDinner();
+        }
+
+        private void InsertSelectedItemSecondDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Tuesday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Tuesday, MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_dayTwoLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataSecondDayLunch();
+        }
+
+        private void InsertSelectedItemSecondDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Tuesday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Tuesday, MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_dayTwoDinnerButton.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataSecondDayDinner();
+        }
+
+        private void InsertSelectedItemThirdDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Wednesday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Wednesday, MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_dayThreeLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataThirdDayLunch();
+        }
+
+        private void InsertSelectedItemThirdDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Wednesday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Wednesday,
+                    MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_dayThreeDinnerEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataThirdDayDinner();
+        }
+
+        private void InsertSelectedItemFourthDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Thursday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Thursday, MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_dayFourLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataFourthDayLunch();
+        }
+
+        private void InsertSelectedItemFourthDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Thursday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Thursday,
+                    MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_dayFourDinnerEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataFourthDayDinner();
+        }
+
+        private void InsertSelectedItemFifthDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Friday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Friday,
+                    MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_dayFiveLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataFifthDayLunch();
+        }
+
+        private void InsertSelectedItemFifthDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Friday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Friday,
+                    MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_dayFiveDinnerEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataFifthDayDinner();
+        }
+
+        private void InsertSelectedItemSixthDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Saturday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Saturday,
+                    MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_daySixLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataSixthDayLunch();
+        }
+
+        private void InsertSelectedItemSixthDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Saturday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Saturday,
+                    MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_daySixDinnerEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataSixthDayDinner();
+        }
+
+        private void InsertSelectedItemSeventhDayLunch(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Sunday && r.MealDayTime == MealDayTimeEnum.Lunch);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Sunday,
+                    MealDayTime = MealDayTimeEnum.Lunch
+                };
+                if (!int.TryParse(_daySevenLunchEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataSeventhDayLunch();
+        }
+
+        private void InsertSelectedItemSeventhDayDinner(Recipe selectedRecipe)
+        {
+            if (selectedRecipe == null) return;
+
+            var itemAlreadyInMenuPlan = _selectedMenuPlan.Recipes.Find(r =>
+                r.DayOfWeek == DayOfWeek.Sunday && r.MealDayTime == MealDayTimeEnum.Dinner);
+
+            if (itemAlreadyInMenuPlan != null)
+            {
+                itemAlreadyInMenuPlan.Recipe = selectedRecipe;
+            }
+
+            else
+            {
+                var newRecipe = new RecipeWithAmount
+                {
+                    Recipe = selectedRecipe,
+                    DayOfWeek = DayOfWeek.Sunday,
+                    MealDayTime = MealDayTimeEnum.Dinner
+                };
+                if (!int.TryParse(_daySevenDinnerEditText.Text, out var i))
+                {
+                    i = 0;
+                }
+                newRecipe.NumbersOfMeals = i;
+                _selectedMenuPlan.Recipes.Add(newRecipe);
+            }
+            BindRecipeWithAmountDataSeventhDayDinner();
         }
 
     }
