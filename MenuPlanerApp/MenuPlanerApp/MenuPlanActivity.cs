@@ -20,6 +20,7 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class MenuPlanActivity : AppCompatActivity
     {
+
         private const int DayOneLunchRequestCode = 3000;
         private const int DayOneDinnerRequestCode = 3001;
         private const int DayTwoLunchRequestCode = 3002;
@@ -34,7 +35,7 @@ namespace MenuPlanerApp
         private const int DaySixDinnerRequestCode = 3011;
         private const int DaySevenLunchRequestCode = 3012;
         private const int DaySevenDinnerRequestCode = 3013;
-
+        private const int MenuPlanSearchRequestCode = 3050;
 
         private Button _abortButton;
         private Button _deleteButton;
@@ -168,6 +169,9 @@ namespace MenuPlanerApp
                 case DaySevenDinnerRequestCode:
                     InsertSelectedItemSeventhDayDinner(selectedItem);
                     break;
+                case MenuPlanSearchRequestCode:
+                    SetSelectedMenuPlan(requestCode, resultCode, data);
+                    break;
                 default:
                     return;
             }
@@ -181,6 +185,24 @@ namespace MenuPlanerApp
             var recipeId = data.Extras.GetInt("selectedRecipeId");
             var recipe = _recipesList.Find(r => r.Id == recipeId);
             return recipe;
+        }
+
+        private void SetSelectedMenuPlan(int requestCode, Result resultCode, Intent data)
+        {
+            if (data == null || !data.HasExtra("selectedMenuPlanId")) return;
+
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (data.Extras == null || data.Extras.GetInt("selectedMenuPlanId") == 0)
+            {
+                _selectedMenuPlan = _menuPlanList.Count > 0 ? _menuPlanList.First() : new MenuPlan();
+            }
+            else
+            {
+                var selectedId = data.Extras.GetInt("selectedMenuPlanId");
+                SetSelectedMenuPlanResultOrFirstInList(selectedId);
+            }
+            BindDataFromDataToView();
         }
 
         private async Task LoadMenuPlanData()
@@ -526,7 +548,8 @@ namespace MenuPlanerApp
 
         private void MenuPlanSearchButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var intent = new Intent(this, typeof(MenuPlanSearchActivity));
+            StartActivityForResult(intent, MenuPlanSearchRequestCode);
         }
 
         private void DateSelect_Click(object sender, EventArgs eventArgs)

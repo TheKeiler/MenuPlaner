@@ -144,8 +144,6 @@ namespace MenuPlanerApp
             }
         }
 
-
-
         private void SetSelectedRecipeResultOrFirstInList(int selectedId)
         {
             var result = _recipesList.Find(e => e.Id == selectedId);

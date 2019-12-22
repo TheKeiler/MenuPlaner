@@ -66,11 +66,13 @@
   <ItemGroup>
     <Compile Include="Adapters\IngredientAdapter.cs" />
     <Compile Include="Adapters\IngredientsWithAmountListViewAdapter.cs" />
+    <Compile Include="Adapters\MenuPlanAdapter.cs" />
     <Compile Include="Adapters\RecipeAdapter.cs" />
     <Compile Include="Fragments\DatePickerFragment.cs" />
     <Compile Include="IngredientsActivity.cs" />
     <Compile Include="IngredientsSearchActivity.cs" />
     <Compile Include="MenuPlanActivity.cs" />
+    <Compile Include="MenuPlanSearchActivity.cs" />
     <Compile Include="OptionsActivity.cs" />
     <Compile Include="RecipeActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="ViewHolders\IngredientViewHolder.cs" />
     <Compile Include="RecipeSearchActivity.cs" />
     <Compile Include="ViewHolders\IngredientWithAmountViewHolder.cs" />
+    <Compile Include="ViewHolders\MenuPlanViewHolder.cs" />
     <Compile Include="ViewHolders\RecipeViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +185,16 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\menuPlan_viewHolder.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\menuPlans_search.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
