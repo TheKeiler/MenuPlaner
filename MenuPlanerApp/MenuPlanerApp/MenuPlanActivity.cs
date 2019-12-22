@@ -20,7 +20,6 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class MenuPlanActivity : AppCompatActivity
     {
-
         private const int DayOneLunchRequestCode = 3000;
         private const int DayOneDinnerRequestCode = 3001;
         private const int DayTwoLunchRequestCode = 3002;
@@ -38,58 +37,58 @@ namespace MenuPlanerApp
         private const int MenuPlanSearchRequestCode = 3050;
 
         private Button _abortButton;
+        private TextView _dateDisplay;
+        private Button _dateSelectButton;
+        private Button _dayFiveDinnerButton;
+        private TextInputEditText _dayFiveDinnerEditText;
+        private Button _dayFiveLunchButton;
+        private TextInputEditText _dayFiveLunchEditText;
+        private TextView _dayFiveTextView;
+        private Button _dayFourDinnerButton;
+        private TextInputEditText _dayFourDinnerEditText;
+        private Button _dayFourLunchButton;
+        private TextInputEditText _dayFourLunchEditText;
+        private TextView _dayFourTextView;
+        private Button _dayOneDinnerButton;
+        private TextInputEditText _dayOneDinnerEditText;
+        private Button _dayOneLunchButton;
+        private TextInputEditText _dayOneLunchEditText;
+        private TextView _dayOneTextView;
+        private Button _daySevenDinnerButton;
+        private TextInputEditText _daySevenDinnerEditText;
+        private Button _daySevenLunchButton;
+        private TextInputEditText _daySevenLunchEditText;
+        private TextView _daySevenTextView;
+        private Button _daySixDinnerButton;
+        private TextInputEditText _daySixDinnerEditText;
+        private Button _daySixLunchButton;
+        private TextInputEditText _daySixLunchEditText;
+        private TextView _daySixTextView;
+        private Button _dayThreeDinnerButton;
+        private TextInputEditText _dayThreeDinnerEditText;
+        private Button _dayThreeLunchButton;
+        private TextInputEditText _dayThreeLunchEditText;
+        private TextView _dayThreeTextView;
+        private Button _dayTwoDinnerButton;
+        private TextInputEditText _dayTwoDinnerEditText;
+        private Button _dayTwoLunchButton;
+        private TextInputEditText _dayTwoLunchEditText;
+        private TextView _dayTwoTextView;
         private Button _deleteButton;
+        private Button _ingredientButton;
+        private List<MenuPlan> _menuPlanList;
         private MenuPlanRepositoryWeb _menuPlanRepository;
+        private Button _menuPlanSearchButton;
         private Button _menusButton;
         private Button _newMenuPlanButton;
-        private Button _ingredientButton;
         private Button _optionsButton;
-        private Button _dateSelectButton;
         private Button _recipeButton;
-        private TextView _dateDisplay;
         private RecipeRepositoryWeb _recipeRepository;
-        private Button _menuPlanSearchButton;
         private List<Recipe> _recipesList;
-        private List<MenuPlan> _menuPlanList;
-        private Button _shoppingButton;
         private Button _saveButton;
         private MenuPlan _selectedMenuPlan;
-        private TextView _dayOneTextView;
-        private TextView _dayTwoTextView;
-        private TextView _dayThreeTextView;
-        private TextView _dayFourTextView;
-        private TextView _dayFiveTextView;
-        private TextView _daySixTextView;
-        private TextView _daySevenTextView;
-        private TextInputEditText _dayOneLunchEditText;
-        private TextInputEditText _dayTwoLunchEditText;
-        private TextInputEditText _dayThreeLunchEditText;
-        private TextInputEditText _dayFourLunchEditText;
-        private TextInputEditText _dayFiveLunchEditText;
-        private TextInputEditText _daySixLunchEditText;
-        private TextInputEditText _daySevenLunchEditText;
-        private Button _dayOneLunchButton;
-        private Button _dayTwoLunchButton;
-        private Button _dayThreeLunchButton;
-        private Button _dayFourLunchButton;
-        private Button _dayFiveLunchButton;
-        private Button _daySixLunchButton;
-        private Button _daySevenLunchButton;
-        private TextInputEditText _dayOneDinnerEditText;
-        private TextInputEditText _dayTwoDinnerEditText;
-        private TextInputEditText _dayThreeDinnerEditText;
-        private TextInputEditText _dayFourDinnerEditText;
-        private TextInputEditText _dayFiveDinnerEditText;
-        private TextInputEditText _daySixDinnerEditText;
-        private TextInputEditText _daySevenDinnerEditText;
-        private Button _dayOneDinnerButton;
-        private Button _dayTwoDinnerButton;
-        private Button _dayThreeDinnerButton;
-        private Button _dayFourDinnerButton;
-        private Button _dayFiveDinnerButton;
-        private Button _daySixDinnerButton;
-        private Button _daySevenDinnerButton;
-        
+        private Button _shoppingButton;
+
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -121,9 +120,7 @@ namespace MenuPlanerApp
         {
             var selectedItem = new Recipe();
             if (requestCode >= DayOneLunchRequestCode && requestCode <= DaySevenDinnerRequestCode)
-            {
                 selectedItem = FindSelectedRecipeInList(requestCode, resultCode, data);
-            }
 
             switch (requestCode)
             {
@@ -202,16 +199,14 @@ namespace MenuPlanerApp
                 var selectedId = data.Extras.GetInt("selectedMenuPlanId");
                 SetSelectedMenuPlanResultOrFirstInList(selectedId);
             }
+
             BindDataFromDataToView();
         }
 
         private async Task LoadMenuPlanData()
         {
             var menus = await _menuPlanRepository.GetAllMenuPlan();
-            if (menus != null)
-            {
-                _menuPlanList = menus;
-            }
+            if (menus != null) _menuPlanList = menus;
         }
 
         private async Task LoadRecipeData()
@@ -554,7 +549,11 @@ namespace MenuPlanerApp
 
         private void DateSelect_Click(object sender, EventArgs eventArgs)
         {
-            var frag = DatePickerFragment.NewInstance(delegate (DateTime time) { _selectedMenuPlan.StartDate = time; BindDateData(); });
+            var frag = DatePickerFragment.NewInstance(delegate(DateTime time)
+            {
+                _selectedMenuPlan.StartDate = time;
+                BindDateData();
+            });
             frag.Show(SupportFragmentManager, DatePickerFragment.TAG);
         }
 
@@ -658,11 +657,11 @@ namespace MenuPlanerApp
 
         private void AbortButton_Click(object sender, EventArgs e)
         {
-                SetContentView(Resource.Layout.menuPlan);
-                FindViews();
-                BindDataFromDataToView();
-                LinkEventHandlers();
-                ShowToastMessage("Vorgang abgebrochen");
+            SetContentView(Resource.Layout.menuPlan);
+            FindViews();
+            BindDataFromDataToView();
+            LinkEventHandlers();
+            ShowToastMessage("Vorgang abgebrochen");
         }
 
         private async void SaveButton_Click(object sender, EventArgs e)
@@ -715,13 +714,11 @@ namespace MenuPlanerApp
                 {
                     Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Monday, MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_dayOneLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayOneLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataFirstDayLunch();
         }
 
@@ -743,13 +740,11 @@ namespace MenuPlanerApp
                 {
                     Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Monday, MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_dayOneDinnerEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayOneDinnerEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataFirstDayDinner();
         }
 
@@ -771,13 +766,11 @@ namespace MenuPlanerApp
                 {
                     Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Tuesday, MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_dayTwoLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayTwoLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataSecondDayLunch();
         }
 
@@ -799,13 +792,11 @@ namespace MenuPlanerApp
                 {
                     Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Tuesday, MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_dayTwoDinnerButton.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayTwoDinnerButton.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataSecondDayDinner();
         }
 
@@ -827,13 +818,11 @@ namespace MenuPlanerApp
                 {
                     Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Wednesday, MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_dayThreeLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayThreeLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataThirdDayLunch();
         }
 
@@ -857,13 +846,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Wednesday,
                     MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_dayThreeDinnerEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayThreeDinnerEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataThirdDayDinner();
         }
 
@@ -885,13 +872,11 @@ namespace MenuPlanerApp
                 {
                     Recipe = selectedRecipe, DayOfWeek = DayOfWeek.Thursday, MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_dayFourLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayFourLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataFourthDayLunch();
         }
 
@@ -915,13 +900,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Thursday,
                     MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_dayFourDinnerEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayFourDinnerEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataFourthDayDinner();
         }
 
@@ -945,13 +928,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Friday,
                     MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_dayFiveLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayFiveLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataFifthDayLunch();
         }
 
@@ -975,13 +956,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Friday,
                     MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_dayFiveDinnerEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_dayFiveDinnerEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataFifthDayDinner();
         }
 
@@ -1005,13 +984,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Saturday,
                     MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_daySixLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_daySixLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataSixthDayLunch();
         }
 
@@ -1035,13 +1012,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Saturday,
                     MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_daySixDinnerEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_daySixDinnerEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataSixthDayDinner();
         }
 
@@ -1065,13 +1040,11 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Sunday,
                     MealDayTime = MealDayTimeEnum.Lunch
                 };
-                if (!int.TryParse(_daySevenLunchEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_daySevenLunchEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataSeventhDayLunch();
         }
 
@@ -1095,15 +1068,12 @@ namespace MenuPlanerApp
                     DayOfWeek = DayOfWeek.Sunday,
                     MealDayTime = MealDayTimeEnum.Dinner
                 };
-                if (!int.TryParse(_daySevenDinnerEditText.Text, out var i))
-                {
-                    i = 0;
-                }
+                if (!int.TryParse(_daySevenDinnerEditText.Text, out var i)) i = 0;
                 newRecipe.NumbersOfMeals = i;
                 _selectedMenuPlan.RecipesWithAmounts.Add(newRecipe);
             }
+
             BindRecipeWithAmountDataSeventhDayDinner();
         }
-
     }
 }

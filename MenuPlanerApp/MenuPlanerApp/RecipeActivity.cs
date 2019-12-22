@@ -128,6 +128,7 @@ namespace MenuPlanerApp
                 var selectedId = data.Extras.GetInt("selectedRecipeId");
                 SetSelectedRecipeResultOrFirstInList(selectedId);
             }
+
             BindDataFromDataToView();
         }
 

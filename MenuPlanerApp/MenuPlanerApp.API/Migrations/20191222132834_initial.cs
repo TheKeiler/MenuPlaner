@@ -8,165 +8,153 @@ namespace MenuPlanerApp.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Ingredient",
-                columns: table => new
+                "Ingredient",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 60, nullable: false),
+                    Name = table.Column<string>(maxLength: 60),
                     Description = table.Column<string>(maxLength: 100, nullable: true),
-                    ReferenceUnit = table.Column<string>(maxLength: 60, nullable: false),
-                    CompatibleForFructose = table.Column<bool>(nullable: false),
-                    CompatibleForHistamin = table.Column<bool>(nullable: false),
-                    CompatibleForLactose = table.Column<bool>(nullable: false),
-                    CompatibleForCeliac = table.Column<bool>(nullable: false)
+                    ReferenceUnit = table.Column<string>(maxLength: 60),
+                    CompatibleForFructose = table.Column<bool>(),
+                    CompatibleForHistamin = table.Column<bool>(),
+                    CompatibleForLactose = table.Column<bool>(),
+                    CompatibleForCeliac = table.Column<bool>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ingredient", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Ingredient", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "MenuPlan",
-                columns: table => new
+                "MenuPlan",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StartDate = table.Column<DateTime>(nullable: false)
+                    StartDate = table.Column<DateTime>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MenuPlan", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_MenuPlan", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Recipe",
-                columns: table => new
+                "Recipe",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 60, nullable: false),
+                    Name = table.Column<string>(maxLength: 60),
                     Description = table.Column<string>(maxLength: 100, nullable: true),
-                    DirectionPictures = table.Column<string>(nullable: false),
-                    IsFavorite = table.Column<bool>(nullable: false)
+                    DirectionPictures = table.Column<string>(),
+                    IsFavorite = table.Column<bool>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Recipe", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Recipe", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "UserOptions",
-                columns: table => new
+                "UserOptions",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WantsUserToSeeRecipesWithFructose = table.Column<bool>(nullable: false),
-                    WantsUserToSeeRecipesWithHistamin = table.Column<bool>(nullable: false),
-                    WantsUserToSeeRecipesWithLactose = table.Column<bool>(nullable: false),
-                    WantsUserToSeeRecipesWithCeliac = table.Column<bool>(nullable: false)
+                    WantsUserToSeeRecipesWithFructose = table.Column<bool>(),
+                    WantsUserToSeeRecipesWithHistamin = table.Column<bool>(),
+                    WantsUserToSeeRecipesWithLactose = table.Column<bool>(),
+                    WantsUserToSeeRecipesWithCeliac = table.Column<bool>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserOptions", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_UserOptions", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "IngredientWithAmount",
-                columns: table => new
+                "IngredientWithAmount",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IngredientId = table.Column<int>(nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IngredientId = table.Column<int>(),
+                    Amount = table.Column<decimal>("decimal(18,2)"),
                     RecipeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IngredientWithAmount", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_IngredientWithAmount_Ingredient_IngredientId",
-                        column: x => x.IngredientId,
-                        principalTable: "Ingredient",
-                        principalColumn: "Id",
+                        "FK_IngredientWithAmount_Ingredient_IngredientId",
+                        x => x.IngredientId,
+                        "Ingredient",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_IngredientWithAmount_Recipe_RecipeId",
-                        column: x => x.RecipeId,
-                        principalTable: "Recipe",
-                        principalColumn: "Id",
+                        "FK_IngredientWithAmount_Recipe_RecipeId",
+                        x => x.RecipeId,
+                        "Recipe",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RecipeWithAmount",
-                columns: table => new
+                "RecipeWithAmount",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RecipeId = table.Column<int>(nullable: false),
-                    NumbersOfMeals = table.Column<int>(nullable: false),
-                    DayOfWeek = table.Column<int>(nullable: false),
-                    MealDayTime = table.Column<int>(nullable: false),
+                    RecipeId = table.Column<int>(),
+                    NumbersOfMeals = table.Column<int>(),
+                    DayOfWeek = table.Column<int>(),
+                    MealDayTime = table.Column<int>(),
                     MenuPlanId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RecipeWithAmount", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RecipeWithAmount_MenuPlan_MenuPlanId",
-                        column: x => x.MenuPlanId,
-                        principalTable: "MenuPlan",
-                        principalColumn: "Id",
+                        "FK_RecipeWithAmount_MenuPlan_MenuPlanId",
+                        x => x.MenuPlanId,
+                        "MenuPlan",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_RecipeWithAmount_Recipe_RecipeId",
-                        column: x => x.RecipeId,
-                        principalTable: "Recipe",
-                        principalColumn: "Id",
+                        "FK_RecipeWithAmount_Recipe_RecipeId",
+                        x => x.RecipeId,
+                        "Recipe",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_IngredientWithAmount_IngredientId",
-                table: "IngredientWithAmount",
-                column: "IngredientId");
+                "IX_IngredientWithAmount_IngredientId",
+                "IngredientWithAmount",
+                "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IngredientWithAmount_RecipeId",
-                table: "IngredientWithAmount",
-                column: "RecipeId");
+                "IX_IngredientWithAmount_RecipeId",
+                "IngredientWithAmount",
+                "RecipeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RecipeWithAmount_MenuPlanId",
-                table: "RecipeWithAmount",
-                column: "MenuPlanId");
+                "IX_RecipeWithAmount_MenuPlanId",
+                "RecipeWithAmount",
+                "MenuPlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RecipeWithAmount_RecipeId",
-                table: "RecipeWithAmount",
-                column: "RecipeId");
+                "IX_RecipeWithAmount_RecipeId",
+                "RecipeWithAmount",
+                "RecipeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "IngredientWithAmount");
+                "IngredientWithAmount");
 
             migrationBuilder.DropTable(
-                name: "RecipeWithAmount");
+                "RecipeWithAmount");
 
             migrationBuilder.DropTable(
-                name: "UserOptions");
+                "UserOptions");
 
             migrationBuilder.DropTable(
-                name: "Ingredient");
+                "Ingredient");
 
             migrationBuilder.DropTable(
-                name: "MenuPlan");
+                "MenuPlan");
 
             migrationBuilder.DropTable(
-                name: "Recipe");
+                "Recipe");
         }
     }
 }

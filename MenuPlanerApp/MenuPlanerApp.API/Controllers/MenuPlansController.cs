@@ -103,12 +103,10 @@ namespace MenuPlanerApp.API.Controllers
         {
             var menuP = menuPlan;
             foreach (var recipeWithAmount in menuP.RecipesWithAmounts)
-            {
                 recipeWithAmount.Recipe = _context.Recipe
                     .Where(r => r.Id == recipeWithAmount.Recipe.Id)
                     .Include(a => a.Ingredients)
                     .ThenInclude(i => i.Ingredient).FirstOrDefault();
-            }
 
             _context.MenuPlan.Add(menuP);
 

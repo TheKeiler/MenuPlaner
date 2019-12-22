@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
-using MenuPlanerApp.Core.Utility;
 using MenuPlanerApp.ViewHolders;
 
 namespace MenuPlanerApp.Adapters
 {
-    class MenuPlanAdapter : RecyclerView.Adapter
+    internal class MenuPlanAdapter : RecyclerView.Adapter
     {
-
         private List<MenuPlan> _menuPlans;
         private List<MenuPlan> _menuPlansFull;
 
@@ -72,6 +69,5 @@ namespace MenuPlanerApp.Adapters
 
             NotifyDataSetChanged();
         }
-
     }
 }
