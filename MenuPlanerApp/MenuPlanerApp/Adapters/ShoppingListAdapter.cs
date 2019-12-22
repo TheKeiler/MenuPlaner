@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.Core.Utility;
@@ -19,15 +11,16 @@ namespace MenuPlanerApp.Adapters
 {
     internal class ShoppingListAdapter : RecyclerView.Adapter
     {
-        private List<IngredientWithAmount> _ingredientsList;
-        public override int ItemCount => _ingredientsList.Count;
         private readonly int _selectedMenuPlanId;
+        private List<IngredientWithAmount> _ingredientsList;
         private MenuPlan _menuPlan;
 
         public ShoppingListAdapter(int selectedMenuPlanId)
         {
             _selectedMenuPlanId = selectedMenuPlanId;
         }
+
+        public override int ItemCount => _ingredientsList.Count;
 
         public async Task LoadData()
         {
@@ -49,9 +42,9 @@ namespace MenuPlanerApp.Adapters
 
         private string SetShoppingListText(int position)
         {
-            return !string.IsNullOrEmpty(_ingredientsList[position].Ingredient.Description) ?
-                $"{_ingredientsList[position].Amount}{_ingredientsList[position].Ingredient.ReferenceUnit} {_ingredientsList[position].Ingredient.Name}, {_ingredientsList[position].Ingredient.Description}" : 
-                $"{_ingredientsList[position].Amount}{_ingredientsList[position].Ingredient.ReferenceUnit} {_ingredientsList[position].Ingredient.Name}";
+            return !string.IsNullOrEmpty(_ingredientsList[position].Ingredient.Description)
+                ? $"{_ingredientsList[position].Amount}{_ingredientsList[position].Ingredient.ReferenceUnit} {_ingredientsList[position].Ingredient.Name}, {_ingredientsList[position].Ingredient.Description}"
+                : $"{_ingredientsList[position].Amount}{_ingredientsList[position].Ingredient.ReferenceUnit} {_ingredientsList[position].Ingredient.Name}";
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -62,6 +55,5 @@ namespace MenuPlanerApp.Adapters
             var shoppingListViewHolder = new ShoppingListViewHolder(itemView);
             return shoppingListViewHolder;
         }
-
     }
 }

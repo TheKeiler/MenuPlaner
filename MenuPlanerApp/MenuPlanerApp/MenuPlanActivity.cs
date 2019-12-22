@@ -648,6 +648,7 @@ namespace MenuPlanerApp
                 ShowToastMessage("Der Menüplan muss zuerst gespeichert werden");
                 return;
             }
+
             var intent = new Intent(this, typeof(ShoppingListActivity));
             intent.PutExtra("selectedMenuPlanId", _selectedMenuPlan.Id);
             StartActivityForResult(intent, DaySevenDinnerRequestCode);
