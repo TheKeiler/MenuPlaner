@@ -11,7 +11,7 @@ namespace MenuPlanerApp.Core.Repository
 {
     public class MenuPlanRepositoryWeb
     {
-        private readonly string _httpServerUri = "http://192.168.1.9:5000/api/MenuPlan/";
+        private readonly string _httpServerUri = "http://192.168.1.9:5000/api/Menuplans/";
 
         public async Task<List<MenuPlan>> GetAllMenuPlan()
         {

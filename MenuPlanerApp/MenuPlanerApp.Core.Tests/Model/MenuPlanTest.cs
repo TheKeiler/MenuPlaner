@@ -22,10 +22,10 @@ namespace MenuPlanerApp.Core.Tests.Model
                 new RecipeWithAmount()
             };
 
-            menu1.Recipes = recipes;
+            menu1.RecipesWithAmounts = recipes;
             menu1.StartDate = new DateTime(1991, 03, 11);
 
-            menu2.Recipes = recipes;
+            menu2.RecipesWithAmounts = recipes;
             menu2.StartDate = new DateTime(1991, 03, 12);
 
             //Act
@@ -49,10 +49,10 @@ namespace MenuPlanerApp.Core.Tests.Model
                 new RecipeWithAmount()
             };
 
-            menu1.Recipes = recipes;
+            menu1.RecipesWithAmounts = recipes;
             menu1.StartDate = new DateTime(1991, 03, 11);
 
-            menu2.Recipes = recipes;
+            menu2.RecipesWithAmounts = recipes;
             menu2.StartDate = new DateTime(1991, 03, 11);
 
             //Act
@@ -76,10 +76,10 @@ namespace MenuPlanerApp.Core.Tests.Model
                 new RecipeWithAmount()
             };
 
-            menu1.Recipes = recipes;
+            menu1.RecipesWithAmounts = recipes;
             menu1.StartDate = new DateTime(1991, 03, 11);
 
-            menu2.Recipes = recipes;
+            menu2.RecipesWithAmounts = recipes;
             menu2.StartDate = new DateTime(1991, 03, 13);
 
             //Act
@@ -104,10 +104,10 @@ namespace MenuPlanerApp.Core.Tests.Model
                 new RecipeWithAmount()
             };
 
-            menu1.Recipes = recipes;
+            menu1.RecipesWithAmounts = recipes;
             menu1.StartDate = new DateTime(1991, 03, 11);
 
-            menu2.Recipes = recipes;
+            menu2.RecipesWithAmounts = recipes;
             menu2.StartDate = new DateTime(1991, 03, 11);
 
             //Act

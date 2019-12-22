@@ -1,4 +1,5 @@
-﻿using MenuPlanerApp.Core.Model;
+﻿using System;
+using MenuPlanerApp.Core.Model;
 
 namespace MenuPlanerApp.Core.VerifyData
 {
@@ -27,6 +28,13 @@ namespace MenuPlanerApp.Core.VerifyData
             if (string.IsNullOrEmpty(ingredientWithAmount.Ingredient.Name))
                 return false;
             return ingredientWithAmount.Amount != 0;
+        }
+
+        public static bool IsMenuPlanComplete(MenuPlan menuPlan)
+        {
+            if (menuPlan.RecipesWithAmounts.Count == 0)
+                return false;
+            return !menuPlan.StartDate.Equals(new DateTime());
         }
     }
 }
