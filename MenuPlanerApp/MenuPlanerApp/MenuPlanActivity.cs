@@ -684,6 +684,7 @@ namespace MenuPlanerApp
             if (VerifyUserEntries.IsMenuPlanComplete(_selectedMenuPlan))
             {
                 await SaveOrUpdateMenuPlan();
+                await LoadMenuPlanData();
                 ShowToastMessage(SavedUpdatedDataMessage);
             }
             else

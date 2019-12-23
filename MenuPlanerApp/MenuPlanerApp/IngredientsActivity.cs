@@ -36,7 +36,6 @@ namespace MenuPlanerApp
         private TextInputEditText _ingredientNameEditText;
         private Button _ingredientSearchButton;
         private List<Ingredient> _ingredientsList;
-        private IngredientsRepositoryWeb _ingredientsRepository;
         private TextInputEditText _ingredientsUnitEditText;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;
@@ -69,18 +68,15 @@ namespace MenuPlanerApp
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            if (requestCode == SearchRequestCode)
-            {
-                if (data == null) return;
-                var selectedId = data.Extras.GetInt(PutExtraStringIngredientId);
-                SetSelectedIngredientResultOrFirstInList(selectedId);
-                BindDataFromDataToView();
-            }
+            if (requestCode != SearchRequestCode) return;
+            if (data == null) return;
+            var selectedId = data.Extras.GetInt(PutExtraStringIngredientId);
+            SetSelectedIngredientResultOrFirstInList(selectedId);
+            BindDataFromDataToView();
         }
 
         private void InitialReferencingObjects()
         {
-            _ingredientsRepository = new IngredientsRepositoryWeb();
             _selectedIngredient = new Ingredient();
         }
 
@@ -223,6 +219,7 @@ namespace MenuPlanerApp
             {
                 ShowToastMessage(FillNeededDataMessage);
             }
+            await LoadData();
         }
 
         private void ShowToastMessage(string text)

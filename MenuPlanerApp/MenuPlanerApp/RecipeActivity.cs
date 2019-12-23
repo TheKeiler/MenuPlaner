@@ -32,11 +32,9 @@ namespace MenuPlanerApp
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
-        private ImageHelper _imageHelper;
         private TextInputEditText _ingredientAmountEditText;
         private Button _ingredientButton;
         private ListView _ingredientsListView;
-        private IngredientsRepositoryWeb _ingredientsRepository;
         private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
         private Button _insertIngredientButton;
         private Bitmap _instructionsBitmap;
@@ -48,7 +46,6 @@ namespace MenuPlanerApp
         private TextInputEditText _recipeDescriptionEditText;
         private ImageView _recipeImageView;
         private TextInputEditText _recipeNameEditText;
-        private RecipeRepositoryWeb _recipeRepository;
         private Button _recipeSearchButton;
         private List<Recipe> _recipesList;
         private Button _removeIngredientButton;
@@ -56,6 +53,17 @@ namespace MenuPlanerApp
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
+        private const string ActionAbortedMessage = "Vorgang abgebrochen";
+        private const string FillOutNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
+        private const string ChangesSavedMessage = "Änderungen gespeichert";
+        private const string RecipeAlreadyOpenedMessage = "Rezepte bereits geöffnet";
+        private const string IngredientDataNotCompletelyMessage = "Zutatenangaben nicht vollständig";
+        private const string ExtraCameraDataString = "data";
+        private const string ExtraIngredientString = "selectedIngredientId";
+        private const string NoIngredientSelectedMessage = "Keine Zutat gewählt";
+        private const string IngredientUnitText = "Mengenangabe";
+        private const string SelectIngredientString = "Zutat wählen";
+        private const string ExtraRecipeString = "selectedRecipeId";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -100,11 +108,8 @@ namespace MenuPlanerApp
         private void InitialReferencingObjects()
         {
             _recipesList = new List<Recipe>();
-            _ingredientsRepository = new IngredientsRepositoryWeb();
-            _recipeRepository = new RecipeRepositoryWeb();
             _selectedRecipe = new Recipe();
             _selectedIngredient = new Ingredient();
-            _imageHelper = new ImageHelper();
         }
 
         private async Task LoadRecipeData()
@@ -115,17 +120,17 @@ namespace MenuPlanerApp
 
         private void SetSelectedRecipe(int requestCode, Result resultCode, Intent data)
         {
-            if (data == null || !data.HasExtra("selectedRecipeId")) return;
+            if (data == null || !data.HasExtra(ExtraRecipeString)) return;
 
             base.OnActivityResult(requestCode, resultCode, data);
 
-            if (data.Extras == null || data.Extras.GetInt("selectedRecipeId") == 0)
+            if (data.Extras == null || data.Extras.GetInt(ExtraRecipeString) == 0)
             {
                 _selectedRecipe = _recipesList.Count > 0 ? _recipesList.First() : new Recipe();
             }
             else
             {
-                var selectedId = data.Extras.GetInt("selectedRecipeId");
+                var selectedId = data.Extras.GetInt(ExtraRecipeString);
                 SetSelectedRecipeResultOrFirstInList(selectedId);
             }
 
@@ -134,13 +139,13 @@ namespace MenuPlanerApp
 
         private void SetSelectedRecipe()
         {
-            if (Intent.Extras == null || Intent.Extras.GetInt("selectedRecipeId") == 0)
+            if (Intent.Extras == null || Intent.Extras.GetInt(ExtraRecipeString) == 0)
             {
                 _selectedRecipe = _recipesList.Count > 0 ? _recipesList.First() : new Recipe();
             }
             else
             {
-                var selectedId = Intent.Extras.GetInt("selectedRecipeId");
+                var selectedId = Intent.Extras.GetInt(ExtraRecipeString);
                 SetSelectedRecipeResultOrFirstInList(selectedId);
             }
         }
@@ -209,13 +214,13 @@ namespace MenuPlanerApp
 
         private void BindTextOnIngredientsButton()
         {
-            _selectIngredientButton.Text = _selectedIngredient.Id == 0 ? "Zutat wählen" : _selectedIngredient.Name;
+            _selectIngredientButton.Text = _selectedIngredient.Id == 0 ? SelectIngredientString : _selectedIngredient.Name;
         }
 
         private void BindHintOnAmountEditText()
         {
             _ingredientAmountEditText.Hint =
-                _selectedIngredient.Id == 0 ? "Mengenangabe" : _selectedIngredient.ReferenceUnit;
+                _selectedIngredient.Id == 0 ? IngredientUnitText : _selectedIngredient.ReferenceUnit;
         }
 
         private void SetUpListView()
@@ -258,7 +263,11 @@ namespace MenuPlanerApp
 
         private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)
         {
-            if (_positionSelectedListViewItem == -1) ShowToastMessage("Keine Zutat gewählt");
+            if (_positionSelectedListViewItem == -1)
+            {
+                ShowToastMessage(NoIngredientSelectedMessage);
+            }
+
             _selectedRecipe.Ingredients.RemoveAt(_positionSelectedListViewItem);
             _positionSelectedListViewItem = -1;
             SetUpListView();
@@ -274,16 +283,16 @@ namespace MenuPlanerApp
             base.OnActivityResult(requestCode, resultCode, data);
             if (data == null) return;
 
-            _instructionsBitmap = (Bitmap) data.Extras.Get("data");
+            _instructionsBitmap = (Bitmap) data.Extras.Get(ExtraCameraDataString);
             _recipeImageView.SetImageBitmap(_instructionsBitmap);
         }
 
         private async void BindDataFromIngredientSearchResultToView(int requestCode, Result resultCode, Intent data)
         {
-            if (data == null || !data.HasExtra("selectedIngredientId")) return;
+            if (data == null || !data.HasExtra(ExtraIngredientString)) return;
 
             base.OnActivityResult(requestCode, resultCode, data);
-            var ingredientId = data.Extras.GetInt("selectedIngredientId");
+            var ingredientId = data.Extras.GetInt(ExtraIngredientString);
             var ingredient = await IngredientsRepositoryWeb.GetIngredientById(ingredientId);
             _selectedIngredient = ingredient;
             _selectIngredientButton.Text = _selectedIngredient.Name;
@@ -309,13 +318,13 @@ namespace MenuPlanerApp
                 SetUpListView();
                 SetListViewHeightBasedOnChildren(_ingredientsListView);
                 _selectedIngredient = new Ingredient();
-                _selectIngredientButton.Text = "Zutat wählen";
+                _selectIngredientButton.Text = SelectIngredientString;
                 _ingredientAmountEditText.Text = "";
-                _ingredientAmountEditText.Hint = "Mengenangabe";
+                _ingredientAmountEditText.Hint = IngredientUnitText;
             }
             else
             {
-                ShowToastMessage("Zutatenangaben nicht vollständig");
+                ShowToastMessage(IngredientDataNotCompletelyMessage);
             }
         }
 
@@ -340,7 +349,7 @@ namespace MenuPlanerApp
 
         private void RecipeButton_Click(object sender, EventArgs e)
         {
-            ShowToastMessage("Rezepte bereits geöffnet");
+            ShowToastMessage(RecipeAlreadyOpenedMessage);
         }
 
         private void SelectIngredientButtonClick(object sender, EventArgs e)
@@ -365,12 +374,14 @@ namespace MenuPlanerApp
             if (VerifyUserEntries.IsRecipeComplete(_selectedRecipe))
             {
                 await SaveOrUpdateRecipe();
-                ShowToastMessage("Änderungen gespeichert");
+                ShowToastMessage(ChangesSavedMessage);
             }
             else
             {
-                ShowToastMessage("Bitte füllen Sie alle Pflichtfelder aus");
+                ShowToastMessage(FillOutNeededDataMessage);
             }
+            await LoadRecipeData();
+            await FilterRecipes();
         }
 
         private void AbortButton_Click(object sender, EventArgs e)
@@ -379,7 +390,7 @@ namespace MenuPlanerApp
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
-            ShowToastMessage("Vorgang abgebrochen");
+            ShowToastMessage(ActionAbortedMessage);
         }
 
         private async void DeleteButton_Click(object sender, EventArgs e)
@@ -397,6 +408,7 @@ namespace MenuPlanerApp
 
             else
                 _selectedRecipe = await RecipeRepositoryWeb.PostRecipe(_selectedRecipe);
+
         }
 
         private void ShowToastMessage(string text)
