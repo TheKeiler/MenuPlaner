@@ -18,7 +18,8 @@ namespace MenuPlanerApp.Core.Repository
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
+                httpClient.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
 
                 var responseMessage = await httpClient.GetAsync(HttpServerUri);
                 if (!responseMessage.IsSuccessStatusCode) return null;
@@ -33,7 +34,8 @@ namespace MenuPlanerApp.Core.Repository
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
+                httpClient.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
 
                 var responseMessage = await httpClient.GetAsync(HttpServerUri + id);
                 if (!responseMessage.IsSuccessStatusCode) return null;
@@ -47,32 +49,28 @@ namespace MenuPlanerApp.Core.Repository
         public static async Task PostIngredient(Ingredient newIngredient)
         {
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(newIngredient));
-            var httpContent = new StringContent(serializedIngredient, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
+            var httpContent =
+                new StringContent(serializedIngredient, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
                 var responseMessage = await httpClient.PostAsync(HttpServerUri, httpContent);
 
-                if (responseMessage.Content != null)
-                {
-                    await responseMessage.Content.ReadAsStringAsync();
-                }
+                if (responseMessage.Content != null) await responseMessage.Content.ReadAsStringAsync();
             }
         }
 
         public static async Task UpdateIngredient(Ingredient updatedIngredient)
         {
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(updatedIngredient));
-            var httpContent = new StringContent(serializedIngredient, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
+            var httpContent =
+                new StringContent(serializedIngredient, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
                 var responseMessage = await httpClient.PutAsync(HttpServerUri + updatedIngredient.Id, httpContent);
 
-                if (responseMessage.Content != null)
-                {
-                    await responseMessage.Content.ReadAsStringAsync();
-                }
+                if (responseMessage.Content != null) await responseMessage.Content.ReadAsStringAsync();
             }
         }
 
@@ -82,10 +80,7 @@ namespace MenuPlanerApp.Core.Repository
             {
                 var responseMessage = await httpClient.DeleteAsync(HttpServerUri + id);
 
-                if (responseMessage.Content != null)
-                {
-                    await responseMessage.Content.ReadAsStringAsync();
-                }
+                if (responseMessage.Content != null) await responseMessage.Content.ReadAsStringAsync();
             }
         }
     }

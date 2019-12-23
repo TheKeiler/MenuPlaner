@@ -13,6 +13,10 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class OptionsActivity : AppCompatActivity
     {
+        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
+
+        private const string OptionsAlreadyOpenedMessage = "Optionen bereits geöffnet";
+
         //Data
         private CheckBox _celiacCheckBox;
         private UserOptions _currentUserOptions;
@@ -31,8 +35,6 @@ namespace MenuPlanerApp
 
         //IngredientsDetails
         private UserOptionsRepositoryWeb _userOptionsRepository;
-        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
-        private const string OptionsAlreadyOpenedMessage = "Optionen bereits geöffnet";
 
 
         protected override async void OnCreate(Bundle savedInstanceState)

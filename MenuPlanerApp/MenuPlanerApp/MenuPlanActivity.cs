@@ -35,6 +35,13 @@ namespace MenuPlanerApp
         private const int DaySevenLunchRequestCode = 3012;
         private const int DaySevenDinnerRequestCode = 3013;
         private const int MenuPlanSearchRequestCode = 3050;
+        private const string PutExtraStringMenuPlanId = "selectedMenuPlanId";
+        private const string MenuPlanHasFirstToBeSavedMessage = "Der Menüplan muss zuerst gespeichert werden";
+        private const string MenuAlreadyOpenedMessage = "Menüs bereits geöffnet";
+        private const string NoDateSelectedMessage = "Kein Datum gewählt";
+        private const string ActionAbortedMessage = "Vorgang abgebrochen";
+        private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
+        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
 
         private Button _abortButton;
         private TextView _dateDisplay;
@@ -88,13 +95,6 @@ namespace MenuPlanerApp
         private Button _saveButton;
         private MenuPlan _selectedMenuPlan;
         private Button _shoppingButton;
-        private const string PutExtraStringMenuPlanId = "selectedMenuPlanId";
-        private const string MenuPlanHasFirstToBeSavedMessage = "Der Menüplan muss zuerst gespeichert werden";
-        private const string MenuAlreadyOpenedMessage = "Menüs bereits geöffnet";
-        private const string NoDateSelectedMessage = "Kein Datum gewählt";
-        private const string ActionAbortedMessage = "Vorgang abgebrochen";
-        private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
-        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
 
 
         protected override async void OnCreate(Bundle savedInstanceState)

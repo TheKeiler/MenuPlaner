@@ -18,7 +18,8 @@ namespace MenuPlanerApp.Core.Repository
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
+                httpClient.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
 
                 var responseMessage = await httpClient.GetAsync(HttpServerUri);
                 if (!responseMessage.IsSuccessStatusCode) return null;
@@ -33,7 +34,8 @@ namespace MenuPlanerApp.Core.Repository
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
+                httpClient.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
 
                 var responseMessage = await httpClient.GetAsync(HttpServerUri + id);
                 if (!responseMessage.IsSuccessStatusCode) return null;

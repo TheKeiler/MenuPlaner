@@ -64,7 +64,8 @@ namespace MenuPlanerApp.Adapters
             else
             {
                 text = text.ToLower();
-                foreach (var item in _menuPlansFull.Where(item => item.StartDate.ToString(CultureInfo.InvariantCulture).ToLower().Contains(text)))
+                foreach (var item in _menuPlansFull.Where(item =>
+                    item.StartDate.ToString(CultureInfo.InvariantCulture).ToLower().Contains(text)))
                     _menuPlans.Add(item);
             }
 

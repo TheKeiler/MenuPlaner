@@ -21,6 +21,11 @@ namespace MenuPlanerApp
     public class IngredientsActivity : AppCompatActivity
     {
         private const int SearchRequestCode = 1000;
+        private const string PutExtraStringIngredientId = "selectedIngredientId";
+        private const string ActionAbortedMessage = "Vorgang abgebrochen";
+        private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
+        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
+        private const string IngredientAlreadyOpenedMessage = "Zutaten bereits geöffnet";
         private Button _abortButton;
         private CheckBox _celiacCheckBox;
         private Button _deleteButton;
@@ -40,11 +45,6 @@ namespace MenuPlanerApp
         private Button _recipeButton;
         private Button _saveButton;
         private Ingredient _selectedIngredient;
-        private const string PutExtraStringIngredientId = "selectedIngredientId";
-        private const string ActionAbortedMessage = "Vorgang abgebrochen";
-        private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
-        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
-        private const string IngredientAlreadyOpenedMessage = "Zutaten bereits geöffnet";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

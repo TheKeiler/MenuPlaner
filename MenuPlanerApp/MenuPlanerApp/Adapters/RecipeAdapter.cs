@@ -44,7 +44,9 @@ namespace MenuPlanerApp.Adapters
 
         private string SetRecipesText(int position)
         {
-            return string.IsNullOrEmpty(_recipes[position].Description) ? _recipes[position].Name : $"{_recipes[position].Name}, {_recipes[position].Description}";
+            return string.IsNullOrEmpty(_recipes[position].Description)
+                ? _recipes[position].Name
+                : $"{_recipes[position].Name}, {_recipes[position].Description}";
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
