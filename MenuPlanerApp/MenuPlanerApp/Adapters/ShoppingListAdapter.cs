@@ -25,7 +25,7 @@ namespace MenuPlanerApp.Adapters
         public async Task LoadData()
         {
             var menuPlanRepositoryWeb = new MenuPlanRepositoryWeb();
-            _menuPlan = await menuPlanRepositoryWeb.GetMenuPlanById(_selectedMenuPlanId);
+            _menuPlan = await MenuPlanRepositoryWeb.GetMenuPlanById(_selectedMenuPlanId);
             if (_menuPlan != null)
             {
                 var shoppingListCreator = new ShoppingListCreator();

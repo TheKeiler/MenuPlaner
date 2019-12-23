@@ -109,7 +109,7 @@ namespace MenuPlanerApp
 
         private async Task LoadRecipeData()
         {
-            _recipesList = await _recipeRepository.GetAllRecipes();
+            _recipesList = await RecipeRepositoryWeb.GetAllRecipes();
         }
 
 
@@ -203,7 +203,7 @@ namespace MenuPlanerApp
         private void SetUpImageView()
         {
             if (string.IsNullOrEmpty(_selectedRecipe.DirectionPictures)) return;
-            _instructionsBitmap = _imageHelper.ConvertBase64StringToBitmap(_selectedRecipe.DirectionPictures);
+            _instructionsBitmap = ImageHelper.ConvertBase64StringToBitmap(_selectedRecipe.DirectionPictures);
             _recipeImageView.SetImageBitmap(_instructionsBitmap);
         }
 
@@ -229,7 +229,7 @@ namespace MenuPlanerApp
         {
             _selectedRecipe.Name = _recipeNameEditText.Text;
             _selectedRecipe.Description = _recipeDescriptionEditText.Text;
-            _selectedRecipe.DirectionPictures = _imageHelper.ConvertBitmapToBase64String(_instructionsBitmap);
+            _selectedRecipe.DirectionPictures = ImageHelper.ConvertBitmapToBase64String(_instructionsBitmap);
         }
 
         private void LinkEventHandlers()
@@ -284,7 +284,7 @@ namespace MenuPlanerApp
 
             base.OnActivityResult(requestCode, resultCode, data);
             var ingredientId = data.Extras.GetInt("selectedIngredientId");
-            var ingredient = await _ingredientsRepository.GetIngredientById(ingredientId);
+            var ingredient = await IngredientsRepositoryWeb.GetIngredientById(ingredientId);
             _selectedIngredient = ingredient;
             _selectIngredientButton.Text = _selectedIngredient.Name;
             _ingredientAmountEditText.Hint = _selectedIngredient.ReferenceUnit;
@@ -385,7 +385,7 @@ namespace MenuPlanerApp
         private async void DeleteButton_Click(object sender, EventArgs e)
         {
             var toDeletingName = _selectedRecipe.Name;
-            await _recipeRepository.DeleteRecipeById(_selectedRecipe.Id);
+            await RecipeRepositoryWeb.DeleteRecipeById(_selectedRecipe.Id);
             Recreate();
             ShowToastMessage($"Das Rezept {toDeletingName} wurde gelöscht");
         }
@@ -393,10 +393,10 @@ namespace MenuPlanerApp
         private async Task SaveOrUpdateRecipe()
         {
             if (_selectedRecipe.Id != 0)
-                await _recipeRepository.UpdateRecipe(_selectedRecipe);
+                await RecipeRepositoryWeb.UpdateRecipe(_selectedRecipe);
 
             else
-                _selectedRecipe = await _recipeRepository.PostRecipe(_selectedRecipe);
+                _selectedRecipe = await RecipeRepositoryWeb.PostRecipe(_selectedRecipe);
         }
 
         private void ShowToastMessage(string text)

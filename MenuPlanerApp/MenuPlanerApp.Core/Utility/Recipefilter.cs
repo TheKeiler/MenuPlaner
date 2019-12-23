@@ -12,7 +12,7 @@ namespace MenuPlanerApp.Core.Utility
         {
             if (recipesList.Count == 0) return recipesList;
             var userOptionRepo = new UserOptionsRepositoryWeb();
-            var userOptions = await userOptionRepo.GetOptionById(1);
+            var userOptions = await UserOptionsRepositoryWeb.GetOptionById(1);
             if (userOptions == null) return recipesList;
             var filteredList = FilterRecipesAccordingToOptions(recipesList, userOptions);
             return filteredList;

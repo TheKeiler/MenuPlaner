@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MenuPlanerApp.API.Migrations
 {
-    [DbContext(typeof(MenuPlanerAppAPIContext))]
+    [DbContext(typeof(MenuPlanerAppApiContext))]
     [Migration("20191222132834_initial")]
     partial class initial
     {

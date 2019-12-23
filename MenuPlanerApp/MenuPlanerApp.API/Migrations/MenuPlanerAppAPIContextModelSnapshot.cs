@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MenuPlanerApp.API.Migrations
 {
-    [DbContext(typeof(MenuPlanerAppAPIContext))]
+    [DbContext(typeof(MenuPlanerAppApiContext))]
     internal class MenuPlanerAppAPIContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

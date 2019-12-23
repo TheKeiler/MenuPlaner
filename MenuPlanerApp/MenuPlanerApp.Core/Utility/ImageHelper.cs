@@ -6,7 +6,7 @@ namespace MenuPlanerApp.Core.Utility
 {
     public class ImageHelper
     {
-        public string ConvertBitmapToBase64String(Bitmap image)
+        public static string ConvertBitmapToBase64String(Bitmap image)
         {
             using (var stream = new MemoryStream())
             {
@@ -17,7 +17,7 @@ namespace MenuPlanerApp.Core.Utility
             }
         }
 
-        public Bitmap ConvertBase64StringToBitmap(string imageString)
+        public static Bitmap ConvertBase64StringToBitmap(string imageString)
         {
             var imageBytes = Convert.FromBase64String(imageString);
             return BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);

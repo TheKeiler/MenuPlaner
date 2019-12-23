@@ -3,15 +3,13 @@ using MenuPlanerApp.Core.Model;
 
 namespace MenuPlanerApp.Core.VerifyData
 {
-    public class VerifyUserEntries
+    public static class VerifyUserEntries
     {
         public static bool IsIngredientComplete(Ingredient ingredient)
         {
             if (string.IsNullOrEmpty(ingredient.Name))
                 return false;
-            if (string.IsNullOrEmpty(ingredient.ReferenceUnit))
-                return false;
-            return true;
+            return !string.IsNullOrEmpty(ingredient.ReferenceUnit);
         }
 
         public static bool IsRecipeComplete(Recipe recipe)

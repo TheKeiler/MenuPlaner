@@ -9,15 +9,16 @@ namespace MenuPlanerApp.Core.Repository
 {
     public class UserOptionsRepositoryWeb
     {
-        private readonly string _httpServerUri = "http://192.168.1.9:5000/api/UserOptions/";
+        private const string HttpServerUri = "http://192.168.1.9:5000/api/UserOptions/";
+        private const string MediaTypeWithQualityHeaderValueText = "application/json";
 
-        public async Task<UserOptions> GetOptionById(int id)
+        public static async Task<UserOptions> GetOptionById(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
 
-                var responseMessage = await httpClient.GetAsync(_httpServerUri + id);
+                var responseMessage = await httpClient.GetAsync(HttpServerUri + id);
                 if (!responseMessage.IsSuccessStatusCode) return null;
 
                 var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -26,14 +27,14 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task PostOption(UserOptions newUserOptions)
+        public static async Task PostOption(UserOptions newUserOptions)
         {
             var serializedOption = await Task.Run(() => JsonConvert.SerializeObject(newUserOptions));
-            var httpContent = new StringContent(serializedOption, Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(serializedOption, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PostAsync(_httpServerUri, httpContent);
+                var responseMessage = await httpClient.PostAsync(HttpServerUri, httpContent);
 
                 if (responseMessage.Content != null)
                 {
@@ -42,14 +43,14 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task UpdateOption(UserOptions updatedUserOptions)
+        public static async Task UpdateOption(UserOptions updatedUserOptions)
         {
             var serializedOption = await Task.Run(() => JsonConvert.SerializeObject(updatedUserOptions));
-            var httpContent = new StringContent(serializedOption, Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(serializedOption, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PutAsync(_httpServerUri + updatedUserOptions.Id, httpContent);
+                var responseMessage = await httpClient.PutAsync(HttpServerUri + updatedUserOptions.Id, httpContent);
 
                 if (responseMessage.Content != null)
                 {

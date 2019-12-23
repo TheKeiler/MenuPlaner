@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MenuPlanerApp.Core.Model;
 
 namespace MenuPlanerApp.Core.Utility
@@ -21,7 +22,8 @@ namespace MenuPlanerApp.Core.Utility
             }
 
             var summarizedList = SummarizeShoppingList(shoppingList);
-            return summarizedList;
+            var sortedSummarizedList = summarizedList.OrderByDescending(i => i.Ingredient.Description).ToList();
+            return sortedSummarizedList;
         }
 
         private static List<IngredientWithAmount> SummarizeShoppingList(IEnumerable<IngredientWithAmount> shoppingList)

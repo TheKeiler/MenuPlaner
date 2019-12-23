@@ -12,9 +12,9 @@ namespace MenuPlanerApp.API.Controllers
     [ApiController]
     public class UserOptionsController : ControllerBase
     {
-        private readonly MenuPlanerAppAPIContext _context;
+        private readonly MenuPlanerAppApiContext _context;
 
-        public UserOptionsController(MenuPlanerAppAPIContext context)
+        public UserOptionsController(MenuPlanerAppApiContext context)
         {
             _context = context;
         }
@@ -23,7 +23,7 @@ namespace MenuPlanerApp.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserOptions>>> GetUserOptions()
         {
-            return await _context.UserOptions.ToListAsync();
+            return await _context.UserOptions.ToListAsync().ConfigureAwait(false);
         }
 
         // GET: api/UserOptions/5
@@ -49,7 +49,7 @@ namespace MenuPlanerApp.API.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(false);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -68,7 +68,7 @@ namespace MenuPlanerApp.API.Controllers
         public async Task<ActionResult<UserOptions>> PostUserOptions(UserOptions userOptions)
         {
             _context.UserOptions.Add(userOptions);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return CreatedAtAction("GetUserOptions", new {id = userOptions.Id}, userOptions);
         }
@@ -81,7 +81,7 @@ namespace MenuPlanerApp.API.Controllers
             if (userOptions == null) return NotFound();
 
             _context.UserOptions.Remove(userOptions);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return userOptions;
         }

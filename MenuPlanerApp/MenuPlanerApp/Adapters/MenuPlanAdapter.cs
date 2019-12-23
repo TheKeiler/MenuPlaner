@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -21,7 +23,7 @@ namespace MenuPlanerApp.Adapters
         public async Task LoadData()
         {
             var menuPlanRepositoryWeb = new MenuPlanRepositoryWeb();
-            _menuPlans = await menuPlanRepositoryWeb.GetAllMenuPlan();
+            _menuPlans = await MenuPlanRepositoryWeb.GetAllMenuPlan();
             _menuPlansFull = new List<MenuPlan>(_menuPlans);
         }
 
@@ -62,9 +64,8 @@ namespace MenuPlanerApp.Adapters
             else
             {
                 text = text.ToLower();
-                foreach (var item in _menuPlansFull)
-                    if (item.StartDate.ToString().ToLower().Contains(text))
-                        _menuPlans.Add(item);
+                foreach (var item in _menuPlansFull.Where(item => item.StartDate.ToString(CultureInfo.InvariantCulture).ToLower().Contains(text)))
+                    _menuPlans.Add(item);
             }
 
             NotifyDataSetChanged();

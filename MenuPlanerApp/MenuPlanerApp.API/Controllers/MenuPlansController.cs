@@ -12,9 +12,9 @@ namespace MenuPlanerApp.API.Controllers
     [ApiController]
     public class MenuPlansController : ControllerBase
     {
-        private readonly MenuPlanerAppAPIContext _context;
+        private readonly MenuPlanerAppApiContext _context;
 
-        public MenuPlansController(MenuPlanerAppAPIContext context)
+        public MenuPlansController(MenuPlanerAppApiContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace MenuPlanerApp.API.Controllers
         {
             return await _context.MenuPlan
                 .Include(a => a.RecipesWithAmounts)
-                .ThenInclude(r => r.Recipe).ToListAsync();
+                .ThenInclude(r => r.Recipe).ToListAsync().ConfigureAwait(false);
         }
 
         // GET: api/MenuPlans/5
@@ -42,7 +42,7 @@ namespace MenuPlanerApp.API.Controllers
                 .ThenInclude(r => r.Recipe)
                 .ThenInclude(a => a.Ingredients)
                 .ThenInclude(i => i.Ingredient)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
         // PUT: api/MenuPlans/5
@@ -89,7 +89,7 @@ namespace MenuPlanerApp.API.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(false);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -116,7 +116,7 @@ namespace MenuPlanerApp.API.Controllers
 
             _context.MenuPlan.Add(menuP);
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return CreatedAtAction("GetMenuPlan", new {id = menuPlan.Id}, menuPlan);
         }
@@ -139,7 +139,7 @@ namespace MenuPlanerApp.API.Controllers
                 _context.MenuPlan.Remove(existingMenuPlan);
             }
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return menuPlan;
         }

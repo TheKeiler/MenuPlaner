@@ -40,13 +40,16 @@ namespace MenuPlanerApp
         private Button _recipeButton;
         private Button _saveButton;
         private Ingredient _selectedIngredient;
-        private VerifyUserEntries _verifyUserEntries;
+        private const string PutExtraStringIngredientId = "selectedIngredientId";
+        private const string ActionAbortedMessage = "Vorgang abgebrochen";
+        private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
+        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
+        private const string IngredientAlreadyOpenedMessage = "Zutaten bereits geöffnet";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Platform.Init(this, savedInstanceState);
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.ingredients);
             InitialReferencingObjects();
             await LoadData();
@@ -69,7 +72,7 @@ namespace MenuPlanerApp
             if (requestCode == SearchRequestCode)
             {
                 if (data == null) return;
-                var selectedId = data.Extras.GetInt("selectedIngredientId");
+                var selectedId = data.Extras.GetInt(PutExtraStringIngredientId);
                 SetSelectedIngredientResultOrFirstInList(selectedId);
                 BindDataFromDataToView();
             }
@@ -79,7 +82,6 @@ namespace MenuPlanerApp
         {
             _ingredientsRepository = new IngredientsRepositoryWeb();
             _selectedIngredient = new Ingredient();
-            _verifyUserEntries = new VerifyUserEntries();
         }
 
         private void SetSelectedIngredient()
@@ -90,7 +92,7 @@ namespace MenuPlanerApp
             }
             else
             {
-                var selectedId = Intent.Extras.GetInt("selectedIngredientId");
+                var selectedId = Intent.Extras.GetInt(PutExtraStringIngredientId);
                 SetSelectedIngredientResultOrFirstInList(selectedId);
             }
         }
@@ -98,7 +100,7 @@ namespace MenuPlanerApp
         private void SetSelectedIngredientResultOrFirstInList(int selectedId)
         {
             var result = _ingredientsList.Find(e => e.Id == selectedId);
-            _selectedIngredient = result == null ? _ingredientsList.First() : result;
+            _selectedIngredient = result ?? _ingredientsList.First();
         }
 
         private void FindViews()
@@ -185,7 +187,7 @@ namespace MenuPlanerApp
 
         private void IngredientsButton_Click(object sender, EventArgs e)
         {
-            ShowToastMessage("Zutaten bereits geöffnet");
+            ShowToastMessage(IngredientAlreadyOpenedMessage);
         }
 
         private void RecipeButton_Click(object sender, EventArgs e)
@@ -215,11 +217,11 @@ namespace MenuPlanerApp
             if (VerifyUserEntries.IsIngredientComplete(_selectedIngredient))
             {
                 await SaveOrUpdateIngredient();
-                ShowToastMessage("Änderungen gespeichert");
+                ShowToastMessage(SavedUpdatedDataMessage);
             }
             else
             {
-                ShowToastMessage("Bitte füllen Sie alle Pflichtfelder aus");
+                ShowToastMessage(FillNeededDataMessage);
             }
         }
 
@@ -233,9 +235,9 @@ namespace MenuPlanerApp
         private async Task SaveOrUpdateIngredient()
         {
             if (_selectedIngredient.Id != 0)
-                await _ingredientsRepository.UpdateIngredient(_selectedIngredient);
+                await IngredientsRepositoryWeb.UpdateIngredient(_selectedIngredient);
             else
-                await _ingredientsRepository.PostIngredient(_selectedIngredient);
+                await IngredientsRepositoryWeb.PostIngredient(_selectedIngredient);
         }
 
         private void AbortButton_Click(object sender, EventArgs e)
@@ -244,13 +246,13 @@ namespace MenuPlanerApp
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
-            ShowToastMessage("Vorgang abgebrochen");
+            ShowToastMessage(ActionAbortedMessage);
         }
 
         private async void DeleteButton_Click(object sender, EventArgs e)
         {
             var toDeletingName = _selectedIngredient.Name;
-            await _ingredientsRepository.DeleteIngredientById(_selectedIngredient.Id);
+            await IngredientsRepositoryWeb.DeleteIngredientById(_selectedIngredient.Id);
             Recreate();
             ShowToastMessage($"Die Zutat {toDeletingName} wurde gelöscht");
         }
@@ -258,7 +260,7 @@ namespace MenuPlanerApp
 
         private async Task LoadData()
         {
-            _ingredientsList = await _ingredientsRepository.GetAllIngredients();
+            _ingredientsList = await IngredientsRepositoryWeb.GetAllIngredients();
         }
     }
 }

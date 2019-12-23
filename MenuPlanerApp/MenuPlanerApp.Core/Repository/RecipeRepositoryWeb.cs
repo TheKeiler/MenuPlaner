@@ -11,15 +11,16 @@ namespace MenuPlanerApp.Core.Repository
 {
     public class RecipeRepositoryWeb
     {
-        private readonly string _httpServerUri = "http://192.168.1.9:5000/api/Recipes/";
+        private const string MediaTypeWithQualityHeaderValueText = "application/json";
+        private const string HttpServerUri = "http://192.168.1.9:5000/api/Recipes/";
 
-        public async Task<List<Recipe>> GetAllRecipes()
+        public static async Task<List<Recipe>> GetAllRecipes()
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValueText));
 
-                var responseMessage = await httpClient.GetAsync(_httpServerUri);
+                var responseMessage = await httpClient.GetAsync(HttpServerUri);
                 if (!responseMessage.IsSuccessStatusCode) return null;
 
                 var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -28,29 +29,14 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task<Recipe> GetRecipeById(int id)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var responseMessage = await httpClient.GetAsync(_httpServerUri + id);
-                if (!responseMessage.IsSuccessStatusCode) return null;
-
-                var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var recipe = JsonConvert.DeserializeObject<Recipe>(jsonResult);
-                return recipe;
-            }
-        }
-
-        public async Task<Recipe> PostRecipe(Recipe newRecipe)
+        public static async Task<Recipe> PostRecipe(Recipe newRecipe)
         {
             var serializedRecipe = await Task.Run(() => JsonConvert.SerializeObject(newRecipe, Formatting.Indented));
-            var httpContent = new StringContent(serializedRecipe, Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(serializedRecipe, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PostAsync(_httpServerUri, httpContent);
+                var responseMessage = await httpClient.PostAsync(HttpServerUri, httpContent);
 
                 if (responseMessage.Content == null) return null;
                 var responseContent = await responseMessage.Content.ReadAsStringAsync();
@@ -59,14 +45,14 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task UpdateRecipe(Recipe updatedRecipe)
+        public static async Task UpdateRecipe(Recipe updatedRecipe)
         {
             var serializedRecipe = await Task.Run(() => JsonConvert.SerializeObject(updatedRecipe));
-            var httpContent = new StringContent(serializedRecipe, Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(serializedRecipe, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PutAsync(_httpServerUri + updatedRecipe.Id, httpContent);
+                var responseMessage = await httpClient.PutAsync(HttpServerUri + updatedRecipe.Id, httpContent);
 
                 if (responseMessage.Content != null)
                 {
@@ -75,11 +61,11 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public async Task DeleteRecipeById(int id)
+        public static async Task DeleteRecipeById(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.DeleteAsync(_httpServerUri + id);
+                var responseMessage = await httpClient.DeleteAsync(HttpServerUri + id);
 
                 if (responseMessage.Content != null)
                 {

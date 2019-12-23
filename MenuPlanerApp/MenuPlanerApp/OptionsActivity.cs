@@ -15,7 +15,7 @@ namespace MenuPlanerApp
     {
         //Data
         private CheckBox _celiacCheckBox;
-        private UserOptions _currentUserOptionses;
+        private UserOptions _currentUserOptions;
         private CheckBox _fructoseCheckBox;
         private CheckBox _histaminCheckBox;
 
@@ -31,6 +31,8 @@ namespace MenuPlanerApp
 
         //IngredientsDetails
         private UserOptionsRepositoryWeb _userOptionsRepository;
+        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
+        private const string OptionsAlreadyOpenedMessage = "Optionen bereits geöffnet";
 
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -50,17 +52,17 @@ namespace MenuPlanerApp
         private void InitialReferencingObjects()
         {
             _userOptionsRepository = new UserOptionsRepositoryWeb();
-            _currentUserOptionses = new UserOptions();
+            _currentUserOptions = new UserOptions();
         }
 
         private async Task LoadData()
         {
-            _currentUserOptionses = await _userOptionsRepository.GetOptionById(1);
+            _currentUserOptions = await UserOptionsRepositoryWeb.GetOptionById(1);
         }
 
         private void SetCurrentOptionsAsNewIfNotExistsInRepository()
         {
-            if (_currentUserOptionses == null) _currentUserOptionses = new UserOptions();
+            if (_currentUserOptions == null) _currentUserOptions = new UserOptions();
         }
 
         private void FindViews()
@@ -93,18 +95,18 @@ namespace MenuPlanerApp
 
         private void BindDataFromDataToView()
         {
-            _fructoseCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithFructose;
-            _histaminCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithHistamin;
-            _lactoseCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithLactose;
-            _celiacCheckBox.Checked = _currentUserOptionses.WantsUserToSeeRecipesWithCeliac;
+            _fructoseCheckBox.Checked = _currentUserOptions.WantsUserToSeeRecipesWithFructose;
+            _histaminCheckBox.Checked = _currentUserOptions.WantsUserToSeeRecipesWithHistamin;
+            _lactoseCheckBox.Checked = _currentUserOptions.WantsUserToSeeRecipesWithLactose;
+            _celiacCheckBox.Checked = _currentUserOptions.WantsUserToSeeRecipesWithCeliac;
         }
 
         private void BindDataFromViewToData()
         {
-            _currentUserOptionses.WantsUserToSeeRecipesWithFructose = _fructoseCheckBox.Checked;
-            _currentUserOptionses.WantsUserToSeeRecipesWithHistamin = _histaminCheckBox.Checked;
-            _currentUserOptionses.WantsUserToSeeRecipesWithLactose = _lactoseCheckBox.Checked;
-            _currentUserOptionses.WantsUserToSeeRecipesWithCeliac = _celiacCheckBox.Checked;
+            _currentUserOptions.WantsUserToSeeRecipesWithFructose = _fructoseCheckBox.Checked;
+            _currentUserOptions.WantsUserToSeeRecipesWithHistamin = _histaminCheckBox.Checked;
+            _currentUserOptions.WantsUserToSeeRecipesWithLactose = _lactoseCheckBox.Checked;
+            _currentUserOptions.WantsUserToSeeRecipesWithCeliac = _celiacCheckBox.Checked;
         }
 
         private void LinkEventHandlers()
@@ -118,7 +120,7 @@ namespace MenuPlanerApp
 
         private void OptionsButton_Click(object sender, EventArgs e)
         {
-            ShowToastMessage("Optionen bereits geöffnet");
+            ShowToastMessage(OptionsAlreadyOpenedMessage);
         }
 
         private void MenusButton_Click(object sender, EventArgs e)
@@ -144,15 +146,15 @@ namespace MenuPlanerApp
         {
             BindDataFromViewToData();
             await SaveOrUpdateOptions();
-            ShowToastMessage("Änderungen gespeichert");
+            ShowToastMessage(SavedUpdatedDataMessage);
         }
 
         private async Task SaveOrUpdateOptions()
         {
-            if (_currentUserOptionses.Id != 0)
-                await _userOptionsRepository.UpdateOption(_currentUserOptionses);
+            if (_currentUserOptions.Id != 0)
+                await UserOptionsRepositoryWeb.UpdateOption(_currentUserOptions);
             else
-                await _userOptionsRepository.PostOption(_currentUserOptionses);
+                await UserOptionsRepositoryWeb.PostOption(_currentUserOptions);
         }
 
         private void ShowToastMessage(string text)

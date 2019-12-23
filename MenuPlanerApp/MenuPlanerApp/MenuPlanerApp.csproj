@@ -82,15 +82,11 @@
     <Compile Include="SplashActivity.cs" />
     <Compile Include="ViewHolders\IngredientViewHolder.cs" />
     <Compile Include="RecipeSearchActivity.cs" />
-    <Compile Include="ViewHolders\IngredientWithAmountViewHolder.cs" />
     <Compile Include="ViewHolders\MenuPlanViewHolder.cs" />
     <Compile Include="ViewHolders\RecipeViewHolder.cs" />
     <Compile Include="ViewHolders\ShoppingListViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />

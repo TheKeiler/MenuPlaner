@@ -12,9 +12,9 @@ namespace MenuPlanerApp.API.Controllers
     [ApiController]
     public class RecipesController : ControllerBase
     {
-        private readonly MenuPlanerAppAPIContext _context;
+        private readonly MenuPlanerAppApiContext _context;
 
-        public RecipesController(MenuPlanerAppAPIContext context)
+        public RecipesController(MenuPlanerAppApiContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace MenuPlanerApp.API.Controllers
         {
             return await _context.Recipe
                 .Include(a => a.Ingredients)
-                .ThenInclude(i => i.Ingredient).ToListAsync();
+                .ThenInclude(i => i.Ingredient).ToListAsync().ConfigureAwait(false);
         }
 
         // GET: api/Recipes/5
@@ -81,7 +81,7 @@ namespace MenuPlanerApp.API.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(false);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -104,7 +104,7 @@ namespace MenuPlanerApp.API.Controllers
                 ingr.Ingredient = _context.Ingredient.SingleOrDefault(i => i.Id == ingr.Ingredient.Id);
             _context.Recipe.Add(rec);
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return CreatedAtAction("GetRecipe", new {id = recipe.Id}, recipe);
         }
@@ -127,7 +127,7 @@ namespace MenuPlanerApp.API.Controllers
                 _context.Recipe.Remove(existingRecipe);
             }
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return recipe;
         }

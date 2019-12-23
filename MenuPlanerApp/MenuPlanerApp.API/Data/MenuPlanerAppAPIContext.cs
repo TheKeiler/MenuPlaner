@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MenuPlanerApp.API.Data
 {
-    public class MenuPlanerAppAPIContext : DbContext
+    public class MenuPlanerAppApiContext : DbContext
     {
-        public MenuPlanerAppAPIContext(DbContextOptions<MenuPlanerAppAPIContext> options)
+        public MenuPlanerAppApiContext(DbContextOptions options)
             : base(options)
         {
         }

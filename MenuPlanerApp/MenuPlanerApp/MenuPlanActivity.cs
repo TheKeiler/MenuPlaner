@@ -88,6 +88,13 @@ namespace MenuPlanerApp
         private Button _saveButton;
         private MenuPlan _selectedMenuPlan;
         private Button _shoppingButton;
+        private const string PutExtraStringMenuPlanId = "selectedMenuPlanId";
+        private const string MenuPlanHasFirstToBeSavedMessage = "Der Menüplan muss zuerst gespeichert werden";
+        private const string MenuAlreadyOpenedMessage = "Menüs bereits geöffnet";
+        private const string NoDateSelectedMessage = "Kein Datum gewählt";
+        private const string ActionAbortedMessage = "Vorgang abgebrochen";
+        private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
+        private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
 
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -186,17 +193,17 @@ namespace MenuPlanerApp
 
         private void SetSelectedMenuPlan(int requestCode, Result resultCode, Intent data)
         {
-            if (data == null || !data.HasExtra("selectedMenuPlanId")) return;
+            if (data == null || !data.HasExtra(PutExtraStringMenuPlanId)) return;
 
             base.OnActivityResult(requestCode, resultCode, data);
 
-            if (data.Extras == null || data.Extras.GetInt("selectedMenuPlanId") == 0)
+            if (data.Extras == null || data.Extras.GetInt(PutExtraStringMenuPlanId) == 0)
             {
                 _selectedMenuPlan = _menuPlanList.Count > 0 ? _menuPlanList.First() : new MenuPlan();
             }
             else
             {
-                var selectedId = data.Extras.GetInt("selectedMenuPlanId");
+                var selectedId = data.Extras.GetInt(PutExtraStringMenuPlanId);
                 SetSelectedMenuPlanResultOrFirstInList(selectedId);
             }
 
@@ -205,13 +212,13 @@ namespace MenuPlanerApp
 
         private async Task LoadMenuPlanData()
         {
-            var menus = await _menuPlanRepository.GetAllMenuPlan();
+            var menus = await MenuPlanRepositoryWeb.GetAllMenuPlan();
             if (menus != null) _menuPlanList = menus;
         }
 
         private async Task LoadRecipeData()
         {
-            _recipesList = await _recipeRepository.GetAllRecipes();
+            _recipesList = await RecipeRepositoryWeb.GetAllRecipes();
         }
 
         private async Task FilterRecipes()
@@ -222,13 +229,13 @@ namespace MenuPlanerApp
 
         private void SetSelectedMenuPlan()
         {
-            if (Intent.Extras == null || Intent.Extras.GetInt("selectedMenuPlanId") == 0)
+            if (Intent.Extras == null || Intent.Extras.GetInt(PutExtraStringMenuPlanId) == 0)
             {
                 _selectedMenuPlan = _menuPlanList.Count > 0 ? _menuPlanList.FirstOrDefault() : new MenuPlan();
             }
             else
             {
-                var selectedId = Intent.Extras.GetInt("selectedMenuPlanId");
+                var selectedId = Intent.Extras.GetInt(PutExtraStringMenuPlanId);
                 SetSelectedMenuPlanResultOrFirstInList(selectedId);
             }
         }
@@ -461,7 +468,7 @@ namespace MenuPlanerApp
 
             if (dt.Equals(new DateTime()))
             {
-                _dateDisplay.Text = "Kein Datum gewählt";
+                _dateDisplay.Text = NoDateSelectedMessage;
             }
             else
             {
@@ -484,7 +491,7 @@ namespace MenuPlanerApp
             _ingredientButton.Click += IngredientsButton_Click;
             _recipeButton.Click += RecipeButton_Click;
 
-            //Menuplan
+            //MenuPlan
             _menuPlanSearchButton.Click += MenuPlanSearchButton_Click;
             _dateSelectButton.Click += DateSelect_Click;
             _dayOneLunchButton.Click += DayOneLunchButton_Click;
@@ -519,7 +526,7 @@ namespace MenuPlanerApp
 
         private void MenusButton_Click(object sender, EventArgs e)
         {
-            ShowToastMessage("Menüs bereits geöffnet");
+            ShowToastMessage(MenuAlreadyOpenedMessage);
         }
 
         private void IngredientsButton_Click(object sender, EventArgs e)
@@ -645,12 +652,12 @@ namespace MenuPlanerApp
         {
             if (_selectedMenuPlan.Id == 0)
             {
-                ShowToastMessage("Der Menüplan muss zuerst gespeichert werden");
+                ShowToastMessage(MenuPlanHasFirstToBeSavedMessage);
                 return;
             }
 
             var intent = new Intent(this, typeof(ShoppingListActivity));
-            intent.PutExtra("selectedMenuPlanId", _selectedMenuPlan.Id);
+            intent.PutExtra(PutExtraStringMenuPlanId, _selectedMenuPlan.Id);
             StartActivityForResult(intent, DaySevenDinnerRequestCode);
         }
 
@@ -658,7 +665,7 @@ namespace MenuPlanerApp
         {
             if (_selectedMenuPlan.Id == 0) return;
             var toDeletingDate = _selectedMenuPlan.StartDate;
-            await _menuPlanRepository.DeleteMenuPlanById(_selectedMenuPlan.Id);
+            await MenuPlanRepositoryWeb.DeleteMenuPlanById(_selectedMenuPlan.Id);
             Recreate();
             ShowToastMessage($"Das Menu vom {toDeletingDate} wurde gelöscht");
         }
@@ -669,7 +676,7 @@ namespace MenuPlanerApp
             FindViews();
             BindDataFromDataToView();
             LinkEventHandlers();
-            ShowToastMessage("Vorgang abgebrochen");
+            ShowToastMessage(ActionAbortedMessage);
         }
 
         private async void SaveButton_Click(object sender, EventArgs e)
@@ -677,21 +684,21 @@ namespace MenuPlanerApp
             if (VerifyUserEntries.IsMenuPlanComplete(_selectedMenuPlan))
             {
                 await SaveOrUpdateMenuPlan();
-                ShowToastMessage("Änderungen gespeichert");
+                ShowToastMessage(SavedUpdatedDataMessage);
             }
             else
             {
-                ShowToastMessage("Bitte füllen Sie alle Pflichtfelder aus");
+                ShowToastMessage(FillNeededDataMessage);
             }
         }
 
         private async Task SaveOrUpdateMenuPlan()
         {
             if (_selectedMenuPlan.Id != 0)
-                await _menuPlanRepository.UpdateMenuPlan(_selectedMenuPlan);
+                await MenuPlanRepositoryWeb.UpdateMenuPlan(_selectedMenuPlan);
 
             else
-                _selectedMenuPlan = await _menuPlanRepository.PostMenuPlan(_selectedMenuPlan);
+                _selectedMenuPlan = await MenuPlanRepositoryWeb.PostMenuPlan(_selectedMenuPlan);
         }
 
 

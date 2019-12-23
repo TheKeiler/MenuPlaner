@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -21,7 +22,7 @@ namespace MenuPlanerApp.Adapters
         public async Task LoadData()
         {
             var ingredientRepository = new IngredientsRepositoryWeb();
-            _ingredients = await ingredientRepository.GetAllIngredients();
+            _ingredients = await IngredientsRepositoryWeb.GetAllIngredients();
             _ingredientsFull = new List<Ingredient>(_ingredients);
         }
 
@@ -34,8 +35,7 @@ namespace MenuPlanerApp.Adapters
 
         private string SetIngredientsText(int position)
         {
-            if (string.IsNullOrEmpty(_ingredients[position].Description)) return _ingredients[position].Name;
-            return $"{_ingredients[position].Name}, {_ingredients[position].Description}";
+            return string.IsNullOrEmpty(_ingredients[position].Description) ? _ingredients[position].Name : $"{_ingredients[position].Name}, {_ingredients[position].Description}";
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -63,9 +63,8 @@ namespace MenuPlanerApp.Adapters
             else
             {
                 text = text.ToLower();
-                foreach (var item in _ingredientsFull)
-                    if (item.Name.ToLower().Contains(text))
-                        _ingredients.Add(item);
+                foreach (var item in _ingredientsFull.Where(item => item.Name.ToLower().Contains(text)))
+                    _ingredients.Add(item);
             }
 
             NotifyDataSetChanged();
