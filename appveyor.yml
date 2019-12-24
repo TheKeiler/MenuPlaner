@@ -18,7 +18,7 @@ before_build:
 - cmd: dotnet sonarscanner begin /k:"TheKeiler_MenuPlaner" /o:"thekeiler" /v:%APPVEYOR_BUILD_VERSION% /d:sonar.branch.name=%APPVEYOR_REPO_BRANCH% /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="183525949e759d3a3afd2be01711ca9acb7a8ec0" /d:sonar.language="cs" /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" /d:sonar.cs.opencover.reportsPaths="CoverageResults\coverage.opencover.xml"
 
 build_script:
-- cmd: dotnet build MenuPlanerApp\MenuPlanerApp.sln
+- cmd: msbuild /t:restore MenuPlanerApp\MenuPlanerApp.sln
 - cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" 
 
 after_build:
