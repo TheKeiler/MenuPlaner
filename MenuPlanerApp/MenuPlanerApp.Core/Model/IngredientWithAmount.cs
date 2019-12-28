@@ -13,8 +13,6 @@
 
         public decimal Amount { get; set; }
 
-        public int RecipeId { get; set; }
-
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;

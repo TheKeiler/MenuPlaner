@@ -33,3 +33,4 @@ D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlan
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.csproj.CopyComplete
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.dll
 D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.pdb
+D:\MenuPlaner\MenuPlanerApp\MenuPlanerApp.Core\obj\Debug\netstandard2.0\MenuPlanerApp.Core.csprojAssemblyReference.cache
