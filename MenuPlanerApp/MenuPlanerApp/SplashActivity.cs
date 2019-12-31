@@ -14,7 +14,7 @@ namespace MenuPlanerApp
             //Display Splash Screen for 2 Sec  
             Thread.Sleep(2000);
             //Start Activity1 Activity  
-            StartActivity(typeof(IngredientsActivity));
+            StartActivity(typeof(RecipeActivity));
         }
     }
 }

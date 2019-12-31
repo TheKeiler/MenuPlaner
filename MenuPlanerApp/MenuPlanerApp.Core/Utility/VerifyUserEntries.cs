@@ -1,7 +1,7 @@
 ﻿using System;
 using MenuPlanerApp.Core.Model;
 
-namespace MenuPlanerApp.Core.VerifyData
+namespace MenuPlanerApp.Core.Utility
 {
     public static class VerifyUserEntries
     {

@@ -17,7 +17,6 @@ using MenuPlanerApp.Adapters;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.Core.Utility;
-using MenuPlanerApp.Core.VerifyData;
 using Xamarin.Essentials;
 
 namespace MenuPlanerApp
@@ -29,6 +28,17 @@ namespace MenuPlanerApp
         private const int IngredientsSearchRequestCode = 2000;
         private const int CameraRequestCode = 2001;
         private const int RecipeSearchRequestCode = 2002;
+        private const string ActionAbortedMessage = "Vorgang abgebrochen";
+        private const string FillOutNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
+        private const string ChangesSavedMessage = "Änderungen gespeichert";
+        private const string RecipeAlreadyOpenedMessage = "Rezepte bereits geöffnet";
+        private const string IngredientDataNotCompletelyMessage = "Zutatenangaben nicht vollständig";
+        private const string ExtraCameraDataString = "data";
+        private const string ExtraIngredientString = "selectedIngredientId";
+        private const string NoIngredientSelectedMessage = "Keine Zutat gewählt";
+        private const string IngredientUnitText = "Mengenangabe";
+        private const string SelectIngredientString = "Zutat wählen";
+        private const string ExtraRecipeString = "selectedRecipeId";
         private Button _abortButton;
         private Button _cameraButton;
         private Button _deleteButton;
@@ -53,17 +63,6 @@ namespace MenuPlanerApp
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
-        private const string ActionAbortedMessage = "Vorgang abgebrochen";
-        private const string FillOutNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
-        private const string ChangesSavedMessage = "Änderungen gespeichert";
-        private const string RecipeAlreadyOpenedMessage = "Rezepte bereits geöffnet";
-        private const string IngredientDataNotCompletelyMessage = "Zutatenangaben nicht vollständig";
-        private const string ExtraCameraDataString = "data";
-        private const string ExtraIngredientString = "selectedIngredientId";
-        private const string NoIngredientSelectedMessage = "Keine Zutat gewählt";
-        private const string IngredientUnitText = "Mengenangabe";
-        private const string SelectIngredientString = "Zutat wählen";
-        private const string ExtraRecipeString = "selectedRecipeId";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -214,7 +213,8 @@ namespace MenuPlanerApp
 
         private void BindTextOnIngredientsButton()
         {
-            _selectIngredientButton.Text = _selectedIngredient.Id == 0 ? SelectIngredientString : _selectedIngredient.Name;
+            _selectIngredientButton.Text =
+                _selectedIngredient.Id == 0 ? SelectIngredientString : _selectedIngredient.Name;
         }
 
         private void BindHintOnAmountEditText()
@@ -263,10 +263,7 @@ namespace MenuPlanerApp
 
         private void RemoveSelectedIngredientFromList_Click(object sender, EventArgs e)
         {
-            if (_positionSelectedListViewItem == -1)
-            {
-                ShowToastMessage(NoIngredientSelectedMessage);
-            }
+            if (_positionSelectedListViewItem == -1) ShowToastMessage(NoIngredientSelectedMessage);
 
             _selectedRecipe.Ingredients.RemoveAt(_positionSelectedListViewItem);
             _positionSelectedListViewItem = -1;
@@ -380,6 +377,7 @@ namespace MenuPlanerApp
             {
                 ShowToastMessage(FillOutNeededDataMessage);
             }
+
             await LoadRecipeData();
             await FilterRecipes();
         }
@@ -408,7 +406,6 @@ namespace MenuPlanerApp
 
             else
                 _selectedRecipe = await RecipeRepositoryWeb.PostRecipe(_selectedRecipe);
-
         }
 
         private void ShowToastMessage(string text)

@@ -12,7 +12,7 @@ using Android.Support.V7.App;
 using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
-using MenuPlanerApp.Core.VerifyData;
+using MenuPlanerApp.Core.Utility;
 using Xamarin.Essentials;
 
 namespace MenuPlanerApp
@@ -219,6 +219,7 @@ namespace MenuPlanerApp
             {
                 ShowToastMessage(FillNeededDataMessage);
             }
+
             await LoadData();
         }
 

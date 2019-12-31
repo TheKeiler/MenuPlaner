@@ -11,7 +11,6 @@ using Android.Widget;
 using MenuPlanerApp.Core.Model;
 using MenuPlanerApp.Core.Repository;
 using MenuPlanerApp.Core.Utility;
-using MenuPlanerApp.Core.VerifyData;
 using MenuPlanerApp.Fragments;
 using Xamarin.Essentials;
 
