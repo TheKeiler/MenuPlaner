@@ -20,8 +20,8 @@ before_build:
 build_script:
 - cmd: msbuild /t:restore MenuPlanerApp\MenuPlanerApp.sln
 - cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Core.Tests\MenuPlanerApp.Core.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" 
-- cmd: dotnet test MenuPlanerApp\MenuPlanerApp.API.Tests\MenuPlanerApp.API.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" /p:MergeWith="../CoverageResults/coverage.json"  
-- cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Tests\MenuPlanerApp.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" /p:MergeWith="../CoverageResults/coverage.json" /p:CoverletOutputFormat=opencover
+- cmd: dotnet test MenuPlanerApp\MenuPlanerApp.API.Tests\MenuPlanerApp.API.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" /p:MergeWith="../CoverageResults/coverage.json /p:CoverletOutputFormat=opencover"  
+#- cmd: dotnet test MenuPlanerApp\MenuPlanerApp.Tests\MenuPlanerApp.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput="../CoverageResults/" /p:MergeWith="../CoverageResults/coverage.json" /p:CoverletOutputFormat=opencover
 
 after_build:
 - cmd: dotnet sonarscanner end /d:sonar.login="183525949e759d3a3afd2be01711ca9acb7a8ec0"
