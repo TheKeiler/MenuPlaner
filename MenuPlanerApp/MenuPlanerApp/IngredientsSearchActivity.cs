@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using MenuPlanerApp.Adapters;
+using MenuPlanerApp.Core.Repository;
 using SearchView = Android.Widget.SearchView;
 
 namespace MenuPlanerApp
@@ -11,6 +12,7 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class IngredientsSearchActivity : AppCompatActivity
     {
+        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
         private IngredientAdapter _ingredientAdapter;
         private RecyclerView _ingredientRecyclerView;
         private RecyclerView.LayoutManager _ingredientsLayoutManager;
@@ -20,15 +22,14 @@ namespace MenuPlanerApp
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
             SetContentView(Resource.Layout
                 .ingredient_search);
             _searchView = FindViewById<SearchView>(Resource.Id.searchViewIngredient);
             _ingredientRecyclerView = FindViewById<RecyclerView>(Resource.Id.IngredientsSearchRecyclerView);
-
+            _ingredientsRepositoryWeb = new IngredientsRepositoryWeb();
             _ingredientsLayoutManager = new LinearLayoutManager(this);
             _ingredientRecyclerView.SetLayoutManager(_ingredientsLayoutManager);
-            _ingredientAdapter = new IngredientAdapter();
+            _ingredientAdapter = new IngredientAdapter(_ingredientsRepositoryWeb);
             await _ingredientAdapter.LoadData();
             _ingredientAdapter.ItemClick += IngredientAdapter_ItemClick;
             _ingredientRecyclerView.SetAdapter(_ingredientAdapter);

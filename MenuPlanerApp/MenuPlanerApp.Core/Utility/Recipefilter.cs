@@ -8,16 +8,22 @@ namespace MenuPlanerApp.Core.Utility
 {
     public class RecipeFilter
     {
+        private readonly UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
+
+        public RecipeFilter(UserOptionsRepositoryWeb userOptionsRepositoryWeb)
+        {
+            _userOptionsRepositoryWeb = userOptionsRepositoryWeb;
+        }
         public async Task<List<Recipe>> FilterRecipes(List<Recipe> recipesList)
         {
             if (recipesList.Count == 0) return recipesList;
-            var userOptions = await UserOptionsRepositoryWeb.GetOptionById(1);
+            var userOptions = await _userOptionsRepositoryWeb.GetOptionById(1);
             if (userOptions == null) return recipesList;
             var filteredList = FilterRecipesAccordingToOptions(recipesList, userOptions);
             return filteredList;
         }
 
-        private List<Recipe> FilterRecipesAccordingToOptions(List<Recipe> recipeList, UserOptions userOptions)
+        private static List<Recipe> FilterRecipesAccordingToOptions(List<Recipe> recipeList, UserOptions userOptions)
         {
             if (!userOptions.WantsUserToSeeRecipesWithCeliac && !userOptions.WantsUserToSeeRecipesWithFructose &&
                 !userOptions.WantsUserToSeeRecipesWithHistamin &&

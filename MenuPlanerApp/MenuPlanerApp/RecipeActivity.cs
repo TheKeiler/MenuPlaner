@@ -63,17 +63,19 @@ namespace MenuPlanerApp
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
+        private RecipeRepositoryWeb _recipeRepositoryWeb;
+        private UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
+        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Platform.Init(this, savedInstanceState);
 
-            // Create your application here
             SetContentView(Resource.Layout.recipes);
             CheckPermissions();
             InitialReferencingObjects();
-            await LoadRecipeData();
+            await LoadRecipeData(_recipeRepositoryWeb);
             await FilterRecipes();
             SetSelectedRecipe();
             FindViews();
@@ -83,7 +85,7 @@ namespace MenuPlanerApp
 
         private async Task FilterRecipes()
         {
-            var recipeFilter = new RecipeFilter();
+            var recipeFilter = new RecipeFilter(_userOptionsRepositoryWeb);
             _recipesList = await recipeFilter.FilterRecipes(_recipesList);
         }
 
@@ -109,11 +111,14 @@ namespace MenuPlanerApp
             _recipesList = new List<Recipe>();
             _selectedRecipe = new Recipe();
             _selectedIngredient = new Ingredient();
+            _recipeRepositoryWeb = new RecipeRepositoryWeb();
+            _userOptionsRepositoryWeb = new UserOptionsRepositoryWeb();
+            _ingredientsRepositoryWeb = new IngredientsRepositoryWeb();
         }
 
-        private async Task LoadRecipeData()
+        private async Task LoadRecipeData(RecipeRepositoryWeb recipeRepositoryWeb)
         {
-            _recipesList = await RecipeRepositoryWeb.GetAllRecipes();
+            _recipesList = await recipeRepositoryWeb.GetAllRecipes();
         }
 
 
@@ -290,7 +295,7 @@ namespace MenuPlanerApp
 
             base.OnActivityResult(requestCode, resultCode, data);
             var ingredientId = data.Extras.GetInt(ExtraIngredientString);
-            var ingredient = await IngredientsRepositoryWeb.GetIngredientById(ingredientId);
+            var ingredient = await _ingredientsRepositoryWeb.GetIngredientById(ingredientId);
             _selectedIngredient = ingredient;
             _selectIngredientButton.Text = _selectedIngredient.Name;
             _ingredientAmountEditText.Hint = _selectedIngredient.ReferenceUnit;
@@ -370,7 +375,7 @@ namespace MenuPlanerApp
             BindDataFromViewToData();
             if (VerifyUserEntries.IsRecipeComplete(_selectedRecipe))
             {
-                await SaveOrUpdateRecipe();
+                await SaveOrUpdateRecipe(_recipeRepositoryWeb);
                 ShowToastMessage(ChangesSavedMessage);
             }
             else
@@ -378,7 +383,7 @@ namespace MenuPlanerApp
                 ShowToastMessage(FillOutNeededDataMessage);
             }
 
-            await LoadRecipeData();
+            await LoadRecipeData(_recipeRepositoryWeb);
             await FilterRecipes();
         }
 
@@ -394,18 +399,18 @@ namespace MenuPlanerApp
         private async void DeleteButton_Click(object sender, EventArgs e)
         {
             var toDeletingName = _selectedRecipe.Name;
-            await RecipeRepositoryWeb.DeleteRecipeById(_selectedRecipe.Id);
+            await _recipeRepositoryWeb.DeleteRecipeById(_selectedRecipe.Id);
             Recreate();
             ShowToastMessage($"Das Rezept {toDeletingName} wurde gelöscht");
         }
 
-        private async Task SaveOrUpdateRecipe()
+        private async Task SaveOrUpdateRecipe(RecipeRepositoryWeb recipeRepositoryWeb)
         {
             if (_selectedRecipe.Id != 0)
-                await RecipeRepositoryWeb.UpdateRecipe(_selectedRecipe);
+                await recipeRepositoryWeb.UpdateRecipe(_selectedRecipe);
 
             else
-                _selectedRecipe = await RecipeRepositoryWeb.PostRecipe(_selectedRecipe);
+                _selectedRecipe = await recipeRepositoryWeb.PostRecipe(_selectedRecipe);
         }
 
         private void ShowToastMessage(string text)

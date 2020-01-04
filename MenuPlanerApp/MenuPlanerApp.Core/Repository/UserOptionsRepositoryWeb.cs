@@ -12,7 +12,7 @@ namespace MenuPlanerApp.Core.Repository
         private const string HttpServerUri = "http://192.168.1.9:5000/api/UserOptions/";
         private const string MediaTypeWithQualityHeaderValueText = "application/json";
 
-        public static async Task<UserOptions> GetOptionById(int id)
+        public async Task<UserOptions> GetOptionById(int id)
         {
             using (var httpClient = new HttpClient())
             {
@@ -28,35 +28,25 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task PostOption(UserOptions newUserOptions)
+        public async Task PostOption(UserOptions newUserOptions)
         {
             var serializedOption = await Task.Run(() => JsonConvert.SerializeObject(newUserOptions));
             var httpContent = new StringContent(serializedOption, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PostAsync(HttpServerUri, httpContent);
-
-                if (responseMessage.Content != null)
-                {
-                    var responseContent = await responseMessage.Content.ReadAsStringAsync();
-                }
+                await httpClient.PostAsync(HttpServerUri, httpContent);
             }
         }
 
-        public static async Task UpdateOption(UserOptions updatedUserOptions)
+        public async Task UpdateOption(UserOptions updatedUserOptions)
         {
             var serializedOption = await Task.Run(() => JsonConvert.SerializeObject(updatedUserOptions));
             var httpContent = new StringContent(serializedOption, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PutAsync(HttpServerUri + updatedUserOptions.Id, httpContent);
-
-                if (responseMessage.Content != null)
-                {
-                    var responseContent = await responseMessage.Content.ReadAsStringAsync();
-                }
+                await httpClient.PutAsync(HttpServerUri + updatedUserOptions.Id, httpContent);
             }
         }
     }

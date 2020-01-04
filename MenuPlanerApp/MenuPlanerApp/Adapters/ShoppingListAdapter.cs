@@ -11,21 +11,22 @@ namespace MenuPlanerApp.Adapters
 {
     internal class ShoppingListAdapter : RecyclerView.Adapter
     {
+        private readonly MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
         private readonly int _selectedMenuPlanId;
         private List<IngredientWithAmount> _ingredientsList;
         private MenuPlan _menuPlan;
 
-        public ShoppingListAdapter(int selectedMenuPlanId)
+        public ShoppingListAdapter(int selectedMenuPlanId, MenuPlanRepositoryWeb menuPlanRepositoryWeb)
         {
             _selectedMenuPlanId = selectedMenuPlanId;
+            _menuPlanRepositoryWeb = menuPlanRepositoryWeb;
         }
 
         public override int ItemCount => _ingredientsList.Count;
 
         public async Task LoadData()
         {
-            var menuPlanRepositoryWeb = new MenuPlanRepositoryWeb();
-            _menuPlan = await MenuPlanRepositoryWeb.GetMenuPlanById(_selectedMenuPlanId);
+            _menuPlan = await _menuPlanRepositoryWeb.GetMenuPlanById(_selectedMenuPlanId);
             if (_menuPlan != null)
             {
                 var shoppingListCreator = new ShoppingListCreator();

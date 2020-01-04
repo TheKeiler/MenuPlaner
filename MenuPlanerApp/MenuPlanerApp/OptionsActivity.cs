@@ -17,34 +17,26 @@ namespace MenuPlanerApp
 
         private const string OptionsAlreadyOpenedMessage = "Optionen bereits geöffnet";
 
-        //Data
         private CheckBox _celiacCheckBox;
         private UserOptions _currentUserOptions;
         private CheckBox _fructoseCheckBox;
         private CheckBox _histaminCheckBox;
-
-        //Navigation
         private Button _ingredientButton;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;
         private Button _optionsButton;
         private Button _recipeButton;
-
-        //Operations
         private Button _saveButton;
-
-        //IngredientsDetails
-        private UserOptionsRepositoryWeb _userOptionsRepository;
+        private UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
 
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your application here
+            
             SetContentView(Resource.Layout.options);
             InitialReferencingObjects();
-            await LoadData();
+            await LoadData(_userOptionsRepositoryWeb);
             SetCurrentOptionsAsNewIfNotExistsInRepository();
             FindViews();
             BindDataFromDataToView();
@@ -53,13 +45,13 @@ namespace MenuPlanerApp
 
         private void InitialReferencingObjects()
         {
-            _userOptionsRepository = new UserOptionsRepositoryWeb();
             _currentUserOptions = new UserOptions();
+            _userOptionsRepositoryWeb = new UserOptionsRepositoryWeb();
         }
 
-        private async Task LoadData()
+        private async Task LoadData(UserOptionsRepositoryWeb userOptionsRepositoryWeb)
         {
-            _currentUserOptions = await UserOptionsRepositoryWeb.GetOptionById(1);
+            _currentUserOptions = await userOptionsRepositoryWeb.GetOptionById(1);
         }
 
         private void SetCurrentOptionsAsNewIfNotExistsInRepository()
@@ -147,16 +139,16 @@ namespace MenuPlanerApp
         private async void SaveButton_Click(object sender, EventArgs e)
         {
             BindDataFromViewToData();
-            await SaveOrUpdateOptions();
+            await SaveOrUpdateOptions(_userOptionsRepositoryWeb);
             ShowToastMessage(SavedUpdatedDataMessage);
         }
 
-        private async Task SaveOrUpdateOptions()
+        private async Task SaveOrUpdateOptions(UserOptionsRepositoryWeb userOptionsRepositoryWeb)
         {
             if (_currentUserOptions.Id != 0)
-                await UserOptionsRepositoryWeb.UpdateOption(_currentUserOptions);
+                await userOptionsRepositoryWeb.UpdateOption(_currentUserOptions);
             else
-                await UserOptionsRepositoryWeb.PostOption(_currentUserOptions);
+                await userOptionsRepositoryWeb.PostOption(_currentUserOptions);
         }
 
         private void ShowToastMessage(string text)

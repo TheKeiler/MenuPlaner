@@ -44,6 +44,7 @@ namespace MenuPlanerApp
         private Button _recipeButton;
         private Button _saveButton;
         private Ingredient _selectedIngredient;
+        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -51,7 +52,7 @@ namespace MenuPlanerApp
             Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.ingredients);
             InitialReferencingObjects();
-            await LoadData();
+            await LoadData(_ingredientsRepositoryWeb);
             SetSelectedIngredient();
             FindViews();
             BindDataFromDataToView();
@@ -78,6 +79,7 @@ namespace MenuPlanerApp
         private void InitialReferencingObjects()
         {
             _selectedIngredient = new Ingredient();
+            _ingredientsRepositoryWeb = new IngredientsRepositoryWeb();
         }
 
         private void SetSelectedIngredient()
@@ -212,7 +214,7 @@ namespace MenuPlanerApp
             BindDataFromViewToData();
             if (VerifyUserEntries.IsIngredientComplete(_selectedIngredient))
             {
-                await SaveOrUpdateIngredient();
+                await SaveOrUpdateIngredient(_ingredientsRepositoryWeb);
                 ShowToastMessage(SavedUpdatedDataMessage);
             }
             else
@@ -220,7 +222,7 @@ namespace MenuPlanerApp
                 ShowToastMessage(FillNeededDataMessage);
             }
 
-            await LoadData();
+            await LoadData(_ingredientsRepositoryWeb);
         }
 
         private void ShowToastMessage(string text)
@@ -230,12 +232,12 @@ namespace MenuPlanerApp
             Toast.MakeText(this, toastMessage, duration).Show();
         }
 
-        private async Task SaveOrUpdateIngredient()
+        private async Task SaveOrUpdateIngredient(IngredientsRepositoryWeb ingredientsRepositoryWeb)
         {
             if (_selectedIngredient.Id != 0)
-                await IngredientsRepositoryWeb.UpdateIngredient(_selectedIngredient);
+                await ingredientsRepositoryWeb.UpdateIngredient(_selectedIngredient);
             else
-                await IngredientsRepositoryWeb.PostIngredient(_selectedIngredient);
+                await ingredientsRepositoryWeb.PostIngredient(_selectedIngredient);
         }
 
         private void AbortButton_Click(object sender, EventArgs e)
@@ -250,15 +252,15 @@ namespace MenuPlanerApp
         private async void DeleteButton_Click(object sender, EventArgs e)
         {
             var toDeletingName = _selectedIngredient.Name;
-            await IngredientsRepositoryWeb.DeleteIngredientById(_selectedIngredient.Id);
+            await _ingredientsRepositoryWeb.DeleteIngredientById(_selectedIngredient.Id);
             Recreate();
             ShowToastMessage($"Die Zutat {toDeletingName} wurde gelöscht");
         }
 
 
-        private async Task LoadData()
+        private async Task LoadData(IngredientsRepositoryWeb ingredientsRepositoryWeb)
         {
-            _ingredientsList = await IngredientsRepositoryWeb.GetAllIngredients();
+            _ingredientsList = await ingredientsRepositoryWeb.GetAllIngredients();
         }
     }
 }

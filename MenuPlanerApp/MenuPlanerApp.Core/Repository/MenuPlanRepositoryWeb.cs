@@ -14,7 +14,7 @@ namespace MenuPlanerApp.Core.Repository
         private const string HttpServerUri = "http://192.168.1.9:5000/api/MenuPlans/";
         private const string MediaTypeWithQualityHeaderValueText = "application/json";
 
-        public static async Task<List<MenuPlan>> GetAllMenuPlan()
+        public async Task<List<MenuPlan>> GetAllMenuPlan()
         {
             using (var httpClient = new HttpClient())
             {
@@ -30,7 +30,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task<MenuPlan> GetMenuPlanById(int id)
+        public async Task<MenuPlan> GetMenuPlanById(int id)
         {
             using (var httpClient = new HttpClient())
             {
@@ -46,7 +46,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task<MenuPlan> PostMenuPlan(MenuPlan newMenuPlan)
+        public async Task<MenuPlan> PostMenuPlan(MenuPlan newMenuPlan)
         {
             var serializedMenuPlan =
                 await Task.Run(() => JsonConvert.SerializeObject(newMenuPlan, Formatting.Indented));
@@ -63,32 +63,23 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task UpdateMenuPlan(MenuPlan updatedMenuPlan)
+        public async Task UpdateMenuPlan(MenuPlan updatedMenuPlan)
         {
             var serializedMenuPlan = await Task.Run(() => JsonConvert.SerializeObject(updatedMenuPlan));
             var httpContent = new StringContent(serializedMenuPlan, Encoding.UTF8, MediaTypeWithQualityHeaderValueText);
 
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.PutAsync(HttpServerUri + updatedMenuPlan.Id, httpContent);
+                await httpClient.PutAsync(HttpServerUri + updatedMenuPlan.Id, httpContent);
 
-                if (responseMessage.Content != null)
-                {
-                    var responseContent = await responseMessage.Content.ReadAsStringAsync();
-                }
             }
         }
 
-        public static async Task DeleteMenuPlanById(int id)
+        public async Task DeleteMenuPlanById(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.DeleteAsync(HttpServerUri + id);
-
-                if (responseMessage.Content != null)
-                {
-                    var responseContent = await responseMessage.Content.ReadAsStringAsync();
-                }
+                await httpClient.DeleteAsync(HttpServerUri + id);
             }
         }
     }

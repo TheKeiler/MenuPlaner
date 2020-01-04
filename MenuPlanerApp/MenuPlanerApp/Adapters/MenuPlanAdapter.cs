@@ -13,6 +13,7 @@ namespace MenuPlanerApp.Adapters
 {
     internal class MenuPlanAdapter : RecyclerView.Adapter
     {
+        private readonly MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
         private List<MenuPlan> _menuPlans;
         private List<MenuPlan> _menuPlansFull;
 
@@ -20,10 +21,14 @@ namespace MenuPlanerApp.Adapters
 
         public event EventHandler<int> ItemClick;
 
+        public MenuPlanAdapter(MenuPlanRepositoryWeb menuPlanRepositoryWeb)
+        {
+            _menuPlanRepositoryWeb = menuPlanRepositoryWeb;
+        }
+
         public async Task LoadData()
         {
-            var menuPlanRepositoryWeb = new MenuPlanRepositoryWeb();
-            _menuPlans = await MenuPlanRepositoryWeb.GetAllMenuPlan();
+            _menuPlans = await _menuPlanRepositoryWeb.GetAllMenuPlan();
             _menuPlansFull = new List<MenuPlan>(_menuPlans);
         }
 

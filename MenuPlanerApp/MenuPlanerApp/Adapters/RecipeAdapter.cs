@@ -13,6 +13,8 @@ namespace MenuPlanerApp.Adapters
 {
     public class RecipeAdapter : RecyclerView.Adapter
     {
+        private readonly RecipeRepositoryWeb _recipeRepositoryWeb;
+        private readonly UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
         private List<Recipe> _recipes;
         private List<Recipe> _recipesFull;
 
@@ -20,17 +22,22 @@ namespace MenuPlanerApp.Adapters
 
         public event EventHandler<int> ItemClick;
 
+        public RecipeAdapter(RecipeRepositoryWeb recipeRepositoryWeb, UserOptionsRepositoryWeb userOptionsRepositoryWeb)
+        {
+            _recipeRepositoryWeb = recipeRepositoryWeb;
+            _userOptionsRepositoryWeb = userOptionsRepositoryWeb;
+        }
+
         public async Task LoadData()
         {
-            var recipesRepositoryWeb = new RecipeRepositoryWeb();
-            _recipes = await RecipeRepositoryWeb.GetAllRecipes();
+            _recipes = await _recipeRepositoryWeb.GetAllRecipes();
             await FilterRecipesFromOptions();
             _recipesFull = new List<Recipe>(_recipes);
         }
 
         private async Task FilterRecipesFromOptions()
         {
-            var recipeFilter = new RecipeFilter();
+            var recipeFilter = new RecipeFilter(_userOptionsRepositoryWeb);
             var filteredList = await recipeFilter.FilterRecipes(_recipes);
             _recipes = filteredList;
         }

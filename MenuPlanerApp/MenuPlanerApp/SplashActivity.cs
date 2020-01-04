@@ -11,9 +11,7 @@ namespace MenuPlanerApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            //Display Splash Screen for 2 Sec  
             Thread.Sleep(2000);
-            //Start Activity1 Activity  
             StartActivity(typeof(RecipeActivity));
         }
     }

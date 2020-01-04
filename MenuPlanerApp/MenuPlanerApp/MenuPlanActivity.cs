@@ -83,18 +83,18 @@ namespace MenuPlanerApp
         private Button _deleteButton;
         private Button _ingredientButton;
         private List<MenuPlan> _menuPlanList;
-        private MenuPlanRepositoryWeb _menuPlanRepository;
         private Button _menuPlanSearchButton;
         private Button _menusButton;
         private Button _newMenuPlanButton;
         private Button _optionsButton;
         private Button _recipeButton;
-        private RecipeRepositoryWeb _recipeRepository;
         private List<Recipe> _recipesList;
         private Button _saveButton;
         private MenuPlan _selectedMenuPlan;
         private Button _shoppingButton;
-
+        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
+        private RecipeRepositoryWeb _recipeRepositoryWeb;
+        private UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -104,9 +104,9 @@ namespace MenuPlanerApp
             // Create your application here
             SetContentView(Resource.Layout.menuPlan);
             InitialReferencingObjects();
-            await LoadMenuPlanData();
-            await LoadRecipeData();
-            await FilterRecipes();
+            await LoadMenuPlanData(_menuPlanRepositoryWeb);
+            await LoadRecipeData(_recipeRepositoryWeb);
+            await FilterRecipes(_userOptionsRepositoryWeb);
             SetSelectedMenuPlan();
             FindViews();
             BindDataFromDataToView();
@@ -115,11 +115,12 @@ namespace MenuPlanerApp
 
         private void InitialReferencingObjects()
         {
-            _menuPlanRepository = new MenuPlanRepositoryWeb();
-            _recipeRepository = new RecipeRepositoryWeb();
             _recipesList = new List<Recipe>();
             _menuPlanList = new List<MenuPlan>();
             _selectedMenuPlan = new MenuPlan();
+            _menuPlanRepositoryWeb = new MenuPlanRepositoryWeb();
+            _userOptionsRepositoryWeb = new UserOptionsRepositoryWeb();
+            _recipeRepositoryWeb = new RecipeRepositoryWeb();
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -209,20 +210,20 @@ namespace MenuPlanerApp
             BindDataFromDataToView();
         }
 
-        private async Task LoadMenuPlanData()
+        private async Task LoadMenuPlanData(MenuPlanRepositoryWeb menuPlanRepositoryWeb)
         {
-            var menus = await MenuPlanRepositoryWeb.GetAllMenuPlan();
+            var menus = await menuPlanRepositoryWeb.GetAllMenuPlan();
             if (menus != null) _menuPlanList = menus;
         }
 
-        private async Task LoadRecipeData()
+        private async Task LoadRecipeData(RecipeRepositoryWeb recipeRepositoryWeb)
         {
-            _recipesList = await RecipeRepositoryWeb.GetAllRecipes();
+            _recipesList = await recipeRepositoryWeb.GetAllRecipes();
         }
 
-        private async Task FilterRecipes()
+        private async Task FilterRecipes(UserOptionsRepositoryWeb userOptionsRepositoryWeb)
         {
-            var recipeFilter = new RecipeFilter();
+            var recipeFilter = new RecipeFilter(userOptionsRepositoryWeb);
             _recipesList = await recipeFilter.FilterRecipes(_recipesList);
         }
 
@@ -664,7 +665,7 @@ namespace MenuPlanerApp
         {
             if (_selectedMenuPlan.Id == 0) return;
             var toDeletingDate = _selectedMenuPlan.StartDate;
-            await MenuPlanRepositoryWeb.DeleteMenuPlanById(_selectedMenuPlan.Id);
+            await _menuPlanRepositoryWeb.DeleteMenuPlanById(_selectedMenuPlan.Id);
             Recreate();
             ShowToastMessage($"Das Menu vom {toDeletingDate} wurde gelöscht");
         }
@@ -683,7 +684,7 @@ namespace MenuPlanerApp
             if (VerifyUserEntries.IsMenuPlanComplete(_selectedMenuPlan))
             {
                 await SaveOrUpdateMenuPlan();
-                await LoadMenuPlanData();
+                await LoadMenuPlanData(_menuPlanRepositoryWeb);
                 ShowToastMessage(SavedUpdatedDataMessage);
             }
             else
@@ -695,10 +696,10 @@ namespace MenuPlanerApp
         private async Task SaveOrUpdateMenuPlan()
         {
             if (_selectedMenuPlan.Id != 0)
-                await MenuPlanRepositoryWeb.UpdateMenuPlan(_selectedMenuPlan);
+                await _menuPlanRepositoryWeb.UpdateMenuPlan(_selectedMenuPlan);
 
             else
-                _selectedMenuPlan = await MenuPlanRepositoryWeb.PostMenuPlan(_selectedMenuPlan);
+                _selectedMenuPlan = await _menuPlanRepositoryWeb.PostMenuPlan(_selectedMenuPlan);
         }
 
 

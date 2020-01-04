@@ -12,17 +12,22 @@ namespace MenuPlanerApp.Adapters
 {
     public class IngredientAdapter : RecyclerView.Adapter
     {
+        private readonly IngredientsRepositoryWeb _ingredientsRepositoryWeb;
         private List<Ingredient> _ingredients;
         private List<Ingredient> _ingredientsFull;
 
         public override int ItemCount => _ingredients.Count;
 
+        public IngredientAdapter(IngredientsRepositoryWeb ingredientsRepositoryWeb)
+        {
+            _ingredientsRepositoryWeb = ingredientsRepositoryWeb;
+        }
+
         public event EventHandler<int> ItemClick;
 
         public async Task LoadData()
         {
-            var ingredientRepository = new IngredientsRepositoryWeb();
-            _ingredients = await IngredientsRepositoryWeb.GetAllIngredients();
+            _ingredients = await _ingredientsRepositoryWeb.GetAllIngredients();
             _ingredientsFull = new List<Ingredient>(_ingredients);
         }
 

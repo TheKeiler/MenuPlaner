@@ -14,7 +14,7 @@ namespace MenuPlanerApp.Core.Repository
         private const string HttpServerUri = "http://192.168.1.9:5000/api/ingredients/";
         private const string MediaTypeWithQualityHeaderValueText = "application/json";
 
-        public static async Task<List<Ingredient>> GetAllIngredients()
+        public async Task<List<Ingredient>> GetAllIngredients()
         {
             using (var httpClient = new HttpClient())
             {
@@ -30,7 +30,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task<Ingredient> GetIngredientById(int id)
+        public async Task<Ingredient> GetIngredientById(int id)
         {
             using (var httpClient = new HttpClient())
             {
@@ -46,7 +46,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task PostIngredient(Ingredient newIngredient)
+        public async Task PostIngredient(Ingredient newIngredient)
         {
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(newIngredient));
             var httpContent =
@@ -60,7 +60,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task UpdateIngredient(Ingredient updatedIngredient)
+        public async Task UpdateIngredient(Ingredient updatedIngredient)
         {
             var serializedIngredient = await Task.Run(() => JsonConvert.SerializeObject(updatedIngredient));
             var httpContent =
@@ -74,7 +74,7 @@ namespace MenuPlanerApp.Core.Repository
             }
         }
 
-        public static async Task DeleteIngredientById(int id)
+        public async Task DeleteIngredientById(int id)
         {
             using (var httpClient = new HttpClient())
             {
