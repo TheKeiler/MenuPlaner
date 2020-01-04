@@ -15,8 +15,8 @@ namespace MenuPlanerApp
         private RecipeAdapter _recipeAdapter;
         private RecyclerView.LayoutManager _recipeLayoutManager;
         private RecyclerView _recipeRecyclerView;
-        private SearchView _searchView;
         private RecipeRepositoryWeb _recipeRepositoryWeb;
+        private SearchView _searchView;
         private UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -31,7 +31,7 @@ namespace MenuPlanerApp
             _userOptionsRepositoryWeb = new UserOptionsRepositoryWeb();
             _recipeLayoutManager = new LinearLayoutManager(this);
             _recipeRecyclerView.SetLayoutManager(_recipeLayoutManager);
-            _recipeAdapter = new RecipeAdapter(_recipeRepositoryWeb , _userOptionsRepositoryWeb);
+            _recipeAdapter = new RecipeAdapter(_recipeRepositoryWeb, _userOptionsRepositoryWeb);
             await _recipeAdapter.LoadData();
             _recipeAdapter.ItemClick += RecipeAdapter_ItemClick;
             _recipeRecyclerView.SetAdapter(_recipeAdapter);

@@ -36,6 +36,7 @@ namespace MenuPlanerApp
         private TextInputEditText _ingredientNameEditText;
         private Button _ingredientSearchButton;
         private List<Ingredient> _ingredientsList;
+        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
         private TextInputEditText _ingredientsUnitEditText;
         private CheckBox _lactoseCheckBox;
         private Button _menusButton;
@@ -44,7 +45,6 @@ namespace MenuPlanerApp
         private Button _recipeButton;
         private Button _saveButton;
         private Ingredient _selectedIngredient;
-        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

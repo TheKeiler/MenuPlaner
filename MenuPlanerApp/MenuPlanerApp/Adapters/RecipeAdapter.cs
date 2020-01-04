@@ -18,15 +18,15 @@ namespace MenuPlanerApp.Adapters
         private List<Recipe> _recipes;
         private List<Recipe> _recipesFull;
 
-        public override int ItemCount => _recipes.Count;
-
-        public event EventHandler<int> ItemClick;
-
         public RecipeAdapter(RecipeRepositoryWeb recipeRepositoryWeb, UserOptionsRepositoryWeb userOptionsRepositoryWeb)
         {
             _recipeRepositoryWeb = recipeRepositoryWeb;
             _userOptionsRepositoryWeb = userOptionsRepositoryWeb;
         }
+
+        public override int ItemCount => _recipes.Count;
+
+        public event EventHandler<int> ItemClick;
 
         public async Task LoadData()
         {

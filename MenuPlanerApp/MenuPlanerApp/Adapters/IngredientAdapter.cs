@@ -16,12 +16,12 @@ namespace MenuPlanerApp.Adapters
         private List<Ingredient> _ingredients;
         private List<Ingredient> _ingredientsFull;
 
-        public override int ItemCount => _ingredients.Count;
-
         public IngredientAdapter(IngredientsRepositoryWeb ingredientsRepositoryWeb)
         {
             _ingredientsRepositoryWeb = ingredientsRepositoryWeb;
         }
+
+        public override int ItemCount => _ingredients.Count;
 
         public event EventHandler<int> ItemClick;
 

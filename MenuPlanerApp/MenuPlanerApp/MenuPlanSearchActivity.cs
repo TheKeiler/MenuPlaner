@@ -13,9 +13,9 @@ namespace MenuPlanerApp
     public class MenuPlanSearchActivity : AppCompatActivity
     {
         private MenuPlanAdapter _menuPlanAdapter;
-        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
         private RecyclerView.LayoutManager _menuPlanLayoutManager;
         private RecyclerView _menuPlanRecyclerView;
+        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
         private SearchView _searchView;
 
         protected override async void OnCreate(Bundle savedInstanceState)

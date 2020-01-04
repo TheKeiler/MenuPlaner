@@ -83,17 +83,17 @@ namespace MenuPlanerApp
         private Button _deleteButton;
         private Button _ingredientButton;
         private List<MenuPlan> _menuPlanList;
+        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
         private Button _menuPlanSearchButton;
         private Button _menusButton;
         private Button _newMenuPlanButton;
         private Button _optionsButton;
         private Button _recipeButton;
+        private RecipeRepositoryWeb _recipeRepositoryWeb;
         private List<Recipe> _recipesList;
         private Button _saveButton;
         private MenuPlan _selectedMenuPlan;
         private Button _shoppingButton;
-        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
-        private RecipeRepositoryWeb _recipeRepositoryWeb;
         private UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)

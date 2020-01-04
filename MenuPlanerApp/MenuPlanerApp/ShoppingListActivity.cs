@@ -10,11 +10,11 @@ namespace MenuPlanerApp
     [Activity(Label = "ShoppingListActivity")]
     public class ShoppingListActivity : AppCompatActivity
     {
+        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
         private int _selectedMenuPlanId;
         private ShoppingListAdapter _shoppingListAdapter;
         private RecyclerView.LayoutManager _shoppingListLayoutManager;
         private RecyclerView _shoppingListRecyclerView;
-        private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

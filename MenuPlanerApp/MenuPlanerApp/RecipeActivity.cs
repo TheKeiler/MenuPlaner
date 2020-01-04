@@ -45,6 +45,7 @@ namespace MenuPlanerApp
         private TextInputEditText _ingredientAmountEditText;
         private Button _ingredientButton;
         private ListView _ingredientsListView;
+        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
         private IngredientsWithAmountListViewAdapter _ingredientsWithAmountListViewAdapter;
         private Button _insertIngredientButton;
         private Bitmap _instructionsBitmap;
@@ -56,6 +57,7 @@ namespace MenuPlanerApp
         private TextInputEditText _recipeDescriptionEditText;
         private ImageView _recipeImageView;
         private TextInputEditText _recipeNameEditText;
+        private RecipeRepositoryWeb _recipeRepositoryWeb;
         private Button _recipeSearchButton;
         private List<Recipe> _recipesList;
         private Button _removeIngredientButton;
@@ -63,9 +65,7 @@ namespace MenuPlanerApp
         private Ingredient _selectedIngredient;
         private Recipe _selectedRecipe;
         private Button _selectIngredientButton;
-        private RecipeRepositoryWeb _recipeRepositoryWeb;
         private UserOptionsRepositoryWeb _userOptionsRepositoryWeb;
-        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

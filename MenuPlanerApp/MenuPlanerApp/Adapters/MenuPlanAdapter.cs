@@ -17,14 +17,14 @@ namespace MenuPlanerApp.Adapters
         private List<MenuPlan> _menuPlans;
         private List<MenuPlan> _menuPlansFull;
 
-        public override int ItemCount => _menuPlans.Count;
-
-        public event EventHandler<int> ItemClick;
-
         public MenuPlanAdapter(MenuPlanRepositoryWeb menuPlanRepositoryWeb)
         {
             _menuPlanRepositoryWeb = menuPlanRepositoryWeb;
         }
+
+        public override int ItemCount => _menuPlans.Count;
+
+        public event EventHandler<int> ItemClick;
 
         public async Task LoadData()
         {

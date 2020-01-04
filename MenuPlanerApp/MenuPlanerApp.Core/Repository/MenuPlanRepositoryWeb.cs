@@ -71,7 +71,6 @@ namespace MenuPlanerApp.Core.Repository
             using (var httpClient = new HttpClient())
             {
                 await httpClient.PutAsync(HttpServerUri + updatedMenuPlan.Id, httpContent);
-
             }
         }
 

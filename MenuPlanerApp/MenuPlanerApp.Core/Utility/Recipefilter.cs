@@ -14,6 +14,7 @@ namespace MenuPlanerApp.Core.Utility
         {
             _userOptionsRepositoryWeb = userOptionsRepositoryWeb;
         }
+
         public async Task<List<Recipe>> FilterRecipes(List<Recipe> recipesList)
         {
             if (recipesList.Count == 0) return recipesList;

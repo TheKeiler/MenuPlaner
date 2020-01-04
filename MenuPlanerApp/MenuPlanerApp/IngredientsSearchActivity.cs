@@ -12,10 +12,10 @@ namespace MenuPlanerApp
     [Activity(Label = "@string/app_name")]
     public class IngredientsSearchActivity : AppCompatActivity
     {
-        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
         private IngredientAdapter _ingredientAdapter;
         private RecyclerView _ingredientRecyclerView;
         private RecyclerView.LayoutManager _ingredientsLayoutManager;
+        private IngredientsRepositoryWeb _ingredientsRepositoryWeb;
         private SearchView _searchView;
 
         protected override async void OnCreate(Bundle savedInstanceState)

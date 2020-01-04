@@ -33,7 +33,7 @@ namespace MenuPlanerApp
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
+
             SetContentView(Resource.Layout.options);
             InitialReferencingObjects();
             await LoadData(_userOptionsRepositoryWeb);
