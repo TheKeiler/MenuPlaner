@@ -7,7 +7,7 @@ using MenuPlanerApp.Core.Repository;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "ShoppingListActivity")]
+    [Activity(Label = "@string/app_name")]
     public class ShoppingListActivity : AppCompatActivity
     {
         private MenuPlanRepositoryWeb _menuPlanRepositoryWeb;

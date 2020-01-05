@@ -18,7 +18,7 @@ namespace MenuPlanerApp.API.Model
         public string Description { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual ICollection<IngredientWithAmount> Ingredients { get; }
+        public virtual ICollection<IngredientWithAmount> Ingredients { get; set; }
 
         [Required]
         public string DirectionPictures { get; set; }

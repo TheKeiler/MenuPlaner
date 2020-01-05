@@ -9,7 +9,7 @@ using SearchView = Android.Widget.SearchView;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "RecipeSearchActivity")]
+    [Activity(Label = "@string/app_name")]
     public class RecipeSearchActivity : AppCompatActivity
     {
         private RecipeAdapter _recipeAdapter;

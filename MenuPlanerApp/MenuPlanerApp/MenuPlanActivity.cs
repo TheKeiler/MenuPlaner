@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
@@ -41,6 +42,9 @@ namespace MenuPlanerApp
         private const string ActionAbortedMessage = "Vorgang abgebrochen";
         private const string FillNeededDataMessage = "Bitte füllen Sie alle Pflichtfelder aus";
         private const string SavedUpdatedDataMessage = "Änderungen gespeichert";
+        private const string DefaultTextMealCount = "";
+        private const string DefaultTextLunch = "Mittag";
+        private const string DefaultTextDinner = "Abend";
 
         private Button _abortButton;
         private TextView _dateDisplay;
@@ -340,126 +344,224 @@ namespace MenuPlanerApp
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _dayOneLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayOneLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayOneLunchEditText.Text = DefaultTextMealCount;
+                _dayOneLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _dayOneLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayOneLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataFirstDayDinner()
         {
             var recipeFirstDayDinner = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Monday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeFirstDayDinner == null) return;
-            _dayOneDinnerEditText.Text = recipeFirstDayDinner.NumbersOfMeals.ToString();
-            _dayOneDinnerButton.Text = recipeFirstDayDinner.Recipe.Name;
+            if (recipeFirstDayDinner == null)
+            {
+                _dayOneDinnerEditText.Text = DefaultTextMealCount;
+                _dayOneDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _dayOneDinnerEditText.Text = recipeFirstDayDinner.NumbersOfMeals.ToString();
+                _dayOneDinnerButton.Text = recipeFirstDayDinner.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataSecondDayLunch()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Tuesday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _dayTwoLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayTwoLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayTwoLunchEditText.Text = DefaultTextMealCount;
+                _dayTwoLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _dayTwoLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayTwoLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataSecondDayDinner()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Tuesday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeWithAmount == null) return;
-            _dayTwoDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayTwoDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayTwoDinnerEditText.Text = DefaultTextMealCount;
+                _dayTwoDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _dayTwoDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayTwoDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataThirdDayLunch()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Wednesday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _dayThreeLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayThreeLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayThreeLunchEditText.Text = DefaultTextMealCount;
+                _dayThreeLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _dayThreeLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayThreeLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataThirdDayDinner()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Wednesday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeWithAmount == null) return;
-            _dayThreeDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayThreeDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayThreeDinnerEditText.Text = DefaultTextMealCount;
+                _dayThreeDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _dayThreeDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayThreeDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataFourthDayLunch()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Thursday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _dayFourLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayFourLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayFourLunchEditText.Text = DefaultTextMealCount;
+                _dayFourLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _dayFourLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayFourLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataFourthDayDinner()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Thursday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeWithAmount == null) return;
-            _dayFourDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayFourDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayFourDinnerEditText.Text = DefaultTextMealCount;
+                _dayFourDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _dayFourDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayFourDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataFifthDayLunch()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Friday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _dayFiveLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayFiveLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayFiveLunchEditText.Text = DefaultTextMealCount;
+                _dayFiveLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _dayFiveLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayFiveLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataFifthDayDinner()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Friday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeWithAmount == null) return;
-            _dayFiveDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _dayFiveDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _dayFiveDinnerEditText.Text = DefaultTextMealCount;
+                _dayFiveDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _dayFiveDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _dayFiveDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataSixthDayLunch()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Saturday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _daySixLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _daySixLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _daySixLunchEditText.Text = DefaultTextMealCount;
+                _daySixLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _daySixLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _daySixLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataSixthDayDinner()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Saturday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeWithAmount == null) return;
-            _daySixDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _daySixDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _daySixDinnerEditText.Text = DefaultTextMealCount;
+                _daySixDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _daySixDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _daySixDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataSeventhDayLunch()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Sunday && r.MealDayTime == MealDayTimeEnum.Lunch);
-            if (recipeWithAmount == null) return;
-            _daySevenLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _daySevenLunchButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _daySevenLunchEditText.Text = DefaultTextMealCount;
+                _daySevenLunchButton.Text = DefaultTextLunch;
+            }
+            else
+            {
+                _daySevenLunchEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _daySevenLunchButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindRecipeWithAmountDataSeventhDayDinner()
         {
             var recipeWithAmount = _selectedMenuPlan.RecipesWithAmounts
                 .Find(r => r.DayOfWeek == DayOfWeek.Sunday && r.MealDayTime == MealDayTimeEnum.Dinner);
-            if (recipeWithAmount == null) return;
-            _daySevenDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
-            _daySevenDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            if (recipeWithAmount == null)
+            {
+                _daySevenDinnerEditText.Text = DefaultTextMealCount;
+                _daySevenDinnerButton.Text = DefaultTextDinner;
+            }
+            else
+            {
+                _daySevenDinnerEditText.Text = recipeWithAmount.NumbersOfMeals.ToString();
+                _daySevenDinnerButton.Text = recipeWithAmount.Recipe.Name;
+            }
         }
 
         private void BindDateData()
@@ -473,13 +575,13 @@ namespace MenuPlanerApp
             else
             {
                 _dateDisplay.Text = $"{dt:ddd, d/M/yyyy}";
-                _dayOneTextView.Text = $"{dt.AddDays(1):d/M}";
-                _dayTwoTextView.Text = $"{dt.AddDays(2):d/M}";
-                _dayThreeTextView.Text = $"{dt.AddDays(3):d/M}";
-                _dayFourTextView.Text = $"{dt.AddDays(4):d/M}";
-                _dayFiveTextView.Text = $"{dt.AddDays(5):d/M}";
-                _daySixTextView.Text = $"{dt.AddDays(6):d/M}";
-                _daySevenTextView.Text = $"{dt.AddDays(7):d/M}";
+                _dayOneTextView.Text = $"{dt:d/M}";
+                _dayTwoTextView.Text = $"{dt.AddDays(1):d/M}";
+                _dayThreeTextView.Text = $"{dt.AddDays(2):d/M}";
+                _dayFourTextView.Text = $"{dt.AddDays(3):d/M}";
+                _dayFiveTextView.Text = $"{dt.AddDays(4):d/M}";
+                _daySixTextView.Text = $"{dt.AddDays(5):d/M}";
+                _daySevenTextView.Text = $"{dt.AddDays(6):d/M}";
             }
         }
 
@@ -683,7 +785,7 @@ namespace MenuPlanerApp
         {
             if (VerifyUserEntries.IsMenuPlanComplete(_selectedMenuPlan))
             {
-                await SaveOrUpdateMenuPlan();
+                await SaveOrUpdateMenuPlan(_menuPlanRepositoryWeb);
                 await LoadMenuPlanData(_menuPlanRepositoryWeb);
                 ShowToastMessage(SavedUpdatedDataMessage);
             }
@@ -693,13 +795,13 @@ namespace MenuPlanerApp
             }
         }
 
-        private async Task SaveOrUpdateMenuPlan()
+        private async Task SaveOrUpdateMenuPlan(MenuPlanRepositoryWeb menuPlanRepositoryWeb)
         {
             if (_selectedMenuPlan.Id != 0)
-                await _menuPlanRepositoryWeb.UpdateMenuPlan(_selectedMenuPlan);
+                await menuPlanRepositoryWeb.UpdateMenuPlan(_selectedMenuPlan);
 
             else
-                _selectedMenuPlan = await _menuPlanRepositoryWeb.PostMenuPlan(_selectedMenuPlan);
+                _selectedMenuPlan = await menuPlanRepositoryWeb.PostMenuPlan(_selectedMenuPlan);
         }
 
 

@@ -4,7 +4,7 @@ using Android.Graphics;
 
 namespace MenuPlanerApp.Core.Utility
 {
-    public class ImageHelper
+    public static class ImageHelper
     {
         public static string ConvertBitmapToBase64String(Bitmap image)
         {

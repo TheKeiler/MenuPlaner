@@ -19,8 +19,7 @@ namespace MenuPlanerApp.API.Model
         public int NumbersOfMeals { get; set; }
 
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DayOfWeek DayOfWeek { get; set; }
+        public int DayOfWeek { get; set; }
 
         [Required]
         public int MealDayTime { get; set; }

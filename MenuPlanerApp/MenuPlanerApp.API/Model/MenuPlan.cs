@@ -17,6 +17,6 @@ namespace MenuPlanerApp.API.Model
         public DateTime StartDate { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual ICollection<RecipeWithAmount> RecipesWithAmounts { get; }
+        public virtual ICollection<RecipeWithAmount> RecipesWithAmounts { get; set; }
     }
 }

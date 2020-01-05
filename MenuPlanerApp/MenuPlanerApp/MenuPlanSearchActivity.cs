@@ -9,7 +9,7 @@ using SearchView = Android.Widget.SearchView;
 
 namespace MenuPlanerApp
 {
-    [Activity(Label = "MenuPlanSearchActivity")]
+    [Activity(Label = "@string/app_name")]
     public class MenuPlanSearchActivity : AppCompatActivity
     {
         private MenuPlanAdapter _menuPlanAdapter;
